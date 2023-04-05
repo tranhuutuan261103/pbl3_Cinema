@@ -1,0 +1,1183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CinemaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="char" MaxLength="100" Nullable="false" />
+          <Property Name="pass_word" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="role" Type="tinyint" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="auditorium">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_auditorium" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="seat_no_row" Type="int" Nullable="false" />
+          <Property Name="seat_no_column" Type="int" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bill">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="reservation_id" Type="int" />
+          <Property Name="booking_day" Type="datetime" Nullable="false" />
+          <Property Name="sum_price" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_category" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="char" MaxLength="100" Nullable="false" />
+          <Property Name="discount_points" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="detail_bill">
+          <Key>
+            <PropertyRef Name="bill_id" />
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="bill_id" Type="int" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="the_number_of_products" Type="int" Nullable="false" />
+          <Property Name="price" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="movie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="category_id" Type="int" />
+          <Property Name="description_movie" Type="nvarchar" MaxLength="1024" />
+          <Property Name="director" Type="nvarchar" MaxLength="255" />
+          <Property Name="list_cast" Type="nvarchar" MaxLength="1024" />
+          <Property Name="duration_min" Type="int" Nullable="false" />
+          <Property Name="release_date" Type="date" Nullable="false" />
+          <Property Name="expiration_date" Type="date" Nullable="false" />
+          <Property Name="poster" Type="image" />
+          <Property Name="video_trailer" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_product" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="unit" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="price" Type="int" Nullable="false" />
+          <Property Name="the_number_of_products" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rating">
+          <Key>
+            <PropertyRef Name="movie_id" />
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="movie_id" Type="int" Nullable="false" />
+          <Property Name="customer_id" Type="char" MaxLength="100" Nullable="false" />
+          <Property Name="point" Type="int" Nullable="false" />
+          <Property Name="comment" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="reservation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_id" Type="char" MaxLength="100" />
+          <Property Name="staff_id" Type="char" MaxLength="100" />
+          <Property Name="screening_id" Type="int" />
+          <Property Name="booking_date" Type="datetime" Nullable="false" />
+          <Property Name="pay" Type="int" Nullable="false" />
+          <Property Name="discount_pay" Type="int" Nullable="false" />
+          <Property Name="sum_pay" Type="int" Nullable="false" />
+          <Property Name="paid" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="screening">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="movie_id" Type="int" Nullable="false" />
+          <Property Name="auditorium_id" Type="int" Nullable="false" />
+          <Property Name="show_day" Type="date" Nullable="false" />
+          <Property Name="show_time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="price" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="seat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="row_location" Type="int" Nullable="false" />
+          <Property Name="column_location" Type="int" Nullable="false" />
+          <Property Name="auditorium_id" Type="int" />
+        </EntityType>
+        <EntityType Name="seat_reserved">
+          <Key>
+            <PropertyRef Name="seat_id" />
+            <PropertyRef Name="screening_id" />
+            <PropertyRef Name="reservation_id" />
+          </Key>
+          <Property Name="seat_id" Type="int" Nullable="false" />
+          <Property Name="screening_id" Type="int" Nullable="false" />
+          <Property Name="reservation_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="staff">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="char" MaxLength="100" Nullable="false" />
+          <Property Name="position" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="wage" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_infor">
+          <Key>
+            <PropertyRef Name="email_id" />
+          </Key>
+          <Property Name="email_id" Type="char" MaxLength="100" Nullable="false" />
+          <Property Name="full_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="gender" Type="char" MaxLength="5" />
+          <Property Name="phone_number" Type="char" MaxLength="10" />
+          <Property Name="day_of_birth" Type="date" />
+        </EntityType>
+        <Association Name="FK__bill__reservatio__4AB81AF0">
+          <End Role="reservation" Type="Self.reservation" Multiplicity="0..1" />
+          <End Role="bill" Type="Self.bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="reservation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bill">
+              <PropertyRef Name="reservation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__customer__email__267ABA7A">
+          <End Role="account" Type="Self.account" Multiplicity="1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="account">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="email" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__detail_bi__bill___4F7CD00D">
+          <End Role="bill" Type="Self.bill" Multiplicity="1" />
+          <End Role="detail_bill" Type="Self.detail_bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bill">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detail_bill">
+              <PropertyRef Name="bill_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__detail_bi__produ__5070F446">
+          <End Role="product" Type="Self.product" Multiplicity="1" />
+          <End Role="detail_bill" Type="Self.detail_bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detail_bill">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__movie__category___31EC6D26">
+          <End Role="category" Type="Self.category" Multiplicity="0..1" />
+          <End Role="movie" Type="Self.movie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="movie">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__rating__customer__35BCFE0A">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="rating" Type="Self.rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="rating">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__rating__movie_id__34C8D9D1">
+          <End Role="movie" Type="Self.movie" Multiplicity="1" />
+          <End Role="rating" Type="Self.rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rating">
+              <PropertyRef Name="movie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__reservati__custo__412EB0B6">
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+          <End Role="reservation" Type="Self.reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="reservation">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__reservati__scree__4316F928">
+          <End Role="screening" Type="Self.screening" Multiplicity="0..1" />
+          <End Role="reservation" Type="Self.reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="screening">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reservation">
+              <PropertyRef Name="screening_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__reservati__staff__4222D4EF">
+          <End Role="staff" Type="Self.staff" Multiplicity="0..1" />
+          <End Role="reservation" Type="Self.reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="staff">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="reservation">
+              <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__screening__audit__3B75D760">
+          <End Role="auditorium" Type="Self.auditorium" Multiplicity="1" />
+          <End Role="screening" Type="Self.screening" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="auditorium">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="screening">
+              <PropertyRef Name="auditorium_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__screening__movie__3A81B327">
+          <End Role="movie" Type="Self.movie" Multiplicity="1" />
+          <End Role="screening" Type="Self.screening" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="screening">
+              <PropertyRef Name="movie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__seat__auditorium__3E52440B">
+          <End Role="auditorium" Type="Self.auditorium" Multiplicity="0..1" />
+          <End Role="seat" Type="Self.seat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="auditorium">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="seat">
+              <PropertyRef Name="auditorium_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__seat_rese__reser__47DBAE45">
+          <End Role="reservation" Type="Self.reservation" Multiplicity="1" />
+          <End Role="seat_reserved" Type="Self.seat_reserved" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="reservation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="seat_reserved">
+              <PropertyRef Name="reservation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__seat_rese__scree__46E78A0C">
+          <End Role="screening" Type="Self.screening" Multiplicity="1" />
+          <End Role="seat_reserved" Type="Self.seat_reserved" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="screening">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="seat_reserved">
+              <PropertyRef Name="screening_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__seat_rese__seat___45F365D3">
+          <End Role="seat" Type="Self.seat" Multiplicity="1" />
+          <End Role="seat_reserved" Type="Self.seat_reserved" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="seat">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="seat_reserved">
+              <PropertyRef Name="seat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__staff__email__29572725">
+          <End Role="account" Type="Self.account" Multiplicity="1" />
+          <End Role="staff" Type="Self.staff" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="account">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="email" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__user_info__email__2C3393D0">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="user_infor" Type="Self.user_infor" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="user_infor">
+              <PropertyRef Name="email_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__user_info__email__2D27B809">
+          <End Role="staff" Type="Self.staff" Multiplicity="1" />
+          <End Role="user_infor" Type="Self.user_infor" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="staff">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="user_infor">
+              <PropertyRef Name="email_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CinemaModelStoreContainer">
+          <EntitySet Name="account" EntityType="Self.account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="auditorium" EntityType="Self.auditorium" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bill" EntityType="Self.bill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="detail_bill" EntityType="Self.detail_bill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="movie" EntityType="Self.movie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rating" EntityType="Self.rating" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reservation" EntityType="Self.reservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="screening" EntityType="Self.screening" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seat" EntityType="Self.seat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seat_reserved" EntityType="Self.seat_reserved" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="staff" EntityType="Self.staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_infor" EntityType="Self.user_infor" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__bill__reservatio__4AB81AF0" Association="Self.FK__bill__reservatio__4AB81AF0">
+            <End Role="reservation" EntitySet="reservation" />
+            <End Role="bill" EntitySet="bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__customer__email__267ABA7A" Association="Self.FK__customer__email__267ABA7A">
+            <End Role="account" EntitySet="account" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__detail_bi__bill___4F7CD00D" Association="Self.FK__detail_bi__bill___4F7CD00D">
+            <End Role="bill" EntitySet="bill" />
+            <End Role="detail_bill" EntitySet="detail_bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__detail_bi__produ__5070F446" Association="Self.FK__detail_bi__produ__5070F446">
+            <End Role="product" EntitySet="product" />
+            <End Role="detail_bill" EntitySet="detail_bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__movie__category___31EC6D26" Association="Self.FK__movie__category___31EC6D26">
+            <End Role="category" EntitySet="category" />
+            <End Role="movie" EntitySet="movie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__rating__customer__35BCFE0A" Association="Self.FK__rating__customer__35BCFE0A">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="rating" EntitySet="rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK__rating__movie_id__34C8D9D1" Association="Self.FK__rating__movie_id__34C8D9D1">
+            <End Role="movie" EntitySet="movie" />
+            <End Role="rating" EntitySet="rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK__reservati__custo__412EB0B6" Association="Self.FK__reservati__custo__412EB0B6">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="reservation" EntitySet="reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__reservati__scree__4316F928" Association="Self.FK__reservati__scree__4316F928">
+            <End Role="screening" EntitySet="screening" />
+            <End Role="reservation" EntitySet="reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__reservati__staff__4222D4EF" Association="Self.FK__reservati__staff__4222D4EF">
+            <End Role="staff" EntitySet="staff" />
+            <End Role="reservation" EntitySet="reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__screening__audit__3B75D760" Association="Self.FK__screening__audit__3B75D760">
+            <End Role="auditorium" EntitySet="auditorium" />
+            <End Role="screening" EntitySet="screening" />
+          </AssociationSet>
+          <AssociationSet Name="FK__screening__movie__3A81B327" Association="Self.FK__screening__movie__3A81B327">
+            <End Role="movie" EntitySet="movie" />
+            <End Role="screening" EntitySet="screening" />
+          </AssociationSet>
+          <AssociationSet Name="FK__seat__auditorium__3E52440B" Association="Self.FK__seat__auditorium__3E52440B">
+            <End Role="auditorium" EntitySet="auditorium" />
+            <End Role="seat" EntitySet="seat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__seat_rese__reser__47DBAE45" Association="Self.FK__seat_rese__reser__47DBAE45">
+            <End Role="reservation" EntitySet="reservation" />
+            <End Role="seat_reserved" EntitySet="seat_reserved" />
+          </AssociationSet>
+          <AssociationSet Name="FK__seat_rese__scree__46E78A0C" Association="Self.FK__seat_rese__scree__46E78A0C">
+            <End Role="screening" EntitySet="screening" />
+            <End Role="seat_reserved" EntitySet="seat_reserved" />
+          </AssociationSet>
+          <AssociationSet Name="FK__seat_rese__seat___45F365D3" Association="Self.FK__seat_rese__seat___45F365D3">
+            <End Role="seat" EntitySet="seat" />
+            <End Role="seat_reserved" EntitySet="seat_reserved" />
+          </AssociationSet>
+          <AssociationSet Name="FK__staff__email__29572725" Association="Self.FK__staff__email__29572725">
+            <End Role="account" EntitySet="account" />
+            <End Role="staff" EntitySet="staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK__user_info__email__2C3393D0" Association="Self.FK__user_info__email__2C3393D0">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="user_infor" EntitySet="user_infor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__user_info__email__2D27B809" Association="Self.FK__user_info__email__2D27B809">
+            <End Role="staff" EntitySet="staff" />
+            <End Role="user_infor" EntitySet="user_infor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CinemaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="pass_word" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="role" Type="Byte" Nullable="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="customer" Relationship="Self.FK__customer__email__267ABA7A" FromRole="account" ToRole="customer" />
+          <NavigationProperty Name="staff" Relationship="Self.FK__staff__email__29572725" FromRole="account" ToRole="staff" />
+        </EntityType>
+        <EntityType Name="auditorium">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_auditorium" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="seat_no_row" Type="Int32" Nullable="false" />
+          <Property Name="seat_no_column" Type="Int32" Nullable="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="screenings" Relationship="Self.FK__screening__audit__3B75D760" FromRole="auditorium" ToRole="screening" />
+          <NavigationProperty Name="seats" Relationship="Self.FK__seat__auditorium__3E52440B" FromRole="auditorium" ToRole="seat" />
+        </EntityType>
+        <EntityType Name="bill">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="reservation_id" Type="Int32" />
+          <Property Name="booking_day" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="sum_price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="reservation" Relationship="Self.FK__bill__reservatio__4AB81AF0" FromRole="bill" ToRole="reservation" />
+          <NavigationProperty Name="detail_bill" Relationship="Self.FK__detail_bi__bill___4F7CD00D" FromRole="bill" ToRole="detail_bill" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_category" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="movies" Relationship="Self.FK__movie__category___31EC6D26" FromRole="category" ToRole="movie" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="discount_points" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="account" Relationship="Self.FK__customer__email__267ABA7A" FromRole="customer" ToRole="account" />
+          <NavigationProperty Name="ratings" Relationship="Self.FK__rating__customer__35BCFE0A" FromRole="customer" ToRole="rating" />
+          <NavigationProperty Name="reservations" Relationship="Self.FK__reservati__custo__412EB0B6" FromRole="customer" ToRole="reservation" />
+          <NavigationProperty Name="user_infor" Relationship="Self.FK__user_info__email__2C3393D0" FromRole="customer" ToRole="user_infor" />
+        </EntityType>
+        <EntityType Name="detail_bill">
+          <Key>
+            <PropertyRef Name="bill_id" />
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="bill_id" Type="Int32" Nullable="false" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="the_number_of_products" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="bill" Relationship="Self.FK__detail_bi__bill___4F7CD00D" FromRole="detail_bill" ToRole="bill" />
+          <NavigationProperty Name="product" Relationship="Self.FK__detail_bi__produ__5070F446" FromRole="detail_bill" ToRole="product" />
+        </EntityType>
+        <EntityType Name="movie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="category_id" Type="Int32" />
+          <Property Name="description_movie" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="director" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="list_cast" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="duration_min" Type="Int32" Nullable="false" />
+          <Property Name="release_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="expiration_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="poster" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="video_trailer" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="category" Relationship="Self.FK__movie__category___31EC6D26" FromRole="movie" ToRole="category" />
+          <NavigationProperty Name="ratings" Relationship="Self.FK__rating__movie_id__34C8D9D1" FromRole="movie" ToRole="rating" />
+          <NavigationProperty Name="screenings" Relationship="Self.FK__screening__movie__3A81B327" FromRole="movie" ToRole="screening" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_product" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="unit" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="price" Type="Int32" Nullable="false" />
+          <Property Name="the_number_of_products" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="detail_bill" Relationship="Self.FK__detail_bi__produ__5070F446" FromRole="product" ToRole="detail_bill" />
+        </EntityType>
+        <EntityType Name="rating">
+          <Key>
+            <PropertyRef Name="movie_id" />
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="movie_id" Type="Int32" Nullable="false" />
+          <Property Name="customer_id" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="point" Type="Int32" Nullable="false" />
+          <Property Name="comment" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="customer" Relationship="Self.FK__rating__customer__35BCFE0A" FromRole="rating" ToRole="customer" />
+          <NavigationProperty Name="movie" Relationship="Self.FK__rating__movie_id__34C8D9D1" FromRole="rating" ToRole="movie" />
+        </EntityType>
+        <EntityType Name="reservation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Name="staff_id" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Name="screening_id" Type="Int32" />
+          <Property Name="booking_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="pay" Type="Int32" Nullable="false" />
+          <Property Name="discount_pay" Type="Int32" Nullable="false" />
+          <Property Name="sum_pay" Type="Int32" Nullable="false" />
+          <Property Name="paid" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="bills" Relationship="Self.FK__bill__reservatio__4AB81AF0" FromRole="reservation" ToRole="bill" />
+          <NavigationProperty Name="customer" Relationship="Self.FK__reservati__custo__412EB0B6" FromRole="reservation" ToRole="customer" />
+          <NavigationProperty Name="screening" Relationship="Self.FK__reservati__scree__4316F928" FromRole="reservation" ToRole="screening" />
+          <NavigationProperty Name="staff" Relationship="Self.FK__reservati__staff__4222D4EF" FromRole="reservation" ToRole="staff" />
+          <NavigationProperty Name="seat_reserved" Relationship="Self.FK__seat_rese__reser__47DBAE45" FromRole="reservation" ToRole="seat_reserved" />
+        </EntityType>
+        <EntityType Name="screening">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="movie_id" Type="Int32" Nullable="false" />
+          <Property Name="auditorium_id" Type="Int32" Nullable="false" />
+          <Property Name="show_day" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="show_time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="auditorium" Relationship="Self.FK__screening__audit__3B75D760" FromRole="screening" ToRole="auditorium" />
+          <NavigationProperty Name="movie" Relationship="Self.FK__screening__movie__3A81B327" FromRole="screening" ToRole="movie" />
+          <NavigationProperty Name="reservations" Relationship="Self.FK__reservati__scree__4316F928" FromRole="screening" ToRole="reservation" />
+          <NavigationProperty Name="seat_reserved" Relationship="Self.FK__seat_rese__scree__46E78A0C" FromRole="screening" ToRole="seat_reserved" />
+        </EntityType>
+        <EntityType Name="seat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="row_location" Type="Int32" Nullable="false" />
+          <Property Name="column_location" Type="Int32" Nullable="false" />
+          <Property Name="auditorium_id" Type="Int32" />
+          <NavigationProperty Name="auditorium" Relationship="Self.FK__seat__auditorium__3E52440B" FromRole="seat" ToRole="auditorium" />
+          <NavigationProperty Name="seat_reserved" Relationship="Self.FK__seat_rese__seat___45F365D3" FromRole="seat" ToRole="seat_reserved" />
+        </EntityType>
+        <EntityType Name="seat_reserved">
+          <Key>
+            <PropertyRef Name="seat_id" />
+            <PropertyRef Name="screening_id" />
+            <PropertyRef Name="reservation_id" />
+          </Key>
+          <Property Name="seat_id" Type="Int32" Nullable="false" />
+          <Property Name="screening_id" Type="Int32" Nullable="false" />
+          <Property Name="reservation_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="reservation" Relationship="Self.FK__seat_rese__reser__47DBAE45" FromRole="seat_reserved" ToRole="reservation" />
+          <NavigationProperty Name="screening" Relationship="Self.FK__seat_rese__scree__46E78A0C" FromRole="seat_reserved" ToRole="screening" />
+          <NavigationProperty Name="seat" Relationship="Self.FK__seat_rese__seat___45F365D3" FromRole="seat_reserved" ToRole="seat" />
+        </EntityType>
+        <EntityType Name="staff">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="position" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="wage" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="account" Relationship="Self.FK__staff__email__29572725" FromRole="staff" ToRole="account" />
+          <NavigationProperty Name="reservations" Relationship="Self.FK__reservati__staff__4222D4EF" FromRole="staff" ToRole="reservation" />
+          <NavigationProperty Name="user_infor" Relationship="Self.FK__user_info__email__2D27B809" FromRole="staff" ToRole="user_infor" />
+        </EntityType>
+        <EntityType Name="user_infor">
+          <Key>
+            <PropertyRef Name="email_id" />
+          </Key>
+          <Property Name="email_id" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="full_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="phone_number" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="day_of_birth" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="customer" Relationship="Self.FK__user_info__email__2C3393D0" FromRole="user_infor" ToRole="customer" />
+          <NavigationProperty Name="staff" Relationship="Self.FK__user_info__email__2D27B809" FromRole="user_infor" ToRole="staff" />
+        </EntityType>
+        <Association Name="FK__customer__email__267ABA7A">
+          <End Role="account" Type="Self.account" Multiplicity="1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="account">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="email" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__staff__email__29572725">
+          <End Role="account" Type="Self.account" Multiplicity="1" />
+          <End Role="staff" Type="Self.staff" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="account">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="email" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__screening__audit__3B75D760">
+          <End Role="auditorium" Type="Self.auditorium" Multiplicity="1" />
+          <End Role="screening" Type="Self.screening" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="auditorium">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="screening">
+              <PropertyRef Name="auditorium_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__seat__auditorium__3E52440B">
+          <End Role="auditorium" Type="Self.auditorium" Multiplicity="0..1" />
+          <End Role="seat" Type="Self.seat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="auditorium">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="seat">
+              <PropertyRef Name="auditorium_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__bill__reservatio__4AB81AF0">
+          <End Role="reservation" Type="Self.reservation" Multiplicity="0..1" />
+          <End Role="bill" Type="Self.bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="reservation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bill">
+              <PropertyRef Name="reservation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__detail_bi__bill___4F7CD00D">
+          <End Role="bill" Type="Self.bill" Multiplicity="1" />
+          <End Role="detail_bill" Type="Self.detail_bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bill">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detail_bill">
+              <PropertyRef Name="bill_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__movie__category___31EC6D26">
+          <End Role="category" Type="Self.category" Multiplicity="0..1" />
+          <End Role="movie" Type="Self.movie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="movie">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__rating__customer__35BCFE0A">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="rating" Type="Self.rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="rating">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__reservati__custo__412EB0B6">
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+          <End Role="reservation" Type="Self.reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="reservation">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__user_info__email__2C3393D0">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="user_infor" Type="Self.user_infor" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="user_infor">
+              <PropertyRef Name="email_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__detail_bi__produ__5070F446">
+          <End Role="product" Type="Self.product" Multiplicity="1" />
+          <End Role="detail_bill" Type="Self.detail_bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detail_bill">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__rating__movie_id__34C8D9D1">
+          <End Role="movie" Type="Self.movie" Multiplicity="1" />
+          <End Role="rating" Type="Self.rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rating">
+              <PropertyRef Name="movie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__screening__movie__3A81B327">
+          <End Role="movie" Type="Self.movie" Multiplicity="1" />
+          <End Role="screening" Type="Self.screening" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="screening">
+              <PropertyRef Name="movie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__reservati__scree__4316F928">
+          <End Role="screening" Type="Self.screening" Multiplicity="0..1" />
+          <End Role="reservation" Type="Self.reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="screening">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reservation">
+              <PropertyRef Name="screening_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__reservati__staff__4222D4EF">
+          <End Role="staff" Type="Self.staff" Multiplicity="0..1" />
+          <End Role="reservation" Type="Self.reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="staff">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="reservation">
+              <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__seat_rese__reser__47DBAE45">
+          <End Role="reservation" Type="Self.reservation" Multiplicity="1" />
+          <End Role="seat_reserved" Type="Self.seat_reserved" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="reservation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="seat_reserved">
+              <PropertyRef Name="reservation_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__seat_rese__scree__46E78A0C">
+          <End Role="screening" Type="Self.screening" Multiplicity="1" />
+          <End Role="seat_reserved" Type="Self.seat_reserved" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="screening">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="seat_reserved">
+              <PropertyRef Name="screening_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__seat_rese__seat___45F365D3">
+          <End Role="seat" Type="Self.seat" Multiplicity="1" />
+          <End Role="seat_reserved" Type="Self.seat_reserved" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="seat">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="seat_reserved">
+              <PropertyRef Name="seat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__user_info__email__2D27B809">
+          <End Role="staff" Type="Self.staff" Multiplicity="1" />
+          <End Role="user_infor" Type="Self.user_infor" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="staff">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="user_infor">
+              <PropertyRef Name="email_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CinemaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="accounts" EntityType="Self.account" />
+          <EntitySet Name="auditoriums" EntityType="Self.auditorium" />
+          <EntitySet Name="bills" EntityType="Self.bill" />
+          <EntitySet Name="categories" EntityType="Self.category" />
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="detail_bill" EntityType="Self.detail_bill" />
+          <EntitySet Name="movies" EntityType="Self.movie" />
+          <EntitySet Name="products" EntityType="Self.product" />
+          <EntitySet Name="ratings" EntityType="Self.rating" />
+          <EntitySet Name="reservations" EntityType="Self.reservation" />
+          <EntitySet Name="screenings" EntityType="Self.screening" />
+          <EntitySet Name="seats" EntityType="Self.seat" />
+          <EntitySet Name="seat_reserved" EntityType="Self.seat_reserved" />
+          <EntitySet Name="staffs" EntityType="Self.staff" />
+          <EntitySet Name="user_infor" EntityType="Self.user_infor" />
+          <AssociationSet Name="FK__customer__email__267ABA7A" Association="Self.FK__customer__email__267ABA7A">
+            <End Role="account" EntitySet="accounts" />
+            <End Role="customer" EntitySet="customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__staff__email__29572725" Association="Self.FK__staff__email__29572725">
+            <End Role="account" EntitySet="accounts" />
+            <End Role="staff" EntitySet="staffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__screening__audit__3B75D760" Association="Self.FK__screening__audit__3B75D760">
+            <End Role="auditorium" EntitySet="auditoriums" />
+            <End Role="screening" EntitySet="screenings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__seat__auditorium__3E52440B" Association="Self.FK__seat__auditorium__3E52440B">
+            <End Role="auditorium" EntitySet="auditoriums" />
+            <End Role="seat" EntitySet="seats" />
+          </AssociationSet>
+          <AssociationSet Name="FK__bill__reservatio__4AB81AF0" Association="Self.FK__bill__reservatio__4AB81AF0">
+            <End Role="reservation" EntitySet="reservations" />
+            <End Role="bill" EntitySet="bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK__detail_bi__bill___4F7CD00D" Association="Self.FK__detail_bi__bill___4F7CD00D">
+            <End Role="bill" EntitySet="bills" />
+            <End Role="detail_bill" EntitySet="detail_bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__movie__category___31EC6D26" Association="Self.FK__movie__category___31EC6D26">
+            <End Role="category" EntitySet="categories" />
+            <End Role="movie" EntitySet="movies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__rating__customer__35BCFE0A" Association="Self.FK__rating__customer__35BCFE0A">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="rating" EntitySet="ratings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__reservati__custo__412EB0B6" Association="Self.FK__reservati__custo__412EB0B6">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="reservation" EntitySet="reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__user_info__email__2C3393D0" Association="Self.FK__user_info__email__2C3393D0">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="user_infor" EntitySet="user_infor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__detail_bi__produ__5070F446" Association="Self.FK__detail_bi__produ__5070F446">
+            <End Role="product" EntitySet="products" />
+            <End Role="detail_bill" EntitySet="detail_bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__rating__movie_id__34C8D9D1" Association="Self.FK__rating__movie_id__34C8D9D1">
+            <End Role="movie" EntitySet="movies" />
+            <End Role="rating" EntitySet="ratings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__screening__movie__3A81B327" Association="Self.FK__screening__movie__3A81B327">
+            <End Role="movie" EntitySet="movies" />
+            <End Role="screening" EntitySet="screenings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__reservati__scree__4316F928" Association="Self.FK__reservati__scree__4316F928">
+            <End Role="screening" EntitySet="screenings" />
+            <End Role="reservation" EntitySet="reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__reservati__staff__4222D4EF" Association="Self.FK__reservati__staff__4222D4EF">
+            <End Role="staff" EntitySet="staffs" />
+            <End Role="reservation" EntitySet="reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__seat_rese__reser__47DBAE45" Association="Self.FK__seat_rese__reser__47DBAE45">
+            <End Role="reservation" EntitySet="reservations" />
+            <End Role="seat_reserved" EntitySet="seat_reserved" />
+          </AssociationSet>
+          <AssociationSet Name="FK__seat_rese__scree__46E78A0C" Association="Self.FK__seat_rese__scree__46E78A0C">
+            <End Role="screening" EntitySet="screenings" />
+            <End Role="seat_reserved" EntitySet="seat_reserved" />
+          </AssociationSet>
+          <AssociationSet Name="FK__seat_rese__seat___45F365D3" Association="Self.FK__seat_rese__seat___45F365D3">
+            <End Role="seat" EntitySet="seats" />
+            <End Role="seat_reserved" EntitySet="seat_reserved" />
+          </AssociationSet>
+          <AssociationSet Name="FK__user_info__email__2D27B809" Association="Self.FK__user_info__email__2D27B809">
+            <End Role="staff" EntitySet="staffs" />
+            <End Role="user_infor" EntitySet="user_infor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CinemaModelStoreContainer" CdmEntityContainer="CinemaEntities">
+          <EntitySetMapping Name="accounts">
+            <EntityTypeMapping TypeName="CinemaModel.account">
+              <MappingFragment StoreEntitySet="account">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="pass_word" ColumnName="pass_word" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="auditoriums">
+            <EntityTypeMapping TypeName="CinemaModel.auditorium">
+              <MappingFragment StoreEntitySet="auditorium">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name_auditorium" ColumnName="name_auditorium" />
+                <ScalarProperty Name="seat_no_row" ColumnName="seat_no_row" />
+                <ScalarProperty Name="seat_no_column" ColumnName="seat_no_column" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bills">
+            <EntityTypeMapping TypeName="CinemaModel.bill">
+              <MappingFragment StoreEntitySet="bill">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="reservation_id" ColumnName="reservation_id" />
+                <ScalarProperty Name="booking_day" ColumnName="booking_day" />
+                <ScalarProperty Name="sum_price" ColumnName="sum_price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="CinemaModel.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name_category" ColumnName="name_category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="CinemaModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="discount_points" ColumnName="discount_points" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="detail_bill">
+            <EntityTypeMapping TypeName="CinemaModel.detail_bill">
+              <MappingFragment StoreEntitySet="detail_bill">
+                <ScalarProperty Name="bill_id" ColumnName="bill_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="the_number_of_products" ColumnName="the_number_of_products" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="movies">
+            <EntityTypeMapping TypeName="CinemaModel.movie">
+              <MappingFragment StoreEntitySet="movie">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="description_movie" ColumnName="description_movie" />
+                <ScalarProperty Name="director" ColumnName="director" />
+                <ScalarProperty Name="list_cast" ColumnName="list_cast" />
+                <ScalarProperty Name="duration_min" ColumnName="duration_min" />
+                <ScalarProperty Name="release_date" ColumnName="release_date" />
+                <ScalarProperty Name="expiration_date" ColumnName="expiration_date" />
+                <ScalarProperty Name="poster" ColumnName="poster" />
+                <ScalarProperty Name="video_trailer" ColumnName="video_trailer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="CinemaModel.product">
+              <MappingFragment StoreEntitySet="product">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name_product" ColumnName="name_product" />
+                <ScalarProperty Name="unit" ColumnName="unit" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="the_number_of_products" ColumnName="the_number_of_products" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ratings">
+            <EntityTypeMapping TypeName="CinemaModel.rating">
+              <MappingFragment StoreEntitySet="rating">
+                <ScalarProperty Name="movie_id" ColumnName="movie_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="point" ColumnName="point" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reservations">
+            <EntityTypeMapping TypeName="CinemaModel.reservation">
+              <MappingFragment StoreEntitySet="reservation">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="staff_id" ColumnName="staff_id" />
+                <ScalarProperty Name="screening_id" ColumnName="screening_id" />
+                <ScalarProperty Name="booking_date" ColumnName="booking_date" />
+                <ScalarProperty Name="pay" ColumnName="pay" />
+                <ScalarProperty Name="discount_pay" ColumnName="discount_pay" />
+                <ScalarProperty Name="sum_pay" ColumnName="sum_pay" />
+                <ScalarProperty Name="paid" ColumnName="paid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="screenings">
+            <EntityTypeMapping TypeName="CinemaModel.screening">
+              <MappingFragment StoreEntitySet="screening">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="movie_id" ColumnName="movie_id" />
+                <ScalarProperty Name="auditorium_id" ColumnName="auditorium_id" />
+                <ScalarProperty Name="show_day" ColumnName="show_day" />
+                <ScalarProperty Name="show_time" ColumnName="show_time" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seats">
+            <EntityTypeMapping TypeName="CinemaModel.seat">
+              <MappingFragment StoreEntitySet="seat">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="row_location" ColumnName="row_location" />
+                <ScalarProperty Name="column_location" ColumnName="column_location" />
+                <ScalarProperty Name="auditorium_id" ColumnName="auditorium_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seat_reserved">
+            <EntityTypeMapping TypeName="CinemaModel.seat_reserved">
+              <MappingFragment StoreEntitySet="seat_reserved">
+                <ScalarProperty Name="seat_id" ColumnName="seat_id" />
+                <ScalarProperty Name="screening_id" ColumnName="screening_id" />
+                <ScalarProperty Name="reservation_id" ColumnName="reservation_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="staffs">
+            <EntityTypeMapping TypeName="CinemaModel.staff">
+              <MappingFragment StoreEntitySet="staff">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="wage" ColumnName="wage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_infor">
+            <EntityTypeMapping TypeName="CinemaModel.user_infor">
+              <MappingFragment StoreEntitySet="user_infor">
+                <ScalarProperty Name="email_id" ColumnName="email_id" />
+                <ScalarProperty Name="full_name" ColumnName="full_name" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="day_of_birth" ColumnName="day_of_birth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

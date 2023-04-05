@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9AE36028-DA39-4BCA-8D28-C8C57862D144}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>pbl3_Cinema</RootNamespace>
+    <AssemblyName>pbl3_Cinema</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI2, Version=2.0.4.4, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+      <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.4\lib\net472\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="account.cs">
+      <DependentUpon>CinemaManage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="auditorium.cs">
+      <DependentUpon>CinemaManage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="bill.cs">
+      <DependentUpon>CinemaManage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\Cinema_BLL.cs" />
+    <Compile Include="category.cs">
+      <DependentUpon>CinemaManage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CinemaManage.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CinemaManage.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CinemaManage.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CinemaManage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CinemaManage.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CinemaManage.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="customer.cs">
+      <DependentUpon>CinemaManage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Cinema_DAL.cs" />
+    <Compile Include="detail_bill.cs">
+      <DependentUpon>CinemaManage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\CBB_Category.cs" />
+    <Compile Include="DTO\MyMovieInfor.cs" />
+    <Compile Include="movie.cs">
+      <DependentUpon>CinemaManage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyConvert\MyConvert.cs" />
+    <Compile Include="MyUserControler\UserControlDisplayMovie.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyUserControler\UserControlDisplayMovie.Designer.cs">
+      <DependentUpon>UserControlDisplayMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="product.cs">
+      <DependentUpon>CinemaManage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rating.cs">
+      <DependentUpon>CinemaManage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="reservation.cs">
+      <DependentUpon>CinemaManage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="screening.cs">
+      <DependentUpon>CinemaManage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="seat.cs">
+      <DependentUpon>CinemaManage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="seat_reserved.cs">
+      <DependentUpon>CinemaManage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="staff.cs">
+      <DependentUpon>CinemaManage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="user_infor.cs">
+      <DependentUpon>CinemaManage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminView\ManageFilm\CRUD_Film.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminView\ManageFilm\CRUD_Film.Designer.cs">
+      <DependentUpon>CRUD_Film.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminView\ManageFilm\Form_ManageAuditorium.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminView\ManageFilm\Form_ManageAuditorium.Designer.cs">
+      <DependentUpon>Form_ManageAuditorium.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminView\ManageFilm\Form_ManageFilm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminView\ManageFilm\Form_ManageFilm.Designer.cs">
+      <DependentUpon>Form_ManageFilm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminView\Form_Admin_ListSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminView\Form_Admin_ListSelect.Designer.cs">
+      <DependentUpon>Form_Admin_ListSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CustomerView\FilmNowShowView\Form_Film_NowShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CustomerView\FilmNowShowView\Form_Film_NowShow.Designer.cs">
+      <DependentUpon>Form_Film_NowShow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CustomerView\FilmNowShowView\Form_Film_WillShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CustomerView\FilmNowShowView\Form_Film_WillShow.Designer.cs">
+      <DependentUpon>Form_Film_WillShow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CustomerView\Form_Customer_ListSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CustomerView\Form_Customer_ListSelect.Designer.cs">
+      <DependentUpon>Form_Customer_ListSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CustomerView\ManageAccount\FormAccountCustomerManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CustomerView\ManageAccount\FormAccountCustomerManage.Designer.cs">
+      <DependentUpon>FormAccountCustomerManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\SignView\Form_SignIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SignView\Form_SignIn.Designer.cs">
+      <DependentUpon>Form_SignIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SignView\Form_SignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SignView\Form_SignUp.Designer.cs">
+      <DependentUpon>Form_SignUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MyUserControler\UserControlDisplayMovie.resx">
+      <DependentUpon>UserControlDisplayMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminView\ManageFilm\CRUD_Film.resx">
+      <DependentUpon>CRUD_Film.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminView\ManageFilm\Form_ManageAuditorium.resx">
+      <DependentUpon>Form_ManageAuditorium.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminView\ManageFilm\Form_ManageFilm.resx">
+      <DependentUpon>Form_ManageFilm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminView\Form_Admin_ListSelect.resx">
+      <DependentUpon>Form_Admin_ListSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CustomerView\FilmNowShowView\Form_Film_NowShow.resx">
+      <DependentUpon>Form_Film_NowShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CustomerView\FilmNowShowView\Form_Film_WillShow.resx">
+      <DependentUpon>Form_Film_WillShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CustomerView\Form_Customer_ListSelect.resx">
+      <DependentUpon>Form_Customer_ListSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CustomerView\ManageAccount\FormAccountCustomerManage.resx">
+      <DependentUpon>FormAccountCustomerManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="View\SignView\Form_SignIn.resx">
+      <DependentUpon>Form_SignIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SignView\Form_SignUp.resx">
+      <DependentUpon>Form_SignUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="CinemaManage.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CinemaManage.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="CinemaManage.edmx.diagram">
+      <DependentUpon>CinemaManage.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\retro_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cinema_logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\poster_title.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CinemaManage.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CinemaManage.edmx</DependentUpon>
+      <LastGenOutput>CinemaManage.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CinemaManage.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CinemaManage.edmx</DependentUpon>
+      <LastGenOutput>CinemaManage.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
