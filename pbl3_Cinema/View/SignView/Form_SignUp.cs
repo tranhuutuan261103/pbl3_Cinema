@@ -19,6 +19,7 @@ namespace pbl3_Cinema.View
         public Form_SignUp()
         {
             InitializeComponent();
+            dateTimePicker_DoB.MaxDate = DateTime.Now;
             otp = -1;
         }
 

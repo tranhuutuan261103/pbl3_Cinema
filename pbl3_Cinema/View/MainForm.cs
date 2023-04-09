@@ -138,12 +138,14 @@ namespace pbl3_Cinema.View
                     {
                         activeDisplay.Close();
                     }
-                    FormAccountCustomerManage form = new FormAccountCustomerManage();
+                    FormAccountCustomerManage form = new FormAccountCustomerManage()
+                    {
+                        Account = account,
+                    };
                     activeDisplay = form;
                     form.Dock = DockStyle.Fill;
                     form.TopLevel = false;
-                    form.account = account;
-                    panel_Display.Controls.Add(form);
+                    panel_Display.Controls.Add(activeDisplay);
                     form.Show();
                 }
             }

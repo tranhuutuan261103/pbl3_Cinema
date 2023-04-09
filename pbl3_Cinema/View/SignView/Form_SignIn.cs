@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using pbl3_Cinema.BLL;
+using pbl3_Cinema.View.SignView;
 
 namespace pbl3_Cinema.View
 {
@@ -57,7 +58,9 @@ namespace pbl3_Cinema.View
 
         private void label_ChangePassword_Click(object sender, EventArgs e)
         {
-
+            Form_ForgotPassword form = new Form_ForgotPassword();
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.ShowDialog();
         }
     }
 }

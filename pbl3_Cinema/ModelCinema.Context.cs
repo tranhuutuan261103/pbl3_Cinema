@@ -39,6 +39,7 @@ namespace pbl3_Cinema
         public virtual DbSet<seat> seats { get; set; }
         public virtual DbSet<seat_reserved> seat_reserved { get; set; }
         public virtual DbSet<staff> staffs { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<user_infor> user_infor { get; set; }
     }
 }

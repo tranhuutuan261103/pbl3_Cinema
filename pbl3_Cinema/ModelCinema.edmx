@@ -145,13 +145,23 @@
           <Property Name="position" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="wage" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="user_infor">
           <Key>
             <PropertyRef Name="email_id" />
           </Key>
           <Property Name="email_id" Type="char" MaxLength="100" Nullable="false" />
           <Property Name="full_name" Type="nvarchar" MaxLength="100" />
-          <Property Name="gender" Type="char" MaxLength="5" />
+          <Property Name="gender" Type="nvarchar" MaxLength="5" />
           <Property Name="phone_number" Type="char" MaxLength="10" />
           <Property Name="day_of_birth" Type="date" />
         </EntityType>
@@ -359,27 +369,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__user_info__email__2C3393D0">
-          <End Role="customer" Type="Self.customer" Multiplicity="1" />
-          <End Role="user_infor" Type="Self.user_infor" Multiplicity="0..1" />
+        <Association Name="FK_Customer_UserInfor">
+          <End Role="user_infor" Type="Self.user_infor" Multiplicity="1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="customer">
-              <PropertyRef Name="email" />
-            </Principal>
-            <Dependent Role="user_infor">
+            <Principal Role="user_infor">
               <PropertyRef Name="email_id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="email" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__user_info__email__2D27B809">
-          <End Role="staff" Type="Self.staff" Multiplicity="1" />
-          <End Role="user_infor" Type="Self.user_infor" Multiplicity="0..1" />
+        <Association Name="FK_Staff_UserInfor">
+          <End Role="user_infor" Type="Self.user_infor" Multiplicity="1" />
+          <End Role="staff" Type="Self.staff" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="staff">
-              <PropertyRef Name="email" />
-            </Principal>
-            <Dependent Role="user_infor">
+            <Principal Role="user_infor">
               <PropertyRef Name="email_id" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="email" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -398,6 +408,7 @@
           <EntitySet Name="seat" EntityType="Self.seat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="seat_reserved" EntityType="Self.seat_reserved" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="staff" EntityType="Self.staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user_infor" EntityType="Self.user_infor" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__bill__reservatio__4AB81AF0" Association="Self.FK__bill__reservatio__4AB81AF0">
             <End Role="reservation" EntitySet="reservation" />
@@ -467,13 +478,13 @@
             <End Role="account" EntitySet="account" />
             <End Role="staff" EntitySet="staff" />
           </AssociationSet>
-          <AssociationSet Name="FK__user_info__email__2C3393D0" Association="Self.FK__user_info__email__2C3393D0">
+          <AssociationSet Name="FK_Customer_UserInfor" Association="Self.FK_Customer_UserInfor">
+            <End Role="user_infor" EntitySet="user_infor" />
             <End Role="customer" EntitySet="customer" />
-            <End Role="user_infor" EntitySet="user_infor" />
           </AssociationSet>
-          <AssociationSet Name="FK__user_info__email__2D27B809" Association="Self.FK__user_info__email__2D27B809">
-            <End Role="staff" EntitySet="staff" />
+          <AssociationSet Name="FK_Staff_UserInfor" Association="Self.FK_Staff_UserInfor">
             <End Role="user_infor" EntitySet="user_infor" />
+            <End Role="staff" EntitySet="staff" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -532,7 +543,7 @@
           <NavigationProperty Name="account" Relationship="Self.FK__customer__email__267ABA7A" FromRole="customer" ToRole="account" />
           <NavigationProperty Name="ratings" Relationship="Self.FK__rating__customer__35BCFE0A" FromRole="customer" ToRole="rating" />
           <NavigationProperty Name="reservations" Relationship="Self.FK__reservati__custo__412EB0B6" FromRole="customer" ToRole="reservation" />
-          <NavigationProperty Name="user_infor" Relationship="Self.FK__user_info__email__2C3393D0" FromRole="customer" ToRole="user_infor" />
+          <NavigationProperty Name="user_infor" Relationship="Self.FK_Customer_UserInfor" FromRole="customer" ToRole="user_infor" />
         </EntityType>
         <EntityType Name="detail_bill">
           <Key>
@@ -655,7 +666,17 @@
           <Property Name="wage" Type="Int32" Nullable="false" />
           <NavigationProperty Name="account" Relationship="Self.FK__staff__email__29572725" FromRole="staff" ToRole="account" />
           <NavigationProperty Name="reservations" Relationship="Self.FK__reservati__staff__4222D4EF" FromRole="staff" ToRole="reservation" />
-          <NavigationProperty Name="user_infor" Relationship="Self.FK__user_info__email__2D27B809" FromRole="staff" ToRole="user_infor" />
+          <NavigationProperty Name="user_infor" Relationship="Self.FK_Staff_UserInfor" FromRole="staff" ToRole="user_infor" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="user_infor">
           <Key>
@@ -663,11 +684,11 @@
           </Key>
           <Property Name="email_id" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="full_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="gender" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="gender" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="phone_number" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="day_of_birth" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="customer" Relationship="Self.FK__user_info__email__2C3393D0" FromRole="user_infor" ToRole="customer" />
-          <NavigationProperty Name="staff" Relationship="Self.FK__user_info__email__2D27B809" FromRole="user_infor" ToRole="staff" />
+          <NavigationProperty Name="customer" Relationship="Self.FK_Customer_UserInfor" FromRole="user_infor" ToRole="customer" />
+          <NavigationProperty Name="staff" Relationship="Self.FK_Staff_UserInfor" FromRole="user_infor" ToRole="staff" />
         </EntityType>
         <Association Name="FK__customer__email__267ABA7A">
           <End Role="account" Type="Self.account" Multiplicity="1" />
@@ -777,15 +798,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__user_info__email__2C3393D0">
-          <End Role="customer" Type="Self.customer" Multiplicity="1" />
-          <End Role="user_infor" Type="Self.user_infor" Multiplicity="0..1" />
+        <Association Name="FK_Customer_UserInfor">
+          <End Role="user_infor" Type="Self.user_infor" Multiplicity="1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="customer">
-              <PropertyRef Name="email" />
-            </Principal>
-            <Dependent Role="user_infor">
+            <Principal Role="user_infor">
               <PropertyRef Name="email_id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="email" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -885,15 +906,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__user_info__email__2D27B809">
-          <End Role="staff" Type="Self.staff" Multiplicity="1" />
-          <End Role="user_infor" Type="Self.user_infor" Multiplicity="0..1" />
+        <Association Name="FK_Staff_UserInfor">
+          <End Role="user_infor" Type="Self.user_infor" Multiplicity="1" />
+          <End Role="staff" Type="Self.staff" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="staff">
-              <PropertyRef Name="email" />
-            </Principal>
-            <Dependent Role="user_infor">
+            <Principal Role="user_infor">
               <PropertyRef Name="email_id" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="email" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -912,6 +933,7 @@
           <EntitySet Name="seats" EntityType="Self.seat" />
           <EntitySet Name="seat_reserved" EntityType="Self.seat_reserved" />
           <EntitySet Name="staffs" EntityType="Self.staff" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="user_infor" EntityType="Self.user_infor" />
           <AssociationSet Name="FK__customer__email__267ABA7A" Association="Self.FK__customer__email__267ABA7A">
             <End Role="account" EntitySet="accounts" />
@@ -949,9 +971,9 @@
             <End Role="customer" EntitySet="customers" />
             <End Role="reservation" EntitySet="reservations" />
           </AssociationSet>
-          <AssociationSet Name="FK__user_info__email__2C3393D0" Association="Self.FK__user_info__email__2C3393D0">
-            <End Role="customer" EntitySet="customers" />
+          <AssociationSet Name="FK_Customer_UserInfor" Association="Self.FK_Customer_UserInfor">
             <End Role="user_infor" EntitySet="user_infor" />
+            <End Role="customer" EntitySet="customers" />
           </AssociationSet>
           <AssociationSet Name="FK__detail_bi__produ__5070F446" Association="Self.FK__detail_bi__produ__5070F446">
             <End Role="product" EntitySet="products" />
@@ -985,9 +1007,9 @@
             <End Role="seat" EntitySet="seats" />
             <End Role="seat_reserved" EntitySet="seat_reserved" />
           </AssociationSet>
-          <AssociationSet Name="FK__user_info__email__2D27B809" Association="Self.FK__user_info__email__2D27B809">
-            <End Role="staff" EntitySet="staffs" />
+          <AssociationSet Name="FK_Staff_UserInfor" Association="Self.FK_Staff_UserInfor">
             <End Role="user_infor" EntitySet="user_infor" />
+            <End Role="staff" EntitySet="staffs" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -1143,6 +1165,17 @@
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="position" ColumnName="position" />
                 <ScalarProperty Name="wage" ColumnName="wage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CinemaModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
