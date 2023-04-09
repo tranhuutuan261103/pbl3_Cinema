@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace pbl3_Cinema.MyConvert
+namespace pbl3_Cinema.MyFuncStatic
 {
     internal class MyConvert
     {

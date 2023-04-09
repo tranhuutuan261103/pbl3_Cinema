@@ -29,14 +29,25 @@ namespace pbl3_Cinema.View
 
         private void btn_Login_Click(object sender, EventArgs e)
         {
-            Cinema_BLL bll = new Cinema_BLL();
+            string email = textBox_Account.Text;
+            string password = textBox_Password.Text;
+            if (email=="" || password == "" && email!="admin")
+            {
+                MessageBox.Show("Thông tin không được bỏ trống");
+                return;
+            }
+            if (MyFuncStatic.MyEmailFunc.checkValidEmail(email) == false && email!= "admin")
+            {
+                MessageBox.Show("Email không hợp lệ");
+                return;
+            }
+
+
+            Account_BLL bll = new Account_BLL();
             int role = bll.GetRole(textBox_Account.Text, textBox_Password.Text);
             if (role != -1)
             {
-
                 loadMainForm(textBox_Account.Text, role);
-                textBox_Account.Text = "";
-                textBox_Password.Text = "";
             }
             else
             {
