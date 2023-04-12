@@ -25,6 +25,7 @@ namespace pbl3_Cinema
         public string unit { get; set; }
         public int price { get; set; }
         public int the_number_of_products { get; set; }
+        public byte[] image_product { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<detail_bill> detail_bill { get; set; }
