@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace pbl3_Cinema.View.AdminView.ManageFilm
 {
-    public partial class Form_ManageAuditorium : Form
+    public partial class Form_ManageReservation : Form
     {
-        public Form_ManageAuditorium()
+        public Form_ManageReservation()
         {
             InitializeComponent();
         }

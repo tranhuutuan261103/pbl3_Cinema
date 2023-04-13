@@ -63,7 +63,7 @@
             this.btn_2.Name = "btn_2";
             this.btn_2.Size = new System.Drawing.Size(165, 61);
             this.btn_2.TabIndex = 1;
-            this.btn_2.Text = "Thêm suất chiếu";
+            this.btn_2.Text = "Quản lý suất chiếu";
             this.btn_2.Click += new System.EventHandler(this.btn_Click);
             // 
             // btn_3
@@ -79,7 +79,7 @@
             this.btn_3.Name = "btn_3";
             this.btn_3.Size = new System.Drawing.Size(165, 61);
             this.btn_3.TabIndex = 2;
-            this.btn_3.Text = "Thêm phòng chiếu";
+            this.btn_3.Text = "Quản lý vé";
             this.btn_3.Click += new System.EventHandler(this.btn_Click);
             // 
             // btn_4

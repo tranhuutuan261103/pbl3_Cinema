@@ -147,5 +147,29 @@ namespace pbl3_Cinema.BLL
             Cinema_DAL dal = new Cinema_DAL();
             return MyFuncStatic.MyConvert.ConvertBinaryToImage(dal.GetPosterById(id));
         }
+
+        public List<Auditorium_Infor> GetAllAuditorium_Infor()
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.GetAllAuditorium_Infor();
+        }
+
+        public int AddAuditorium(auditorium a)
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.AddAuditorium(a);
+        }
+
+        public int GetScreeningCurCount(int id)
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.GetScreeningCurCount(id);
+        }
+
+        public bool DeleteAuditorium(int id)
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.DeleteAuditorium(id);
+        }
     }
 }

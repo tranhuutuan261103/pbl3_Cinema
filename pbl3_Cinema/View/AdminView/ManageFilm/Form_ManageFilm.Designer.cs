@@ -69,7 +69,7 @@
             this.dataGridView_ListFilm.RowHeadersVisible = false;
             this.dataGridView_ListFilm.RowHeadersWidth = 51;
             this.dataGridView_ListFilm.RowTemplate.Height = 24;
-            this.dataGridView_ListFilm.Size = new System.Drawing.Size(792, 403);
+            this.dataGridView_ListFilm.Size = new System.Drawing.Size(789, 403);
             this.dataGridView_ListFilm.TabIndex = 0;
             this.dataGridView_ListFilm.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dataGridView_ListFilm.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -144,7 +144,6 @@
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2DataGridViewStyler guna2DataGridViewStyler1;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridView_ListFilm;
         private Guna.UI2.WinForms.Guna2Button btn_AddFilm;
         private Guna.UI2.WinForms.Guna2Button btn_UpdateFilm;
