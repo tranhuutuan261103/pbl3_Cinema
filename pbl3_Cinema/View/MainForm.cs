@@ -11,6 +11,7 @@ using pbl3_Cinema.View.CustomerView;
 using pbl3_Cinema.View.AdminView;
 using Guna.UI2.WinForms;
 using pbl3_Cinema.View.AdminView.ManageFilm;
+using pbl3_Cinema.View.AdminView.ManageScreen;
 using pbl3_Cinema.View.CustomerView.FilmNowShowView;
 using pbl3_Cinema.View.CustomerView.ManageAccount;
 
@@ -83,13 +84,27 @@ namespace pbl3_Cinema.View
                     form_AddFilm.Show();
                 }
 
-                if (btn.Text == "Thêm phòng chiếu")
+                if (btn.Text == "Quản lý suất chiếu")
                 {
                     if (activeDisplay != null)
                     {
                         activeDisplay.Close();
                     }
-                    Form_ManageAuditorium form = new Form_ManageAuditorium();
+                    Form_ManageScreening form_AddFilm = new Form_ManageScreening();
+                    activeDisplay = form_AddFilm;
+                    form_AddFilm.Dock = DockStyle.Fill;
+                    form_AddFilm.TopLevel = false;
+                    panel_Display.Controls.Add(form_AddFilm);
+                    form_AddFilm.Show();
+                }
+
+                if (btn.Text == "Quản lý vé")
+                {
+                    if (activeDisplay != null)
+                    {
+                        activeDisplay.Close();
+                    }
+                    Form_ManageReservation form = new Form_ManageReservation();
                     activeDisplay = form;
                     form.Dock = DockStyle.Fill;
                     form.TopLevel = false;

@@ -89,7 +89,7 @@ namespace pbl3_Cinema.View
             try
             {
                 MyOTP = Convert.ToInt32(textBox_OTP.Text);
-            } catch (Exception ex)
+            } catch (Exception)
             {
                 MyOTP = -1;
             }

@@ -98,6 +98,7 @@
     <Compile Include="detail_bill.cs">
       <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
+    <Compile Include="DTO\Auditorium_Infor.cs" />
     <Compile Include="DTO\CBB_Category.cs" />
     <Compile Include="DTO\Customer_Infor.cs" />
     <Compile Include="DTO\User_Infor.cs" />
@@ -167,11 +168,11 @@
     <Compile Include="View\AdminView\ManageFilm\CRUD_Film.Designer.cs">
       <DependentUpon>CRUD_Film.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\AdminView\ManageFilm\Form_ManageAuditorium.cs">
+    <Compile Include="View\AdminView\ManageFilm\Form_ManageReservation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\AdminView\ManageFilm\Form_ManageAuditorium.Designer.cs">
-      <DependentUpon>Form_ManageAuditorium.cs</DependentUpon>
+    <Compile Include="View\AdminView\ManageFilm\Form_ManageReservation.Designer.cs">
+      <DependentUpon>Form_ManageReservation.cs</DependentUpon>
     </Compile>
     <Compile Include="View\AdminView\ManageFilm\Form_ManageFilm.cs">
       <SubType>Form</SubType>
@@ -184,6 +185,18 @@
     </Compile>
     <Compile Include="View\AdminView\Form_Admin_ListSelect.Designer.cs">
       <DependentUpon>Form_Admin_ListSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminView\ManageScreen\Form_AddAuditorium.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminView\ManageScreen\Form_AddAuditorium.Designer.cs">
+      <DependentUpon>Form_AddAuditorium.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminView\ManageScreen\Form_ManageScreening.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminView\ManageScreen\Form_ManageScreening.Designer.cs">
+      <DependentUpon>Form_ManageScreening.cs</DependentUpon>
     </Compile>
     <Compile Include="View\CustomerView\FilmNowShowView\Form_Film_NowShow.cs">
       <SubType>Form</SubType>
@@ -256,14 +269,20 @@
     <EmbeddedResource Include="View\AdminView\ManageFilm\CRUD_Film.resx">
       <DependentUpon>CRUD_Film.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\AdminView\ManageFilm\Form_ManageAuditorium.resx">
-      <DependentUpon>Form_ManageAuditorium.cs</DependentUpon>
+    <EmbeddedResource Include="View\AdminView\ManageFilm\Form_ManageReservation.resx">
+      <DependentUpon>Form_ManageReservation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminView\ManageFilm\Form_ManageFilm.resx">
       <DependentUpon>Form_ManageFilm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminView\Form_Admin_ListSelect.resx">
       <DependentUpon>Form_Admin_ListSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminView\ManageScreen\Form_AddAuditorium.resx">
+      <DependentUpon>Form_AddAuditorium.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminView\ManageScreen\Form_ManageScreening.resx">
+      <DependentUpon>Form_ManageScreening.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\CustomerView\FilmNowShowView\Form_Film_NowShow.resx">
       <DependentUpon>Form_Film_NowShow.cs</DependentUpon>

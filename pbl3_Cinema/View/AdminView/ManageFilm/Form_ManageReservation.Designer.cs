@@ -1,6 +1,6 @@
 ﻿namespace pbl3_Cinema.View.AdminView.ManageFilm
 {
-    partial class Form_ManageAuditorium
+    partial class Form_ManageReservation
     {
         /// <summary>
         /// Required designer variable.
@@ -34,11 +34,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(378, 231);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(321, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 16);
+            this.label1.Size = new System.Drawing.Size(179, 39);
             this.label1.TabIndex = 0;
-            this.label1.Text = "fesfefefsa";
+            this.label1.Text = "Quản lý vé";
             // 
             // Form_ManageAuditorium
             // 
