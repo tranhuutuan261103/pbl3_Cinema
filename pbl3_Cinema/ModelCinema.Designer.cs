@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\pbl3 - Copy (4)cccccccccccccccccccccccccccccccccc - Copy\pbl3_Cinema\pbl3_Cinema\CinemaManage.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\pbl3\pbl3_Cinema\pbl3_Cinema\ModelCinema.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

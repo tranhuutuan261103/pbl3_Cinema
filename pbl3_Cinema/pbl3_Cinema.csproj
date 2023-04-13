@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -62,46 +77,57 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="account.cs">
-      <DependentUpon>CinemaManage.tt</DependentUpon>
+      <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
     <Compile Include="auditorium.cs">
-      <DependentUpon>CinemaManage.tt</DependentUpon>
+      <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
     <Compile Include="bill.cs">
-      <DependentUpon>CinemaManage.tt</DependentUpon>
+      <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
+    <Compile Include="BLL\Account_BLL.cs" />
     <Compile Include="BLL\Cinema_BLL.cs" />
     <Compile Include="category.cs">
-      <DependentUpon>CinemaManage.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CinemaManage.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CinemaManage.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CinemaManage.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CinemaManage.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CinemaManage.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CinemaManage.edmx</DependentUpon>
+      <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
     <Compile Include="customer.cs">
-      <DependentUpon>CinemaManage.tt</DependentUpon>
+      <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\Account_DAL.cs" />
     <Compile Include="DAL\Cinema_DAL.cs" />
     <Compile Include="detail_bill.cs">
-      <DependentUpon>CinemaManage.tt</DependentUpon>
+      <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\CBB_Category.cs" />
+    <Compile Include="DTO\Customer_Infor.cs" />
+    <Compile Include="DTO\User_Infor.cs" />
     <Compile Include="DTO\MyMovieInfor.cs" />
-    <Compile Include="movie.cs">
-      <DependentUpon>CinemaManage.tt</DependentUpon>
+    <Compile Include="ModelCinema.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelCinema.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="MyConvert\MyConvert.cs" />
+    <Compile Include="ModelCinema.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelCinema.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelCinema.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelCinema.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="movie.cs">
+      <DependentUpon>ModelCinema.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyFuncStatic\MyEmailFunc.cs" />
+    <Compile Include="MyFuncStatic\MyConvert.cs" />
+    <Compile Include="MyUserControler\MyUserControlInforUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyUserControler\MyUserControlInforUser.Designer.cs">
+      <DependentUpon>MyUserControlInforUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyUserControler\UserControlDisplayMovie.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -109,28 +135,31 @@
       <DependentUpon>UserControlDisplayMovie.cs</DependentUpon>
     </Compile>
     <Compile Include="product.cs">
-      <DependentUpon>CinemaManage.tt</DependentUpon>
+      <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
     <Compile Include="rating.cs">
-      <DependentUpon>CinemaManage.tt</DependentUpon>
+      <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
     <Compile Include="reservation.cs">
-      <DependentUpon>CinemaManage.tt</DependentUpon>
+      <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
     <Compile Include="screening.cs">
-      <DependentUpon>CinemaManage.tt</DependentUpon>
+      <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
     <Compile Include="seat.cs">
-      <DependentUpon>CinemaManage.tt</DependentUpon>
+      <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
     <Compile Include="seat_reserved.cs">
-      <DependentUpon>CinemaManage.tt</DependentUpon>
+      <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
     <Compile Include="staff.cs">
-      <DependentUpon>CinemaManage.tt</DependentUpon>
+      <DependentUpon>ModelCinema.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
     <Compile Include="user_infor.cs">
-      <DependentUpon>CinemaManage.tt</DependentUpon>
+      <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
     <Compile Include="View\AdminView\ManageFilm\CRUD_Film.cs">
       <SubType>Form</SubType>
@@ -188,6 +217,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\SignView\Form_ChangeInfor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SignView\Form_ChangeInfor.Designer.cs">
+      <DependentUpon>Form_ChangeInfor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SignView\Form_ForgotPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SignView\Form_ForgotPassword.Designer.cs">
+      <DependentUpon>Form_ForgotPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\SignView\Form_SignIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +247,9 @@
     <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="MyUserControler\MyUserControlInforUser.resx">
+      <DependentUpon>MyUserControlInforUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyUserControler\UserControlDisplayMovie.resx">
       <DependentUpon>UserControlDisplayMovie.cs</DependentUpon>
     </EmbeddedResource>
@@ -246,6 +290,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\SignView\Form_ChangeInfor.resx">
+      <DependentUpon>Form_ChangeInfor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SignView\Form_ForgotPassword.resx">
+      <DependentUpon>Form_ForgotPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\SignView\Form_SignIn.resx">
       <DependentUpon>Form_SignIn.cs</DependentUpon>
     </EmbeddedResource>
@@ -255,12 +305,12 @@
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="CinemaManage.edmx">
+    <EntityDeploy Include="ModelCinema.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CinemaManage.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelCinema.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="CinemaManage.edmx.diagram">
-      <DependentUpon>CinemaManage.edmx</DependentUpon>
+    <None Include="ModelCinema.edmx.diagram">
+      <DependentUpon>ModelCinema.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -300,16 +350,31 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CinemaManage.Context.tt">
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModelCinema.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CinemaManage.edmx</DependentUpon>
-      <LastGenOutput>CinemaManage.Context.cs</LastGenOutput>
+      <DependentUpon>ModelCinema.edmx</DependentUpon>
+      <LastGenOutput>ModelCinema.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="CinemaManage.tt">
+    <Content Include="ModelCinema.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CinemaManage.edmx</DependentUpon>
-      <LastGenOutput>CinemaManage.cs</LastGenOutput>
+      <DependentUpon>ModelCinema.edmx</DependentUpon>
+      <LastGenOutput>ModelCinema.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\StaffView\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

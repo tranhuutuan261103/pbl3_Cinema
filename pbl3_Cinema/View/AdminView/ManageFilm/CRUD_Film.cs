@@ -1,6 +1,6 @@
 ﻿using pbl3_Cinema.BLL;
 using pbl3_Cinema.DTO;
-using pbl3_Cinema.MyConvert;
+using pbl3_Cinema.MyFuncStatic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -85,13 +85,13 @@ namespace pbl3_Cinema.View.AdminView.ManageFilm
             movie.expiration_date = dateTimePicker_EndDay.Value;
             if (img!=null)
             {
-                movie.poster = MyConvert.MyConvert.ConvertImageToBinary(img);
+                movie.poster = MyFuncStatic.MyConvert.ConvertImageToBinary(img);
             }
             
             if (videoPath!=null)
             {
                 movie.video_trailer = new byte[100000000];
-                movie.video_trailer = MyConvert.MyConvert.ConvertVideoToBytes(videoPath);
+                movie.video_trailer = MyFuncStatic.MyConvert.ConvertVideoToBytes(videoPath);
             }
             d(movie);
             Dispose();

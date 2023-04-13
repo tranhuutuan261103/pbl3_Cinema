@@ -13,20 +13,6 @@ namespace pbl3_Cinema.BLL
 {
     internal class Cinema_BLL
     {
-        public int GetRole(string email, string password)
-        {
-            using (CinemaEntities entities = new CinemaEntities())
-            {
-                var find = entities.accounts.Where(p => p.email == email && p.pass_word == password).FirstOrDefault();
-                if (find == null)
-                {
-                    return -1;
-                }
-                int n = find.role;
-                return n;
-            }
-        }
-
         public List<CBB_Category> GetAllCBBCategory()
         {
             using (CinemaEntities db = new CinemaEntities())
@@ -159,7 +145,7 @@ namespace pbl3_Cinema.BLL
         public Image GetPosterById(int id)
         {
             Cinema_DAL dal = new Cinema_DAL();
-            return MyConvert.MyConvert.ConvertBinaryToImage(dal.GetPosterById(id));
+            return MyFuncStatic.MyConvert.ConvertBinaryToImage(dal.GetPosterById(id));
         }
     }
 }
