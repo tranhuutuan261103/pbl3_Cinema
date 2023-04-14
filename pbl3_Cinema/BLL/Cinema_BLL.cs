@@ -171,5 +171,17 @@ namespace pbl3_Cinema.BLL
             Cinema_DAL dal = new Cinema_DAL();
             return dal.DeleteAuditorium(id);
         }
+
+        public List<CBBAuditorium> GetAllCBBAuditorimActive()
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.GetAllCBBAuditorimActive();
+        }
+
+        public List<ScreeningInfor> GetScreeningInforsFilter(DateTime dateTime)
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.GetScreeningInforsFilter(dateTime);
+        }
     }
 }

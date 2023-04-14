@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace pbl3_Cinema.View.AdminView.ManageScreen
 {
-    public partial class Form_ManageScreening : Form
+    public partial class Form_ManageAuditorium : Form
     {
-        public Form_ManageScreening()
+        public Form_ManageAuditorium()
         {
             InitializeComponent();
             GetAllAuditorium_Infor();

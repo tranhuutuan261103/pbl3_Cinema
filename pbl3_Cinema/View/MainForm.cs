@@ -84,18 +84,32 @@ namespace pbl3_Cinema.View
                     form_AddFilm.Show();
                 }
 
+                if (btn.Text == "Quản lý phòng chiếu")
+                {
+                    if (activeDisplay != null)
+                    {
+                        activeDisplay.Close();
+                    }
+                    Form_ManageAuditorium form_AddFilm = new Form_ManageAuditorium();
+                    activeDisplay = form_AddFilm;
+                    form_AddFilm.Dock = DockStyle.Fill;
+                    form_AddFilm.TopLevel = false;
+                    panel_Display.Controls.Add(form_AddFilm);
+                    form_AddFilm.Show();
+                }
+
                 if (btn.Text == "Quản lý suất chiếu")
                 {
                     if (activeDisplay != null)
                     {
                         activeDisplay.Close();
                     }
-                    Form_ManageScreening form_AddFilm = new Form_ManageScreening();
-                    activeDisplay = form_AddFilm;
-                    form_AddFilm.Dock = DockStyle.Fill;
-                    form_AddFilm.TopLevel = false;
-                    panel_Display.Controls.Add(form_AddFilm);
-                    form_AddFilm.Show();
+                    Form_ManageScreening form = new Form_ManageScreening();
+                    activeDisplay = form;
+                    form.Dock = DockStyle.Fill;
+                    form.TopLevel = false;
+                    panel_Display.Controls.Add(form);
+                    form.Show();
                 }
 
                 if (btn.Text == "Quản lý vé")
