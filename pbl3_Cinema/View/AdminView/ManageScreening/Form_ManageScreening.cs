@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using pbl3_Cinema.DTO;
+using pbl3_Cinema.View.AdminView.ManageScreening;
 
 namespace pbl3_Cinema.View.AdminView.ManageScreen
 {
@@ -20,7 +21,9 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
             InitializeComponent();
             SetCBB();
             SetShowDayPicker();
-            ShowAllScreeningFollowFilter();
+
+            Cinema_BLL bll = new Cinema_BLL();
+            dataGridView_Screening.DataSource = bll.GetAllScreeningInfor();
         }
 
         private void SetCBB()
@@ -44,15 +47,67 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
         private void ShowAllScreeningFollowFilter()
         {
             DateTime dayFilter = dateTimePicker.Value;
-            int id_auditorium = ((CBBAuditorium)cbb_Auditorium.SelectedItem).id;
+            CBBAuditorium cbb = cbb_Auditorium.SelectedItem as CBBAuditorium;
 
             Cinema_BLL bll = new Cinema_BLL();
-            dataGridView_Screening.DataSource = bll.GetScreeningInforsFilter(dayFilter);
+            if (cbb.id == 0)
+            {
+                dataGridView_Screening.DataSource = bll.GetScreeningInforsFilter(dayFilter);
+            }
+            else
+            {
+                dataGridView_Screening.DataSource = bll.GetScreeningInforsFilter(dayFilter, cbb.id);
+            }
+            
         }
 
         private void btn_Filter_Click(object sender, EventArgs e)
         {
+            //ShowAllScreeningFollowFilter();
+        }
+
+        private void btn_Add_Click(object sender, EventArgs e)
+        {
+            Form_AddScreening form = new Form_AddScreening();
+            form.ShowDialog();
+            Cinema_BLL bll = new Cinema_BLL();
+            dataGridView_Screening.DataSource = bll.GetAllScreeningInfor();
+        }
+
+        private void ValueChanged(object sender, EventArgs e)
+        {
             ShowAllScreeningFollowFilter();
+        }
+
+        private void btn_AllScreening_Click(object sender, EventArgs e)
+        {
+            Cinema_BLL bll = new Cinema_BLL();
+            dataGridView_Screening.DataSource = bll.GetAllScreeningInfor();
+        }
+
+        private void btn_Del_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Screening.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Chọn suất chiếu muốn xóa");
+                return;
+            }
+
+            int screen_id = Convert.ToInt32(dataGridView_Screening.SelectedRows[0].Cells["id"].Value);
+
+            Cinema_BLL bll = new Cinema_BLL();
+            if (bll.CanDeleteScreening(screen_id) == true)
+            {
+                if (bll.DeleteScreeningById(screen_id) == 1) 
+                {
+                    MessageBox.Show("Xóa thành công");
+                    dataGridView_Screening.DataSource = bll.GetAllScreeningInfor();
+                }
+                else
+                {
+                    MessageBox.Show("Xóa thất bại");
+                }
+            }
         }
     }
 }

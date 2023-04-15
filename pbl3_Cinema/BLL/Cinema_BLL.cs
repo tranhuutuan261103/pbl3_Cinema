@@ -142,6 +142,18 @@ namespace pbl3_Cinema.BLL
             return dal.GetAllMovieInforUpComing();
         }
 
+        public List<CBBMovie> GetCBBMoviesNow()
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.GetCBBMoviesNow();
+        }
+
+        public int GetDurationOfMovie(int id_movie)
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.GetDurationOfMovie(id_movie);
+        }
+
         public Image GetPosterById(int id)
         {
             Cinema_DAL dal = new Cinema_DAL();
@@ -158,6 +170,18 @@ namespace pbl3_Cinema.BLL
         {
             Cinema_DAL dal = new Cinema_DAL();
             return dal.AddAuditorium(a);
+        }
+
+        public bool CanAddScreening(DateTime start, DateTime end)
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.CanAddScreening(start, end);
+        }
+
+        public int AddScreening(screening screen)
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.AddScreening(screen);
         }
 
         public int GetScreeningCurCount(int id)
@@ -182,6 +206,41 @@ namespace pbl3_Cinema.BLL
         {
             Cinema_DAL dal = new Cinema_DAL();
             return dal.GetScreeningInforsFilter(dateTime);
+        }
+
+        public List<ScreeningInfor> GetScreeningInforsFilter(DateTime dateTime, int id_auditorium)
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.GetScreeningInforsFilter(dateTime, id_auditorium);
+        }
+
+        public List<ScreeningInfor> GetAllScreeningInfor()
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.GetAllScreeningInfor();
+        }
+
+        public bool CanDeleteScreening(int screen_id)
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            if (dal.GetDateTimeScreeningInfor(screen_id) <= DateTime.Now.AddMinutes(30))
+            {
+                MessageBox.Show("Không thể xóa");
+                return false;
+            }
+            int n = dal.GetSeatReserved(screen_id);
+            if (n > 0)
+            {
+                MessageBox.Show("Đã có " + n + " ghế đã đặt!");
+                return false;
+            }
+            return true;
+        }
+
+        public int DeleteScreeningById(int screen_id)
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.DeleteScreeningById(screen_id);
         }
     }
 }

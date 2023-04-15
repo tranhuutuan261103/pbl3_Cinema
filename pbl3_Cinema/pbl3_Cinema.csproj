@@ -100,6 +100,7 @@
     </Compile>
     <Compile Include="DTO\Auditorium_Infor.cs" />
     <Compile Include="DTO\CBBAuditorium.cs" />
+    <Compile Include="DTO\CBBMovie.cs" />
     <Compile Include="DTO\CBB_Category.cs" />
     <Compile Include="DTO\Customer_Infor.cs" />
     <Compile Include="DTO\ScreeningInfor.cs" />
@@ -200,6 +201,12 @@
     <Compile Include="View\AdminView\ManageAuditorium\Form_ManageAuditorium.Designer.cs">
       <DependentUpon>Form_ManageAuditorium.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\AdminView\ManageScreening\Form_AddScreening.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminView\ManageScreening\Form_AddScreening.Designer.cs">
+      <DependentUpon>Form_AddScreening.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\AdminView\ManageScreening\Form_ManageScreening.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -291,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminView\ManageAuditorium\Form_ManageAuditorium.resx">
       <DependentUpon>Form_ManageAuditorium.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminView\ManageScreening\Form_AddScreening.resx">
+      <DependentUpon>Form_AddScreening.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminView\ManageScreening\Form_ManageScreening.resx">
       <DependentUpon>Form_ManageScreening.cs</DependentUpon>
