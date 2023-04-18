@@ -141,6 +141,7 @@ namespace pbl3_Cinema.View
                     }
                     Form_Film_NowShow form = new Form_Film_NowShow();
                     activeDisplay = form;
+                    form.Account = account;
                     form.Dock = DockStyle.Fill;
                     form.TopLevel = false;
                     panel_Display.Controls.Add(form);

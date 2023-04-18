@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -57,6 +58,8 @@ namespace pbl3_Cinema.MyUserControler
         }
         #endregion
 
+        public event EventHandler ClickMovie;
+
         private void myInit()
         {
             panel_Opacity.BackColor = Color.FromArgb(0, Color.Black);
@@ -79,7 +82,8 @@ namespace pbl3_Cinema.MyUserControler
 
         private void panel_Opacity_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(id.ToString());
+            ClickMovie(this, e);
         }
+
     }
 }

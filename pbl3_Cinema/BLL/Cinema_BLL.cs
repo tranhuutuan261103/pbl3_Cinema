@@ -130,10 +130,14 @@ namespace pbl3_Cinema.BLL
             }
         }
 
-        public List<MyMovieInfor> GetAllMovieInforValidDay()
+        public List<MyMovieInfor> GetAllMovieInforValidDay(int id_Category)
         {
             Cinema_DAL dal = new Cinema_DAL();
-            return dal.GetAllMovieInforValidDay();
+            if (id_Category == 0)
+            {
+                return dal.GetAllMovieInforValidDay();
+            }
+            return dal.GetAllMovieInforValidDay(id_Category);
         }
 
         public List<MyMovieInfor> GetAllMovieInforUpComing()
