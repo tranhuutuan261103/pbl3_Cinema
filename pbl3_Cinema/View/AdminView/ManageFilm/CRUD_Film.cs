@@ -21,7 +21,7 @@ namespace pbl3_Cinema.View.AdminView.ManageFilm
         int id;
         private Image img;
         private string videoPath;
-        private byte[] dataVideo;
+        //private byte[] dataVideo;
         public delegate void MyDel(object o);
         public MyDel d { set; get; }
         public CRUD_Film()

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace pbl3_Cinema.DTO
 {
-    internal class ScreeningInfor
+    public class ScreeningInfor
     {
         public int id { set; get; }
         public string nameMovie { set; get; }

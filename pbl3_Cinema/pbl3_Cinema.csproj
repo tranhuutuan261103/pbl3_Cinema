@@ -100,6 +100,7 @@
     </Compile>
     <Compile Include="DTO\Auditorium_Infor.cs" />
     <Compile Include="DTO\CBBAuditorium.cs" />
+    <Compile Include="DTO\CBBMovie.cs" />
     <Compile Include="DTO\CBB_Category.cs" />
     <Compile Include="DTO\Customer_Infor.cs" />
     <Compile Include="DTO\ScreeningInfor.cs" />
@@ -130,6 +131,24 @@
     </Compile>
     <Compile Include="MyUserControler\MyUserControlInforUser.Designer.cs">
       <DependentUpon>MyUserControlInforUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyUserControler\MyUserControlScreening.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyUserControler\MyUserControlScreening.Designer.cs">
+      <DependentUpon>MyUserControlScreening.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyUserControler\MyUserControlSelectDay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyUserControler\MyUserControlSelectDay.Designer.cs">
+      <DependentUpon>MyUserControlSelectDay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyUserControler\MyUserControlSelectScreening.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyUserControler\MyUserControlSelectScreening.Designer.cs">
+      <DependentUpon>MyUserControlSelectScreening.cs</DependentUpon>
     </Compile>
     <Compile Include="MyUserControler\UserControlDisplayMovie.cs">
       <SubType>UserControl</SubType>
@@ -200,22 +219,34 @@
     <Compile Include="View\AdminView\ManageAuditorium\Form_ManageAuditorium.Designer.cs">
       <DependentUpon>Form_ManageAuditorium.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\AdminView\ManageScreening\Form_AddScreening.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminView\ManageScreening\Form_AddScreening.Designer.cs">
+      <DependentUpon>Form_AddScreening.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\AdminView\ManageScreening\Form_ManageScreening.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\AdminView\ManageScreening\Form_ManageScreening.Designer.cs">
       <DependentUpon>Form_ManageScreening.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\CustomerView\FilmNowShowView\Form_Film_NowShow.cs">
+    <Compile Include="View\CustomerView\DetailInforFilm\Form_DetailInforFilm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\CustomerView\FilmNowShowView\Form_Film_NowShow.Designer.cs">
+    <Compile Include="View\CustomerView\DetailInforFilm\Form_DetailInforFilm.Designer.cs">
+      <DependentUpon>Form_DetailInforFilm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CustomerView\FilmShowView\Form_Film_NowShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CustomerView\FilmShowView\Form_Film_NowShow.Designer.cs">
       <DependentUpon>Form_Film_NowShow.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\CustomerView\FilmNowShowView\Form_Film_WillShow.cs">
+    <Compile Include="View\CustomerView\FilmShowView\Form_Film_WillShow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\CustomerView\FilmNowShowView\Form_Film_WillShow.Designer.cs">
+    <Compile Include="View\CustomerView\FilmShowView\Form_Film_WillShow.Designer.cs">
       <DependentUpon>Form_Film_WillShow.cs</DependentUpon>
     </Compile>
     <Compile Include="View\CustomerView\Form_Customer_ListSelect.cs">
@@ -238,6 +269,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\ReservationView\Form_SelectScreening.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ReservationView\Form_SelectScreening.Designer.cs">
+      <DependentUpon>Form_SelectScreening.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\SignView\Form_ChangeInfor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -271,6 +308,15 @@
     <EmbeddedResource Include="MyUserControler\MyUserControlInforUser.resx">
       <DependentUpon>MyUserControlInforUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MyUserControler\MyUserControlScreening.resx">
+      <DependentUpon>MyUserControlScreening.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyUserControler\MyUserControlSelectDay.resx">
+      <DependentUpon>MyUserControlSelectDay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyUserControler\MyUserControlSelectScreening.resx">
+      <DependentUpon>MyUserControlSelectScreening.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyUserControler\UserControlDisplayMovie.resx">
       <DependentUpon>UserControlDisplayMovie.cs</DependentUpon>
     </EmbeddedResource>
@@ -292,13 +338,19 @@
     <EmbeddedResource Include="View\AdminView\ManageAuditorium\Form_ManageAuditorium.resx">
       <DependentUpon>Form_ManageAuditorium.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminView\ManageScreening\Form_AddScreening.resx">
+      <DependentUpon>Form_AddScreening.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\AdminView\ManageScreening\Form_ManageScreening.resx">
       <DependentUpon>Form_ManageScreening.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\CustomerView\FilmNowShowView\Form_Film_NowShow.resx">
+    <EmbeddedResource Include="View\CustomerView\DetailInforFilm\Form_DetailInforFilm.resx">
+      <DependentUpon>Form_DetailInforFilm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CustomerView\FilmShowView\Form_Film_NowShow.resx">
       <DependentUpon>Form_Film_NowShow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\CustomerView\FilmNowShowView\Form_Film_WillShow.resx">
+    <EmbeddedResource Include="View\CustomerView\FilmShowView\Form_Film_WillShow.resx">
       <DependentUpon>Form_Film_WillShow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\CustomerView\Form_Customer_ListSelect.resx">
@@ -320,6 +372,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\ReservationView\Form_SelectScreening.resx">
+      <DependentUpon>Form_SelectScreening.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\SignView\Form_ChangeInfor.resx">
       <DependentUpon>Form_ChangeInfor.cs</DependentUpon>
     </EmbeddedResource>
