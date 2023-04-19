@@ -29,28 +29,21 @@
         private void InitializeComponent()
         {
             this.panel = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.cbb_Category = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.btn_Reservation = new Guna.UI2.WinForms.Guna2Button();
             this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel
             // 
+            this.panel.Controls.Add(this.btn_Reservation);
             this.panel.Controls.Add(this.cbb_Category);
             this.panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel.Location = new System.Drawing.Point(0, 0);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(1000, 94);
             this.panel.TabIndex = 0;
-            // 
-            // flowLayoutPanel
-            // 
-            this.flowLayoutPanel.AutoScroll = true;
-            this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 94);
-            this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(1000, 506);
-            this.flowLayoutPanel.TabIndex = 1;
             // 
             // cbb_Category
             // 
@@ -67,6 +60,31 @@
             this.cbb_Category.Size = new System.Drawing.Size(187, 36);
             this.cbb_Category.TabIndex = 0;
             this.cbb_Category.SelectedIndexChanged += new System.EventHandler(this.cbb_Category_SelectedIndexChanged);
+            // 
+            // flowLayoutPanel
+            // 
+            this.flowLayoutPanel.AutoScroll = true;
+            this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 94);
+            this.flowLayoutPanel.Name = "flowLayoutPanel";
+            this.flowLayoutPanel.Size = new System.Drawing.Size(1000, 506);
+            this.flowLayoutPanel.TabIndex = 1;
+            // 
+            // btn_Reservation
+            // 
+            this.btn_Reservation.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Reservation.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Reservation.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_Reservation.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_Reservation.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btn_Reservation.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_Reservation.ForeColor = System.Drawing.Color.White;
+            this.btn_Reservation.Location = new System.Drawing.Point(36, 27);
+            this.btn_Reservation.Name = "btn_Reservation";
+            this.btn_Reservation.Size = new System.Drawing.Size(172, 36);
+            this.btn_Reservation.TabIndex = 1;
+            this.btn_Reservation.Text = "Đặt vé ngay";
+            this.btn_Reservation.Click += new System.EventHandler(this.btn_Reservation_Click);
             // 
             // Form_Film_NowShow
             // 
@@ -88,5 +106,6 @@
         private System.Windows.Forms.Panel panel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
         private Guna.UI2.WinForms.Guna2ComboBox cbb_Category;
+        private Guna.UI2.WinForms.Guna2Button btn_Reservation;
     }
 }

@@ -367,6 +367,50 @@ namespace pbl3_Cinema.DAL
             return listScreening;
         }
 
+        public List<ScreeningInfor> GetScreeningInforsFilterIdMovie(DateTime dateTime, int id_movie)
+        {
+            List<ScreeningInfor> listScreening = new List<ScreeningInfor>();
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                var list = db.screenings.
+                    Where(p => p.show_day.Year == dateTime.Year && p.show_day.Month == dateTime.Month && p.show_day.Day == dateTime.Day && p.movie_id == id_movie).
+                    Join(db.movies,
+                    m => m.movie_id,
+                    n => n.id,
+                    (m, n) => new { m, n.title }).
+                    Join(db.auditoriums,
+                    m => m.m.auditorium_id,
+                    n => n.id,
+                    (m, n) => new { m, id_audi = n.id, n.name_auditorium, n.seat_no_row, n.seat_no_column }).
+                    GroupJoin(db.seat_reserved.GroupBy(p => p.screening_id).Select(p => new { screen_id = p.Key, count = p.Count() }),
+                    m => m.m.m.id,
+                    n => n.screen_id,
+                    (m, n) => new { m, n })
+                    .SelectMany(
+                    x => x.n.DefaultIfEmpty(),
+                    (m, n) => new { m.m.m.m.id, m.m.m.title, m.m.name_auditorium, m.m.m.m.show_day, m.m.m.m.show_time, sumseat = m.m.seat_no_row * m.m.seat_no_column, m.m.m.m.price, count = n == null ? 0 : n.count }
+                    );
+                foreach (var l in list)
+                {
+                    if (l.show_day + l.show_time >= DateTime.Now.AddMinutes(30))
+                    {
+                        listScreening.Add(new ScreeningInfor
+                        {
+                            id = l.id,
+                            nameAuditorium = l.name_auditorium,
+                            nameMovie = l.title,
+                            ShowDay = l.show_day,
+                            ShowTime = l.show_time,
+                            SumSeat = l.sumseat,
+                            SumSeatReserved = l.count,
+                            price = l.price,
+                        });
+                    }
+                }
+            }
+            return listScreening;
+        }
+
         public List<ScreeningInfor> GetAllScreeningInfor()
         {
             List<ScreeningInfor> list = new List<ScreeningInfor> ();

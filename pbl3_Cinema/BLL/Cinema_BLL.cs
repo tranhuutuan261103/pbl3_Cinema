@@ -218,6 +218,12 @@ namespace pbl3_Cinema.BLL
             return dal.GetScreeningInforsFilter(dateTime, id_auditorium);
         }
 
+        public List<ScreeningInfor> GetScreeningInforsFilterIdMovie(DateTime dateTime, int id_movie)
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.GetScreeningInforsFilterIdMovie(dateTime, id_movie);
+        }
+
         public List<ScreeningInfor> GetAllScreeningInfor()
         {
             Cinema_DAL dal = new Cinema_DAL();

@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using pbl3_Cinema.MyUserControler;
 using pbl3_Cinema.BLL;
 using pbl3_Cinema.View.CustomerView.DetailInforFilm;
+using pbl3_Cinema.View.ReservationView;
 
 namespace pbl3_Cinema.View.CustomerView.FilmNowShowView
 {
@@ -67,21 +68,28 @@ namespace pbl3_Cinema.View.CustomerView.FilmNowShowView
         public void ClickMovie(object sender, EventArgs e)
         {
             UserControlDisplayMovie u = (UserControlDisplayMovie)sender;
-            flowLayoutPanel.Visible = false;
-            panel.Visible = false;
+            flowLayoutPanel.Dispose();
+            panel.Dispose();
             Form_DetailInforFilm form = new Form_DetailInforFilm();
             form.TopLevel = false;
             form.Dock = DockStyle.Fill;
             form.Account = Account;
-            MessageBox.Show(Account);
             form.id_movie = u.id;
+            form.SetInforMovie(u.id);
             this.Controls.Add(form);
             form.Show();
+
         }
 
         private void cbb_Category_SelectedIndexChanged(object sender, EventArgs e)
         {
             ShowAllMovieInforValidDay();
+        }
+
+        private void btn_Reservation_Click(object sender, EventArgs e)
+        {
+            Form_SelectScreening form = new Form_SelectScreening();
+            form.ShowDialog();
         }
     }
 }

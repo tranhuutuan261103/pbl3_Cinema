@@ -1,4 +1,6 @@
-﻿using System;
+﻿using pbl3_Cinema.BLL;
+using pbl3_Cinema.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,7 +19,20 @@ namespace pbl3_Cinema.View.CustomerView.DetailInforFilm
         public Form_DetailInforFilm()
         {
             InitializeComponent();
-            label1.Text = Account + id_movie.ToString();
+        }
+
+        public void SetInforMovie(int id_movie)
+        {
+            Cinema_BLL bll = new Cinema_BLL();
+            pictureBox_Poster.Image = bll.GetPosterById(id_movie);
+            MyMovieInfor movieInfor = bll.GetMovieById(id_movie);
+            label_Title.Text = movieInfor.Title;
+            label_Category.Text = movieInfor.Category.name_Category;
+            label_Cast.Text = movieInfor.ListCast;
+            label_Director.Text = movieInfor.Director;
+            label_Duration.Text = movieInfor.Duration_min + " phút";
+            label_Release_date.Text = movieInfor.Release_date.ToString("dd/MM/yyyy");
+            richTextBox_Description.Text = movieInfor.Description;
         }
     }
 }
