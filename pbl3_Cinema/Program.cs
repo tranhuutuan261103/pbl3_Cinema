@@ -1,4 +1,5 @@
 ﻿using pbl3_Cinema.View;
+using pbl3_Cinema.View.ReservationView;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

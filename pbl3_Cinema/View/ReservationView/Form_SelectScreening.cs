@@ -23,6 +23,8 @@ namespace pbl3_Cinema.View.ReservationView
             myInitCBBDayShow();
         }
 
+        public string Account { set; get; }
+
         private DateTime daySelected;
 
         private void myInitCBBMovie()
@@ -63,6 +65,18 @@ namespace pbl3_Cinema.View.ReservationView
             list[0].button_Clicked();
         }
 
+        public void SetSelectedCBBMovie(int id_movie)
+        {
+            foreach (CBBMovie item in cbb_SelectMovie.Items)
+            {
+                if (item.id_movie == id_movie)
+                {
+                    cbb_SelectMovie.SelectedItem = item;
+                    return;
+                }
+            }
+        }
+
         private void GetShowDay(object sender, EventArgs e)
         {
             MyUserControlSelectDay m = (MyUserControlSelectDay)sender;
@@ -91,10 +105,38 @@ namespace pbl3_Cinema.View.ReservationView
                     m.id_movie = c.id_movie;
                     m.nameMovie = c.title;
                     m.dayShow = daySelected;
+                    m.clickedScreening += new EventHandler(clicked_screening);
                     flowLayoutPanel_DisplayScreening.Controls.Add(m);
                     m.Show();
                 }
+                else if (c.id_movie == 0)
+                {
+                    flowLayoutPanel_DisplayScreening.Controls.Clear();
+                    foreach (CBBMovie movie in cbb_SelectMovie.Items)
+                    {
+                        if (movie.id_movie != 0)
+                        {
+                            MyUserControlSelectScreening m = new MyUserControlSelectScreening();
+                            m.id_movie = movie.id_movie;
+                            m.nameMovie = movie.title;
+                            m.dayShow = daySelected;
+                            m.clickedScreening += new EventHandler(clicked_screening);
+                            flowLayoutPanel_DisplayScreening.Controls.Add(m);
+                            m.Show();
+                        }
+                    }
+                }
             }
+        }
+
+        private void clicked_screening(object sender, EventArgs e)
+        {
+            ScreeningInfor m = (ScreeningInfor)sender;
+            int id_screening = m.id;
+            Form_Reservation form = new Form_Reservation();
+            form.id_screening = id_screening;
+            form.Account = Account;
+            form.ShowDialog();
         }
 
         private void cbb_SelectMovie_SelectedIndexChanged(object sender, EventArgs e)

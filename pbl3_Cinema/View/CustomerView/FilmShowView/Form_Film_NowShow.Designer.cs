@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.panel = new System.Windows.Forms.Panel();
+            this.btn_Reservation = new Guna.UI2.WinForms.Guna2Button();
             this.cbb_Category = new Guna.UI2.WinForms.Guna2ComboBox();
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.btn_Reservation = new Guna.UI2.WinForms.Guna2Button();
             this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,31 +44,6 @@
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(1000, 94);
             this.panel.TabIndex = 0;
-            // 
-            // cbb_Category
-            // 
-            this.cbb_Category.BackColor = System.Drawing.Color.Transparent;
-            this.cbb_Category.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbb_Category.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbb_Category.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbb_Category.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbb_Category.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cbb_Category.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cbb_Category.ItemHeight = 30;
-            this.cbb_Category.Location = new System.Drawing.Point(779, 27);
-            this.cbb_Category.Name = "cbb_Category";
-            this.cbb_Category.Size = new System.Drawing.Size(187, 36);
-            this.cbb_Category.TabIndex = 0;
-            this.cbb_Category.SelectedIndexChanged += new System.EventHandler(this.cbb_Category_SelectedIndexChanged);
-            // 
-            // flowLayoutPanel
-            // 
-            this.flowLayoutPanel.AutoScroll = true;
-            this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 94);
-            this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(1000, 506);
-            this.flowLayoutPanel.TabIndex = 1;
             // 
             // btn_Reservation
             // 
@@ -85,6 +60,32 @@
             this.btn_Reservation.TabIndex = 1;
             this.btn_Reservation.Text = "Đặt vé ngay";
             this.btn_Reservation.Click += new System.EventHandler(this.btn_Reservation_Click);
+            // 
+            // cbb_Category
+            // 
+            this.cbb_Category.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbb_Category.BackColor = System.Drawing.Color.Transparent;
+            this.cbb_Category.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbb_Category.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbb_Category.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbb_Category.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbb_Category.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbb_Category.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbb_Category.ItemHeight = 30;
+            this.cbb_Category.Location = new System.Drawing.Point(760, 30);
+            this.cbb_Category.Name = "cbb_Category";
+            this.cbb_Category.Size = new System.Drawing.Size(200, 36);
+            this.cbb_Category.TabIndex = 0;
+            this.cbb_Category.SelectedIndexChanged += new System.EventHandler(this.cbb_Category_SelectedIndexChanged);
+            // 
+            // flowLayoutPanel
+            // 
+            this.flowLayoutPanel.AutoScroll = true;
+            this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 94);
+            this.flowLayoutPanel.Name = "flowLayoutPanel";
+            this.flowLayoutPanel.Size = new System.Drawing.Size(1000, 506);
+            this.flowLayoutPanel.TabIndex = 1;
             // 
             // Form_Film_NowShow
             // 

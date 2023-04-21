@@ -95,7 +95,7 @@
             this.panel_Infor.Controls.Add(this.label_Title);
             this.panel_Infor.Location = new System.Drawing.Point(462, 6);
             this.panel_Infor.Name = "panel_Infor";
-            this.panel_Infor.Size = new System.Drawing.Size(423, 300);
+            this.panel_Infor.Size = new System.Drawing.Size(484, 300);
             this.panel_Infor.TabIndex = 1;
             // 
             // label_Release_date
@@ -220,10 +220,12 @@
             // 
             // panel_____
             // 
+            this.panel_____.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_____.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_____.Location = new System.Drawing.Point(4, 55);
             this.panel_____.Name = "panel_____";
-            this.panel_____.Size = new System.Drawing.Size(479, 1);
+            this.panel_____.Size = new System.Drawing.Size(469, 1);
             this.panel_____.TabIndex = 1;
             // 
             // label_Title
@@ -242,7 +244,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_Comment.Location = new System.Drawing.Point(56, 598);
             this.panel_Comment.Name = "panel_Comment";
-            this.panel_Comment.Size = new System.Drawing.Size(802, 189);
+            this.panel_Comment.Size = new System.Drawing.Size(739, 189);
             this.panel_Comment.TabIndex = 2;
             // 
             // panel_Description
@@ -280,6 +282,7 @@
             this.btn_Reservation.Size = new System.Drawing.Size(180, 45);
             this.btn_Reservation.TabIndex = 4;
             this.btn_Reservation.Text = "Đặt vé";
+            this.btn_Reservation.Click += new System.EventHandler(this.btn_Reservation_Click);
             // 
             // label1
             // 

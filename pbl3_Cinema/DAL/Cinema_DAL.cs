@@ -88,6 +88,31 @@ namespace pbl3_Cinema.DAL
             }
         }
 
+        public List<MyMovieInfor> GetAllMovieInforUpComing(int id_Category)
+        {
+            List<MyMovieInfor> list = new List<MyMovieInfor>();
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                var listMovie = db.movies.Where(p => p.release_date >= DateTime.Now && p.category_id == id_Category).Select(p => new { p.id, p.title, p.description_movie, p.director, p.list_cast, p.duration_min, p.release_date, p.expiration_date, p.category });
+                foreach (var item in listMovie)
+                {
+                    list.Add(new MyMovieInfor
+                    {
+                        Id = item.id,
+                        Title = item.title,
+                        Description = item.description_movie,
+                        ListCast = item.list_cast,
+                        Director = item.director,
+                        Duration_min = item.duration_min,
+                        Release_date = item.release_date,
+                        Expiration_date = item.expiration_date,
+                        Category = new CBB_Category(item.category.id, item.category.name_category)
+                    });
+                }
+                return list;
+            }
+        }
+
         public List<CBBMovie> GetCBBMoviesNow()
         {
             List<CBBMovie> list = new List<CBBMovie>();
@@ -201,11 +226,11 @@ namespace pbl3_Cinema.DAL
             }
         }
 
-        public bool CanAddScreening(DateTime start, DateTime end)
+        public bool CanAddScreening(DateTime start, DateTime end, int id_auditorium)
         {
             using (CinemaEntities db = new CinemaEntities())
             {
-                var listScreeningNow = db.screenings.Select(p => new { p.id, p.show_day, p.show_time, p.movie_id }).
+                var listScreeningNow = db.screenings.Where( p=> p.auditorium_id == id_auditorium).Select(p => new { p.id, p.show_day, p.show_time, p.movie_id }).
                     Join(db.movies,
                     s => s.movie_id,
                     m => m.id,
@@ -320,6 +345,43 @@ namespace pbl3_Cinema.DAL
                 }
             }
             return listScreening;
+        }
+
+        public ScreeningInfor GetScreeningInforByIdScreening(int id_screening)
+        {
+            List<ScreeningInfor> listScreening = new List<ScreeningInfor>();
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                var l = db.screenings.
+                    Where(p => p.id == id_screening).
+                    Join(db.movies,
+                    m => m.movie_id,
+                    n => n.id,
+                    (m, n) => new { m, n.title }).
+                    Join(db.auditoriums,
+                    m => m.m.auditorium_id,
+                    n => n.id,
+                    (m, n) => new { m, n.name_auditorium, n.seat_no_row, n.seat_no_column }).
+                    GroupJoin(db.seat_reserved.GroupBy(p => p.screening_id).Select(p => new { screen_id = p.Key, count = p.Count() }),
+                    m => m.m.m.id,
+                    n => n.screen_id,
+                    (m, n) => new { m, n })
+                    .SelectMany(
+                    x => x.n.DefaultIfEmpty(),
+                    (m, n) => new { m.m.m.m.id, m.m.m.title, m.m.name_auditorium, m.m.m.m.show_day, m.m.m.m.show_time, sumseat = m.m.seat_no_row * m.m.seat_no_column, m.m.m.m.price, count = n == null ? 0 : n.count }
+                    ).FirstOrDefault();
+                    return new ScreeningInfor
+                    {
+                        id = l.id,
+                        nameAuditorium = l.name_auditorium,
+                        nameMovie = l.title,
+                        ShowDay = l.show_day,
+                        ShowTime = l.show_time,
+                        SumSeat = l.sumseat,
+                        SumSeatReserved = l.count,
+                        price = l.price,
+                    };
+            }
         }
 
         public List<ScreeningInfor> GetScreeningInforsFilter(DateTime dateTime, int id_auditorium)
@@ -467,6 +529,53 @@ namespace pbl3_Cinema.DAL
                 var o = db.seat_reserved.Where(p => p.screening_id == screen_id).GroupBy(p => p.screening_id).Select(p => new { p.Key, count = p.Count() }).FirstOrDefault();
                 return (o==null)? 0 : o.count;
             }
+        }
+
+        public auditorium GetAuditoriumByIdScreening(int id_screening)
+        {
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                var audi = db.screenings.Where(p => p.id == id_screening).Select(p => new { p.id, p.auditorium_id }).
+                    Join(db.auditoriums,
+                    s => s.auditorium_id,
+                    a => a.id,
+                    (s, a) => new { a }).FirstOrDefault();
+                if (audi == null)
+                {
+                    return null;
+                }
+                return new auditorium
+                {
+                    id = audi.a.id,
+                    seat_no_column = audi.a.seat_no_column,
+                    seat_no_row = audi.a.seat_no_row,
+                    seats = audi.a.seats,
+                    active = audi.a.active
+                };
+            }
+        }
+
+        public List<seat_reserved> GetAllSeat_ReservedsById(int id_screening)
+        {
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                var l = db.seat_reserved.Where(p => p.screening_id == id_screening);
+                return l.ToList();
+            }
+        }
+
+        public List<seat> GetAllReservedSeatLocation(List<seat_reserved> seat_Reserveds)
+        {
+            List<seat> listSeat = new List<seat>();
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                foreach (var s in seat_Reserveds)
+                {
+                    var l = db.seats.Where(p => p.id == s.seat_id).FirstOrDefault();
+                    listSeat.Add(l);
+                }
+            }
+            return listSeat;
         }
 
         public int DeleteScreeningById(int screen_id)
