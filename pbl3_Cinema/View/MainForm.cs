@@ -178,6 +178,11 @@ namespace pbl3_Cinema.View
                     panel_Display.Controls.Add(activeDisplay);
                     form.Show();
                 }
+
+                if(btn.Text == "Quản lý nhân viên")
+                {
+
+                }    
             }
         }
     }

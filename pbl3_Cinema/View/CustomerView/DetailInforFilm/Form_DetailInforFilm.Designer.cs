@@ -95,7 +95,7 @@
             this.panel_Infor.Controls.Add(this.label_Title);
             this.panel_Infor.Location = new System.Drawing.Point(462, 6);
             this.panel_Infor.Name = "panel_Infor";
-            this.panel_Infor.Size = new System.Drawing.Size(423, 300);
+            this.panel_Infor.Size = new System.Drawing.Size(402, 300);
             this.panel_Infor.TabIndex = 1;
             // 
             // label_Release_date
@@ -242,7 +242,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_Comment.Location = new System.Drawing.Point(56, 598);
             this.panel_Comment.Name = "panel_Comment";
-            this.panel_Comment.Size = new System.Drawing.Size(802, 189);
+            this.panel_Comment.Size = new System.Drawing.Size(781, 189);
             this.panel_Comment.TabIndex = 2;
             // 
             // panel_Description
