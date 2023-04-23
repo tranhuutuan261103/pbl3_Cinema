@@ -33,6 +33,7 @@
             this.bnt_5 = new Guna.UI2.WinForms.Guna2Button();
             this.btn_3 = new Guna.UI2.WinForms.Guna2Button();
             this.btn_4 = new Guna.UI2.WinForms.Guna2Button();
+            this.btn_6 = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // btn_1
@@ -114,11 +115,28 @@
             this.btn_4.Text = "Quản lý vé";
             this.btn_4.Click += new System.EventHandler(this.btn_Click);
             // 
+            // btn_6
+            // 
+            this.btn_6.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_6.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_6.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_6.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_6.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_6.ForeColor = System.Drawing.Color.White;
+            this.btn_6.Location = new System.Drawing.Point(0, 306);
+            this.btn_6.Name = "btn_6";
+            this.btn_6.Size = new System.Drawing.Size(165, 62);
+            this.btn_6.TabIndex = 5;
+            this.btn_6.Text = "Quản lý đồ ăn";
+            this.btn_6.Click += new System.EventHandler(this.btn_Click);
+            // 
             // Form_Admin_ListSelect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(165, 406);
+            this.Controls.Add(this.btn_6);
             this.Controls.Add(this.bnt_5);
             this.Controls.Add(this.btn_4);
             this.Controls.Add(this.btn_3);
@@ -138,6 +156,6 @@
         private Guna.UI2.WinForms.Guna2Button bnt_5;
         private Guna.UI2.WinForms.Guna2Button btn_3;
         private Guna.UI2.WinForms.Guna2Button btn_4;
-        
+        private Guna.UI2.WinForms.Guna2Button btn_6;
     }
 }

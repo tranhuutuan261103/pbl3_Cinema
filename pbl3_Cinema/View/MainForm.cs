@@ -14,6 +14,7 @@ using pbl3_Cinema.View.AdminView.ManageFilm;
 using pbl3_Cinema.View.AdminView.ManageScreen;
 using pbl3_Cinema.View.CustomerView.FilmNowShowView;
 using pbl3_Cinema.View.CustomerView.ManageAccount;
+using pbl3_Cinema.View.AdminView.ManageProduct;
 
 namespace pbl3_Cinema.View
 {
@@ -76,12 +77,12 @@ namespace pbl3_Cinema.View
                     {
                         activeDisplay.Close();
                     }
-                    Form_ManageFilm form_AddFilm = new Form_ManageFilm();
-                    activeDisplay = form_AddFilm;
-                    form_AddFilm.Dock = DockStyle.Fill;
-                    form_AddFilm.TopLevel = false;
-                    panel_Display.Controls.Add(form_AddFilm);
-                    form_AddFilm.Show();
+                    Form_ManageFilm form = new Form_ManageFilm();
+                    activeDisplay = form;
+                    form.Dock = DockStyle.Fill;
+                    form.TopLevel = false;
+                    panel_Display.Controls.Add(form);
+                    form.Show();
                 }
 
                 if (btn.Text == "Quản lý phòng chiếu")
@@ -90,12 +91,28 @@ namespace pbl3_Cinema.View
                     {
                         activeDisplay.Close();
                     }
-                    Form_ManageAuditorium form_AddFilm = new Form_ManageAuditorium();
-                    activeDisplay = form_AddFilm;
-                    form_AddFilm.Dock = DockStyle.Fill;
-                    form_AddFilm.TopLevel = false;
-                    panel_Display.Controls.Add(form_AddFilm);
-                    form_AddFilm.Show();
+                    Form_ManageAuditorium form = new Form_ManageAuditorium();
+                    activeDisplay = form;
+                    form.Dock = DockStyle.Fill;
+                    form.TopLevel = false;
+                    panel_Display.Controls.Add(form);
+                    form.Show();
+                }
+
+
+                if (btn.Text == "Quản lý đồ ăn")
+                {
+                    if (activeDisplay != null)
+                    {
+                        activeDisplay.Close();
+                    }
+                    Manage_Product form = new Manage_Product();
+                    form.FormBorderStyle = FormBorderStyle.None;
+                    activeDisplay = form;
+                    form.Dock = DockStyle.Fill;
+                    form.TopLevel = false;
+                    panel_Display.Controls.Add(form);
+                    form.Show();
                 }
 
                 if (btn.Text == "Quản lý suất chiếu")

@@ -30,6 +30,7 @@ namespace pbl3_Cinema.View.AdminView.ManageProduct
             foreach (product p in listProduct)
             {
                 MyUserControlProduct aProductItem = new MyUserControlProduct();
+                aProductItem.Width = flowLayoutPanel1.Width - 10;
                 aProductItem.NameProduct = p.name_product;
                 aProductItem.Price = p.price.ToString();
                 aProductItem.Icon = MyConvert.ConvertBinaryToImage(p.image_product);
