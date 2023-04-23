@@ -30,7 +30,9 @@ namespace pbl3_Cinema.MyFuncStatic
             }
             using (MemoryStream ms = new MemoryStream(data))
             {
-                return Image.FromStream(ms);
+                Image img = new Bitmap(ms);
+                return img;
+                //return Image.FromStream(ms);
             }
         }
 
@@ -38,7 +40,7 @@ namespace pbl3_Cinema.MyFuncStatic
         {
             using (MemoryStream ms = new MemoryStream())
             {
-                img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                img.Save(ms, img.RawFormat);
                 return ms.ToArray();
             }
         }

@@ -1,5 +1,8 @@
 ﻿using pbl3_Cinema.View;
-using pbl3_Cinema.View.ReservationView;
+
+using pbl3_Cinema.View.AdminView.ManageProduct;
+using pbl3_Cinema.View.CustomerView.BuyProduct;
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -21,7 +24,7 @@ namespace pbl3_Cinema
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            Application.Run(new Manage_Product());
         }
 
         
