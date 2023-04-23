@@ -87,6 +87,7 @@
     </Compile>
     <Compile Include="BLL\Account_BLL.cs" />
     <Compile Include="BLL\Cinema_BLL.cs" />
+    <Compile Include="BLL\Product_BLL.cs" />
     <Compile Include="category.cs">
       <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
@@ -95,6 +96,7 @@
     </Compile>
     <Compile Include="DAL\Account_DAL.cs" />
     <Compile Include="DAL\Cinema_DAL.cs" />
+    <Compile Include="DAL\Product_DAL.cs" />
     <Compile Include="detail_bill.cs">
       <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
@@ -149,6 +151,12 @@
     </Compile>
     <Compile Include="MyUserControler\MyUserControlSelectScreening.Designer.cs">
       <DependentUpon>MyUserControlSelectScreening.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyUserControler\MyUserControlProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyUserControler\MyUserControlProduct.Designer.cs">
+      <DependentUpon>MyUserControlProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="MyUserControler\UserControlDisplayMovie.cs">
       <SubType>UserControl</SubType>
@@ -219,6 +227,18 @@
     <Compile Include="View\AdminView\ManageAuditorium\Form_ManageAuditorium.Designer.cs">
       <DependentUpon>Form_ManageAuditorium.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\AdminView\ManageProduct\CRUD_Product.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminView\ManageProduct\CRUD_Product.Designer.cs">
+      <DependentUpon>CRUD_Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminView\ManageProduct\Manage_Product.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminView\ManageProduct\Manage_Product.Designer.cs">
+      <DependentUpon>Manage_Product.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\AdminView\ManageScreening\Form_AddScreening.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +250,24 @@
     </Compile>
     <Compile Include="View\AdminView\ManageScreening\Form_ManageScreening.Designer.cs">
       <DependentUpon>Form_ManageScreening.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminView\ManageStaff\Form_CRUD_Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminView\ManageStaff\Form_CRUD_Staff.Designer.cs">
+      <DependentUpon>Form_CRUD_Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminView\ManageStaff\Form_Manage_Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminView\ManageStaff\Form_Manage_Staff.Designer.cs">
+      <DependentUpon>Form_Manage_Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CustomerView\BuyProduct\BuyProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CustomerView\BuyProduct\BuyProduct.Designer.cs">
+      <DependentUpon>BuyProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="View\CustomerView\DetailInforFilm\Form_DetailInforFilm.cs">
       <SubType>Form</SubType>
@@ -308,6 +346,9 @@
     <EmbeddedResource Include="MyUserControler\MyUserControlInforUser.resx">
       <DependentUpon>MyUserControlInforUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MyUserControler\MyUserControlProduct.resx">
+      <DependentUpon>MyUserControlProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyUserControler\MyUserControlScreening.resx">
       <DependentUpon>MyUserControlScreening.cs</DependentUpon>
     </EmbeddedResource>
@@ -338,11 +379,26 @@
     <EmbeddedResource Include="View\AdminView\ManageAuditorium\Form_ManageAuditorium.resx">
       <DependentUpon>Form_ManageAuditorium.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminView\ManageProduct\CRUD_Product.resx">
+      <DependentUpon>CRUD_Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminView\ManageProduct\Manage_Product.resx">
+      <DependentUpon>Manage_Product.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\AdminView\ManageScreening\Form_AddScreening.resx">
       <DependentUpon>Form_AddScreening.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminView\ManageScreening\Form_ManageScreening.resx">
       <DependentUpon>Form_ManageScreening.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminView\ManageStaff\Form_CRUD_Staff.resx">
+      <DependentUpon>Form_CRUD_Staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminView\ManageStaff\Form_Manage_Staff.resx">
+      <DependentUpon>Form_Manage_Staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CustomerView\BuyProduct\BuyProduct.resx">
+      <DependentUpon>BuyProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\CustomerView\DetailInforFilm\Form_DetailInforFilm.resx">
       <DependentUpon>Form_DetailInforFilm.cs</DependentUpon>
@@ -457,6 +513,12 @@
       <DependentUpon>ModelCinema.edmx</DependentUpon>
       <LastGenOutput>ModelCinema.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\77053035_154732679239330_8345556334451621888_n_637128613599966613.jpg" />
+    <None Include="Resources\images.jpg" />
+    <None Include="Resources\cinema_poster_product1.jpg" />
+    <None Include="Resources\ggg.jpg" />
+    <None Include="Resources\cinema_poster_product.jpg" />
+    <None Include="Resources\no-pictures.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="View\StaffView\" />
