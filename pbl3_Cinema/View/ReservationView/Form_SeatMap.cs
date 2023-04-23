@@ -123,6 +123,12 @@ namespace pbl3_Cinema.View.ReservationView
             {
                 if (b.BackColor == DefaultBackColor)
                 {
+                    int c = 8;
+                    if (_selectedSeat.Count >= c)
+                    {
+                        MessageBox.Show("Tối đa đặt " + c + " vị trí 1 lần");
+                        return;
+                    }
                     b.BackColor = Color.Green;
                     _selectedSeat.Add(id_seat);
                 }
@@ -142,12 +148,6 @@ namespace pbl3_Cinema.View.ReservationView
                 return false;
             }
             Button b = (Button)obj;
-            int c = 8;
-            if (_selectedSeat.Count >= c)
-            {
-                MessageBox.Show("Tối đa đặt "+ c + " vị trí 1 lần");
-                return false;
-            }
             if (b.BackColor == Color.Red)
             {
                 MessageBox.Show("Vị trí này đã đặt rồi");
