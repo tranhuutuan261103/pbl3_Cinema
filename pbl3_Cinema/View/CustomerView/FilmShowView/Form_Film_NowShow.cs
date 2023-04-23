@@ -31,7 +31,7 @@ namespace pbl3_Cinema.View.CustomerView.FilmNowShowView
                 new CBB_Category()
                 {
                     id = 0,
-                name_Category = "Tất cả"
+                    name_Category = "Tất cả"
                 }
             };
             listCategory.AddRange(bll.GetAllCBBCategory());
@@ -89,6 +89,7 @@ namespace pbl3_Cinema.View.CustomerView.FilmNowShowView
         private void btn_Reservation_Click(object sender, EventArgs e)
         {
             Form_SelectScreening form = new Form_SelectScreening();
+            form.Account = Account;
             form.ShowDialog();
         }
     }

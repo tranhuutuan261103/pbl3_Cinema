@@ -30,7 +30,7 @@
         {
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbb_Category = new Guna.UI2.WinForms.Guna2ComboBox();
             this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,20 +45,29 @@
             // 
             // panel
             // 
-            this.panel.Controls.Add(this.comboBox1);
+            this.panel.Controls.Add(this.cbb_Category);
             this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel.Location = new System.Drawing.Point(0, 0);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(1000, 94);
             this.panel.TabIndex = 1;
             // 
-            // comboBox1
+            // cbb_Category
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(768, 36);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 0;
+            this.cbb_Category.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbb_Category.BackColor = System.Drawing.Color.Transparent;
+            this.cbb_Category.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbb_Category.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbb_Category.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbb_Category.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbb_Category.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbb_Category.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbb_Category.ItemHeight = 30;
+            this.cbb_Category.Location = new System.Drawing.Point(760, 30);
+            this.cbb_Category.Name = "cbb_Category";
+            this.cbb_Category.Size = new System.Drawing.Size(200, 36);
+            this.cbb_Category.TabIndex = 0;
+            this.cbb_Category.SelectedIndexChanged += new System.EventHandler(this.cbb_Category_SelectedIndexChanged);
             // 
             // Form_Film_WillShow
             // 
@@ -79,6 +88,6 @@
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
         private System.Windows.Forms.Panel panel;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private Guna.UI2.WinForms.Guna2ComboBox cbb_Category;
     }
 }

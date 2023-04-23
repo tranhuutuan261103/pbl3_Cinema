@@ -1,6 +1,8 @@
 ﻿using pbl3_Cinema.View;
+
 using pbl3_Cinema.View.AdminView.ManageProduct;
 using pbl3_Cinema.View.CustomerView.BuyProduct;
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;

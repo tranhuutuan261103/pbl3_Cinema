@@ -140,10 +140,14 @@ namespace pbl3_Cinema.BLL
             return dal.GetAllMovieInforValidDay(id_Category);
         }
 
-        public List<MyMovieInfor> GetAllMovieInforUpComing()
+        public List<MyMovieInfor> GetAllMovieInforUpComing(int id_Category)
         {
             Cinema_DAL dal = new Cinema_DAL();
-            return dal.GetAllMovieInforUpComing();
+            if (id_Category == 0)
+            {
+                return dal.GetAllMovieInforUpComing();
+            }
+            return dal.GetAllMovieInforUpComing(id_Category);
         }
 
         public List<CBBMovie> GetCBBMoviesNow()
@@ -176,10 +180,10 @@ namespace pbl3_Cinema.BLL
             return dal.AddAuditorium(a);
         }
 
-        public bool CanAddScreening(DateTime start, DateTime end)
+        public bool CanAddScreening(DateTime start, DateTime end, int id_auditorium)
         {
             Cinema_DAL dal = new Cinema_DAL();
-            return dal.CanAddScreening(start, end);
+            return dal.CanAddScreening(start, end, id_auditorium);
         }
 
         public int AddScreening(screening screen)
@@ -210,6 +214,12 @@ namespace pbl3_Cinema.BLL
         {
             Cinema_DAL dal = new Cinema_DAL();
             return dal.GetScreeningInforsFilter(dateTime);
+        }
+
+        public auditorium GetAuditoriumByIdScreening(int id_screening)
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.GetAuditoriumByIdScreening(id_screening);
         }
 
         public List<ScreeningInfor> GetScreeningInforsFilter(DateTime dateTime, int id_auditorium)
@@ -245,6 +255,18 @@ namespace pbl3_Cinema.BLL
                 return false;
             }
             return true;
+        }
+
+        public List<seat_reserved> GetAllSeat_ReservedsById(int id_screening)
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.GetAllSeat_ReservedsById(id_screening);
+        }
+
+        public List<seat> GetAllReservedSeatLocation(List<seat_reserved> seat_Reserveds)
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.GetAllReservedSeatLocation(seat_Reserveds);
         }
 
         public int DeleteScreeningById(int screen_id)

@@ -37,8 +37,15 @@ namespace pbl3_Cinema.MyUserControler
             {
                 label_NameAuditorium.Text = _screeningInfor.nameAuditorium;
                 label_ShowTime.Text = _screeningInfor.ShowTime.Hours + ":" + _screeningInfor.ShowTime.Minutes;
-                label_NoSeat.Text = _screeningInfor.SumSeatReserved + "/" + _screeningInfor.SumSeat + " Ghế";
+                label_NoSeat.Text = (_screeningInfor.SumSeat - _screeningInfor.SumSeatReserved) + "/" + _screeningInfor.SumSeat + " Ghế";
             }
+        }
+
+        public event EventHandler clickScreening;
+
+        private void Clicked_Screening(object sender, EventArgs e)
+        {
+            clickScreening(_screeningInfor, e);
         }
     }
 }
