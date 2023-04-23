@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -40,7 +41,8 @@ namespace pbl3_Cinema.MyFuncStatic
         {
             using (MemoryStream ms = new MemoryStream())
             {
-                img.Save(ms, img.RawFormat);
+                Image i = new Bitmap(img);
+                i.Save(ms, ImageFormat.Png);
                 return ms.ToArray();
             }
         }
