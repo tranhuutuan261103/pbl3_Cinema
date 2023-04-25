@@ -24,5 +24,10 @@ namespace pbl3_Cinema.View.AdminView
         {
             mySelect(sender, e);
         }
+
+        private void bnt_5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

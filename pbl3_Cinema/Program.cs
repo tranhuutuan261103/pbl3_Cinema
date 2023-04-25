@@ -22,7 +22,7 @@ namespace pbl3_Cinema
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Manage_Product());
+            Application.Run(new LoginForm());
         }
 
         

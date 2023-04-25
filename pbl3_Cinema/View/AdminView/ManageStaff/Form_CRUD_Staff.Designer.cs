@@ -364,11 +364,11 @@
             this.grbThongTinCaNhan.Controls.Add(this.txtVanHoa);
             this.grbThongTinCaNhan.Controls.Add(this.label4);
             this.grbThongTinCaNhan.Controls.Add(this.txtDiDong);
-            this.grbThongTinCaNhan.Location = new System.Drawing.Point(18, 48);
+            this.grbThongTinCaNhan.Location = new System.Drawing.Point(18, 14);
             this.grbThongTinCaNhan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grbThongTinCaNhan.Name = "grbThongTinCaNhan";
             this.grbThongTinCaNhan.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grbThongTinCaNhan.Size = new System.Drawing.Size(919, 221);
+            this.grbThongTinCaNhan.Size = new System.Drawing.Size(936, 221);
             this.grbThongTinCaNhan.TabIndex = 3;
             this.grbThongTinCaNhan.TabStop = false;
             this.grbThongTinCaNhan.Text = "Thông tin cá nhân:";
@@ -461,7 +461,7 @@
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Location = new System.Drawing.Point(18, 279);
+            this.groupBox2.Location = new System.Drawing.Point(18, 245);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -585,7 +585,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(953, 549);
+            this.ClientSize = new System.Drawing.Size(967, 549);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.grbThongTinCaNhan);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

@@ -104,6 +104,7 @@
     <Compile Include="DTO\CBBAuditorium.cs" />
     <Compile Include="DTO\CBBMovie.cs" />
     <Compile Include="DTO\CBB_Category.cs" />
+    <Compile Include="DTO\Class1.cs" />
     <Compile Include="DTO\Customer_Infor.cs" />
     <Compile Include="DTO\ScreeningInfor.cs" />
     <Compile Include="DTO\User_Infor.cs" />
