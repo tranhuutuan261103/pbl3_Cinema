@@ -104,7 +104,7 @@
     <Compile Include="DTO\CBBAuditorium.cs" />
     <Compile Include="DTO\CBBMovie.cs" />
     <Compile Include="DTO\CBB_Category.cs" />
-    <Compile Include="DTO\Class1.cs" />
+    <Compile Include="DTO\Staff_Infor.cs" />
     <Compile Include="DTO\Customer_Infor.cs" />
     <Compile Include="DTO\ScreeningInfor.cs" />
     <Compile Include="DTO\User_Infor.cs" />
@@ -129,6 +129,12 @@
     </Compile>
     <Compile Include="MyFuncStatic\MyEmailFunc.cs" />
     <Compile Include="MyFuncStatic\MyConvert.cs" />
+    <Compile Include="MyUserControler\MyUserControlInforStaff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyUserControler\MyUserControlInforStaff.Designer.cs">
+      <DependentUpon>MyUserControlInforStaff.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyUserControler\MyUserControlInforUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -344,6 +350,15 @@
     <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\StaffForm\FormStaffManagerInfor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\StaffForm\FormStaffManagerInfor.Designer.cs">
+      <DependentUpon>FormStaffManagerInfor.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MyUserControler\MyUserControlInforStaff.resx">
+      <DependentUpon>MyUserControlInforStaff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyUserControler\MyUserControlInforUser.resx">
       <DependentUpon>MyUserControlInforUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -446,6 +461,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\StaffForm\FormStaffManagerInfor.resx">
+      <DependentUpon>FormStaffManagerInfor.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="ModelCinema.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

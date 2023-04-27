@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace pbl3_Cinema.DTO
 {
-    internal class Class1
+    internal class Staff_Infor:User_Infor
     {
+        public string position { get; set; }
+        public int wage { get; set; }
     }
 }

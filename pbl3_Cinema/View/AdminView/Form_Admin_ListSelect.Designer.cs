@@ -81,7 +81,6 @@
             this.bnt_5.Size = new System.Drawing.Size(165, 62);
             this.bnt_5.TabIndex = 4;
             this.bnt_5.Text = "Quản lý nhân viên";
-            this.bnt_5.Click += new System.EventHandler(this.bnt_5_Click);
             // 
             // btn_3
             // 
