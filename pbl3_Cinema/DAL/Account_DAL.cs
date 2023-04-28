@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
+using static Guna.UI2.WinForms.Helpers.GraphicsHelper;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace pbl3_Cinema.DAL
 {
@@ -154,6 +157,149 @@ namespace pbl3_Cinema.DAL
                 db.SaveChanges();
             }
             return 1;
+        }
+
+        //New
+        internal List<Staff_Infor> GetInforAllStaff()
+        {
+            List<Staff_Infor> list = new List<Staff_Infor>();
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                var find = db.staffs.Select(p => new {p.position, p.wage, p.email, p.account.active, p.user_infor.full_name, p.user_infor.day_of_birth, p.user_infor.gender, p.user_infor.phone_number }).ToList();
+                foreach(var i in find)
+                {
+                    Staff_Infor temp = new Staff_Infor
+                    {
+                        nameUser = i.full_name,
+                        email = i.email,
+                        position = i.position,
+                        Gender = i.gender,
+                        DayOfBirth = (DateTime)i.day_of_birth,
+                        PhoneNumber = i.phone_number,
+                        Active = i.active,
+                        wage = i.wage,
+                    };
+                    list.Add(temp);
+                }    
+            }
+            return list;
+        }
+
+        public int createAccountStaff(string email, string password, string fullName, string Gender, string phoneNum, DateTime DayOfBirth, string position, int wage)
+        {
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                account Account = new account()
+                {
+                    email = email,
+                    pass_word = password,
+                    role = 1,
+                    active = true,
+                };
+                db.accounts.Add(Account);
+                db.SaveChanges();
+
+                user_infor infor = new user_infor()
+                {
+                    email_id = email,
+                    full_name = fullName,
+                    gender = Gender,
+                    phone_number = phoneNum,
+                    day_of_birth = DayOfBirth,
+                };
+                db.user_infor.Add(infor);
+                db.SaveChanges();
+
+                staff staff = new staff()
+                {
+                    email = email,
+                    position = position,
+                    wage = wage
+                };
+                db.staffs.Add(staff);
+
+                db.SaveChanges();
+            }
+            return 1;
+        }
+
+        public int UpdateInforStaff(string email, string userName, string gender, string phoneNum, DateTime DoB, string position, int wage)
+        {
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                var userinfor = db.user_infor.Where(p => p.email_id == email).FirstOrDefault();
+                userinfor.full_name = userName;
+                userinfor.gender = gender;
+                userinfor.phone_number = phoneNum;
+                userinfor.day_of_birth = DoB;
+                userinfor.staff.position = position;
+                userinfor.staff.wage = wage;
+                db.SaveChanges();
+            }
+            return 1;
+        }
+
+        internal int deleteAccountStaff(List<string> email_list)
+        {
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                foreach (string email in email_list)
+                {
+
+                    var staff = db.staffs.Where(p => p.email == email).FirstOrDefault();
+                    var staff_account = db.accounts.Where(p => p.email == email).FirstOrDefault();
+                    var staff_infor = db.user_infor.Where(p => p.email_id == email).FirstOrDefault();
+                    db.staffs.Remove(staff);
+                    db.accounts.Remove(staff_account);
+                    db.user_infor.Remove(staff_infor); db.SaveChanges();
+                }
+            }
+            return 1;
+        }
+
+        internal List<Staff_Infor> GetInforStaffByFullName(string text)
+        {
+            List<Staff_Infor> list = new List<Staff_Infor>();
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                var find = db.staffs.Where(p => p.user_infor.full_name.Contains(text)).Select(p => new { p.position, p.wage, p.email, p.account.active, p.user_infor.full_name, p.user_infor.day_of_birth, p.user_infor.gender, p.user_infor.phone_number }).ToList();
+                foreach (var i in find)
+                {
+                    Staff_Infor temp = new Staff_Infor
+                    {
+                        nameUser = i.full_name,
+                        email = i.email,
+                        position = i.position,
+                        Gender = i.gender,
+                        DayOfBirth = (DateTime)i.day_of_birth,
+                        PhoneNumber = i.phone_number,
+                        Active = i.active,
+                        wage = i.wage,
+                    };
+                    list.Add(temp);
+                }
+            }
+            return list;
+        }
+
+        internal Staff_Infor GetInforStaffByEmail(string account)
+        {
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                var find = db.staffs.Where(p => p.email == account).Select(p => new { p.position, p.wage, p.email, p.account.active, p.user_infor.full_name, p.user_infor.day_of_birth, p.user_infor.gender, p.user_infor.phone_number }).FirstOrDefault();
+                Staff_Infor staff_infor = new Staff_Infor
+                {
+                    email = find.email,
+                    nameUser = find.full_name,
+                    Gender = find.gender,
+                    DayOfBirth = find.day_of_birth.Value,
+                    PhoneNumber = find.phone_number,
+                    Active = find.active,
+                    position = find.position,
+                    wage = find.wage
+                };
+                return staff_infor;
+            }
         }
     }
 }

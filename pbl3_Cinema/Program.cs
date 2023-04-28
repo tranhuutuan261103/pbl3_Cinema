@@ -1,6 +1,7 @@
 ﻿using pbl3_Cinema.View;
 
 using pbl3_Cinema.View.AdminView.ManageProduct;
+using pbl3_Cinema.View.AdminView.ManageStaff;
 using pbl3_Cinema.View.CustomerView.BuyProduct;
 
 using System;
