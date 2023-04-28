@@ -16,8 +16,8 @@ namespace pbl3_Cinema.View.ReservationView
     {
         private Button[,] btn;
         public int id_screening { set; get; }
-        private List<int> _selectedSeat;
-        public List<int> selectedSeat
+        private List<seat_reserved> _selectedSeat;
+        public List<seat_reserved> selectedSeat
         {
             get
             {
@@ -28,7 +28,7 @@ namespace pbl3_Cinema.View.ReservationView
         public Form_SeatMap()
         {
             InitializeComponent();
-            _selectedSeat = new List<int>();
+            _selectedSeat = new List<seat_reserved>();
         }
 
         private void myInit()
@@ -103,7 +103,7 @@ namespace pbl3_Cinema.View.ReservationView
             {
                 int locaX = s.row_location;
                 int locaY = s.column_location;
-                btn[locaX, locaY].BackColor = Color.Red;
+                btn[locaX - 1, locaY - 1].BackColor = Color.Red;
             }
         }
         private void SetIdToButtons(auditorium audi)
@@ -130,12 +130,23 @@ namespace pbl3_Cinema.View.ReservationView
                         return;
                     }
                     b.BackColor = Color.Green;
-                    _selectedSeat.Add(id_seat);
+                    _selectedSeat.Add(new seat_reserved
+                    {
+                        seat_id = id_seat,
+                        screening_id = id_screening,
+                    });
                 }
                 else if (b.BackColor == Color.Green)
                 {
                     b.BackColor = DefaultBackColor;
-                    _selectedSeat.Remove(id_seat);
+                    foreach (seat_reserved s in _selectedSeat)
+                    {
+                        if (s.seat_id == id_seat)
+                        {
+                            _selectedSeat.Remove(s);
+                            break;
+                        }
+                    }
                 }
                 
             }
@@ -156,7 +167,7 @@ namespace pbl3_Cinema.View.ReservationView
             return true;
         }
 
-        public List<int> GetAllSelectedSeat()
+        public List<seat_reserved> GetAllSelectedSeat()
         {
             return _selectedSeat;
         }
