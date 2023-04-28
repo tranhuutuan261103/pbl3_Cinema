@@ -106,6 +106,7 @@
     <Compile Include="DTO\CBBAuditorium.cs" />
     <Compile Include="DTO\CBBMovie.cs" />
     <Compile Include="DTO\CBB_Category.cs" />
+    <Compile Include="DTO\Staff_Infor.cs" />
     <Compile Include="DTO\Customer_Infor.cs" />
     <Compile Include="DTO\ScreeningInfor.cs" />
     <Compile Include="DTO\User_Infor.cs" />
@@ -130,6 +131,12 @@
     </Compile>
     <Compile Include="MyFuncStatic\MyEmailFunc.cs" />
     <Compile Include="MyFuncStatic\MyConvert.cs" />
+    <Compile Include="MyUserControler\MyUserControlInforStaff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyUserControler\MyUserControlInforStaff.Designer.cs">
+      <DependentUpon>MyUserControlInforStaff.cs</DependentUpon>
+
     <Compile Include="MyUserControler\MyUserControlDetailInforBooking.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -141,6 +148,7 @@
     </Compile>
     <Compile Include="MyUserControler\MyUserControlInforTicket.Designer.cs">
       <DependentUpon>MyUserControlInforTicket.cs</DependentUpon>
+
     </Compile>
     <Compile Include="MyUserControler\MyUserControlInforUser.cs">
       <SubType>UserControl</SubType>
@@ -387,6 +395,15 @@
     <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\StaffView\FormStaffManagerInfor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\StaffView\FormStaffManagerInfor.Designer.cs">
+      <DependentUpon>FormStaffManagerInfor.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MyUserControler\MyUserControlInforStaff.resx">
+      <DependentUpon>MyUserControlInforStaff.cs</DependentUpon>
+      
     <Compile Include="View\StaffView\Form_Staff_ListSelect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -398,6 +415,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyUserControler\MyUserControlInforTicket.resx">
       <DependentUpon>MyUserControlInforTicket.cs</DependentUpon>
+      
     </EmbeddedResource>
     <EmbeddedResource Include="MyUserControler\MyUserControlInforUser.resx">
       <DependentUpon>MyUserControlInforUser.cs</DependentUpon>
@@ -517,8 +535,12 @@
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\StaffView\FormStaffManagerInfor.resx">
+      <DependentUpon>FormStaffManagerInfor.cs</DependentUpon>
+
     <EmbeddedResource Include="View\StaffView\Form_Staff_ListSelect.resx">
       <DependentUpon>Form_Staff_ListSelect.cs</DependentUpon>
+
     </EmbeddedResource>
     <EntityDeploy Include="ModelCinema.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

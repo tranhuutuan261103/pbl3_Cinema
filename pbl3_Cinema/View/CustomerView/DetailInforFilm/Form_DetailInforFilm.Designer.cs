@@ -96,7 +96,9 @@
             this.panel_Infor.Location = new System.Drawing.Point(462, 6);
             this.panel_Infor.Name = "panel_Infor";
 
+
             this.panel_Infor.Size = new System.Drawing.Size(484, 300);
+
 
             this.panel_Infor.TabIndex = 1;
             // 

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using pbl3_Cinema.BLL;
 using pbl3_Cinema.DTO;
+using pbl3_Cinema.MyUserControler;
 using pbl3_Cinema.View.SignView;
 
 namespace pbl3_Cinema.View.CustomerView.ManageAccount
@@ -25,7 +26,6 @@ namespace pbl3_Cinema.View.CustomerView.ManageAccount
         {
             Account_BLL bll = new Account_BLL();
             cus_infor = bll.GetInforCustomer(Account);
-
             myUserControlInforUser.email = cus_infor.email;
             myUserControlInforUser.UserName = cus_infor.nameUser;
             myUserControlInforUser.PhoneNum = cus_infor.PhoneNumber;

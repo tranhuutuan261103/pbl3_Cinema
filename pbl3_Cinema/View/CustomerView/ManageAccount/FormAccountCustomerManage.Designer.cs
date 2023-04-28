@@ -32,8 +32,8 @@
             this.btn_ChangePass = new Guna.UI2.WinForms.Guna2Button();
             this.btn_DelAccount = new Guna.UI2.WinForms.Guna2Button();
             this.btn_UpdateInfor = new Guna.UI2.WinForms.Guna2Button();
-            this.myUserControlInforUser = new pbl3_Cinema.MyUserControler.MyUserControlInforUser();
             this.label1 = new System.Windows.Forms.Label();
+            this.myUserControlInforUser = new pbl3_Cinema.MyUserControler.MyUserControlInforUser();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,9 +58,9 @@
             this.btn_ChangePass.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_ChangePass.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_ChangePass.ForeColor = System.Drawing.Color.White;
-            this.btn_ChangePass.Location = new System.Drawing.Point(165, 0);
+            this.btn_ChangePass.Location = new System.Drawing.Point(164, 0);
             this.btn_ChangePass.Name = "btn_ChangePass";
-            this.btn_ChangePass.Size = new System.Drawing.Size(170, 70);
+            this.btn_ChangePass.Size = new System.Drawing.Size(171, 70);
             this.btn_ChangePass.TabIndex = 2;
             this.btn_ChangePass.Text = "Đổi mật khẩu";
             this.btn_ChangePass.Click += new System.EventHandler(this.btn_ChangePass_Click);
@@ -96,23 +96,10 @@
             this.btn_UpdateInfor.ForeColor = System.Drawing.Color.White;
             this.btn_UpdateInfor.Location = new System.Drawing.Point(0, 0);
             this.btn_UpdateInfor.Name = "btn_UpdateInfor";
-            this.btn_UpdateInfor.Size = new System.Drawing.Size(165, 70);
+            this.btn_UpdateInfor.Size = new System.Drawing.Size(164, 70);
             this.btn_UpdateInfor.TabIndex = 0;
             this.btn_UpdateInfor.Text = "Chỉnh sửa thông tin";
             this.btn_UpdateInfor.Click += new System.EventHandler(this.btn_UpdateInfor_Click);
-            // 
-            // myUserControlInforUser
-            // 
-            this.myUserControlInforUser.DoB = new System.DateTime(((long)(0)));
-            this.myUserControlInforUser.email = null;
-            this.myUserControlInforUser.Gender = null;
-            this.myUserControlInforUser.Location = new System.Drawing.Point(192, 87);
-            this.myUserControlInforUser.Name = "myUserControlInforUser";
-            this.myUserControlInforUser.PhoneNum = null;
-            this.myUserControlInforUser.Point = 0;
-            this.myUserControlInforUser.Size = new System.Drawing.Size(544, 330);
-            this.myUserControlInforUser.TabIndex = 0;
-            this.myUserControlInforUser.UserName = null;
             // 
             // label1
             // 
@@ -120,9 +107,22 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(364, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(289, 39);
+            this.label1.Size = new System.Drawing.Size(277, 38);
             this.label1.TabIndex = 2;
             this.label1.Text = "Thông tin cá nhân";
+            // 
+            // myUserControlInforUser
+            // 
+            this.myUserControlInforUser.DoB = new System.DateTime(((long)(0)));
+            this.myUserControlInforUser.email = null;
+            this.myUserControlInforUser.Gender = null;
+            this.myUserControlInforUser.Location = new System.Drawing.Point(226, 86);
+            this.myUserControlInforUser.Name = "myUserControlInforUser";
+            this.myUserControlInforUser.PhoneNum = null;
+            this.myUserControlInforUser.Point = 0;
+            this.myUserControlInforUser.Size = new System.Drawing.Size(544, 330);
+            this.myUserControlInforUser.TabIndex = 0;
+            this.myUserControlInforUser.UserName = null;
             // 
             // FormAccountCustomerManage
             // 
