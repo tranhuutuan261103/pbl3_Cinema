@@ -50,5 +50,6 @@ namespace pbl3_Cinema.DAL
                 }
             }
         }
+
     }
 }

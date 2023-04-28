@@ -17,8 +17,8 @@ namespace pbl3_Cinema.View.ReservationView
         public string Account { set; get; }
         private Form_SeatMap activeForm_SeatMap;
         private Form_SelectProduct activeForm_Product;
-        private List<int> selectedSeat;
-        private List<product> selectedProduct;
+        private List<seat_reserved> selectedSeat;
+        private List<detail_bill> selectedProduct;
         public Form_Reservation()
         {
             InitializeComponent();
@@ -57,7 +57,11 @@ namespace pbl3_Cinema.View.ReservationView
             {
                 Form_SeatMap form_Seat = activeForm_SeatMap;
                 selectedSeat = form_Seat.GetAllSelectedSeat();
-                
+                if (selectedSeat.Count == 0)
+                {
+                    MessageBox.Show("Vui lòng chọn chổ ngồi");
+                    return;
+                }
 
                 activeForm_SeatMap.Visible = false;
                 label_Title.Text = "Thêm đồ ăn";
@@ -72,30 +76,15 @@ namespace pbl3_Cinema.View.ReservationView
             else if (label_Title.Text == "Thêm đồ ăn")
             {
                 selectedProduct = activeForm_Product.GetInforSelectedProduct();
-                ShowInfor();
-                
-                //if (MessageBox.Show("Xác nhận thanh toán", "Thanh toán", MessageBoxButtons.OKCancel) == DialogResult.OK)
-                //{
-
-                //}
+                Form_BookTicket form = new Form_BookTicket(Account,id_screening, selectedSeat, selectedProduct);
+                form.cf += new Form_BookTicket.CloseForm(closeForm);
+                form.ShowDialog();
             }
         }
 
-        private void ShowInfor()
+        public void closeForm()
         {
-            string s = "";
-            foreach (int i in selectedSeat)
-            {
-                s += " " + i + ", ";
-            }
-
-            s += "|||";
-
-            foreach (product i in selectedProduct)
-            {
-                s += " " + i.id + " " + i.the_number_of_products + ",";
-            }
-            MessageBox.Show(s);
+            Dispose();
         }
     }
 }
