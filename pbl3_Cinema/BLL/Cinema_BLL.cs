@@ -240,18 +240,6 @@ namespace pbl3_Cinema.BLL
             return dal.GetAllScreeningInfor();
         }
 
-        public ScreeningInfor GetScreeningInforById(int id_screening)
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            return dal.GetScreeningInforById(id_screening);
-        }
-
-        public screening GetScreeningById(int id_screening)
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            return dal.GetScreeningById(id_screening);
-        }
-
         public bool CanDeleteScreening(int screen_id)
         {
             Cinema_DAL dal = new Cinema_DAL();

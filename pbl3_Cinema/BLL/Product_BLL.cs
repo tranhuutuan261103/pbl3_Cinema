@@ -54,41 +54,5 @@ namespace pbl3_Cinema.BLL
                 return listProduct;
             }    
         }
-
-        public string GetProductName(int pHash)
-        {
-            foreach(product product in GetListProduct())
-            {
-                if (product.id == pHash)
-                {
-                    return product.name_product;
-                }
-            }
-            return null;
-        }
-
-        public int GetPriceProduct(int pHash)
-        {
-            foreach (product product in GetListProduct())
-            {
-                if (product.id == pHash)
-                {
-                    return product.price;
-                }
-            }
-            return 0;
-        }
-
-        public int GetNumberProduct(int pHash)
-        {
-            foreach (product product in GetListProduct())
-            {
-                if (product.id == pHash)
-                {
-                    return product.the_number_of_products;
-                }
-            }
-            return 0;
-        }
     }
 }

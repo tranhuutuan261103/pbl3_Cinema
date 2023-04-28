@@ -16,18 +16,6 @@ namespace pbl3_Cinema.BLL
             return dAL.GetRole(email, password);
         }
 
-        public int GetRole(string email)
-        {
-            Account_DAL dAL = new Account_DAL();
-            return dAL.GetRole(email);
-        }
-
-        public int GetDiscountPoint(string email)
-        {
-            Account_DAL dal = new Account_DAL();
-            return dal.GetDiscountPoint(email);
-        }
-
         public bool checkExistEmailInDB(string email)
         {
             Account_DAL dal = new Account_DAL();

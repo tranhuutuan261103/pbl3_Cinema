@@ -531,31 +531,6 @@ namespace pbl3_Cinema.DAL
             }
         }
 
-        public ScreeningInfor GetScreeningInforById(int id_screening)
-        {
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                var s = db.screenings.Where(p => p.id == id_screening).Select(p => p).FirstOrDefault();
-                return new ScreeningInfor
-                {
-                    id = s.id,
-                    ShowDay = s.show_day,
-                    ShowTime = s.show_time,
-                    nameAuditorium = s.auditorium.name_auditorium,
-                    nameMovie = s.movie.title,
-                    price = s.price,
-                };
-            }
-        }
-
-        public screening GetScreeningById(int id_screening)
-        {
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                var screen = db.screenings.Where(p => p.id == id_screening).Select(p => p).FirstOrDefault();
-                return screen;
-            }
-        }
         public auditorium GetAuditoriumByIdScreening(int id_screening)
         {
             using (CinemaEntities db = new CinemaEntities())

@@ -6,7 +6,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -29,7 +28,7 @@ namespace pbl3_Cinema.View.ReservationView
             flowLayoutPanel_SelectProduct.Controls.Clear();
             foreach (product product in listProduct)
             {
-                MyUserControlSelectProduct myUCProduct = new MyUserControlSelectProduct();
+                MyUserControlProduct myUCProduct = new MyUserControlProduct();
                 myUCProduct.NameProduct = product.name_product;
                 myUCProduct.Price = Convert.ToString(product.price);
                 myUCProduct.ID = product.id;
@@ -40,27 +39,23 @@ namespace pbl3_Cinema.View.ReservationView
                     Width = flowLayoutPanel_SelectProduct.Width - 30,
                     Height = myUCProduct.Height,
                 };
+                panel.Controls.Add(new MyUserControlButtonSelectNumber() { Dock = DockStyle.Right});
                 myUCProduct.Dock = DockStyle.Left;
                 panel.Controls.Add(myUCProduct);
                 flowLayoutPanel_SelectProduct.Controls.Add(panel);
             }
         }
 
-        public List<detail_bill> GetInforSelectedProduct()
+        public List<product> GetInforSelectedProduct()
         {
-            List<detail_bill> products = new List<detail_bill>();
-            Product_BLL bll = new Product_BLL();
+            List<product> products = new List<product>();
             foreach (Panel panel in flowLayoutPanel_SelectProduct.Controls)
             {
-                MyUserControlSelectProduct p = (MyUserControlSelectProduct)panel.Controls[0];
-                if (p.GetSoLuong() > 0)
+                MyUserControlButtonSelectNumber b = (MyUserControlButtonSelectNumber)panel.Controls[0];
+                if (b.Number != 0)
                 {
-                    detail_bill product = new detail_bill
-                    {
-                        product_id = p.ID,
-                        the_number_of_products = p.GetSoLuong(),
-                        price = bll.GetPriceProduct(p.ID),
-                    };
+                    MyUserControlProduct p = (MyUserControlProduct)panel.Controls[1];
+                    product product = new product { id = p.ID, the_number_of_products = b.Number };
                     products.Add(product);
                 }
             }
