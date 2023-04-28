@@ -103,7 +103,7 @@ namespace pbl3_Cinema.View.ReservationView
             {
                 int locaX = s.row_location;
                 int locaY = s.column_location;
-                btn[locaX, locaY].BackColor = Color.Red;
+                btn[locaX - 1, locaY - 1].BackColor = Color.Red;
             }
         }
         private void SetIdToButtons(auditorium audi)
