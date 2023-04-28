@@ -27,6 +27,29 @@ namespace pbl3_Cinema.DAL
             }
         }
 
+        public int GetRole(string email)
+        {
+            using (CinemaEntities entities = new CinemaEntities())
+            {
+                var find = entities.accounts.Where(p => p.email == email).FirstOrDefault();
+                if (find == null)
+                {
+                    return -1;
+                }
+                int n = find.role;
+                return n;
+            }
+        }
+
+        public int GetDiscountPoint(string email)
+        {
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                var cus = db.customers.Where(p=>p.email == email).FirstOrDefault();
+                return cus.discount_points;
+            }
+        }
+
         public bool checkExistEmailInDB(string email)
         {
             using (CinemaEntities db = new CinemaEntities()) 

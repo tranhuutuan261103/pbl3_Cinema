@@ -99,7 +99,7 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.panel1);
             this.Name = "MyUserControlProduct";
-            this.Size = new System.Drawing.Size(1084, 125);
+            this.Size = new System.Drawing.Size(600, 125);
             this.Load += new System.EventHandler(this.MyUserControlProduct_Load);
             this.MouseEnter += new System.EventHandler(this.MyUserControlProduct_MouseEnter);
             this.MouseLeave += new System.EventHandler(this.MyUserControlProduct_MouseLeave);

@@ -74,9 +74,9 @@
             this.guna2Panel_Body.Controls.Add(this.flowLayoutPanel_DisplayScreening);
             this.guna2Panel_Body.Controls.Add(this.cbb_SelectMovie);
             this.guna2Panel_Body.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.guna2Panel_Body.Location = new System.Drawing.Point(0, 63);
+            this.guna2Panel_Body.Location = new System.Drawing.Point(0, 65);
             this.guna2Panel_Body.Name = "guna2Panel_Body";
-            this.guna2Panel_Body.Size = new System.Drawing.Size(898, 508);
+            this.guna2Panel_Body.Size = new System.Drawing.Size(898, 565);
             this.guna2Panel_Body.TabIndex = 2;
             // 
             // flowLayoutPanel_SelectDayShow
@@ -88,9 +88,10 @@
             // 
             // flowLayoutPanel_DisplayScreening
             // 
+            this.flowLayoutPanel_DisplayScreening.AutoScroll = true;
             this.flowLayoutPanel_DisplayScreening.Location = new System.Drawing.Point(39, 168);
             this.flowLayoutPanel_DisplayScreening.Name = "flowLayoutPanel_DisplayScreening";
-            this.flowLayoutPanel_DisplayScreening.Size = new System.Drawing.Size(822, 315);
+            this.flowLayoutPanel_DisplayScreening.Size = new System.Drawing.Size(822, 373);
             this.flowLayoutPanel_DisplayScreening.TabIndex = 2;
             // 
             // cbb_SelectMovie
@@ -123,7 +124,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(898, 571);
+            this.ClientSize = new System.Drawing.Size(898, 630);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2Panel_Body);
             this.Controls.Add(this.guna2ControlBox2);

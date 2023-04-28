@@ -49,6 +49,7 @@
             // 
             // label_NameAuditorium
             // 
+            this.label_NameAuditorium.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label_NameAuditorium.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_NameAuditorium.Location = new System.Drawing.Point(0, 0);
             this.label_NameAuditorium.Name = "label_NameAuditorium";
@@ -56,6 +57,7 @@
             this.label_NameAuditorium.TabIndex = 0;
             this.label_NameAuditorium.Text = "Phòng ?";
             this.label_NameAuditorium.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_NameAuditorium.Click += new System.EventHandler(this.Clicked_Screening);
             // 
             // panel_NoSeat
             // 
@@ -69,6 +71,7 @@
             // 
             // label_NoSeat
             // 
+            this.label_NoSeat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label_NoSeat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_NoSeat.Location = new System.Drawing.Point(0, 0);
             this.label_NoSeat.Name = "label_NoSeat";
@@ -76,10 +79,12 @@
             this.label_NoSeat.TabIndex = 0;
             this.label_NoSeat.Text = "/ Chổ ngồi";
             this.label_NoSeat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_NoSeat.Click += new System.EventHandler(this.Clicked_Screening);
             // 
             // label_ShowTime
             // 
             this.label_ShowTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_ShowTime.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label_ShowTime.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_ShowTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_ShowTime.Location = new System.Drawing.Point(0, 31);
@@ -88,6 +93,7 @@
             this.label_ShowTime.TabIndex = 2;
             this.label_ShowTime.Text = "00:00";
             this.label_ShowTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_ShowTime.Click += new System.EventHandler(this.Clicked_Screening);
             // 
             // MyUserControlScreening
             // 
@@ -97,6 +103,7 @@
             this.Controls.Add(this.label_ShowTime);
             this.Controls.Add(this.panel_NoSeat);
             this.Controls.Add(this.panel_NameAuditorium);
+            this.Margin = new System.Windows.Forms.Padding(3, 3, 10, 6);
             this.Name = "MyUserControlScreening";
             this.Size = new System.Drawing.Size(160, 115);
             this.Load += new System.EventHandler(this.MyUserControlScreening_Load);

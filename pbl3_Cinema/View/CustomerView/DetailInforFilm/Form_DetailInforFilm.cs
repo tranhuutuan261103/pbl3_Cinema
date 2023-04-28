@@ -1,5 +1,6 @@
 ﻿using pbl3_Cinema.BLL;
 using pbl3_Cinema.DTO;
+using pbl3_Cinema.View.ReservationView;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,6 +34,14 @@ namespace pbl3_Cinema.View.CustomerView.DetailInforFilm
             label_Duration.Text = movieInfor.Duration_min + " phút";
             label_Release_date.Text = movieInfor.Release_date.ToString("dd/MM/yyyy");
             richTextBox_Description.Text = movieInfor.Description;
+        }
+
+        private void btn_Reservation_Click(object sender, EventArgs e)
+        {
+            Form_SelectScreening form = new Form_SelectScreening();
+            form.Account = Account;
+            form.SetSelectedCBBMovie(id_movie);
+            form.ShowDialog();
         }
     }
 }

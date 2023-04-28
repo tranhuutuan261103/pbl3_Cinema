@@ -36,6 +36,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblQuantity = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblID = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
@@ -44,9 +47,6 @@
             this.btnRefresh = new Guna.UI2.WinForms.Guna2Button();
             this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
             this.panelAddRefresh = new System.Windows.Forms.Panel();
-            this.lblName = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblID = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelInfor.SuspendLayout();
@@ -61,7 +61,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1198, 100);
+            this.panel1.Size = new System.Drawing.Size(1000, 100);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -71,7 +71,7 @@
             this.pictureBox2.Image = global::pbl3_Cinema.Properties.Resources.cinema_poster_product;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(289, 100);
+            this.pictureBox2.Size = new System.Drawing.Size(309, 100);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -83,7 +83,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 100);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(691, 521);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(569, 500);
             this.flowLayoutPanel1.TabIndex = 1;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
@@ -103,9 +103,9 @@
             this.panelInfor.Controls.Add(this.btnCancel);
             this.panelInfor.Controls.Add(this.btnUpdate);
             this.panelInfor.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelInfor.Location = new System.Drawing.Point(691, 164);
+            this.panelInfor.Location = new System.Drawing.Point(569, 143);
             this.panelInfor.Name = "panelInfor";
-            this.panelInfor.Size = new System.Drawing.Size(507, 457);
+            this.panelInfor.Size = new System.Drawing.Size(431, 457);
             this.panelInfor.TabIndex = 2;
             // 
             // lblprice
@@ -148,6 +148,38 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Quantity:";
             // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(228, 237);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(79, 29);
+            this.lblName.TabIndex = 2;
+            this.lblName.Text = "label1";
+            // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblID.Location = new System.Drawing.Point(228, 195);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(84, 29);
+            this.lblID.TabIndex = 2;
+            this.lblID.Text = "Name:";
+            this.lblID.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(180, 195);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(42, 29);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "ID:";
+            this.label4.Click += new System.EventHandler(this.label1_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -177,9 +209,9 @@
             this.btnDelete.FillColor = System.Drawing.Color.Orange;
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(323, 397);
+            this.btnDelete.Location = new System.Drawing.Point(293, 397);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(138, 37);
+            this.btnDelete.Size = new System.Drawing.Size(126, 37);
             this.btnDelete.TabIndex = 0;
             this.btnDelete.Text = "Delete";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -195,7 +227,7 @@
             this.btnCancel.ForeColor = System.Drawing.Color.White;
             this.btnCancel.Location = new System.Drawing.Point(6, 397);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(140, 37);
+            this.btnCancel.Size = new System.Drawing.Size(123, 37);
             this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -209,9 +241,9 @@
             this.btnUpdate.FillColor = System.Drawing.Color.Orange;
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(159, 397);
+            this.btnUpdate.Location = new System.Drawing.Point(152, 397);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(148, 37);
+            this.btnUpdate.Size = new System.Drawing.Size(124, 37);
             this.btnUpdate.TabIndex = 0;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -255,53 +287,21 @@
             this.panelAddRefresh.Controls.Add(this.btnRefresh);
             this.panelAddRefresh.Controls.Add(this.btnAdd);
             this.panelAddRefresh.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelAddRefresh.Location = new System.Drawing.Point(691, 100);
+            this.panelAddRefresh.Location = new System.Drawing.Point(569, 100);
             this.panelAddRefresh.Name = "panelAddRefresh";
-            this.panelAddRefresh.Size = new System.Drawing.Size(507, 63);
+            this.panelAddRefresh.Size = new System.Drawing.Size(431, 63);
             this.panelAddRefresh.TabIndex = 3;
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(228, 237);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(79, 29);
-            this.lblName.TabIndex = 2;
-            this.lblName.Text = "label1";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(180, 195);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 29);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "ID:";
-            this.label4.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // lblID
-            // 
-            this.lblID.AutoSize = true;
-            this.lblID.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblID.Location = new System.Drawing.Point(228, 195);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(84, 29);
-            this.lblID.TabIndex = 2;
-            this.lblID.Text = "Name:";
-            this.lblID.Click += new System.EventHandler(this.label1_Click);
             // 
             // Manage_Product
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1198, 621);
+            this.ClientSize = new System.Drawing.Size(1000, 600);
             this.Controls.Add(this.panelAddRefresh);
             this.Controls.Add(this.panelInfor);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Manage_Product";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Manage_Product_Load);

@@ -122,7 +122,7 @@ namespace pbl3_Cinema.View.AdminView.ManageScreening
                 return;
             }
 
-            if (bll.CanAddScreening(dStar, dEnd) == false)
+            if (bll.CanAddScreening(dStar, dEnd, audi_id) == false)
             {
                 MessageBox.Show("Bị trùng suất chiếu");
                 return;

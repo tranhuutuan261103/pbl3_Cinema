@@ -88,6 +88,7 @@
     <Compile Include="BLL\Account_BLL.cs" />
     <Compile Include="BLL\Cinema_BLL.cs" />
     <Compile Include="BLL\Product_BLL.cs" />
+    <Compile Include="BLL\Reservation_BLL.cs" />
     <Compile Include="category.cs">
       <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
@@ -97,6 +98,7 @@
     <Compile Include="DAL\Account_DAL.cs" />
     <Compile Include="DAL\Cinema_DAL.cs" />
     <Compile Include="DAL\Product_DAL.cs" />
+    <Compile Include="DAL\Reservation_DAL.cs" />
     <Compile Include="detail_bill.cs">
       <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
@@ -134,6 +136,19 @@
     </Compile>
     <Compile Include="MyUserControler\MyUserControlInforStaff.Designer.cs">
       <DependentUpon>MyUserControlInforStaff.cs</DependentUpon>
+
+    <Compile Include="MyUserControler\MyUserControlDetailInforBooking.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyUserControler\MyUserControlDetailInforBooking.Designer.cs">
+      <DependentUpon>MyUserControlDetailInforBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyUserControler\MyUserControlInforTicket.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyUserControler\MyUserControlInforTicket.Designer.cs">
+      <DependentUpon>MyUserControlInforTicket.cs</DependentUpon>
+
     </Compile>
     <Compile Include="MyUserControler\MyUserControlInforUser.cs">
       <SubType>UserControl</SubType>
@@ -152,6 +167,12 @@
     </Compile>
     <Compile Include="MyUserControler\MyUserControlSelectDay.Designer.cs">
       <DependentUpon>MyUserControlSelectDay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyUserControler\MyUserControlSelectProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyUserControler\MyUserControlSelectProduct.Designer.cs">
+      <DependentUpon>MyUserControlSelectProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="MyUserControler\MyUserControlSelectScreening.cs">
       <SubType>UserControl</SubType>
@@ -314,6 +335,30 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\ReservationView\Form_BookTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ReservationView\Form_BookTicket.Designer.cs">
+      <DependentUpon>Form_BookTicket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ReservationView\Form_Reservation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ReservationView\Form_Reservation.Designer.cs">
+      <DependentUpon>Form_Reservation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ReservationView\Form_SeatMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ReservationView\Form_SeatMap.Designer.cs">
+      <DependentUpon>Form_SeatMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ReservationView\Form_SelectProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ReservationView\Form_SelectProduct.Designer.cs">
+      <DependentUpon>Form_SelectProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ReservationView\Form_SelectScreening.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -350,14 +395,27 @@
     <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\StaffForm\FormStaffManagerInfor.cs">
+    <Compile Include="View\StaffView\FormStaffManagerInfor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\StaffForm\FormStaffManagerInfor.Designer.cs">
+    <Compile Include="View\StaffView\FormStaffManagerInfor.Designer.cs">
       <DependentUpon>FormStaffManagerInfor.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MyUserControler\MyUserControlInforStaff.resx">
       <DependentUpon>MyUserControlInforStaff.cs</DependentUpon>
+      
+    <Compile Include="View\StaffView\Form_Staff_ListSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\StaffView\Form_Staff_ListSelect.Designer.cs">
+      <DependentUpon>Form_Staff_ListSelect.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MyUserControler\MyUserControlDetailInforBooking.resx">
+      <DependentUpon>MyUserControlDetailInforBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyUserControler\MyUserControlInforTicket.resx">
+      <DependentUpon>MyUserControlInforTicket.cs</DependentUpon>
+      
     </EmbeddedResource>
     <EmbeddedResource Include="MyUserControler\MyUserControlInforUser.resx">
       <DependentUpon>MyUserControlInforUser.cs</DependentUpon>
@@ -370,6 +428,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyUserControler\MyUserControlSelectDay.resx">
       <DependentUpon>MyUserControlSelectDay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyUserControler\MyUserControlSelectProduct.resx">
+      <DependentUpon>MyUserControlSelectProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyUserControler\MyUserControlSelectScreening.resx">
       <DependentUpon>MyUserControlSelectScreening.cs</DependentUpon>
@@ -444,6 +505,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\ReservationView\Form_BookTicket.resx">
+      <DependentUpon>Form_BookTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ReservationView\Form_Reservation.resx">
+      <DependentUpon>Form_Reservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ReservationView\Form_SeatMap.resx">
+      <DependentUpon>Form_SeatMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ReservationView\Form_SelectProduct.resx">
+      <DependentUpon>Form_SelectProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ReservationView\Form_SelectScreening.resx">
       <DependentUpon>Form_SelectScreening.cs</DependentUpon>
     </EmbeddedResource>
@@ -462,8 +535,12 @@
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\StaffForm\FormStaffManagerInfor.resx">
+    <EmbeddedResource Include="View\StaffView\FormStaffManagerInfor.resx">
       <DependentUpon>FormStaffManagerInfor.cs</DependentUpon>
+
+    <EmbeddedResource Include="View\StaffView\Form_Staff_ListSelect.resx">
+      <DependentUpon>Form_Staff_ListSelect.cs</DependentUpon>
+
     </EmbeddedResource>
     <EntityDeploy Include="ModelCinema.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -540,7 +617,8 @@
     <None Include="Resources\no-pictures.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="View\StaffView\" />
+    <Folder Include="View\AdminView\ManageAccount\" />
+    <Folder Include="View\StaffView\ManageAccount\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
