@@ -33,16 +33,17 @@
             this.ComboxBox_Mini = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.panel_ListSelect = new Guna.UI2.WinForms.Guna2Panel();
-            this.panel_Title = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.panel_SubListSelect = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.panel_Title = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.panel_Display = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.panel_ListSelect.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.panel_Title.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // ControlBox_Exit
@@ -83,40 +84,13 @@
             this.panel_ListSelect.Size = new System.Drawing.Size(165, 746);
             this.panel_ListSelect.TabIndex = 2;
             // 
-            // panel_Title
-            // 
-            this.panel_Title.Controls.Add(this.guna2PictureBox2);
-            this.panel_Title.Controls.Add(this.ComboxBox_Mini);
-            this.panel_Title.Controls.Add(this.ControlBox_Exit);
-            this.panel_Title.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_Title.Location = new System.Drawing.Point(165, 0);
-            this.panel_Title.Name = "panel_Title";
-            this.panel_Title.Size = new System.Drawing.Size(1005, 139);
-            this.panel_Title.TabIndex = 3;
-            // 
-            // guna2Elipse1
-            // 
-            this.guna2Elipse1.BorderRadius = 12;
-            this.guna2Elipse1.TargetControl = this;
-            // 
             // panel_SubListSelect
             // 
             this.panel_SubListSelect.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_SubListSelect.Location = new System.Drawing.Point(0, 139);
             this.panel_SubListSelect.Name = "panel_SubListSelect";
-            this.panel_SubListSelect.Size = new System.Drawing.Size(165, 373);
+            this.panel_SubListSelect.Size = new System.Drawing.Size(165, 463);
             this.panel_SubListSelect.TabIndex = 1;
-            // 
-            // guna2PictureBox2
-            // 
-            this.guna2PictureBox2.Image = global::pbl3_Cinema.Properties.Resources.poster_title;
-            this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(0, 3);
-            this.guna2PictureBox2.Name = "guna2PictureBox2";
-            this.guna2PictureBox2.Size = new System.Drawing.Size(424, 136);
-            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.guna2PictureBox2.TabIndex = 2;
-            this.guna2PictureBox2.TabStop = false;
             // 
             // guna2PictureBox1
             // 
@@ -129,6 +103,33 @@
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2PictureBox1.TabIndex = 0;
             this.guna2PictureBox1.TabStop = false;
+            // 
+            // panel_Title
+            // 
+            this.panel_Title.Controls.Add(this.guna2PictureBox2);
+            this.panel_Title.Controls.Add(this.ComboxBox_Mini);
+            this.panel_Title.Controls.Add(this.ControlBox_Exit);
+            this.panel_Title.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_Title.Location = new System.Drawing.Point(165, 0);
+            this.panel_Title.Name = "panel_Title";
+            this.panel_Title.Size = new System.Drawing.Size(1005, 139);
+            this.panel_Title.TabIndex = 3;
+            // 
+            // guna2PictureBox2
+            // 
+            this.guna2PictureBox2.Image = global::pbl3_Cinema.Properties.Resources.poster_title;
+            this.guna2PictureBox2.ImageRotate = 0F;
+            this.guna2PictureBox2.Location = new System.Drawing.Point(0, 3);
+            this.guna2PictureBox2.Name = "guna2PictureBox2";
+            this.guna2PictureBox2.Size = new System.Drawing.Size(424, 136);
+            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.guna2PictureBox2.TabIndex = 2;
+            this.guna2PictureBox2.TabStop = false;
+            // 
+            // guna2Elipse1
+            // 
+            this.guna2Elipse1.BorderRadius = 12;
+            this.guna2Elipse1.TargetControl = this;
             // 
             // panel_Display
             // 
@@ -151,9 +152,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.panel_ListSelect.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.panel_Title.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -170,5 +171,6 @@
         private Guna.UI2.WinForms.Guna2Panel panel_SubListSelect;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
         private Guna.UI2.WinForms.Guna2Panel panel_Display;
+        private Guna.UI2.WinForms.Guna2AnimateWindow guna2AnimateWindow1;
     }
 }

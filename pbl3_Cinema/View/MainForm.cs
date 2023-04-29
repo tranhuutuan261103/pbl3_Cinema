@@ -15,6 +15,8 @@ using pbl3_Cinema.View.AdminView.ManageScreen;
 using pbl3_Cinema.View.CustomerView.FilmNowShowView;
 using pbl3_Cinema.View.CustomerView.ManageAccount;
 using pbl3_Cinema.View.AdminView.ManageProduct;
+using pbl3_Cinema.View.AdminView.MaganeInfor;
+using pbl3_Cinema.View.AdminView.ManageStaff;
 
 namespace pbl3_Cinema.View
 {
@@ -142,6 +144,36 @@ namespace pbl3_Cinema.View
                     panel_Display.Controls.Add(form);
                     form.Show();
                 }
+                if(btn.Text == "Thông tin tài khoản")
+                {
+                    if (activeDisplay != null)
+                    {
+                        activeDisplay.Close();
+                    }
+                    Form_Infor_Admin form = new Form_Infor_Admin()
+                    {
+                        Account = account,
+                    };
+                    activeDisplay = form;
+                    form.Dock = DockStyle.Fill;
+                    form.TopLevel = false;
+                    panel_Display.Controls.Add(activeDisplay);
+                    form.Show();
+                }   
+                
+                if(btn.Text == "Quản lý nhân viên")
+                {
+                    if (activeDisplay != null)
+                    {
+                        activeDisplay.Close();
+                    }
+                    Form_Manage_Staff form = new Form_Manage_Staff();
+                    activeDisplay = form;
+                    form.Dock = DockStyle.Fill;
+                    form.TopLevel = false;
+                    panel_Display.Controls.Add(activeDisplay);
+                    form.Show();
+                }    
             }
         }
 

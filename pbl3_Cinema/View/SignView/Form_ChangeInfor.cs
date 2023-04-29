@@ -109,5 +109,23 @@ namespace pbl3_Cinema.View.SignView
             }
             return true;
         }
+
+        internal void SetInforAdmin(user_infor userInfor)
+        {
+            email = userInfor.email_id;
+            textBox_NameUser.Text = userInfor.full_name;
+
+            for (int i = 0; i < cbb_Gender.Items.Count; i++)
+            {
+                if (cbb_Gender.Items[i].ToString() == userInfor.gender)
+                {
+                    cbb_Gender.SelectedIndex = i;
+                    break;
+                }
+            }
+
+            textBox_PhoneNum.Text = userInfor.phone_number;
+            dateTimePicker_DoB.Value = userInfor.day_of_birth.Value;
+        }
     }
 }
