@@ -62,6 +62,11 @@ namespace pbl3_Cinema.View.AdminView.ManageStaff
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (guna2DataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn nhân viên cần chỉnh sửa");
+                return;
+            }
             string email = guna2DataGridView1.SelectedRows[0].Cells["email"].Value.ToString();
             Form_CRUD_Staff form = new Form_CRUD_Staff();
             form.email_id = email;

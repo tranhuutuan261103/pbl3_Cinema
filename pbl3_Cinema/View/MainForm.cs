@@ -17,6 +17,8 @@ using pbl3_Cinema.View.CustomerView.ManageAccount;
 using pbl3_Cinema.View.AdminView.ManageProduct;
 using pbl3_Cinema.View.AdminView.MaganeInfor;
 using pbl3_Cinema.View.AdminView.ManageStaff;
+using pbl3_Cinema.View.StaffView;
+using pbl3_Cinema.View.CustomerView.ManageInfor;
 
 namespace pbl3_Cinema.View
 {
@@ -48,6 +50,21 @@ namespace pbl3_Cinema.View
                 childListSelect.TopLevel = false;
                 childListSelect.Dock = DockStyle.Top;
                 childListSelect.mySelect += new Form_Customer_ListSelect.MySelect(ChangeDisplayCustomer);
+                panel_SubListSelect.Controls.Add(activeListSelect);
+                childListSelect.Show();
+            }
+
+            if (role == 1)
+            {
+                if (activeListSelect != null)
+                {
+                    activeListSelect.Close();
+                }
+                Form_Staff_ListSelect childListSelect = new Form_Staff_ListSelect();
+                activeListSelect = childListSelect;
+                childListSelect.TopLevel = false;
+                childListSelect.Dock = DockStyle.Top;
+                childListSelect.mySelect += new Form_Staff_ListSelect.MySelect(ChangeDisplayStaff);
                 panel_SubListSelect.Controls.Add(activeListSelect);
                 childListSelect.Show();
             }
@@ -174,6 +191,28 @@ namespace pbl3_Cinema.View
                     panel_Display.Controls.Add(activeDisplay);
                     form.Show();
                 }    
+            }
+        }
+
+        private void ChangeDisplayStaff(object sender, EventArgs e)
+        {
+            Guna2Button btn = (Guna2Button)sender;
+            if (btn != null)
+            {
+                if (btn.Text == "Quản lý tài khoản")
+                {
+                    if (activeDisplay != null)
+                    {
+                        activeDisplay.Close();
+                    }
+                    Form_Staff_Infor form = new Form_Staff_Infor();
+                    activeDisplay = form;
+                    form.Account = account;
+                    form.Dock = DockStyle.Fill;
+                    form.TopLevel = false;
+                    panel_Display.Controls.Add(form);
+                    form.Show();
+                }
             }
         }
 
