@@ -34,6 +34,7 @@
             this.btn_3 = new Guna.UI2.WinForms.Guna2Button();
             this.btn_4 = new Guna.UI2.WinForms.Guna2Button();
             this.btn_6 = new Guna.UI2.WinForms.Guna2Button();
+            this.btn_7 = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // btn_1
@@ -82,6 +83,7 @@
             this.bnt_5.Size = new System.Drawing.Size(165, 62);
             this.bnt_5.TabIndex = 4;
             this.bnt_5.Text = "Quản lý nhân viên";
+            this.bnt_5.Click += new System.EventHandler(this.btn_Click);
             // 
             // btn_3
             // 
@@ -131,11 +133,28 @@
             this.btn_6.Text = "Quản lý đồ ăn";
             this.btn_6.Click += new System.EventHandler(this.btn_Click);
             // 
+            // btn_7
+            // 
+            this.btn_7.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_7.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_7.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_7.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_7.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_7.ForeColor = System.Drawing.Color.White;
+            this.btn_7.Location = new System.Drawing.Point(0, 368);
+            this.btn_7.Name = "btn_7";
+            this.btn_7.Size = new System.Drawing.Size(165, 62);
+            this.btn_7.TabIndex = 6;
+            this.btn_7.Text = "Thông tin tài khoản";
+            this.btn_7.Click += new System.EventHandler(this.btn_Click);
+            // 
             // Form_Admin_ListSelect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(165, 406);
+            this.ClientSize = new System.Drawing.Size(165, 442);
+            this.Controls.Add(this.btn_7);
             this.Controls.Add(this.btn_6);
             this.Controls.Add(this.bnt_5);
             this.Controls.Add(this.btn_4);
@@ -157,5 +176,6 @@
         private Guna.UI2.WinForms.Guna2Button btn_3;
         private Guna.UI2.WinForms.Guna2Button btn_4;
         private Guna.UI2.WinForms.Guna2Button btn_6;
+        private Guna.UI2.WinForms.Guna2Button btn_7;
     }
 }
