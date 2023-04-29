@@ -106,6 +106,7 @@
     <Compile Include="DTO\CBBAuditorium.cs" />
     <Compile Include="DTO\CBBMovie.cs" />
     <Compile Include="DTO\CBB_Category.cs" />
+    <Compile Include="DTO\Staff_Infor.cs" />
     <Compile Include="DTO\Customer_Infor.cs" />
     <Compile Include="DTO\ScreeningInfor.cs" />
     <Compile Include="DTO\User_Infor.cs" />
@@ -210,6 +211,12 @@
     </Compile>
     <Compile Include="user_infor.cs">
       <DependentUpon>ModelCinema.tt</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminView\MaganeInfor\Form_Infor_Admin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminView\MaganeInfor\Form_Infor_Admin.Designer.cs">
+      <DependentUpon>Form_Infor_Admin.cs</DependentUpon>
     </Compile>
     <Compile Include="View\AdminView\ManageFilm\CRUD_Film.cs">
       <SubType>Form</SubType>
@@ -319,6 +326,12 @@
     <Compile Include="View\CustomerView\ManageAccount\FormAccountCustomerManage.Designer.cs">
       <DependentUpon>FormAccountCustomerManage.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\StaffView\ManageInfor\Form_Staff_Infor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\StaffView\ManageInfor\Form_Staff_Infor.Designer.cs">
+      <DependentUpon>Form_Staff_Infor.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -420,6 +433,9 @@
     <EmbeddedResource Include="MyUserControler\UserControlDisplayMovie.resx">
       <DependentUpon>UserControlDisplayMovie.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminView\MaganeInfor\Form_Infor_Admin.resx">
+      <DependentUpon>Form_Infor_Admin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\AdminView\ManageFilm\CRUD_Film.resx">
       <DependentUpon>CRUD_Film.cs</DependentUpon>
     </EmbeddedResource>
@@ -473,6 +489,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\CustomerView\ManageAccount\FormAccountCustomerManage.resx">
       <DependentUpon>FormAccountCustomerManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\StaffView\ManageInfor\Form_Staff_Infor.resx">
+      <DependentUpon>Form_Staff_Infor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -596,7 +615,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="View\AdminView\ManageAccount\" />
-    <Folder Include="View\StaffView\ManageAccount\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
