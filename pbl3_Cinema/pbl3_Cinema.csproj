@@ -106,6 +106,7 @@
     <Compile Include="DTO\CBBAuditorium.cs" />
     <Compile Include="DTO\CBBMovie.cs" />
     <Compile Include="DTO\CBB_Category.cs" />
+    <Compile Include="DTO\HistoryInforTicket.cs" />
     <Compile Include="DTO\Staff_Infor.cs" />
     <Compile Include="DTO\Customer_Infor.cs" />
     <Compile Include="DTO\ScreeningInfor.cs" />
@@ -136,6 +137,12 @@
     </Compile>
     <Compile Include="MyUserControler\MyUserControlDetailInforBooking.Designer.cs">
       <DependentUpon>MyUserControlDetailInforBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyUserControler\MyUserControlHistoryInforTicket.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyUserControler\MyUserControlHistoryInforTicket.Designer.cs">
+      <DependentUpon>MyUserControlHistoryInforTicket.cs</DependentUpon>
     </Compile>
     <Compile Include="MyUserControler\MyUserControlInforTicket.cs">
       <SubType>UserControl</SubType>
@@ -326,6 +333,18 @@
     <Compile Include="View\CustomerView\ManageAccount\FormAccountCustomerManage.Designer.cs">
       <DependentUpon>FormAccountCustomerManage.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\CustomerView\ManageBooking\Form_InforBooking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CustomerView\ManageBooking\Form_InforBooking.Designer.cs">
+      <DependentUpon>Form_InforBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CustomerView\ManageBooking\Form_ManageBooking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CustomerView\ManageBooking\Form_ManageBooking.Designer.cs">
+      <DependentUpon>Form_ManageBooking.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\StaffView\ManageInfor\Form_Staff_Infor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -409,6 +428,9 @@
     <EmbeddedResource Include="MyUserControler\MyUserControlDetailInforBooking.resx">
       <DependentUpon>MyUserControlDetailInforBooking.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MyUserControler\MyUserControlHistoryInforTicket.resx">
+      <DependentUpon>MyUserControlHistoryInforTicket.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyUserControler\MyUserControlInforTicket.resx">
       <DependentUpon>MyUserControlInforTicket.cs</DependentUpon>
     </EmbeddedResource>
@@ -489,6 +511,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\CustomerView\ManageAccount\FormAccountCustomerManage.resx">
       <DependentUpon>FormAccountCustomerManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CustomerView\ManageBooking\Form_InforBooking.resx">
+      <DependentUpon>Form_InforBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CustomerView\ManageBooking\Form_ManageBooking.resx">
+      <DependentUpon>Form_ManageBooking.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\StaffView\ManageInfor\Form_Staff_Infor.resx">
       <DependentUpon>Form_Staff_Infor.cs</DependentUpon>

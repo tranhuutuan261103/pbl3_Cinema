@@ -38,9 +38,9 @@
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox_Point = new System.Windows.Forms.CheckBox();
             this.label_Point = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.checkBox_Point = new System.Windows.Forms.CheckBox();
             this.panel_Button.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -49,7 +49,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(101, 31);
+            this.label1.Location = new System.Drawing.Point(101, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(155, 38);
             this.label1.TabIndex = 0;
@@ -99,7 +99,7 @@
             // 
             // panel_InforTicket
             // 
-            this.panel_InforTicket.Location = new System.Drawing.Point(12, 100);
+            this.panel_InforTicket.Location = new System.Drawing.Point(12, 70);
             this.panel_InforTicket.Name = "panel_InforTicket";
             this.panel_InforTicket.Size = new System.Drawing.Size(350, 100);
             this.panel_InforTicket.TabIndex = 2;
@@ -107,7 +107,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 220);
+            this.label2.Location = new System.Drawing.Point(12, 190);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(120, 16);
             this.label2.TabIndex = 3;
@@ -116,9 +116,9 @@
             // flowLayoutPanel
             // 
             this.flowLayoutPanel.AutoScroll = true;
-            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 250);
+            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 220);
             this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(375, 200);
+            this.flowLayoutPanel.Size = new System.Drawing.Size(375, 230);
             this.flowLayoutPanel.TabIndex = 4;
             // 
             // guna2DragControl1
@@ -139,6 +139,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chiết khấu";
             // 
+            // checkBox_Point
+            // 
+            this.checkBox_Point.AutoSize = true;
+            this.checkBox_Point.Location = new System.Drawing.Point(198, 46);
+            this.checkBox_Point.Name = "checkBox_Point";
+            this.checkBox_Point.Size = new System.Drawing.Size(137, 20);
+            this.checkBox_Point.TabIndex = 3;
+            this.checkBox_Point.Text = "Dùng điểm tích lũy";
+            this.checkBox_Point.UseVisualStyleBackColor = true;
+            this.checkBox_Point.CheckedChanged += new System.EventHandler(this.checkBox_Point_CheckedChanged);
+            // 
             // label_Point
             // 
             this.label_Point.Location = new System.Drawing.Point(233, 21);
@@ -156,17 +167,6 @@
             this.label3.Size = new System.Drawing.Size(149, 16);
             this.label3.TabIndex = 0;
             this.label3.Text = "Điểm tích lũy của bạn là:";
-            // 
-            // checkBox_Point
-            // 
-            this.checkBox_Point.AutoSize = true;
-            this.checkBox_Point.Location = new System.Drawing.Point(198, 46);
-            this.checkBox_Point.Name = "checkBox_Point";
-            this.checkBox_Point.Size = new System.Drawing.Size(137, 20);
-            this.checkBox_Point.TabIndex = 3;
-            this.checkBox_Point.Text = "Dùng điểm tích lũy";
-            this.checkBox_Point.UseVisualStyleBackColor = true;
-            this.checkBox_Point.CheckedChanged += new System.EventHandler(this.checkBox_Point_CheckedChanged);
             // 
             // Form_BookTicket
             // 

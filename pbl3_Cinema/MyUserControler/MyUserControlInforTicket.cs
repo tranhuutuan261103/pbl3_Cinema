@@ -30,7 +30,7 @@ namespace pbl3_Cinema.MyUserControler
                 {
                     label_Auditorium.Text = screen.nameAuditorium;
                     label_Title.Text = screen.nameMovie;
-                    label_ShowDateTime.Text = screen.ShowTime + " " + screen.ShowDay;
+                    label_ShowDateTime.Text = screen.ShowTime + " " + screen.ShowDay.ToString("dd-MM-yyyy");
                 }
                 screening screen2 = bll.GetScreeningById(id_screening);
                 if (screen2 != null)
