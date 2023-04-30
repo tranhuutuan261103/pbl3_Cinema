@@ -19,6 +19,7 @@ using pbl3_Cinema.View.AdminView.MaganeInfor;
 using pbl3_Cinema.View.AdminView.ManageStaff;
 using pbl3_Cinema.View.StaffView;
 using pbl3_Cinema.View.CustomerView.ManageInfor;
+using pbl3_Cinema.View.CustomerView.ManageBooking;
 
 namespace pbl3_Cinema.View
 {
@@ -27,6 +28,7 @@ namespace pbl3_Cinema.View
         public string account { set; get; }
         Form activeDisplay;
         Form activeListSelect;
+        Guna2Button currentButton;
         public MainForm()
         {
             InitializeComponent();
@@ -37,54 +39,82 @@ namespace pbl3_Cinema.View
             this.Close();
         }
 
+        private void OpenListSelect(Form childListSelect)
+        {
+            if (activeListSelect != null)
+            {
+                activeListSelect.Close();
+            }
+            activeListSelect = childListSelect;
+            childListSelect.TopLevel = false;
+            childListSelect.Dock = DockStyle.Top;
+            panel_SubListSelect.Controls.Add(activeListSelect);
+            childListSelect.Show();
+        }
+
         public void Authorization(object o, int role)
         {
             if (role == 0)
             {
-                if (activeListSelect != null)
-                {
-                    activeListSelect.Close();
-                }
                 Form_Customer_ListSelect childListSelect = new Form_Customer_ListSelect();
-                activeListSelect = childListSelect;
-                childListSelect.TopLevel = false;
-                childListSelect.Dock = DockStyle.Top;
                 childListSelect.mySelect += new Form_Customer_ListSelect.MySelect(ChangeDisplayCustomer);
-                panel_SubListSelect.Controls.Add(activeListSelect);
-                childListSelect.Show();
+                OpenListSelect(childListSelect);
             }
 
             if (role == 1)
             {
-                if (activeListSelect != null)
-                {
-                    activeListSelect.Close();
-                }
                 Form_Staff_ListSelect childListSelect = new Form_Staff_ListSelect();
-                activeListSelect = childListSelect;
-                childListSelect.TopLevel = false;
-                childListSelect.Dock = DockStyle.Top;
                 childListSelect.mySelect += new Form_Staff_ListSelect.MySelect(ChangeDisplayStaff);
-                panel_SubListSelect.Controls.Add(activeListSelect);
-                childListSelect.Show();
+                OpenListSelect(childListSelect);
             }
 
             if (role == 2)
             {
-                if (activeListSelect != null)
-                {
-                    activeListSelect.Close();
-                }
                 Form_Admin_ListSelect childListSelect = new Form_Admin_ListSelect();
-                activeListSelect = childListSelect;
-                childListSelect.TopLevel = false;
-                childListSelect.Dock = DockStyle.Top;
                 childListSelect.mySelect += new Form_Admin_ListSelect.MySelect(ChangeDisplayAdmin);
-                panel_SubListSelect.Controls.Add(activeListSelect);
-                childListSelect.Show();
+                OpenListSelect(childListSelect);
             }
         }
 
+        private void ActiveButton(object senderBtn)
+        {
+            if (senderBtn != null)
+            {
+                if (currentButton != (Guna2Button)senderBtn)
+                {
+                    DisableButton();
+                    currentButton = (Guna2Button)senderBtn;
+                    currentButton.FillColor = Color.FromArgb(0, 0, 255);
+                    currentButton.ForeColor = Color.Black;
+                }
+            }
+        }
+        private void DisableButton()
+        {
+            foreach(Control previousBtn in activeListSelect.Controls)
+            {
+                if (previousBtn.GetType() == typeof(Guna2Button))
+                {
+                    ((Guna2Button)previousBtn).FillColor = Color.FromArgb(94, 148, 255);
+                    previousBtn.ForeColor = Color.White;
+                }
+            }
+        }
+
+        private void OpenChildForm(Form childForm, object btnSender)
+        {
+            if (activeDisplay != null)
+            {
+                activeDisplay.Close();
+            }
+            ActiveButton(btnSender);
+            activeDisplay = childForm;
+            childForm.TopLevel = false;
+            childForm.Dock = DockStyle.Fill;
+            panel_Display.Controls.Add(childForm);
+            childForm.BringToFront();
+            childForm.Show();
+        }
         private void ChangeDisplayAdmin(object sender,  EventArgs e)
         {
             Guna2Button btn = (Guna2Button)sender;
@@ -92,104 +122,40 @@ namespace pbl3_Cinema.View
             {
                 if (btn.Text == "Quản lý phim")
                 {
-                    if (activeDisplay != null)
-                    {
-                        activeDisplay.Close();
-                    }
-                    Form_ManageFilm form = new Form_ManageFilm();
-                    activeDisplay = form;
-                    form.Dock = DockStyle.Fill;
-                    form.TopLevel = false;
-                    panel_Display.Controls.Add(form);
-                    form.Show();
+                    OpenChildForm(new Form_ManageFilm(), sender);
                 }
 
                 if (btn.Text == "Quản lý phòng chiếu")
                 {
-                    if (activeDisplay != null)
-                    {
-                        activeDisplay.Close();
-                    }
-                    Form_ManageAuditorium form = new Form_ManageAuditorium();
-                    activeDisplay = form;
-                    form.Dock = DockStyle.Fill;
-                    form.TopLevel = false;
-                    panel_Display.Controls.Add(form);
-                    form.Show();
+                    OpenChildForm(new Form_ManageAuditorium(), sender);
                 }
-
 
                 if (btn.Text == "Quản lý đồ ăn")
                 {
-                    if (activeDisplay != null)
-                    {
-                        activeDisplay.Close();
-                    }
-                    Manage_Product form = new Manage_Product();
-                    form.FormBorderStyle = FormBorderStyle.None;
-                    activeDisplay = form;
-                    form.Dock = DockStyle.Fill;
-                    form.TopLevel = false;
-                    panel_Display.Controls.Add(form);
-                    form.Show();
+                    OpenChildForm(new Manage_Product(), sender);
                 }
 
                 if (btn.Text == "Quản lý suất chiếu")
                 {
-                    if (activeDisplay != null)
-                    {
-                        activeDisplay.Close();
-                    }
-                    Form_ManageScreening form = new Form_ManageScreening();
-                    activeDisplay = form;
-                    form.Dock = DockStyle.Fill;
-                    form.TopLevel = false;
-                    panel_Display.Controls.Add(form);
-                    form.Show();
+                    OpenChildForm(new Form_ManageScreening(), sender);
                 }
 
                 if (btn.Text == "Quản lý vé")
                 {
-                    if (activeDisplay != null)
-                    {
-                        activeDisplay.Close();
-                    }
-                    Form_ManageReservation form = new Form_ManageReservation();
-                    activeDisplay = form;
-                    form.Dock = DockStyle.Fill;
-                    form.TopLevel = false;
-                    panel_Display.Controls.Add(form);
-                    form.Show();
+                    OpenChildForm(new Form_ManageReservation(), sender);
                 }
                 if(btn.Text == "Thông tin tài khoản")
                 {
-                    if (activeDisplay != null)
-                    {
-                        activeDisplay.Close();
-                    }
                     Form_Infor_Admin form = new Form_Infor_Admin()
                     {
                         Account = account,
                     };
-                    activeDisplay = form;
-                    form.Dock = DockStyle.Fill;
-                    form.TopLevel = false;
-                    panel_Display.Controls.Add(activeDisplay);
-                    form.Show();
+                    OpenChildForm(form, sender);
                 }   
                 
                 if(btn.Text == "Quản lý nhân viên")
                 {
-                    if (activeDisplay != null)
-                    {
-                        activeDisplay.Close();
-                    }
-                    Form_Manage_Staff form = new Form_Manage_Staff();
-                    activeDisplay = form;
-                    form.Dock = DockStyle.Fill;
-                    form.TopLevel = false;
-                    panel_Display.Controls.Add(activeDisplay);
-                    form.Show();
+                    OpenChildForm(new Form_Manage_Staff(), sender);
                 }    
             }
         }
@@ -201,17 +167,11 @@ namespace pbl3_Cinema.View
             {
                 if (btn.Text == "Quản lý tài khoản")
                 {
-                    if (activeDisplay != null)
+                    Form_Staff_Infor form = new Form_Staff_Infor()
                     {
-                        activeDisplay.Close();
-                    }
-                    Form_Staff_Infor form = new Form_Staff_Infor();
-                    activeDisplay = form;
-                    form.Account = account;
-                    form.Dock = DockStyle.Fill;
-                    form.TopLevel = false;
-                    panel_Display.Controls.Add(form);
-                    form.Show();
+                        Account = account,
+                    };
+                    OpenChildForm(form, sender);
                 }
             }
         }
@@ -223,54 +183,36 @@ namespace pbl3_Cinema.View
             {
                 if (btn.Text == "Phim đang chiếu")
                 {
-                    if (activeDisplay != null)
+                    Form_Film_NowShow form = new Form_Film_NowShow()
                     {
-                        activeDisplay.Close();
-                    }
-                    Form_Film_NowShow form = new Form_Film_NowShow();
-                    activeDisplay = form;
-                    form.Account = account;
-                    form.Dock = DockStyle.Fill;
-                    form.TopLevel = false;
-                    panel_Display.Controls.Add(form);
-                    form.Show();
+                        Account = account,
+                    };
+                    OpenChildForm(form, sender);
                 }
 
                 if (btn.Text == "Phim sắp chiếu")
                 {
-                    if (activeDisplay != null)
-                    {
-                        activeDisplay.Close();
-                    }
                     Form_Film_WillShow form = new Form_Film_WillShow();
-                    activeDisplay = form;
-                    form.Dock = DockStyle.Fill;
-                    form.TopLevel = false;
-                    panel_Display.Controls.Add(form);
-                    form.Show();
+                    OpenChildForm(form, sender);
+                }
+
+                if (btn.Text == "Lịch sử đặt vé")
+                {
+                    Form_ManageBooking form = new Form_ManageBooking()
+                    {
+                        Account = account
+                    };
+                    OpenChildForm(form, sender);
                 }
 
                 if (btn.Text == "Quản lý tài khoản")
                 {
-                    if (activeDisplay != null)
-                    {
-                        activeDisplay.Close();
-                    }
                     FormAccountCustomerManage form = new FormAccountCustomerManage()
                     {
                         Account = account,
                     };
-                    activeDisplay = form;
-                    form.Dock = DockStyle.Fill;
-                    form.TopLevel = false;
-                    panel_Display.Controls.Add(activeDisplay);
-                    form.Show();
+                    OpenChildForm(form, sender);
                 }
-
-                if(btn.Text == "Quản lý nhân viên")
-                {
-
-                }    
             }
         }
     }
