@@ -34,6 +34,9 @@
             this.dataGridView_ListFilm = new Guna.UI2.WinForms.Guna2DataGridView();
             this.btn_AddFilm = new Guna.UI2.WinForms.Guna2Button();
             this.btn_UpdateFilm = new Guna.UI2.WinForms.Guna2Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btn_AddCategory = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ListFilm)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +72,7 @@
             this.dataGridView_ListFilm.RowHeadersVisible = false;
             this.dataGridView_ListFilm.RowHeadersWidth = 51;
             this.dataGridView_ListFilm.RowTemplate.Height = 24;
-            this.dataGridView_ListFilm.Size = new System.Drawing.Size(789, 403);
+            this.dataGridView_ListFilm.Size = new System.Drawing.Size(933, 403);
             this.dataGridView_ListFilm.TabIndex = 0;
             this.dataGridView_ListFilm.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dataGridView_ListFilm.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -102,7 +105,7 @@
             this.btn_AddFilm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_AddFilm.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_AddFilm.ForeColor = System.Drawing.Color.White;
-            this.btn_AddFilm.Location = new System.Drawing.Point(68, 473);
+            this.btn_AddFilm.Location = new System.Drawing.Point(65, 495);
             this.btn_AddFilm.Name = "btn_AddFilm";
             this.btn_AddFilm.Size = new System.Drawing.Size(180, 45);
             this.btn_AddFilm.TabIndex = 1;
@@ -118,19 +121,54 @@
             this.btn_UpdateFilm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_UpdateFilm.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_UpdateFilm.ForeColor = System.Drawing.Color.White;
-            this.btn_UpdateFilm.Location = new System.Drawing.Point(275, 473);
+            this.btn_UpdateFilm.Location = new System.Drawing.Point(328, 495);
             this.btn_UpdateFilm.Name = "btn_UpdateFilm";
             this.btn_UpdateFilm.Size = new System.Drawing.Size(180, 45);
             this.btn_UpdateFilm.TabIndex = 1;
             this.btn_UpdateFilm.Text = "Chỉnh sửa";
             this.btn_UpdateFilm.Click += new System.EventHandler(this.btn_UpdateFilm_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(686, 501);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(129, 22);
+            this.textBox1.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(576, 501);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 16);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Thêm thể loại:";
+            // 
+            // btn_AddCategory
+            // 
+            this.btn_AddCategory.BorderRadius = 10;
+            this.btn_AddCategory.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_AddCategory.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_AddCategory.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_AddCategory.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_AddCategory.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_AddCategory.ForeColor = System.Drawing.Color.White;
+            this.btn_AddCategory.Location = new System.Drawing.Point(841, 495);
+            this.btn_AddCategory.Name = "btn_AddCategory";
+            this.btn_AddCategory.Size = new System.Drawing.Size(94, 45);
+            this.btn_AddCategory.TabIndex = 4;
+            this.btn_AddCategory.Text = "Thêm";
+            this.btn_AddCategory.Click += new System.EventHandler(this.btn_AddCategory_Click);
+            // 
             // Form_ManageFilm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(856, 576);
+            this.ClientSize = new System.Drawing.Size(1000, 600);
+            this.Controls.Add(this.btn_AddCategory);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btn_UpdateFilm);
             this.Controls.Add(this.btn_AddFilm);
             this.Controls.Add(this.dataGridView_ListFilm);
@@ -139,6 +177,7 @@
             this.Text = "Form_AddFilm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ListFilm)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -147,5 +186,8 @@
         private Guna.UI2.WinForms.Guna2DataGridView dataGridView_ListFilm;
         private Guna.UI2.WinForms.Guna2Button btn_AddFilm;
         private Guna.UI2.WinForms.Guna2Button btn_UpdateFilm;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2Button btn_AddCategory;
     }
 }

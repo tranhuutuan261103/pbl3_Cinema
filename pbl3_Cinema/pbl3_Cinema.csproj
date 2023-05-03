@@ -225,16 +225,28 @@
     <Compile Include="View\AdminView\MaganeInfor\Form_Infor_Admin.Designer.cs">
       <DependentUpon>Form_Infor_Admin.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\AdminView\ManageBooking\Form_InforBooking_Admin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminView\ManageBooking\Form_InforBooking_Admin.Designer.cs">
+      <DependentUpon>Form_InforBooking_Admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminView\ManageBooking\Form_ManageReservationDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminView\ManageBooking\Form_ManageReservationDetail.Designer.cs">
+      <DependentUpon>Form_ManageReservationDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\AdminView\ManageFilm\CRUD_Film.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\AdminView\ManageFilm\CRUD_Film.Designer.cs">
       <DependentUpon>CRUD_Film.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\AdminView\ManageFilm\Form_ManageReservation.cs">
+    <Compile Include="View\AdminView\ManageBooking\Form_ManageReservation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\AdminView\ManageFilm\Form_ManageReservation.Designer.cs">
+    <Compile Include="View\AdminView\ManageBooking\Form_ManageReservation.Designer.cs">
       <DependentUpon>Form_ManageReservation.cs</DependentUpon>
     </Compile>
     <Compile Include="View\AdminView\ManageFilm\Form_ManageFilm.cs">
@@ -458,10 +470,16 @@
     <EmbeddedResource Include="View\AdminView\MaganeInfor\Form_Infor_Admin.resx">
       <DependentUpon>Form_Infor_Admin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminView\ManageBooking\Form_InforBooking_Admin.resx">
+      <DependentUpon>Form_InforBooking_Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminView\ManageBooking\Form_ManageReservationDetail.resx">
+      <DependentUpon>Form_ManageReservationDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\AdminView\ManageFilm\CRUD_Film.resx">
       <DependentUpon>CRUD_Film.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\AdminView\ManageFilm\Form_ManageReservation.resx">
+    <EmbeddedResource Include="View\AdminView\ManageBooking\Form_ManageReservation.resx">
       <DependentUpon>Form_ManageReservation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminView\ManageFilm\Form_ManageFilm.resx">

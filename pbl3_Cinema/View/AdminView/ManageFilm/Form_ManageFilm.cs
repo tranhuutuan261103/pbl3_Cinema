@@ -82,6 +82,19 @@ namespace pbl3_Cinema.View.AdminView
             form.ShowDialog();
         }
 
-        
+        private void btn_AddCategory_Click(object sender, EventArgs e)
+        {
+            Cinema_BLL bll = new Cinema_BLL();
+            category c = new category();
+            c.name_category = textBox1.Text;
+            if (bll.AddCategory(c) == 1)
+            {
+                MessageBox.Show("Thêm thành công");
+            }
+            else
+            {
+
+            }
+        }
     }
 }

@@ -98,5 +98,11 @@ namespace pbl3_Cinema.BLL
             Account_DAL dal = new Account_DAL();
             return dal.GetInforUser(account);
         }
+
+        internal void UpdateDiscountPoint(int id_reservation, int sumPay)
+        {
+            Account_DAL dal = new Account_DAL();
+            dal.UpdateDiscountPoint(id_reservation, sumPay);
+        }
     }
 }

@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.panel_InforTicket = new Guna.UI2.WinForms.Guna2Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_Exit = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -67,7 +69,7 @@
             this.flowLayoutPanel.AutoScroll = true;
             this.flowLayoutPanel.Location = new System.Drawing.Point(0, 206);
             this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(375, 300);
+            this.flowLayoutPanel.Size = new System.Drawing.Size(375, 250);
             this.flowLayoutPanel.TabIndex = 5;
             // 
             // btn_Exit
@@ -85,6 +87,12 @@
             this.btn_Exit.TabIndex = 6;
             this.btn_Exit.Text = "Hủy";
             this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
+            // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.TargetControl = this;
+            this.guna2DragControl1.UseTransparentDrag = true;
             // 
             // Form_InforBooking
             // 
@@ -112,5 +120,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
         private Guna.UI2.WinForms.Guna2Button btn_Exit;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }

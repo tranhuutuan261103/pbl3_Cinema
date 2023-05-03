@@ -16,6 +16,7 @@ namespace pbl3_Cinema.View.ReservationView
 {
     public partial class Form_BookTicket : Form
     {
+        private int id_reservation;
         public string Account { set; get; }
         public int id_screening { set; get; }
         public List<seat_reserved> listSeat { set; get; }
@@ -100,6 +101,7 @@ namespace pbl3_Cinema.View.ReservationView
 
         private void LoadInforPoint()
         {
+            groupBox_Discount.Visible = true;
             Account_BLL bll = new Account_BLL();
             if (bll.GetRole(Account) == 0)
             {
@@ -127,17 +129,95 @@ namespace pbl3_Cinema.View.ReservationView
                 price = 0
             };
             LoadInforBooking();
-            LoadInforPoint();
+
+            Account_BLL bll = new Account_BLL();
+            if (bll.GetRole(Account) == (int)Role.Customer)
+            {
+                LoadInforPoint();
+            }
+            else if (bll.GetRole(Account) == (int)Role.Staff)
+            {
+
+            }
+            id_reservation = MakeReservation();
+
+            // Thêm sự kiện cho nút bấm
+            btn_Booking.Click += new EventHandler(btn_Booking_Click);
+            btn_Exit.Click += new EventHandler(btn_Exit_Click);
         }
 
         private void btn_Exit_Click(object sender, EventArgs e)
         {
+            CancelReservation();
             Dispose();
         }
 
         public delegate void CloseForm();
         public CloseForm cf { set; get; }
 
+        private int MakeReservation()
+        {
+            int discount_pay = UCCheck_DiscountPoint.price;
+            reservation r = new reservation()
+            {
+                screening_id = id_screening,
+                booking_date = DateTime.Now,
+                pay = tempSum,
+                discount_pay = discount_pay,
+                sum_pay = tempSum - discount_pay,
+            };
+
+            Account_BLL bllAccount = new Account_BLL();
+            Reservation_BLL bll = new Reservation_BLL();
+            if (bllAccount.GetRole(Account) == (int)Role.Customer )
+            {
+                r.customer_id = Account;
+                if (checkBox_Point.Checked)
+                {
+                    return bll.AddReservationCustomer(listSeat, listProduct, r, discountPoint);
+                }
+                else
+                {
+                    return bll.AddReservationCustomer(listSeat, listProduct, r, 0);
+                }
+                
+            }
+            else if (bllAccount.GetRole(Account) == (int)Role.Staff )
+            {
+                r.staff_id = Account;
+                return bll.AddReservationStaff(listSeat, listProduct, r);
+                
+            }
+            return 0;
+        }
+
+        private void AcceptReservation()
+        {
+            Account_BLL bll = new Account_BLL();
+            Reservation_BLL bllReservation = new Reservation_BLL();
+            if (bll.GetRole(Account) == (int)Role.Customer)
+            {
+                if (checkBox_Point.Checked)
+                {
+                    bllReservation.UpdateReservation(id_reservation, tempSum, discountPoint, UCCheck_DiscountPoint.price, true);
+                }
+                else
+                {
+                    bllReservation.UpdateReservation(id_reservation, true);
+                }
+                bll.UpdateDiscountPoint(id_reservation, tempSum -  UCCheck_DiscountPoint.price);
+            }
+            else if (bll.GetRole(Account) == (int)Role.Staff)
+            {
+                bllReservation.UpdateReservation(id_reservation, true);
+            }
+        }
+
+        public void CancelReservation()
+        {
+            Reservation_BLL bll = new Reservation_BLL();
+            bll.CancelReservation(id_reservation);
+        }
 
         private void btn_Booking_Click(object sender, EventArgs e)
         {
@@ -145,26 +225,7 @@ namespace pbl3_Cinema.View.ReservationView
             int discount_pay = UCCheck_DiscountPoint.price;
             if (MessageBox.Show("Xác nhận thanh toán " + (tempSum - discount_pay), "Thanh toán", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                reservation r = new reservation()
-                {
-                    customer_id = Account,
-                    screening_id = id_screening,
-                    booking_date = DateTime.Now,
-                    pay = tempSum,
-                    discount_pay = discount_pay,
-                    sum_pay = tempSum - discount_pay,
-                };
-
-                Reservation_BLL bll = new Reservation_BLL();
-                if (checkBox_Point.Checked)
-                {
-                    bll.AddReservationCustomer(listSeat, listProduct, r, discountPoint);
-                }
-                else
-                {
-                    bll.AddReservationCustomer(listSeat, listProduct, r, 0);
-                }
-                
+                AcceptReservation();
 
                 MessageBox.Show("Đã đặt thành công");
                 Visible = false;
@@ -191,6 +252,12 @@ namespace pbl3_Cinema.View.ReservationView
             {
                 UCCheck_DiscountPoint.price = 0;
             }
+        }
+
+        public enum Role
+        {
+            Customer = 0,
+            Staff = 1
         }
     }
 }

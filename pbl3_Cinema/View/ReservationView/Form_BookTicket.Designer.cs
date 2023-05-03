@@ -37,12 +37,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox_Discount = new System.Windows.Forms.GroupBox();
             this.checkBox_Point = new System.Windows.Forms.CheckBox();
             this.label_Point = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel_Button.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBox_Discount.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -79,7 +79,6 @@
             this.btn_Exit.Size = new System.Drawing.Size(130, 40);
             this.btn_Exit.TabIndex = 0;
             this.btn_Exit.Text = "Hủy";
-            this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
             // 
             // btn_Booking
             // 
@@ -95,7 +94,7 @@
             this.btn_Booking.Size = new System.Drawing.Size(130, 40);
             this.btn_Booking.TabIndex = 0;
             this.btn_Booking.Text = "Thanh toán";
-            this.btn_Booking.Click += new System.EventHandler(this.btn_Booking_Click);
+            
             // 
             // panel_InforTicket
             // 
@@ -127,17 +126,18 @@
             this.guna2DragControl1.TargetControl = this;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
-            // groupBox1
+            // groupBox_Discount
             // 
-            this.groupBox1.Controls.Add(this.checkBox_Point);
-            this.groupBox1.Controls.Add(this.label_Point);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(12, 460);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(350, 75);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Chiết khấu";
+            this.groupBox_Discount.Controls.Add(this.checkBox_Point);
+            this.groupBox_Discount.Controls.Add(this.label_Point);
+            this.groupBox_Discount.Controls.Add(this.label3);
+            this.groupBox_Discount.Location = new System.Drawing.Point(12, 460);
+            this.groupBox_Discount.Name = "groupBox_Discount";
+            this.groupBox_Discount.Size = new System.Drawing.Size(350, 75);
+            this.groupBox_Discount.TabIndex = 5;
+            this.groupBox_Discount.TabStop = false;
+            this.groupBox_Discount.Text = "Chiết khấu";
+            this.groupBox_Discount.Visible = false;
             // 
             // checkBox_Point
             // 
@@ -173,7 +173,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(375, 600);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox_Discount);
             this.Controls.Add(this.flowLayoutPanel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel_InforTicket);
@@ -183,8 +183,8 @@
             this.Name = "Form_BookTicket";
             this.Text = "Form_BookTicket";
             this.panel_Button.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBox_Discount.ResumeLayout(false);
+            this.groupBox_Discount.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -200,7 +200,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox_Discount;
         private System.Windows.Forms.Label label_Point;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBox_Point;

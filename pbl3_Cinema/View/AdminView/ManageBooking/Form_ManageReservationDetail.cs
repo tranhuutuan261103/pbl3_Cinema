@@ -1,41 +1,45 @@
 ﻿using pbl3_Cinema.BLL;
 using pbl3_Cinema.DTO;
 using pbl3_Cinema.MyUserControler;
+using pbl3_Cinema.View.CustomerView.ManageBooking;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace pbl3_Cinema.View.CustomerView.ManageBooking
+namespace pbl3_Cinema.View.AdminView.ManageBooking
 {
-    public partial class Form_ManageBooking : Form
+    public partial class Form_ManageReservationDetail : Form
     {
-        public string Account { set; get; }
-        public Form_ManageBooking()
+        public delegate void Hiden();
+        public Hiden hiden { set; get; }
+        public int id_screening { set; get; }
+        public Form_ManageReservationDetail()
         {
             InitializeComponent();
         }
 
-        private void Form_ManageBooking_Load(object sender, EventArgs e)
+        private void btn_Exit_Click(object sender, EventArgs e)
+        {
+            hiden();
+            Dispose();
+        }
+
+        private void Form_ManageReservationDetail_Load(object sender, EventArgs e)
+        {
+            LoadAllReservation();
+        }
+
+        private void LoadAllReservation()
         {
             Reservation_BLL bll = new Reservation_BLL();
-            Account_BLL bllAccount = new Account_BLL();
-            List<HistoryInforTicket> list = new List<HistoryInforTicket>();
-            if (bllAccount.GetRole(Account) == 0)
-            {
-                list = bll.GetListBookingByIdCustomer(this.Account);
-            }
-            else if (bllAccount.GetRole(Account) == 1)
-            {
-                list = bll.GetListBookingByIdStaff(Account);
-            }
-            
-            foreach ( var item in list )
+            foreach (var item in bll.GetListBookingByIdScreening(id_screening))
             {
                 MyUserControlHistoryInforTicket uc = new MyUserControlHistoryInforTicket()
                 {
@@ -58,7 +62,7 @@ namespace pbl3_Cinema.View.CustomerView.ManageBooking
             MyUserControlHistoryInforTicket uc = (MyUserControlHistoryInforTicket)sender;
             Reservation_BLL bll = new Reservation_BLL();
             HistoryInforTicket h = bll.GetBookingByIdReservation(uc.id_reservation);
-            Form_InforBooking form = new Form_InforBooking()
+            Form_InforBooking_Admin form = new Form_InforBooking_Admin()
             {
                 id_screening = h.id_screening,
                 id_reservation = h.id
