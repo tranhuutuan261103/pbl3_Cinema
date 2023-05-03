@@ -315,5 +315,16 @@ namespace pbl3_Cinema.DAL
                 return user_infor;
             }
         }
+
+        internal void UpdateDiscountPoint(int id_reservation, int sumPay)
+        {
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                var r = db.reservations.Find(id_reservation);
+                var cus = db.customers.Where(p => p.email == r.customer_id).FirstOrDefault();
+                cus.discount_points += sumPay / 2000;
+                db.SaveChanges();
+            }
+        }
     }
 }

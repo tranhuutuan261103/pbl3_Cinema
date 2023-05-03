@@ -5,23 +5,40 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace pbl3_Cinema.View.CustomerView.ManageBooking
+namespace pbl3_Cinema.View.AdminView.ManageBooking
 {
-    public partial class Form_InforBooking : Form
+    public partial class Form_InforBooking_Admin : Form
     {
-        public int id_reservation { set; get; }
-        public int id_screening { set; get; }
-        public Form_InforBooking()
+        public Form_InforBooking_Admin()
         {
             InitializeComponent();
+        }
+
+        public int id_reservation { set; get; }
+        public int id_screening { set; get; }
+
+        private void LoadInforIdUser()
+        {
+            Reservation_BLL bll = new Reservation_BLL();
+            reservation r = bll.GetReservationById(id_reservation);
+            if (r.customer_id != null)
+            {
+                label_IdUser.Text = r.customer_id;
+            }
+            else if (r.staff_id != null)
+            {
+                label_IdUser.Text = r.staff_id;
+            }
+            else
+            {
+                label_IdUser.Text = "null";
+            }
         }
 
         private void LoadInforScreening()
@@ -99,13 +116,14 @@ namespace pbl3_Cinema.View.CustomerView.ManageBooking
         }
         private void LoadInit()
         {
+            LoadInforIdUser();
             LoadInforScreening();
             LoadInforReservationSeat();
             LoadInforProduct();
             LoadInforDiscount();
             LoadSumPay();
         }
-        private void Form_InforBooking_Load(object sender, EventArgs e)
+        private void Form_InforBooking_Admin_Load(object sender, EventArgs e)
         {
             LoadInit();
         }

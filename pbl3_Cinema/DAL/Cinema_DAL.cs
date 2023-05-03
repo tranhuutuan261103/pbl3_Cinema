@@ -328,9 +328,7 @@ namespace pbl3_Cinema.DAL
                     );
                 foreach (var l in list)
                 {
-                    if (l.show_day + l.show_time >= DateTime.Now.AddMinutes(30))
-                    {
-                        listScreening.Add(new ScreeningInfor
+                    listScreening.Add(new ScreeningInfor
                         {
                             id = l.id,
                             nameAuditorium = l.name_auditorium,
@@ -340,8 +338,7 @@ namespace pbl3_Cinema.DAL
                             SumSeat = l.sumseat,
                             SumSeatReserved = l.count,
                             price = l.price,
-                        });
-                    }
+                    });
                 }
             }
             return listScreening;
@@ -410,9 +407,7 @@ namespace pbl3_Cinema.DAL
                     );
                 foreach (var l in list)
                 {
-                    if ( l.show_day + l.show_time >= DateTime.Now.AddMinutes(30))
-                    {
-                        listScreening.Add(new ScreeningInfor
+                    listScreening.Add(new ScreeningInfor
                         {
                             id = l.id,
                             nameAuditorium = l.name_auditorium,
@@ -423,7 +418,6 @@ namespace pbl3_Cinema.DAL
                             SumSeatReserved = l.count,
                             price = l.price,
                         });
-                    }
                 }
             }
             return listScreening;
@@ -623,6 +617,16 @@ namespace pbl3_Cinema.DAL
                 }
             }
             return 1;
+        }
+
+        internal int AddCategory(category c)
+        {
+            using(CinemaEntities db = new CinemaEntities())
+            {
+                db.categories.Add(c);
+                db.SaveChanges();
+                return 1;
+            }
         }
     }
 }

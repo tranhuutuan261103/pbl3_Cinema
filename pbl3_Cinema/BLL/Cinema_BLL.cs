@@ -210,7 +210,23 @@ namespace pbl3_Cinema.BLL
             return dal.GetAllCBBAuditorimActive();
         }
 
+        // get screening after 30 minutes
         public List<ScreeningInfor> GetScreeningInforsFilter(DateTime dateTime)
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            List<ScreeningInfor> list = new List<ScreeningInfor> ();
+            foreach (ScreeningInfor s in dal.GetScreeningInforsFilter(dateTime))
+            {
+                if (s.ShowDay + s.ShowTime >= DateTime.Now.AddMinutes(30))
+                {
+                    list.Add(s);
+                }
+            }
+            return list;
+        }
+
+        // get all screeing 
+        public List<ScreeningInfor> GetAllScreeningInforsFilter(DateTime dateTime)
         {
             Cinema_DAL dal = new Cinema_DAL();
             return dal.GetScreeningInforsFilter(dateTime);
@@ -223,6 +239,21 @@ namespace pbl3_Cinema.BLL
         }
 
         public List<ScreeningInfor> GetScreeningInforsFilter(DateTime dateTime, int id_auditorium)
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            List<ScreeningInfor> list = new List<ScreeningInfor>();
+            foreach (ScreeningInfor s in dal.GetScreeningInforsFilter(dateTime, id_auditorium))
+            {
+                if (s.ShowDay + s.ShowTime >= DateTime.Now.AddMinutes(30))
+                {
+                    list.Add(s);
+                }
+            }
+            return list;
+        }
+
+        // get all screeing
+        public List<ScreeningInfor> GetAllScreeningInforsFilter(DateTime dateTime, int id_auditorium)
         {
             Cinema_DAL dal = new Cinema_DAL();
             return dal.GetScreeningInforsFilter(dateTime, id_auditorium);
@@ -285,6 +316,12 @@ namespace pbl3_Cinema.BLL
         {
             Cinema_DAL dal = new Cinema_DAL();
             return dal.DeleteScreeningById(screen_id);
+        }
+
+        internal int AddCategory(category c)
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.AddCategory(c);
         }
     }
 }

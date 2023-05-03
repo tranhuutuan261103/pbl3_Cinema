@@ -165,6 +165,30 @@ namespace pbl3_Cinema.View
             Guna2Button btn = (Guna2Button)sender;
             if (btn != null)
             {
+                if (btn.Text == "Phim đang chiếu")
+                {
+                    Form_Film_NowShow form = new Form_Film_NowShow()
+                    {
+                        Account = account,
+                    };
+                    OpenChildForm(form, sender);
+                }
+
+                if (btn.Text == "Phim sắp chiếu")
+                {
+                    Form_Film_WillShow form = new Form_Film_WillShow();
+                    OpenChildForm(form, sender);
+                }
+
+                if (btn.Text == "Lịch sử đặt vé")
+                {
+                    Form_ManageBooking form = new Form_ManageBooking()
+                    {
+                        Account = account
+                    };
+                    OpenChildForm(form, sender);
+                }
+
                 if (btn.Text == "Quản lý tài khoản")
                 {
                     Form_Staff_Infor form = new Form_Staff_Infor()
