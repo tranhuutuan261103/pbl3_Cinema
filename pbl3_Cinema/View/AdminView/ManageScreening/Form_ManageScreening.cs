@@ -58,7 +58,7 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
             {
                 dataGridView_Screening.DataSource = bll.GetScreeningInforsFilter(dayFilter, cbb.id);
             }
-
+            dataGridView_Screening.Columns["id"].Visible = false;
         }
 
         private void btn_Filter_Click(object sender, EventArgs e)

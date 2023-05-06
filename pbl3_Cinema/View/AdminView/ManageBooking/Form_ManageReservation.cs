@@ -19,6 +19,7 @@ namespace pbl3_Cinema.View.AdminView.ManageFilm
         {
             InitializeComponent();
             SetCBB();
+            SetDateTime();
         }
         private void SetCBB()
         {
@@ -30,6 +31,11 @@ namespace pbl3_Cinema.View.AdminView.ManageFilm
             });
             cbb_Auditorium.Items.AddRange(bll.GetAllCBBAuditorimActive().ToArray());
             cbb_Auditorium.SelectedIndex = 0;
+        }
+
+        private void SetDateTime()
+        {
+            dateTimePicker_dayShow.Value = DateTime.Now;
         }
 
         private void ValueChanged(object sender, EventArgs e)
@@ -51,6 +57,7 @@ namespace pbl3_Cinema.View.AdminView.ManageFilm
             {
                 dataGridView.DataSource = bll.GetAllScreeningInforsFilter(dayFilter, cbb.id);
             }
+            //dataGridView.Columns["id"].Visible = false;
 
         }
 

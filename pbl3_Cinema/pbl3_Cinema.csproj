@@ -88,6 +88,7 @@
     <Compile Include="BLL\Account_BLL.cs" />
     <Compile Include="BLL\Cinema_BLL.cs" />
     <Compile Include="BLL\Product_BLL.cs" />
+    <Compile Include="BLL\Rating_BLL.cs" />
     <Compile Include="BLL\Reservation_BLL.cs" />
     <Compile Include="category.cs">
       <DependentUpon>ModelCinema.tt</DependentUpon>
@@ -98,6 +99,7 @@
     <Compile Include="DAL\Account_DAL.cs" />
     <Compile Include="DAL\Cinema_DAL.cs" />
     <Compile Include="DAL\Product_DAL.cs" />
+    <Compile Include="DAL\Rating_DAL.cs" />
     <Compile Include="DAL\Reservation_DAL.cs" />
     <Compile Include="detail_bill.cs">
       <DependentUpon>ModelCinema.tt</DependentUpon>
@@ -132,6 +134,12 @@
     </Compile>
     <Compile Include="MyFuncStatic\MyEmailFunc.cs" />
     <Compile Include="MyFuncStatic\MyConvert.cs" />
+    <Compile Include="MyUserControler\MyUserControlComment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyUserControler\MyUserControlComment.Designer.cs">
+      <DependentUpon>MyUserControlComment.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyUserControler\MyUserControlDetailInforBooking.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -143,6 +151,12 @@
     </Compile>
     <Compile Include="MyUserControler\MyUserControlHistoryInforTicket.Designer.cs">
       <DependentUpon>MyUserControlHistoryInforTicket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyUserControler\MyUserControlInforComment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyUserControler\MyUserControlInforComment.Designer.cs">
+      <DependentUpon>MyUserControlInforComment.cs</DependentUpon>
     </Compile>
     <Compile Include="MyUserControler\MyUserControlInforTicket.cs">
       <SubType>UserControl</SubType>
@@ -224,6 +238,12 @@
     </Compile>
     <Compile Include="View\AdminView\MaganeInfor\Form_Infor_Admin.Designer.cs">
       <DependentUpon>Form_Infor_Admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminView\ManageAccount\Form_ManageAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminView\ManageAccount\Form_ManageAccount.Designer.cs">
+      <DependentUpon>Form_ManageAccount.cs</DependentUpon>
     </Compile>
     <Compile Include="View\AdminView\ManageBooking\Form_InforBooking_Admin.cs">
       <SubType>Form</SubType>
@@ -437,11 +457,17 @@
     <Compile Include="View\StaffView\Form_Staff_ListSelect.Designer.cs">
       <DependentUpon>Form_Staff_ListSelect.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="MyUserControler\MyUserControlComment.resx">
+      <DependentUpon>MyUserControlComment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyUserControler\MyUserControlDetailInforBooking.resx">
       <DependentUpon>MyUserControlDetailInforBooking.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyUserControler\MyUserControlHistoryInforTicket.resx">
       <DependentUpon>MyUserControlHistoryInforTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyUserControler\MyUserControlInforComment.resx">
+      <DependentUpon>MyUserControlInforComment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyUserControler\MyUserControlInforTicket.resx">
       <DependentUpon>MyUserControlInforTicket.cs</DependentUpon>
@@ -469,6 +495,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminView\MaganeInfor\Form_Infor_Admin.resx">
       <DependentUpon>Form_Infor_Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminView\ManageAccount\Form_ManageAccount.resx">
+      <DependentUpon>Form_ManageAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminView\ManageBooking\Form_InforBooking_Admin.resx">
       <DependentUpon>Form_InforBooking_Admin.cs</DependentUpon>
@@ -659,8 +688,6 @@
     <None Include="Resources\cinema_poster_product.jpg" />
     <None Include="Resources\no-pictures.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="View\AdminView\ManageAccount\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

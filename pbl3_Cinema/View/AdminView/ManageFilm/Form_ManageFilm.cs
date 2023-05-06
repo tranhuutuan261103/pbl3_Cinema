@@ -44,6 +44,7 @@ namespace pbl3_Cinema.View.AdminView
             //dataGridView_ListFilm.Columns["title"].HeaderText = "Tên phim";
 
             dataGridView_ListFilm.DataSource = bll.GetAllMovieInfor().ToArray();
+            dataGridView_ListFilm.Columns["id"].Visible = false;
         }
 
         private void AddFilm(object o)
