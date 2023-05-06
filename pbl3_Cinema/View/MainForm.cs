@@ -20,6 +20,7 @@ using pbl3_Cinema.View.AdminView.ManageStaff;
 using pbl3_Cinema.View.StaffView;
 using pbl3_Cinema.View.CustomerView.ManageInfor;
 using pbl3_Cinema.View.CustomerView.ManageBooking;
+using pbl3_Cinema.View.AdminView.ManageAccount;
 
 namespace pbl3_Cinema.View
 {
@@ -35,6 +36,11 @@ namespace pbl3_Cinema.View
         }
 
         private void ControlBox_Exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        public void SignOut()
         {
             this.Close();
         }
@@ -156,7 +162,12 @@ namespace pbl3_Cinema.View
                 if(btn.Text == "Quản lý nhân viên")
                 {
                     OpenChildForm(new Form_Manage_Staff(), sender);
-                }    
+                }
+
+                if (btn.Text == "Quản lý khách hàng")
+                {
+                    OpenChildForm(new Form_ManageAccount(), sender);
+                }
             }
         }
 
@@ -197,6 +208,16 @@ namespace pbl3_Cinema.View
                     };
                     OpenChildForm(form, sender);
                 }
+
+                if (btn.Text == "Quản lý khách hàng")
+                {
+                    OpenChildForm(new Form_ManageAccount(), sender);
+                }
+
+                if (btn.Text == "Quản lý vé")
+                {
+                    OpenChildForm(new Form_ManageReservation(), sender);
+                }
             }
         }
 
@@ -235,6 +256,7 @@ namespace pbl3_Cinema.View
                     {
                         Account = account,
                     };
+                    form.signOut = new FormAccountCustomerManage.SignOut(SignOut);
                     OpenChildForm(form, sender);
                 }
             }

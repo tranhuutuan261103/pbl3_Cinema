@@ -38,6 +38,37 @@ namespace pbl3_Cinema.DAL
             }
         }
 
+        public int GetActive(string email)
+        {
+            using(CinemaEntities db = new CinemaEntities())
+            {
+                var a = db.accounts.Where(p => p.email.CompareTo(email) == 0).FirstOrDefault();
+                if (a == null)
+                {
+                    return -1;
+                }
+                return Convert.ToInt32(a.active);
+            }
+        }
+
+        public bool SetActive(string email, bool _active)
+        {
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                try
+                {
+                    var a = db.accounts.Where(p => p.email.CompareTo(email) == 0).FirstOrDefault();
+                    a.active = _active;
+                    db.SaveChanges();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+
         public int GetDiscountPoint(string email)
         {
             using (CinemaEntities db = new CinemaEntities())
@@ -139,6 +170,30 @@ namespace pbl3_Cinema.DAL
                     PointUser = find.discount_points,
                 };
                 return cus_infor;
+            }
+        }
+
+        public List<Customer_Infor> GetInforAllCustomer()
+        {
+            List<Customer_Infor> list = new List<Customer_Infor> ();
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                var l = db.customers.Select(p => new { p.email, p.discount_points, p.account.active, p.user_infor.full_name, p.user_infor.day_of_birth, p.user_infor.gender, p.user_infor.phone_number });
+                foreach (var item in l)
+                {
+                    Customer_Infor cus_infor = new Customer_Infor
+                    {
+                        email = item.email,
+                        nameUser = item.full_name,
+                        Gender = item.gender,
+                        DayOfBirth = item.day_of_birth.Value,
+                        PhoneNumber = item.phone_number,
+                        Active = item.active,
+                        PointUser = item.discount_points,
+                    };
+                    list.Add(cus_infor);
+                }
+                return list;
             }
         }
 

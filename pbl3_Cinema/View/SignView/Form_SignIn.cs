@@ -48,12 +48,27 @@ namespace pbl3_Cinema.View
             int role = bll.GetRole(textBox_Account.Text, textBox_Password.Text);
             if (role != -1)
             {
+                if (CheckActive(textBox_Account.Text) == false)
+                {
+                    MessageBox.Show("Tài khoản " + textBox_Account.Text + " đã bị khóa");
+                    return;
+                }
                 loadMainForm(textBox_Account.Text, role);
             }
             else
             {
                 MessageBox.Show("Sai mat khau");
             }
+        }
+
+        private bool CheckActive(string email)
+        {
+            Account_BLL bll = new Account_BLL();
+            if (bll.GetActive(email) == 1)
+            {
+                return true;
+            }
+            return false;
         }
 
         private void label_ChangePassword_Click(object sender, EventArgs e)

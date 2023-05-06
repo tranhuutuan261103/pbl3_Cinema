@@ -54,11 +54,15 @@ namespace pbl3_Cinema.View.CustomerView.ManageAccount
             form.ShowDialog();
         }
 
+        public delegate void SignOut();
+        public SignOut signOut;
         private void btn_DelAccount_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Xác nhận xóa tài khoản", "Xóa tài khoản", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                
+                Account_BLL bll = new Account_BLL();
+                bll.SetActive(Account, false);
+                signOut();
             }
         }
     }

@@ -22,6 +22,18 @@ namespace pbl3_Cinema.BLL
             return dAL.GetRole(email);
         }
 
+        public int GetActive(string email)
+        {
+            Account_DAL dal = new Account_DAL();
+            return dal.GetActive(email);
+        }
+
+        public bool SetActive(string email, bool _active)
+        {
+            Account_DAL dal = new Account_DAL();
+            return dal.SetActive(email, _active);
+        }
+
         public int GetDiscountPoint(string email)
         {
             Account_DAL dal = new Account_DAL();
@@ -50,6 +62,11 @@ namespace pbl3_Cinema.BLL
         {
             Account_DAL dal = new Account_DAL();
             return dal.GetInforCustomer(email);
+        }
+        public List<Customer_Infor> GetInforAllCustomer()
+        {
+            Account_DAL dal = new Account_DAL();
+            return dal.GetInforAllCustomer();
         }
         public int UpdateInforCustomer(string email, string userName, string gender, string phoneNum, DateTime DoB)
         {

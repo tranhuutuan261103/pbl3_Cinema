@@ -1,6 +1,6 @@
-﻿namespace pbl3_Cinema.View.AdminView.ManageFilm
+﻿namespace pbl3_Cinema.View.AdminView.ManageAccount
 {
-    partial class Form_ManageReservation
+    partial class Form_ManageAccount
     {
         /// <summary>
         /// Required designer variable.
@@ -33,21 +33,20 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.dateTimePicker_dayShow = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.cbb_Auditorium = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.btn_Detail = new Guna.UI2.WinForms.Guna2Button();
+            this.btn_DeleteAccount = new Guna.UI2.WinForms.Guna2Button();
+            this.btn_Active = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1000, 70);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Danh sách suất chiếu";
+            this.label1.Text = "Quản lý khách hàng";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dataGridView
@@ -77,13 +76,13 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dataGridView.Location = new System.Drawing.Point(50, 150);
+            this.dataGridView.Location = new System.Drawing.Point(100, 80);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(900, 400);
+            this.dataGridView.Size = new System.Drawing.Size(800, 419);
             this.dataGridView.TabIndex = 1;
             this.dataGridView.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dataGridView.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -107,65 +106,51 @@
             this.dataGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // dateTimePicker_dayShow
+            // btn_DeleteAccount
             // 
-            this.dateTimePicker_dayShow.Checked = true;
-            this.dateTimePicker_dayShow.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dateTimePicker_dayShow.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker_dayShow.Location = new System.Drawing.Point(100, 90);
-            this.dateTimePicker_dayShow.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dateTimePicker_dayShow.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker_dayShow.Name = "dateTimePicker_dayShow";
-            this.dateTimePicker_dayShow.Size = new System.Drawing.Size(200, 36);
-            this.dateTimePicker_dayShow.TabIndex = 2;
-            this.dateTimePicker_dayShow.Value = new System.DateTime(2023, 5, 6, 0, 0, 0, 0);
-            this.dateTimePicker_dayShow.ValueChanged += new System.EventHandler(this.ValueChanged);
+            this.btn_DeleteAccount.BorderRadius = 10;
+            this.btn_DeleteAccount.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_DeleteAccount.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_DeleteAccount.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_DeleteAccount.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_DeleteAccount.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_DeleteAccount.ForeColor = System.Drawing.Color.White;
+            this.btn_DeleteAccount.Location = new System.Drawing.Point(523, 524);
+            this.btn_DeleteAccount.Name = "btn_DeleteAccount";
+            this.btn_DeleteAccount.Size = new System.Drawing.Size(180, 45);
+            this.btn_DeleteAccount.TabIndex = 2;
+            this.btn_DeleteAccount.Text = "Xóa tài khoản";
+            this.btn_DeleteAccount.Click += new System.EventHandler(this.btn_DeleteAccount_Click);
             // 
-            // cbb_Auditorium
+            // btn_Active
             // 
-            this.cbb_Auditorium.BackColor = System.Drawing.Color.Transparent;
-            this.cbb_Auditorium.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbb_Auditorium.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbb_Auditorium.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbb_Auditorium.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbb_Auditorium.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cbb_Auditorium.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cbb_Auditorium.ItemHeight = 30;
-            this.cbb_Auditorium.Location = new System.Drawing.Point(359, 90);
-            this.cbb_Auditorium.Name = "cbb_Auditorium";
-            this.cbb_Auditorium.Size = new System.Drawing.Size(162, 36);
-            this.cbb_Auditorium.TabIndex = 4;
-            this.cbb_Auditorium.SelectedIndexChanged += new System.EventHandler(this.ValueChanged);
+            this.btn_Active.BorderRadius = 10;
+            this.btn_Active.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Active.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Active.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_Active.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_Active.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_Active.ForeColor = System.Drawing.Color.White;
+            this.btn_Active.Location = new System.Drawing.Point(267, 524);
+            this.btn_Active.Name = "btn_Active";
+            this.btn_Active.Size = new System.Drawing.Size(180, 45);
+            this.btn_Active.TabIndex = 3;
+            this.btn_Active.Text = "Kích hoạt tài khoản";
+            this.btn_Active.Click += new System.EventHandler(this.btn_Active_Click);
             // 
-            // btn_Detail
-            // 
-            this.btn_Detail.BorderRadius = 10;
-            this.btn_Detail.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_Detail.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_Detail.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_Detail.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_Detail.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_Detail.ForeColor = System.Drawing.Color.White;
-            this.btn_Detail.Location = new System.Drawing.Point(772, 91);
-            this.btn_Detail.Name = "btn_Detail";
-            this.btn_Detail.Size = new System.Drawing.Size(178, 35);
-            this.btn_Detail.TabIndex = 5;
-            this.btn_Detail.Text = "Xem chi tiết";
-            this.btn_Detail.Click += new System.EventHandler(this.btn_Detail_Click);
-            // 
-            // Form_ManageReservation
+            // Form_ManageAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 600);
-            this.Controls.Add(this.btn_Detail);
-            this.Controls.Add(this.cbb_Auditorium);
-            this.Controls.Add(this.dateTimePicker_dayShow);
+            this.Controls.Add(this.btn_Active);
+            this.Controls.Add(this.btn_DeleteAccount);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form_ManageReservation";
-            this.Text = "Form_ManageAuditorium";
+            this.Name = "Form_ManageAccount";
+            this.Text = "Form_ManageAccount";
+            this.Load += new System.EventHandler(this.Form_ManageAccount_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 
@@ -175,8 +160,7 @@
 
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridView;
-        private Guna.UI2.WinForms.Guna2DateTimePicker dateTimePicker_dayShow;
-        private Guna.UI2.WinForms.Guna2ComboBox cbb_Auditorium;
-        private Guna.UI2.WinForms.Guna2Button btn_Detail;
+        private Guna.UI2.WinForms.Guna2Button btn_DeleteAccount;
+        private Guna.UI2.WinForms.Guna2Button btn_Active;
     }
 }

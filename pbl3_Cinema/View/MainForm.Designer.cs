@@ -89,7 +89,7 @@
             this.panel_SubListSelect.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_SubListSelect.Location = new System.Drawing.Point(0, 139);
             this.panel_SubListSelect.Name = "panel_SubListSelect";
-            this.panel_SubListSelect.Size = new System.Drawing.Size(165, 463);
+            this.panel_SubListSelect.Size = new System.Drawing.Size(165, 560);
             this.panel_SubListSelect.TabIndex = 1;
             // 
             // guna2PictureBox1
