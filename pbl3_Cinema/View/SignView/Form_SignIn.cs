@@ -75,6 +75,7 @@ namespace pbl3_Cinema.View
             return false;
         }
 
+
         private void label_ChangePassword_Click(object sender, EventArgs e)
         {
             Form_ForgotPassword form = new Form_ForgotPassword();
