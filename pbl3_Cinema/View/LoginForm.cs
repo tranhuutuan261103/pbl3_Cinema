@@ -69,6 +69,13 @@ namespace pbl3_Cinema
             string account = (string)o;
             mainForm.account = account;
             mainForm.ShowDialog();
+            if (activeForm != null)
+            {
+                if (activeForm.GetType() == typeof(Form_SignIn))
+                {
+                    ((Form_SignIn)activeForm).ResetTextboxPassword();
+                }
+            }
             this.Show();
         }
     }

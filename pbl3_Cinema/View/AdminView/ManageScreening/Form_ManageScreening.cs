@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using pbl3_Cinema.DTO;
 using pbl3_Cinema.View.AdminView.ManageScreening;
+using Guna.UI2.WinForms;
 
 namespace pbl3_Cinema.View.AdminView.ManageScreen
 {
@@ -61,17 +62,64 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
             dataGridView_Screening.Columns["id"].Visible = false;
         }
 
-        private void btn_Filter_Click(object sender, EventArgs e)
-        {
-            //ShowAllScreeningFollowFilter();
-        }
-
         private void btn_Add_Click(object sender, EventArgs e)
         {
             Form_AddScreening form = new Form_AddScreening();
+            form.SetTitle(((Guna2Button)sender).Text);
+            form._CRUDScreening += new Form_AddScreening.CRUDScreening(AddScreening);
             form.ShowDialog();
             Cinema_BLL bll = new Cinema_BLL();
             dataGridView_Screening.DataSource = bll.GetAllScreeningInfor();
+        }
+
+        private void AddScreening(screening s)
+        {
+            Cinema_BLL bll = new Cinema_BLL();
+            if (bll.AddScreening(s) == 1)
+            {
+                MessageBox.Show("Thêm suất chiếu thành công");
+            }
+            else
+            {
+                MessageBox.Show("Thêm suất chiếu thất bại");
+            }
+        }
+
+        private void btn_Edit_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Screening.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn suất chiếu");
+                return;
+            }
+
+            int id_screening = Convert.ToInt32(dataGridView_Screening.SelectedRows[0].Cells["id"].Value);
+            Cinema_BLL bll = new Cinema_BLL();
+            if (bll.CanUpdateScreening(id_screening) == false)
+            {
+                return;
+            }
+            Form_AddScreening form = new Form_AddScreening()
+            {
+                id_screening = id_screening,
+            };
+            form.SetTitle(((Guna2Button)sender).Text);
+            form._CRUDScreening += new Form_AddScreening.CRUDScreening(UpdateScreening);
+            form.ShowDialog();
+            ShowAllScreeningFollowFilter();
+        }
+
+        private void UpdateScreening(screening s)
+        {
+            Cinema_BLL bll = new Cinema_BLL();
+            if (bll.UpdateScreening(s) == 1)
+            {
+                MessageBox.Show("Cập nhật suất chiếu thành công");
+            }
+            else
+            {
+                MessageBox.Show("Cập nhật suất chiếu thất bại");
+            }
         }
 
         private void ValueChanged(object sender, EventArgs e)

@@ -227,7 +227,9 @@ namespace pbl3_Cinema.View.ReservationView
             {
                 AcceptReservation();
 
+                SendInforToEmail();
                 MessageBox.Show("Đã đặt thành công");
+                
                 Visible = false;
                 cf();
                 Dispose();
@@ -254,7 +256,16 @@ namespace pbl3_Cinema.View.ReservationView
             }
         }
 
-        public enum Role
+        private void SendInforToEmail()
+        {
+            Account_BLL bll =new Account_BLL();
+            if (bll.GetRole(Account) == (int)Role.Customer)
+            {
+                MyFuncStatic.MyEmailFunc.SendInforBookingToEmail(Account, id_reservation);
+            }
+        }
+
+        private enum Role
         {
             Customer = 0,
             Staff = 1

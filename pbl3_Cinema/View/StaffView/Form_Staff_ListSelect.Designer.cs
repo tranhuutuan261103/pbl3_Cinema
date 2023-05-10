@@ -114,6 +114,7 @@
             this.guna2Button1.Size = new System.Drawing.Size(165, 57);
             this.guna2Button1.TabIndex = 4;
             this.guna2Button1.Text = "Quản lý khách hàng";
+            this.guna2Button1.Click += new System.EventHandler(this.btn_Click);
             // 
             // guna2Button2
             // 

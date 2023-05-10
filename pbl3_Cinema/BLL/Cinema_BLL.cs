@@ -3,6 +3,7 @@ using pbl3_Cinema.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.Data.Entity.Migrations.Infrastructure;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -192,6 +193,12 @@ namespace pbl3_Cinema.BLL
             return dal.AddScreening(screen);
         }
 
+        public int UpdateScreening(screening s)
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.UpdateScreening(s);
+        }
+
         public int GetScreeningCurCount(int id)
         {
             Cinema_DAL dal = new Cinema_DAL();
@@ -289,6 +296,23 @@ namespace pbl3_Cinema.BLL
             if (dal.GetDateTimeScreeningInfor(screen_id) <= DateTime.Now.AddMinutes(30))
             {
                 MessageBox.Show("Không thể xóa");
+                return false;
+            }
+            int n = dal.GetSeatReserved(screen_id);
+            if (n > 0)
+            {
+                MessageBox.Show("Đã có " + n + " ghế đã đặt!");
+                return false;
+            }
+            return true;
+        }
+
+        public bool CanUpdateScreening(int screen_id)
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            if (dal.GetDateTimeScreeningInfor(screen_id) <= DateTime.Now.AddMinutes(30))
+            {
+                MessageBox.Show("Không thể cập nhật");
                 return false;
             }
             int n = dal.GetSeatReserved(screen_id);

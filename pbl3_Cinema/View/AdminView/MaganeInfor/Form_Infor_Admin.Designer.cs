@@ -40,7 +40,6 @@
             this.lblSoDienThoai = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnXoaTaiKhoan = new Guna.UI2.WinForms.Guna2Button();
             this.btnUpdate = new Guna.UI2.WinForms.Guna2Button();
             this.btnDoiMatKhau = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
@@ -158,29 +157,12 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnXoaTaiKhoan);
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.btnDoiMatKhau);
-            this.panel1.Location = new System.Drawing.Point(151, 411);
+            this.panel1.Location = new System.Drawing.Point(229, 426);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(548, 74);
+            this.panel1.Size = new System.Drawing.Size(362, 60);
             this.panel1.TabIndex = 1;
-            // 
-            // btnXoaTaiKhoan
-            // 
-            this.btnXoaTaiKhoan.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnXoaTaiKhoan.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnXoaTaiKhoan.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnXoaTaiKhoan.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnXoaTaiKhoan.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnXoaTaiKhoan.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnXoaTaiKhoan.ForeColor = System.Drawing.Color.White;
-            this.btnXoaTaiKhoan.Location = new System.Drawing.Point(360, 0);
-            this.btnXoaTaiKhoan.Name = "btnXoaTaiKhoan";
-            this.btnXoaTaiKhoan.Size = new System.Drawing.Size(188, 74);
-            this.btnXoaTaiKhoan.TabIndex = 0;
-            this.btnXoaTaiKhoan.Text = "Xóa tài khoản";
-            this.btnXoaTaiKhoan.Click += new System.EventHandler(this.btnXoaTaiKhoan_Click);
             // 
             // btnUpdate
             // 
@@ -193,7 +175,7 @@
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
             this.btnUpdate.Location = new System.Drawing.Point(180, 0);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(180, 74);
+            this.btnUpdate.Size = new System.Drawing.Size(180, 60);
             this.btnUpdate.TabIndex = 0;
             this.btnUpdate.Text = "Chỉnh sửa thông tin";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -209,7 +191,7 @@
             this.btnDoiMatKhau.ForeColor = System.Drawing.Color.White;
             this.btnDoiMatKhau.Location = new System.Drawing.Point(0, 0);
             this.btnDoiMatKhau.Name = "btnDoiMatKhau";
-            this.btnDoiMatKhau.Size = new System.Drawing.Size(180, 74);
+            this.btnDoiMatKhau.Size = new System.Drawing.Size(180, 60);
             this.btnDoiMatKhau.TabIndex = 0;
             this.btnDoiMatKhau.Text = "Đổi mật khẩu";
             this.btnDoiMatKhau.Click += new System.EventHandler(this.btnDoiMatKhau_Click);
@@ -255,7 +237,6 @@
         public System.Windows.Forms.Label lblSoDienThoai;
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Panel panel1;
-        public Guna.UI2.WinForms.Guna2Button btnXoaTaiKhoan;
         public Guna.UI2.WinForms.Guna2Button btnUpdate;
         public Guna.UI2.WinForms.Guna2Button btnDoiMatKhau;
     }

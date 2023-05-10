@@ -25,7 +25,7 @@ namespace pbl3_Cinema.MyUserControler
             Account_BLL bll = new Account_BLL();
             Customer_Infor c = bll.GetInforCustomer(r.customer_id);
             label_NameUser.Text = c.nameUser;
-            guna2RatingStar.Value = r.point / 2;
+            guna2RatingStar.Value = (float)r.point / 2;
             richTextBox.Text = r.comment;
         }
     }

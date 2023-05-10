@@ -14,6 +14,9 @@ namespace pbl3_Cinema.View.AdminView.ManageScreening
 {
     public partial class Form_AddScreening : Form
     {
+        public int id_screening { set; get; }
+        public delegate void CRUDScreening(screening s);
+        public CRUDScreening _CRUDScreening { set; get; }
         public Form_AddScreening()
         {
             InitializeComponent();
@@ -42,9 +45,77 @@ namespace pbl3_Cinema.View.AdminView.ManageScreening
             cbb_Movie.Items.AddRange(bll.GetCBBMoviesNow().ToArray());
 
             textBox_Price.Text = "50000";
+
+            
         }
 
+        private void Form_AddScreening_Load(object sender, EventArgs e)
+        {
+            SetInforScreening();
+        }
 
+        public void SetTitle(string title)
+        {
+            label_title.Text = title;
+        }
+        public void SetInforScreening()
+        {
+            Cinema_BLL bll = new Cinema_BLL();
+            screening s = bll.GetScreeningById(id_screening);
+
+            if (s != null)
+            {
+                // day
+                try
+                {
+                    dateTimePicker_ShowDay.Value = s.show_day;
+                }
+                catch
+                {
+                    dateTimePicker_ShowDay.Value = dateTimePicker_ShowDay.MinDate;
+                }
+
+                textBox_Price.Text = s.price.ToString();
+                foreach (CBBMovie item in cbb_Movie.Items)
+                {
+                    if (item.id_movie == s.movie_id)
+                    {
+                        cbb_Movie.SelectedItem = item;
+                        break;
+                    }
+                }
+                foreach (CBBAuditorium item in cbb_Auditorium.Items)
+                {
+                    if (item.id == s.auditorium_id)
+                    {
+                        cbb_Auditorium.SelectedItem = item;
+                        break;
+                    }
+                }
+
+                
+
+                // hour 
+                foreach (string item in cbb_Hour.Items)
+                {
+                    if (Convert.ToInt32(item) == s.show_time.Hours)
+                    {
+                        cbb_Hour.SelectedItem = item;
+                        break;
+                    }
+                }
+                
+                // minute
+                foreach (string item in cbb_Minute.Items)
+                {
+                    if (Convert.ToInt32(item) == s.show_time.Minutes)
+                    {
+                        cbb_Minute.SelectedItem = item;
+                        break;
+                    }
+                }
+            }
+        }
         private void btn_Exit_Click(object sender, EventArgs e)
         {
             Dispose();
@@ -102,6 +173,7 @@ namespace pbl3_Cinema.View.AdminView.ManageScreening
 
             screening screen = new screening
             {
+                id = id_screening,
                 auditorium_id = audi_id,
                 movie_id = movie_id,
                 price = price,
@@ -110,8 +182,6 @@ namespace pbl3_Cinema.View.AdminView.ManageScreening
             };
 
             Cinema_BLL bll = new Cinema_BLL();
-
-            //bll.AddScreening(screen);
 
             DateTime dStar = showDay + showTime;
             DateTime dEnd = showDay + showTime + new TimeSpan(0, bll.GetDurationOfMovie(movie_id), 0);
@@ -122,6 +192,13 @@ namespace pbl3_Cinema.View.AdminView.ManageScreening
                 return;
             }
 
+            MyMovieInfor m = bll.GetMovieById(movie_id);
+            if (m.Release_date > dStar)
+            {
+                MessageBox.Show("Phim chưa công chiếu\nNgày công chiếu là: " + m.Release_date);
+                return;
+            }
+
             if (bll.CanAddScreening(dStar, dEnd, audi_id) == false)
             {
                 MessageBox.Show("Bị trùng suất chiếu");
@@ -129,15 +206,7 @@ namespace pbl3_Cinema.View.AdminView.ManageScreening
             }
             else
             {
-                if (bll.AddScreening(screen) == 1)
-                {
-                    MessageBox.Show("Thêm suất chiếu thành công");
-                }
-                else
-                {
-                    MessageBox.Show("Thêm suất chiếu thất bại");
-                    return;
-                }
+                _CRUDScreening(screen);
             }
 
             Dispose();
@@ -163,5 +232,7 @@ namespace pbl3_Cinema.View.AdminView.ManageScreening
                 label_TimeEnd.Text = daytimeend.ToString("MM-dd-yyyy HH:mm:ss"); ;
             }
         }
+
+        
     }
 }

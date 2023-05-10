@@ -22,6 +22,10 @@ namespace pbl3_Cinema.View
         {
             InitializeComponent();
         }
+        public void ResetTextboxPassword()
+        {
+            textBox_Password.Text = "";
+        }
 
         private void btn_SignUp_Click(object sender, EventArgs e)
         {
@@ -70,6 +74,7 @@ namespace pbl3_Cinema.View
             }
             return false;
         }
+
 
         private void label_ChangePassword_Click(object sender, EventArgs e)
         {

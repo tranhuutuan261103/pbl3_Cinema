@@ -252,12 +252,26 @@ namespace pbl3_Cinema.DAL
         {
             using (CinemaEntities db = new CinemaEntities())
             {
-                var l = db.screenings.Add(screen);
+                var s = db.screenings.Add(screen);
                 db.SaveChanges();
             }
             return 1;
         }
 
+        public int UpdateScreening(screening screen)
+        {
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                var s = db.screenings.Find(screen.id);
+                s.auditorium_id = screen.auditorium_id;
+                s.movie_id = screen.movie_id;
+                s.price = screen.price;
+                s.show_day = screen.show_day;
+                s.show_time = screen.show_time;
+                db.SaveChanges();
+            }
+            return 1;
+        }
         public int GetScreeningCurCount(int id)
         {
             using (CinemaEntities db = new CinemaEntities())

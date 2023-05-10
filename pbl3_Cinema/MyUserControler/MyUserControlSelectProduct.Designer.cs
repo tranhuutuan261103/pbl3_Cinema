@@ -109,6 +109,7 @@
             this.Controls.Add(this.panel2);
             this.Name = "MyUserControlSelectProduct";
             this.Size = new System.Drawing.Size(640, 125);
+            this.Load += new System.EventHandler(this.MyUserControlSelectProduct_Load);
             this.Controls.SetChildIndex(this.lblName, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.label3, 0);
