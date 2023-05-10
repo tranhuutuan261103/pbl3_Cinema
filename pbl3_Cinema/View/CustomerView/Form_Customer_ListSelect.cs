@@ -23,5 +23,10 @@ namespace pbl3_Cinema.View.CustomerView
         {
             mySelect(sender, e);
         }
+
+        private void Form_Customer_ListSelect_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

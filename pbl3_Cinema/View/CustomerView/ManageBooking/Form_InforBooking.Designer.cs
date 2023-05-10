@@ -81,11 +81,11 @@
             this.btn_Exit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_Exit.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_Exit.ForeColor = System.Drawing.Color.White;
-            this.btn_Exit.Location = new System.Drawing.Point(15, 548);
+            this.btn_Exit.Location = new System.Drawing.Point(119, 507);
             this.btn_Exit.Name = "btn_Exit";
             this.btn_Exit.Size = new System.Drawing.Size(130, 40);
             this.btn_Exit.TabIndex = 6;
-            this.btn_Exit.Text = "Hủy";
+            this.btn_Exit.Text = "Xác nhận";
             this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
             // 
             // guna2DragControl1

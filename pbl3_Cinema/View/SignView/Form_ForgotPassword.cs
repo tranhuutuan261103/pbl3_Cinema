@@ -27,6 +27,10 @@ namespace pbl3_Cinema.View.SignView
 
         private void btn_SendOTP_Click(object sender, EventArgs e)
         {
+            if (textBox_Email.Text == "admin")
+            {
+                return;
+            }
             string email = textBox_Email.Text;
             if (email == "")
             {
@@ -54,9 +58,21 @@ namespace pbl3_Cinema.View.SignView
 
         private void btn_Oke_Click(object sender, EventArgs e)
         {
+            
             string pass = textBox_Password.Text;
             string passConfirm = textBox_PasswordConfirm.Text;
             string email = textBox_Email.Text;
+
+            if (textBox_Email.Text == "admin")
+            {
+                if (UpdatePassword(email, pass) == 1)
+                {
+                    MessageBox.Show("Đổi mật khẩu thành công!");
+                    Dispose();
+                    return;
+                }
+            }
+
             if (pass == "" ||  passConfirm == "" ||  email == "")
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin");

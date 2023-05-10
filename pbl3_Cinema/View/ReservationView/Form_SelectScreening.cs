@@ -137,6 +137,7 @@ namespace pbl3_Cinema.View.ReservationView
             form.id_screening = id_screening;
             form.Account = Account;
             form.ShowDialog();
+            ShowListScreeningByFilter();
         }
 
         private void cbb_SelectMovie_SelectedIndexChanged(object sender, EventArgs e)

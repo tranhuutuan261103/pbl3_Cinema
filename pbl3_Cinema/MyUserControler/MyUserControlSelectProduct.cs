@@ -48,5 +48,10 @@ namespace pbl3_Cinema.MyUserControler
             sl--;
             label_SelectedNumber.Text = sl.ToString();
         }
+
+        private void MyUserControlSelectProduct_Load(object sender, EventArgs e)
+        {
+            label_Number.Text = SoLuong;
+        }
     }
 }

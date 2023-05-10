@@ -110,6 +110,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form_Customer_ListSelect";
             this.Text = "Form_Customer_ListSelect";
+            this.Load += new System.EventHandler(this.Form_Customer_ListSelect_Load);
             this.ResumeLayout(false);
 
         }

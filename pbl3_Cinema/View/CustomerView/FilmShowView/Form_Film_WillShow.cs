@@ -75,6 +75,7 @@ namespace pbl3_Cinema.View.CustomerView.FilmNowShowView
             form.Account = Account;
             form.id_movie = u.id;
             form.SetInforMovie(u.id);
+            form.SetVisitabe(false);
             this.Controls.Add(form);
             form.Show();
         }

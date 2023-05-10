@@ -75,6 +75,7 @@ namespace pbl3_Cinema.View.CustomerView.DetailInforFilm
 
         private void LoadDetailComment()
         {
+            flowLayoutPanel1.Controls.Clear();
             Rating_BLL bll = new Rating_BLL();
             List<rating> list = bll.GetAllRatingsByIdMovie(id_movie);
             foreach(rating item in list)
@@ -98,7 +99,8 @@ namespace pbl3_Cinema.View.CustomerView.DetailInforFilm
             }
             else
             {
-                MessageBox.Show("Thành công");
+                LoadRating();
+                LoadDetailComment();
             }
         }
 
@@ -113,6 +115,13 @@ namespace pbl3_Cinema.View.CustomerView.DetailInforFilm
         private void Form_DetailInforFilm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        public void SetVisitabe(bool v)
+        {
+            btn_Reservation.Visible = v;
+            label_content.Visible = v;
+            panel_Comment.Visible = v;
         }
     }
 }
