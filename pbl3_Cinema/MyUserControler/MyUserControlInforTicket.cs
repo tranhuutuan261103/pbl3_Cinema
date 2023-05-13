@@ -25,14 +25,16 @@ namespace pbl3_Cinema.MyUserControler
             if (id_screening != 0)
             {
                 Cinema_BLL bll = new Cinema_BLL();
-                ScreeningInfor screen = bll.GetScreeningInforById(id_screening);
+                Screening_BLL screening_BLL = new Screening_BLL();
+                ScreeningInfor screen = screening_BLL.GetScreeningInforById(id_screening);
                 if (screen != null)
                 {
                     label_Auditorium.Text = screen.nameAuditorium;
                     label_Title.Text = screen.nameMovie;
                     label_ShowDateTime.Text = screen.ShowTime + " " + screen.ShowDay.ToString("dd-MM-yyyy");
                 }
-                screening screen2 = bll.GetScreeningById(id_screening);
+                
+                screening screen2 = screening_BLL.GetScreeningById(id_screening);
                 if (screen2 != null)
                 {
                     pictureBox_Poster.Image = bll.GetPosterById(screen2.movie_id);

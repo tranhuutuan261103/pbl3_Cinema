@@ -19,14 +19,19 @@ namespace pbl3_Cinema.View.CustomerView
             InitializeComponent();
         }
 
+        private void Form_Customer_ListSelect_Load(object sender, EventArgs e)
+        {
+            LoadClickInit();
+        }
+
+        private void LoadClickInit()
+        {
+            mySelect(btn_1, EventArgs.Empty);
+        }
+
         public void btn_Click(object sender, EventArgs e)
         {
             mySelect(sender, e);
-        }
-
-        private void Form_Customer_ListSelect_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

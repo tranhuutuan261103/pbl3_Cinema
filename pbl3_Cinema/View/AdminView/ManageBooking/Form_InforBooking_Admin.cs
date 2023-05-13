@@ -52,16 +52,18 @@ namespace pbl3_Cinema.View.AdminView.ManageBooking
         }
         private void LoadInforReservationSeat()
         {
+            Screening_BLL screening_BLL = new Screening_BLL();
             Reservation_BLL bll = new Reservation_BLL();
             List<seat_reserved> list = bll.GetReservedSeatByIdReservation(id_reservation);
             Cinema_BLL bllCinema = new Cinema_BLL();
 
             string lSeat = list.Count + "x ";
-            foreach (seat seat in bllCinema.GetAllReservedSeatLocation(list))
+            Seat_BLL seat_BLL = new Seat_BLL();
+            foreach (seat seat in seat_BLL.GetAllReservedSeatLocation(list))
             {
                 lSeat += (char)(seat.row_location + 64) + (seat.column_location).ToString() + " ";
             }
-            ScreeningInfor screenInfor = bllCinema.GetScreeningInforById(id_screening);
+            ScreeningInfor screenInfor = screening_BLL.GetScreeningInforById(id_screening);
             MyUserControlDetailInforBooking ucdib = new MyUserControlDetailInforBooking()
             {
                 nameProduct = lSeat,

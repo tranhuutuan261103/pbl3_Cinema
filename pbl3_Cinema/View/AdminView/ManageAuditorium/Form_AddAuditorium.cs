@@ -47,7 +47,7 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
                 active = true
             };
 
-            Cinema_BLL bll = new Cinema_BLL();
+            Auditorium_BLL bll = new Auditorium_BLL();
             if (bll.AddAuditorium(a) == 1)
             {
                 MessageBox.Show("Thêm thành công");

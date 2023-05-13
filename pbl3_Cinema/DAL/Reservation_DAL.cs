@@ -21,8 +21,13 @@ namespace pbl3_Cinema.DAL
 
                 foreach(seat_reserved seat in seats)
                 {
-                    seat.reservation_id = _reservation.id;
-                    db.seat_reserved.Add(seat);
+                    seat_reserved s = new seat_reserved()
+                    {
+                        reservation_id = _reservation.id,
+                        screening_id = seat.screening_id,
+                        seat_id = seat.seat_id,
+                    };
+                    db.seat_reserved.Add(s);
                     db.SaveChanges();
                 }
 

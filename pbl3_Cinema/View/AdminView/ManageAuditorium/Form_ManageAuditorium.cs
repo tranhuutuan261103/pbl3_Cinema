@@ -22,7 +22,7 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
 
         public void GetAllAuditorium_Infor()
         {
-            Cinema_BLL bll = new Cinema_BLL();
+            Auditorium_BLL bll = new Auditorium_BLL();
             dataGridView_Auditorium.DataSource = bll.GetAllAuditorium_Infor();
             dataGridView_Auditorium.Columns["id"].Visible = false;
         }
@@ -43,7 +43,9 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
             }
             int auditorium_id = Convert.ToInt32(dataGridView_Auditorium.SelectedRows[0].Cells["id"].Value);
             Cinema_BLL bll = new Cinema_BLL();
-            int count = bll.GetScreeningCurCount(auditorium_id);
+            Screening_BLL screening_BLL = new Screening_BLL();
+            Auditorium_BLL auditorium_BLL = new Auditorium_BLL();
+            int count = screening_BLL.GetScreeningCurCount(auditorium_id);
             if (count > 0)
             {
                 MessageBox.Show("Không thể xóa vì có suất chiếu đang chiếu");
@@ -55,7 +57,7 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
                 {
                     return;
                 }
-                if (bll.DeleteAuditorium(auditorium_id) == true)
+                if (auditorium_BLL.DeleteAuditorium(auditorium_id) == true)
                 {
                     MessageBox.Show("Xóa thành công");
                 }

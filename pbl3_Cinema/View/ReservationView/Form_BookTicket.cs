@@ -54,12 +54,14 @@ namespace pbl3_Cinema.View.ReservationView
             tempSum = 0;
             // danh sách ghế
             Cinema_BLL bll = new Cinema_BLL();
+            Screening_BLL screening_BLL = new Screening_BLL();
+            Seat_BLL seat_BLL = new Seat_BLL();
             string lSeat = listSeat.Count + "x ";
-            foreach(seat seat in bll.GetAllReservedSeatLocation(listSeat))
+            foreach(seat seat in seat_BLL.GetAllReservedSeatLocation(listSeat))
             {
                 lSeat += (char)(seat.row_location + 64) + (seat.column_location).ToString() + " ";
             }
-            ScreeningInfor screenInfor = bll.GetScreeningInforById(id_screening);
+            ScreeningInfor screenInfor = screening_BLL.GetScreeningInforById(id_screening);
             MyUserControlDetailInforBooking ucdib = new MyUserControlDetailInforBooking()
             {
                 nameProduct = lSeat,

@@ -33,9 +33,15 @@ namespace pbl3_Cinema.View.AdminView.ManageBooking
 
         private void Form_ManageReservationDetail_Load(object sender, EventArgs e)
         {
-            LoadAllReservation();
+            Form_ManageSeatMap form = new Form_ManageSeatMap();
+            form.id_screening = id_screening;
+            form.Dock = DockStyle.Fill;
+            form.TopLevel = false;
+            panel1.Controls.Add(form);
+            form.Show();
+            //LoadAllReservation();
         }
-
+        /*
         private void LoadAllReservation()
         {
             Reservation_BLL bll = new Reservation_BLL();
@@ -68,6 +74,6 @@ namespace pbl3_Cinema.View.AdminView.ManageBooking
                 id_reservation = h.id
             };
             form.ShowDialog();
-        }
+        }*/
     }
 }

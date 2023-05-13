@@ -14,121 +14,39 @@ namespace pbl3_Cinema.BLL
 {
     internal class Cinema_BLL
     {
+        internal int AddCategory(category c)
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.AddCategory(c);
+        }
         public List<CBB_Category> GetAllCBBCategory()
         {
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                List<CBB_Category> listCBB = new List<CBB_Category>();
-                var list = db.categories.Select(p => new { p.id, p.name_category });
-                foreach (var category in list)
-                {
-                    listCBB.Add(new CBB_Category() { id = category.id, name_Category = category.name_category });
-                }
-                return listCBB;
-            }
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.GetAllCBBCategory();
         }
 
         public List<MyMovieInfor> GetAllMovieInfor()
         {
-            CinemaEntities entities = new CinemaEntities();
-            List<MyMovieInfor> listMovie = new List<MyMovieInfor>();
-            var list = entities.movies.Select(p => new { p.id, p.title,p.description_movie,p.director, p.list_cast, p.duration_min, p.release_date, p.expiration_date, p.category });
-            foreach (var movie in list)
-            {
-                listMovie.Add(new MyMovieInfor
-                {
-                    Id = movie.id,
-                    Title = movie.title,
-                    Description = movie.description_movie,
-                    ListCast = movie.list_cast,
-                    Director = movie.director,
-                    Duration_min = movie.duration_min,
-                    Release_date = movie.release_date,
-                    Expiration_date = movie.expiration_date,
-                    Category = new CBB_Category(movie.category.id, movie.category.name_category)
-                });
-            }
-            return listMovie;
-        }
-
-        public List<movie> GetAllMovie()
-        {
-            CinemaEntities db = new CinemaEntities();
-            List<movie> listMovie = new List<movie>();
-            var list = db.movies.Select(p => p);
-            foreach (var movie in list)
-            {
-                listMovie.Add(movie);
-            }
-            return listMovie;
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.GetAllMovieInfor();
         }
 
         public void AddFilm(movie Movie)
         {
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                db.movies.Add(Movie);
-                db.SaveChanges();
-            }
+            Cinema_DAL dal = new Cinema_DAL();
+            dal.AddFilm(Movie);
         }
 
         public void UpdateFilm(movie Movie)
         {
-            using(CinemaEntities db = new CinemaEntities())
-            {
-                var s = db.movies.Where(p => p.id == Movie.id).FirstOrDefault();
-
-                s.title = Movie.title;
-                s.description_movie = Movie.description_movie;
-                s.director = Movie.director;
-                s.list_cast = Movie.list_cast;
-                s.duration_min = Movie.duration_min;
-                s.category_id = Movie.category_id;
-                s.release_date = Movie.release_date;
-                s.expiration_date = Movie.expiration_date;
-                if (Movie.poster != null)
-                {
-                    s.poster = Movie.poster;
-                }
-                
-                if (Movie.video_trailer != null)
-                {
-                    s.video_trailer = Movie.video_trailer;
-                }
-
-                db.SaveChanges();
-            }
+            Cinema_DAL dal = new Cinema_DAL();
+            dal.UpdateFilm(Movie);
         }
-
-        //public void AddVideoTrailer(video_trailer vt)
-        //{
-        //    using(CinemaEntities db = new CinemaEntities())
-        //    {
-        //        db.video_trailer.AddOrUpdate(vt);
-        //        db.SaveChanges();
-        //    }
-        //}
 
         public MyMovieInfor GetMovieById(int id)
         {
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                var movie = db.movies.Where(p=>p.id == id).Select(p => new { p.id, p.title, p.description_movie, p.director, p.list_cast, p.duration_min, p.release_date, p.expiration_date, p.category }).FirstOrDefault();
-                {
-                    return new MyMovieInfor
-                    {
-                        Id = movie.id,
-                        Title = movie.title,
-                        Description = movie.description_movie,
-                        ListCast = movie.list_cast,
-                        Director = movie.director,
-                        Duration_min = movie.duration_min,
-                        Release_date = movie.release_date,
-                        Expiration_date = movie.expiration_date,
-                        Category = new CBB_Category(movie.category.id, movie.category.name_category)
-                    };
-                }
-            }
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.GetMovieById(id);
         }
 
         public List<MyMovieInfor> GetAllMovieInforValidDay(int id_Category)
@@ -169,183 +87,5 @@ namespace pbl3_Cinema.BLL
             return MyFuncStatic.MyConvert.ConvertBinaryToImage(dal.GetPosterById(id));
         }
 
-        public List<Auditorium_Infor> GetAllAuditorium_Infor()
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            return dal.GetAllAuditorium_Infor();
-        }
-
-        public int AddAuditorium(auditorium a)
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            return dal.AddAuditorium(a);
-        }
-
-        public bool CanAddScreening(DateTime start, DateTime end, int id_auditorium)
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            return dal.CanAddScreening(start, end, id_auditorium);
-        }
-
-        public int AddScreening(screening screen)
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            return dal.AddScreening(screen);
-        }
-
-        public int UpdateScreening(screening s)
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            return dal.UpdateScreening(s);
-        }
-
-        public int GetScreeningCurCount(int id)
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            return dal.GetScreeningCurCount(id);
-        }
-
-        public bool DeleteAuditorium(int id)
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            return dal.DeleteAuditorium(id);
-        }
-
-        public List<CBBAuditorium> GetAllCBBAuditorimActive()
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            return dal.GetAllCBBAuditorimActive();
-        }
-
-        // get screening after 30 minutes
-        public List<ScreeningInfor> GetScreeningInforsFilter(DateTime dateTime)
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            List<ScreeningInfor> list = new List<ScreeningInfor> ();
-            foreach (ScreeningInfor s in dal.GetScreeningInforsFilter(dateTime))
-            {
-                if (s.ShowDay + s.ShowTime >= DateTime.Now.AddMinutes(30))
-                {
-                    list.Add(s);
-                }
-            }
-            return list;
-        }
-
-        // get all screeing 
-        public List<ScreeningInfor> GetAllScreeningInforsFilter(DateTime dateTime)
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            return dal.GetScreeningInforsFilter(dateTime);
-        }
-
-        public auditorium GetAuditoriumByIdScreening(int id_screening)
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            return dal.GetAuditoriumByIdScreening(id_screening);
-        }
-
-        public List<ScreeningInfor> GetScreeningInforsFilter(DateTime dateTime, int id_auditorium)
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            List<ScreeningInfor> list = new List<ScreeningInfor>();
-            foreach (ScreeningInfor s in dal.GetScreeningInforsFilter(dateTime, id_auditorium))
-            {
-                if (s.ShowDay + s.ShowTime >= DateTime.Now.AddMinutes(30))
-                {
-                    list.Add(s);
-                }
-            }
-            return list;
-        }
-
-        // get all screeing
-        public List<ScreeningInfor> GetAllScreeningInforsFilter(DateTime dateTime, int id_auditorium)
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            return dal.GetScreeningInforsFilter(dateTime, id_auditorium);
-        }
-
-        public List<ScreeningInfor> GetScreeningInforsFilterIdMovie(DateTime dateTime, int id_movie)
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            return dal.GetScreeningInforsFilterIdMovie(dateTime, id_movie);
-        }
-
-        public List<ScreeningInfor> GetAllScreeningInfor()
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            return dal.GetAllScreeningInfor();
-        }
-
-        public ScreeningInfor GetScreeningInforById(int id_screening)
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            return dal.GetScreeningInforById(id_screening);
-        }
-
-        public screening GetScreeningById(int id_screening)
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            return dal.GetScreeningById(id_screening);
-        }
-
-        public bool CanDeleteScreening(int screen_id)
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            if (dal.GetDateTimeScreeningInfor(screen_id) <= DateTime.Now.AddMinutes(30))
-            {
-                MessageBox.Show("Không thể xóa");
-                return false;
-            }
-            int n = dal.GetSeatReserved(screen_id);
-            if (n > 0)
-            {
-                MessageBox.Show("Đã có " + n + " ghế đã đặt!");
-                return false;
-            }
-            return true;
-        }
-
-        public bool CanUpdateScreening(int screen_id)
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            if (dal.GetDateTimeScreeningInfor(screen_id) <= DateTime.Now.AddMinutes(30))
-            {
-                MessageBox.Show("Không thể cập nhật");
-                return false;
-            }
-            int n = dal.GetSeatReserved(screen_id);
-            if (n > 0)
-            {
-                MessageBox.Show("Đã có " + n + " ghế đã đặt!");
-                return false;
-            }
-            return true;
-        }
-
-        public List<seat_reserved> GetAllSeat_ReservedsById(int id_screening)
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            return dal.GetAllSeat_ReservedsById(id_screening);
-        }
-
-        public List<seat> GetAllReservedSeatLocation(List<seat_reserved> seat_Reserveds)
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            return dal.GetAllReservedSeatLocation(seat_Reserveds);
-        }
-
-        public int DeleteScreeningById(int screen_id)
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            return dal.DeleteScreeningById(screen_id);
-        }
-
-        internal int AddCategory(category c)
-        {
-            Cinema_DAL dal = new Cinema_DAL();
-            return dal.AddCategory(c);
-        }
     }
 }
