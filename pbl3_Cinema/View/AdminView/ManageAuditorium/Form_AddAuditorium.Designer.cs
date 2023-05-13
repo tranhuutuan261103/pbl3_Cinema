@@ -38,6 +38,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox_Seat_No_Row = new Guna.UI2.WinForms.Guna2TextBox();
             this.textBox_Seat_No_Col = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.SuspendLayout();
             // 
@@ -170,10 +171,19 @@
             this.textBox_Seat_No_Col.Size = new System.Drawing.Size(229, 48);
             this.textBox_Seat_No_Col.TabIndex = 8;
             // 
+            // guna2BorderlessForm1
+            // 
+            this.guna2BorderlessForm1.BorderRadius = 10;
+            this.guna2BorderlessForm1.ContainerControl = this;
+            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.DragStartTransparencyValue = 1D;
+            this.guna2BorderlessForm1.ResizeForm = false;
+            this.guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
             // guna2DragControl1
             // 
             this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl1.TargetControl = this;
+            this.guna2DragControl1.DragStartTransparencyValue = 1D;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
             // Form_AddAuditorium
@@ -210,6 +220,7 @@
         private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2TextBox textBox_Seat_No_Row;
         private Guna.UI2.WinForms.Guna2TextBox textBox_Seat_No_Col;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }

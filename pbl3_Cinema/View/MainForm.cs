@@ -90,7 +90,7 @@ namespace pbl3_Cinema.View
                 {
                     DisableButton();
                     currentButton = (Guna2Button)senderBtn;
-                    currentButton.FillColor = Color.FromArgb(0, 0, 255);
+                    currentButton.FillColor = Color.FromArgb(200, 185, 255);
                     currentButton.ForeColor = Color.Black;
                 }
             }

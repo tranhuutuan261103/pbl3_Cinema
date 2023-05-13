@@ -37,6 +37,7 @@
             this.flowLayoutPanel_DisplayScreening = new System.Windows.Forms.FlowLayoutPanel();
             this.cbb_SelectMovie = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2Panel_Body.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +65,7 @@
             // guna2DragControl1
             // 
             this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.DragStartTransparencyValue = 1D;
             this.guna2DragControl1.TargetControl = this;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
@@ -120,6 +122,15 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Chọn suất chiếu";
             // 
+            // guna2BorderlessForm1
+            // 
+            this.guna2BorderlessForm1.BorderRadius = 10;
+            this.guna2BorderlessForm1.ContainerControl = this;
+            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.DragStartTransparencyValue = 1D;
+            this.guna2BorderlessForm1.ResizeForm = false;
+            this.guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
             // Form_SelectScreening
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -148,5 +159,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel_DisplayScreening;
         private Guna.UI2.WinForms.Guna2ComboBox cbb_SelectMovie;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel_SelectDayShow;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }

@@ -47,6 +47,7 @@
             this.cbb_Hour = new System.Windows.Forms.ComboBox();
             this.cbb_Minute = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.SuspendLayout();
             // 
             // label_title
@@ -230,6 +231,7 @@
             // guna2DragControl1
             // 
             this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.DragStartTransparencyValue = 1D;
             this.guna2DragControl1.TargetControl = this;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
@@ -262,6 +264,15 @@
             this.label8.Size = new System.Drawing.Size(14, 20);
             this.label8.TabIndex = 13;
             this.label8.Text = ":";
+            // 
+            // guna2BorderlessForm1
+            // 
+            this.guna2BorderlessForm1.BorderRadius = 10;
+            this.guna2BorderlessForm1.ContainerControl = this;
+            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.DragStartTransparencyValue = 1D;
+            this.guna2BorderlessForm1.ResizeForm = false;
+            this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // Form_AddScreening
             // 
@@ -315,5 +326,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbb_Minute;
         private System.Windows.Forms.ComboBox cbb_Hour;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }

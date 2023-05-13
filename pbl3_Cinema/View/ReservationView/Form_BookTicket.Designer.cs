@@ -41,6 +41,7 @@
             this.checkBox_Point = new System.Windows.Forms.CheckBox();
             this.label_Point = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.panel_Button.SuspendLayout();
             this.groupBox_Discount.SuspendLayout();
             this.SuspendLayout();
@@ -94,7 +95,6 @@
             this.btn_Booking.Size = new System.Drawing.Size(130, 40);
             this.btn_Booking.TabIndex = 0;
             this.btn_Booking.Text = "Thanh toán";
-            
             // 
             // panel_InforTicket
             // 
@@ -123,6 +123,7 @@
             // guna2DragControl1
             // 
             this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.DragStartTransparencyValue = 1D;
             this.guna2DragControl1.TargetControl = this;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
@@ -168,6 +169,15 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Điểm tích lũy của bạn là:";
             // 
+            // guna2BorderlessForm1
+            // 
+            this.guna2BorderlessForm1.BorderRadius = 10;
+            this.guna2BorderlessForm1.ContainerControl = this;
+            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.DragStartTransparencyValue = 1D;
+            this.guna2BorderlessForm1.ResizeForm = false;
+            this.guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
             // Form_BookTicket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -204,5 +214,6 @@
         private System.Windows.Forms.Label label_Point;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBox_Point;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }

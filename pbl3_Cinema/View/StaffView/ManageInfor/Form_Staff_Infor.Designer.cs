@@ -215,6 +215,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightYellow;
             this.ClientSize = new System.Drawing.Size(893, 580);
             this.Controls.Add(this.btnDoiMatKhau);
             this.Controls.Add(this.lblSoDienThoai);

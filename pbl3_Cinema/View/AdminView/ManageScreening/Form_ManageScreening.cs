@@ -60,6 +60,7 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
                 dataGridView_Screening.DataSource = bll.GetScreeningInforsFilter(dayFilter, cbb.id);
             }
             dataGridView_Screening.Columns["id"].Visible = false;
+            dataGridView_Screening.Columns["nameMovie"].Width = 250;
         }
 
         private void btn_Add_Click(object sender, EventArgs e)

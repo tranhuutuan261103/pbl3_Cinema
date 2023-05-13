@@ -70,7 +70,7 @@ namespace pbl3_Cinema.BLL
 
         public List<ScreeningInfor> GetAllScreeningInforsFilter(DateTime dateTime)
         {
-            Screening_BLL dal = new Screening_BLL();
+            Screening_DAL dal = new Screening_DAL();
             return dal.GetScreeningInforsFilter(dateTime);
         }
 
@@ -83,7 +83,14 @@ namespace pbl3_Cinema.BLL
         public ScreeningInfor GetScreeningInforById(int id_screening)
         {
             Screening_DAL dal = new Screening_DAL();
-            return dal.GetScreeningInforById(id_screening);
+            foreach(ScreeningInfor s in dal.GetAllScreeningInfor())
+            {
+                if (s.id == id_screening)
+                {
+                    return s;
+                }
+            }
+            return null;
         }
 
         public screening GetScreeningById(int id_screening)

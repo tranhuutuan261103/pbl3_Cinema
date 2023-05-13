@@ -120,7 +120,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(364, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(289, 39);
+            this.label1.Size = new System.Drawing.Size(277, 38);
             this.label1.TabIndex = 2;
             this.label1.Text = "Thông tin cá nhân";
             // 
@@ -128,6 +128,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightYellow;
             this.ClientSize = new System.Drawing.Size(1000, 600);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
