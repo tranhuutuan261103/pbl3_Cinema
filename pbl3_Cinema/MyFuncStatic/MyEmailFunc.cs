@@ -87,12 +87,17 @@ namespace pbl3_Cinema.MyFuncStatic
         {
             string bodyText = "";
             Cinema_BLL bll = new Cinema_BLL();
-            auditorium a = bll.GetAuditoriumByIdScreening((int)r.screening_id);
-            screening s = bll.GetScreeningById((int)r.screening_id);
+            Screening_BLL screening_BLL = new Screening_BLL();
+            Auditorium_BLL auditorium_BLL = new Auditorium_BLL();
+            auditorium a = auditorium_BLL.GetAuditoriumByIdScreening((int)r.screening_id);
+            screening s = screening_BLL.GetScreeningById((int)r.screening_id);
             MyMovieInfor m = bll.GetMovieById(s.movie_id);
+
             Reservation_BLL res_bll = new Reservation_BLL();
             List<seat_reserved> seat_Reserveds = res_bll.GetReservedSeatByIdReservation(r.id);
-            List<seat> l = bll.GetAllReservedSeatLocation(seat_Reserveds);
+
+            Seat_BLL seat_BLL = new Seat_BLL();
+            List<seat> l = seat_BLL.GetAllReservedSeatLocation(seat_Reserveds);
             // Tao thong tin
             bodyText += "Chúc mừng! Bạn đã đặt vé thành công! \n";
             bodyText += m.Title.ToUpper();

@@ -41,7 +41,8 @@ namespace pbl3_Cinema.View.AdminView.ManageScreening
             cbb_Minute.SelectedIndex = 0;
 
             Cinema_BLL bll = new Cinema_BLL();
-            cbb_Auditorium.Items.AddRange(bll.GetAllCBBAuditorimActive().ToArray());
+            Auditorium_BLL auditorium_BLL = new Auditorium_BLL();
+            cbb_Auditorium.Items.AddRange(auditorium_BLL.GetAllCBBAuditorimActive().ToArray());
             cbb_Movie.Items.AddRange(bll.GetCBBMoviesNow().ToArray());
 
             textBox_Price.Text = "50000";
@@ -60,7 +61,7 @@ namespace pbl3_Cinema.View.AdminView.ManageScreening
         }
         public void SetInforScreening()
         {
-            Cinema_BLL bll = new Cinema_BLL();
+            Screening_BLL bll = new Screening_BLL();
             screening s = bll.GetScreeningById(id_screening);
 
             if (s != null)
@@ -199,7 +200,9 @@ namespace pbl3_Cinema.View.AdminView.ManageScreening
                 return;
             }
 
-            if (bll.CanAddScreening(dStar, dEnd, audi_id) == false)
+            Screening_BLL screening_BLL = new Screening_BLL();
+
+            if (screening_BLL.CanAddScreening(dStar, dEnd, audi_id) == false)
             {
                 MessageBox.Show("Bị trùng suất chiếu");
                 return;

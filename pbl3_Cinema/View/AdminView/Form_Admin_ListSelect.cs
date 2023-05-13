@@ -19,10 +19,20 @@ namespace pbl3_Cinema.View.AdminView
         {
             InitializeComponent();
         }
+        private void Form_Admin_ListSelect_Load(object sender, EventArgs e)
+        {
+            LoadClickInit();
+        }
+        private void LoadClickInit()
+        {
+            mySelect(btn_1, EventArgs.Empty);
+        }
 
         private void btn_Click(object sender, EventArgs e)
         {
             mySelect(sender, e);
         }
+
+        
     }
 }

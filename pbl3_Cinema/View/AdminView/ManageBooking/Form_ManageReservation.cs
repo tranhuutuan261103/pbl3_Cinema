@@ -23,7 +23,7 @@ namespace pbl3_Cinema.View.AdminView.ManageFilm
         }
         private void SetCBB()
         {
-            Cinema_BLL bll = new Cinema_BLL();
+            Auditorium_BLL bll = new Auditorium_BLL();
             cbb_Auditorium.Items.Add(new CBBAuditorium
             {
                 id = 0,
@@ -48,7 +48,7 @@ namespace pbl3_Cinema.View.AdminView.ManageFilm
             DateTime dayFilter = dateTimePicker_dayShow.Value;
             CBBAuditorium cbb = cbb_Auditorium.SelectedItem as CBBAuditorium;
 
-            Cinema_BLL bll = new Cinema_BLL();
+            Screening_BLL bll = new Screening_BLL();
             if (cbb.id == 0)
             {
                 dataGridView.DataSource = bll.GetAllScreeningInforsFilter(dayFilter);

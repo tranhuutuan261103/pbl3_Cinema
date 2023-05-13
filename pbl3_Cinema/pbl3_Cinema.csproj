@@ -86,10 +86,13 @@
       <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
     <Compile Include="BLL\Account_BLL.cs" />
+    <Compile Include="BLL\Auditorium_BLL.cs" />
     <Compile Include="BLL\Cinema_BLL.cs" />
     <Compile Include="BLL\Product_BLL.cs" />
     <Compile Include="BLL\Rating_BLL.cs" />
     <Compile Include="BLL\Reservation_BLL.cs" />
+    <Compile Include="BLL\Screening_BLL.cs" />
+    <Compile Include="BLL\Seat_BLL.cs" />
     <Compile Include="category.cs">
       <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
@@ -97,10 +100,13 @@
       <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\Account_DAL.cs" />
+    <Compile Include="DAL\Auditorium_DAL.cs" />
     <Compile Include="DAL\Cinema_DAL.cs" />
     <Compile Include="DAL\Product_DAL.cs" />
     <Compile Include="DAL\Rating_DAL.cs" />
     <Compile Include="DAL\Reservation_DAL.cs" />
+    <Compile Include="DAL\Screening_DAL.cs" />
+    <Compile Include="DAL\Seat_DAL.cs" />
     <Compile Include="detail_bill.cs">
       <DependentUpon>ModelCinema.tt</DependentUpon>
     </Compile>
@@ -256,6 +262,12 @@
     </Compile>
     <Compile Include="View\AdminView\ManageBooking\Form_ManageReservationDetail.Designer.cs">
       <DependentUpon>Form_ManageReservationDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminView\ManageBooking\Form_ManageSeatMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminView\ManageBooking\Form_ManageSeatMap.Designer.cs">
+      <DependentUpon>Form_ManageSeatMap.cs</DependentUpon>
     </Compile>
     <Compile Include="View\AdminView\ManageFilm\CRUD_Film.cs">
       <SubType>Form</SubType>
@@ -504,6 +516,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminView\ManageBooking\Form_ManageReservationDetail.resx">
       <DependentUpon>Form_ManageReservationDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminView\ManageBooking\Form_ManageSeatMap.resx">
+      <DependentUpon>Form_ManageSeatMap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminView\ManageFilm\CRUD_Film.resx">
       <DependentUpon>CRUD_Film.cs</DependentUpon>

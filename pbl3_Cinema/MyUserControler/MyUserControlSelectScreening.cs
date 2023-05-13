@@ -26,7 +26,8 @@ namespace pbl3_Cinema.MyUserControler
         {
             label_Title.Text = nameMovie;
             Cinema_BLL bll = new Cinema_BLL();
-            List<ScreeningInfor> list = bll.GetScreeningInforsFilterIdMovie(dayShow, id_movie);
+            Screening_BLL screening_BLL = new Screening_BLL();
+            List<ScreeningInfor> list = screening_BLL.GetScreeningInforsFilterIdMovie(dayShow, id_movie);
             if (list.Count == 0)
             {
                 label_NullScreening.Visible = true;

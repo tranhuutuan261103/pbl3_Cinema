@@ -34,9 +34,12 @@ namespace pbl3_Cinema.View.ReservationView
         private void myInit()
         {
             Cinema_BLL bll = new Cinema_BLL();
-            auditorium audi = bll.GetAuditoriumByIdScreening(id_screening);
-            List<seat_reserved> listSeat_Reserved = bll.GetAllSeat_ReservedsById(id_screening);
-            List<seat> listReservedSeatLocation = bll.GetAllReservedSeatLocation(listSeat_Reserved);
+            Auditorium_BLL auditorium_BLL = new Auditorium_BLL();
+            Seat_BLL seat_BLL = new Seat_BLL();
+
+            auditorium audi = auditorium_BLL.GetAuditoriumByIdScreening(id_screening);
+            List<seat_reserved> listSeat_Reserved = seat_BLL.GetAllSeat_ReservedsById(id_screening);
+            List<seat> listReservedSeatLocation = seat_BLL.GetAllReservedSeatLocation(listSeat_Reserved);
 
             int x = audi.seat_no_row, y = audi.seat_no_column;
             int pading_top = 100;
@@ -48,11 +51,6 @@ namespace pbl3_Cinema.View.ReservationView
             DrawSeatMap(x, y, pading_left, pading_right, pading_top, pading_bottom);
             SetIdToButtons(audi);
             AddReservedSeat(listReservedSeatLocation);
-        }
-
-        private void DrawSeat(object  sender, PaintEventArgs e)
-        {
-
         }
 
         private void DrawScreeningMap(object sender, PaintEventArgs e)

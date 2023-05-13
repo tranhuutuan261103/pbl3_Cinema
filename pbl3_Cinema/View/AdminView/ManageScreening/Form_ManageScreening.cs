@@ -23,13 +23,13 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
             SetCBB();
             SetShowDayPicker();
 
-            Cinema_BLL bll = new Cinema_BLL();
+            Screening_BLL bll = new Screening_BLL();
             dataGridView_Screening.DataSource = bll.GetAllScreeningInfor();
         }
 
         private void SetCBB()
         {
-            Cinema_BLL bll = new Cinema_BLL();
+            Auditorium_BLL bll = new Auditorium_BLL();
             cbb_Auditorium.Items.Add(new CBBAuditorium
             {
                 id = 0,
@@ -50,7 +50,7 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
             DateTime dayFilter = dateTimePicker.Value;
             CBBAuditorium cbb = cbb_Auditorium.SelectedItem as CBBAuditorium;
 
-            Cinema_BLL bll = new Cinema_BLL();
+            Screening_BLL bll = new Screening_BLL();
             if (cbb.id == 0)
             {
                 dataGridView_Screening.DataSource = bll.GetScreeningInforsFilter(dayFilter);
@@ -68,13 +68,13 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
             form.SetTitle(((Guna2Button)sender).Text);
             form._CRUDScreening += new Form_AddScreening.CRUDScreening(AddScreening);
             form.ShowDialog();
-            Cinema_BLL bll = new Cinema_BLL();
+            Screening_BLL bll = new Screening_BLL();
             dataGridView_Screening.DataSource = bll.GetAllScreeningInfor();
         }
 
         private void AddScreening(screening s)
         {
-            Cinema_BLL bll = new Cinema_BLL();
+            Screening_BLL bll = new Screening_BLL();
             if (bll.AddScreening(s) == 1)
             {
                 MessageBox.Show("Thêm suất chiếu thành công");
@@ -94,7 +94,7 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
             }
 
             int id_screening = Convert.ToInt32(dataGridView_Screening.SelectedRows[0].Cells["id"].Value);
-            Cinema_BLL bll = new Cinema_BLL();
+            Screening_BLL bll = new Screening_BLL();
             if (bll.CanUpdateScreening(id_screening) == false)
             {
                 return;
@@ -111,7 +111,7 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
 
         private void UpdateScreening(screening s)
         {
-            Cinema_BLL bll = new Cinema_BLL();
+            Screening_BLL bll = new Screening_BLL();
             if (bll.UpdateScreening(s) == 1)
             {
                 MessageBox.Show("Cập nhật suất chiếu thành công");
@@ -129,7 +129,7 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
 
         private void btn_AllScreening_Click(object sender, EventArgs e)
         {
-            Cinema_BLL bll = new Cinema_BLL();
+            Screening_BLL bll = new Screening_BLL();
             dataGridView_Screening.DataSource = bll.GetAllScreeningInfor();
         }
 
@@ -143,7 +143,7 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
 
             int screen_id = Convert.ToInt32(dataGridView_Screening.SelectedRows[0].Cells["id"].Value);
 
-            Cinema_BLL bll = new Cinema_BLL();
+            Screening_BLL bll = new Screening_BLL();
             if (bll.CanDeleteScreening(screen_id) == true)
             {
                 if (bll.DeleteScreeningById(screen_id) == 1) 

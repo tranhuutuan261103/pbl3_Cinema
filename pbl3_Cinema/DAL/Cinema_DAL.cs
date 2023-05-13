@@ -13,6 +13,111 @@ namespace pbl3_Cinema.DAL
 {
     internal class Cinema_DAL
     {
+        internal int AddCategory(category c)
+        {
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                db.categories.Add(c);
+                db.SaveChanges();
+                return 1;
+            }
+        }
+        public List<CBB_Category> GetAllCBBCategory()
+        {
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                List<CBB_Category> listCBB = new List<CBB_Category>();
+                var list = db.categories.Select(p => new { p.id, p.name_category });
+                foreach (var category in list)
+                {
+                    listCBB.Add(new CBB_Category() { id = category.id, name_Category = category.name_category });
+                }
+                return listCBB;
+            }
+        }
+
+        public List<MyMovieInfor> GetAllMovieInfor()
+        {
+            CinemaEntities entities = new CinemaEntities();
+            List<MyMovieInfor> listMovie = new List<MyMovieInfor>();
+            var list = entities.movies.Select(p => new { p.id, p.title, p.description_movie, p.director, p.list_cast, p.duration_min, p.release_date, p.expiration_date, p.category });
+            foreach (var movie in list)
+            {
+                listMovie.Add(new MyMovieInfor
+                {
+                    Id = movie.id,
+                    Title = movie.title,
+                    Description = movie.description_movie,
+                    ListCast = movie.list_cast,
+                    Director = movie.director,
+                    Duration_min = movie.duration_min,
+                    Release_date = movie.release_date,
+                    Expiration_date = movie.expiration_date,
+                    Category = new CBB_Category(movie.category.id, movie.category.name_category)
+                });
+            }
+            return listMovie;
+        }
+
+        public void AddFilm(movie Movie)
+        {
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                db.movies.Add(Movie);
+                db.SaveChanges();
+            }
+        }
+
+        public void UpdateFilm(movie Movie)
+        {
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                var s = db.movies.Where(p => p.id == Movie.id).FirstOrDefault();
+
+                s.title = Movie.title;
+                s.description_movie = Movie.description_movie;
+                s.director = Movie.director;
+                s.list_cast = Movie.list_cast;
+                s.duration_min = Movie.duration_min;
+                s.category_id = Movie.category_id;
+                s.release_date = Movie.release_date;
+                s.expiration_date = Movie.expiration_date;
+                if (Movie.poster != null)
+                {
+                    s.poster = Movie.poster;
+                }
+
+                if (Movie.video_trailer != null)
+                {
+                    s.video_trailer = Movie.video_trailer;
+                }
+
+                db.SaveChanges();
+            }
+        }
+
+        public MyMovieInfor GetMovieById(int id)
+        {
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                var movie = db.movies.Where(p => p.id == id).Select(p => new { p.id, p.title, p.description_movie, p.director, p.list_cast, p.duration_min, p.release_date, p.expiration_date, p.category }).FirstOrDefault();
+                {
+                    return new MyMovieInfor
+                    {
+                        Id = movie.id,
+                        Title = movie.title,
+                        Description = movie.description_movie,
+                        ListCast = movie.list_cast,
+                        Director = movie.director,
+                        Duration_min = movie.duration_min,
+                        Release_date = movie.release_date,
+                        Expiration_date = movie.expiration_date,
+                        Category = new CBB_Category(movie.category.id, movie.category.name_category)
+                    };
+                }
+            }
+        }
+
         public List<MyMovieInfor> GetAllMovieInforValidDay()
         {
             List<MyMovieInfor> list = new List<MyMovieInfor>();
@@ -157,490 +262,5 @@ namespace pbl3_Cinema.DAL
             }
         }
 
-        public List<Auditorium_Infor> GetAllAuditorium_Infor()
-        {
-            List<Auditorium_Infor> list = new List<Auditorium_Infor>();
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                var l = db.auditoriums.
-                    Where(p => p.active == true).
-                    GroupJoin(db.screenings.Where(p=>p.show_day>=DateTime.Now).GroupBy(infor => infor.auditorium_id).Select(p=> new { audi_id = p.Key, count = p.Count()}), 
-                    k1 => k1.id,
-                    k2 => k2.audi_id,
-                    (k1,k2)=> new {k1,k2})
-                    .SelectMany(x=>x.k2.DefaultIfEmpty(),
-                    (k1,k2) => new {k1.k1.id, k1.k1.name_auditorium, k1.k1.seat_no_row, k1.k1.seat_no_column, count = k2==null?0:k2.count});
-
-                foreach (var auditorium in l)
-                {
-                    list.Add(new Auditorium_Infor
-                    {
-                        id = auditorium.id,
-                        name_auditorium = auditorium.name_auditorium,
-                        seat_no_row = auditorium.seat_no_row,
-                        seat_no_column = auditorium.seat_no_column,
-                        screening_curent_count = auditorium.count,
-                    });
-                }
-            }
-            return list;
-        }
-
-        public int AddSeat(int id_auditorium, int seat_row, int seat_column)
-        {
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                for (int i = 1;i <= seat_row; i++)
-                {
-                    for (int j = 1;j <= seat_column; j++)
-                    {
-                        seat s = new seat
-                        {
-                            auditorium_id = id_auditorium,
-                            row_location = i,
-                            column_location = j,
-                        };
-                        db.seats.Add(s);
-                        db.SaveChanges();
-                    }
-                }
-            }
-            return 1;
-        }
-
-        public int AddAuditorium(auditorium a)
-        {
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                try
-                {
-                    var l = db.auditoriums.Add(a);
-                    db.SaveChanges();
-                    AddSeat(a.id, a.seat_no_row, a.seat_no_column);
-                    return 1;
-                }
-                catch (Exception)
-                {
-                    return 0;
-                }
-            }
-        }
-
-        public bool CanAddScreening(DateTime start, DateTime end, int id_auditorium)
-        {
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                var listScreeningNow = db.screenings.Where( p=> p.auditorium_id == id_auditorium).Select(p => new { p.id, p.show_day, p.show_time, p.movie_id }).
-                    Join(db.movies,
-                    s => s.movie_id,
-                    m => m.id,
-                    (s, m) => new { s.id, s.show_day, s.show_time, s.movie_id, m.duration_min });
-                foreach ( var item in listScreeningNow)
-                {
-                    DateTime s = item.show_day + item.show_time;
-                    DateTime e = s + new TimeSpan(0,item.duration_min,0);
-                    if ( !(start>e || end<s) == true )
-                    {
-                        return false;
-                    }
-                }
-            }
-            return true;
-        }
-
-        public int AddScreening(screening screen)
-        {
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                var s = db.screenings.Add(screen);
-                db.SaveChanges();
-            }
-            return 1;
-        }
-
-        public int UpdateScreening(screening screen)
-        {
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                var s = db.screenings.Find(screen.id);
-                s.auditorium_id = screen.auditorium_id;
-                s.movie_id = screen.movie_id;
-                s.price = screen.price;
-                s.show_day = screen.show_day;
-                s.show_time = screen.show_time;
-                db.SaveChanges();
-            }
-            return 1;
-        }
-        public int GetScreeningCurCount(int id)
-        {
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                var count = db.screenings.Where(p=>p.show_day>=DateTime.Now && p.auditorium_id==id).Count();
-                return count;
-            }
-        }
-
-        public bool DeleteAuditorium(int id)
-        {
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                try
-                {
-                    var result = db.auditoriums.Where(p => p.id == id).FirstOrDefault();
-                    result.active = false;
-                    db.SaveChanges();
-                    return true;
-                }
-                catch
-                {
-                    return false;
-                }
-            }
-        }
-
-        public List<CBBAuditorium> GetAllCBBAuditorimActive()
-        {
-            List<CBBAuditorium> listCBB = new List<CBBAuditorium> ();
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                var list = db.auditoriums.Where(p=>p.active==true).Select(p=>new {p.id,p.name_auditorium});
-                foreach (var item in list)
-                {
-                    listCBB.Add(new CBBAuditorium
-                    {
-                        id = item.id,
-                        nameAuditorium = item.name_auditorium,
-                    });
-                }
-            }
-            return listCBB;
-        }
-
-        public List<ScreeningInfor> GetScreeningInforsFilter(DateTime dateTime)
-        {
-            List<ScreeningInfor> listScreening = new List<ScreeningInfor>();
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                var list = db.screenings.
-                    Where(p => p.show_day.Year == dateTime.Year && p.show_day.Month == dateTime.Month && p.show_day.Day == dateTime.Day).
-                    Join(db.movies,
-                    m => m.movie_id,
-                    n => n.id,
-                    (m, n) => new { m, n.title }).
-                    Join(db.auditoriums,
-                    m => m.m.auditorium_id,
-                    n => n.id,
-                    (m, n) => new { m, n.name_auditorium, n.seat_no_row, n.seat_no_column }).
-                    GroupJoin(db.seat_reserved.GroupBy(p => p.screening_id).Select(p => new { screen_id = p.Key, count = p.Count() }),
-                    m => m.m.m.id,
-                    n => n.screen_id,
-                    (m, n) => new { m, n })
-                    .SelectMany(
-                    x => x.n.DefaultIfEmpty(),
-                    (m, n) => new { m.m.m.m.id, m.m.m.title, m.m.name_auditorium, m.m.m.m.show_day, m.m.m.m.show_time, sumseat = m.m.seat_no_row * m.m.seat_no_column, m.m.m.m.price, count = n==null?0:n.count }
-                    );
-                foreach (var l in list)
-                {
-                    listScreening.Add(new ScreeningInfor
-                        {
-                            id = l.id,
-                            nameAuditorium = l.name_auditorium,
-                            nameMovie = l.title,
-                            ShowDay = l.show_day,
-                            ShowTime = l.show_time,
-                            SumSeat = l.sumseat,
-                            SumSeatReserved = l.count,
-                            price = l.price,
-                    });
-                }
-            }
-            return listScreening;
-        }
-
-        public ScreeningInfor GetScreeningInforByIdScreening(int id_screening)
-        {
-            List<ScreeningInfor> listScreening = new List<ScreeningInfor>();
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                var l = db.screenings.
-                    Where(p => p.id == id_screening).
-                    Join(db.movies,
-                    m => m.movie_id,
-                    n => n.id,
-                    (m, n) => new { m, n.title }).
-                    Join(db.auditoriums,
-                    m => m.m.auditorium_id,
-                    n => n.id,
-                    (m, n) => new { m, n.name_auditorium, n.seat_no_row, n.seat_no_column }).
-                    GroupJoin(db.seat_reserved.GroupBy(p => p.screening_id).Select(p => new { screen_id = p.Key, count = p.Count() }),
-                    m => m.m.m.id,
-                    n => n.screen_id,
-                    (m, n) => new { m, n })
-                    .SelectMany(
-                    x => x.n.DefaultIfEmpty(),
-                    (m, n) => new { m.m.m.m.id, m.m.m.title, m.m.name_auditorium, m.m.m.m.show_day, m.m.m.m.show_time, sumseat = m.m.seat_no_row * m.m.seat_no_column, m.m.m.m.price, count = n == null ? 0 : n.count }
-                    ).FirstOrDefault();
-                    return new ScreeningInfor
-                    {
-                        id = l.id,
-                        nameAuditorium = l.name_auditorium,
-                        nameMovie = l.title,
-                        ShowDay = l.show_day,
-                        ShowTime = l.show_time,
-                        SumSeat = l.sumseat,
-                        SumSeatReserved = l.count,
-                        price = l.price,
-                    };
-            }
-        }
-
-        public List<ScreeningInfor> GetScreeningInforsFilter(DateTime dateTime, int id_auditorium)
-        {
-            List<ScreeningInfor> listScreening = new List<ScreeningInfor>();
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                var list = db.screenings.
-                    Where(p => p.show_day.Year == dateTime.Year && p.show_day.Month == dateTime.Month && p.show_day.Day == dateTime.Day).
-                    Join(db.movies,
-                    m => m.movie_id,
-                    n => n.id,
-                    (m, n) => new { m, n.title }).
-                    Join(db.auditoriums,
-                    m => m.m.auditorium_id,
-                    n => n.id,
-                    (m, n) => new { m, id_audi = n.id, n.name_auditorium, n.seat_no_row, n.seat_no_column }).
-                    Where(p => p.id_audi == id_auditorium).
-                    GroupJoin(db.seat_reserved.GroupBy(p => p.screening_id).Select(p => new { screen_id = p.Key, count = p.Count() }),
-                    m => m.m.m.id,
-                    n => n.screen_id,
-                    (m, n) => new { m, n })
-                    .SelectMany(
-                    x => x.n.DefaultIfEmpty(),
-                    (m, n) => new { m.m.m.m.id, m.m.m.title, m.m.name_auditorium, m.m.m.m.show_day, m.m.m.m.show_time, sumseat = m.m.seat_no_row * m.m.seat_no_column, m.m.m.m.price, count = n == null ? 0 : n.count }
-                    );
-                foreach (var l in list)
-                {
-                    listScreening.Add(new ScreeningInfor
-                        {
-                            id = l.id,
-                            nameAuditorium = l.name_auditorium,
-                            nameMovie = l.title,
-                            ShowDay = l.show_day,
-                            ShowTime = l.show_time,
-                            SumSeat = l.sumseat,
-                            SumSeatReserved = l.count,
-                            price = l.price,
-                        });
-                }
-            }
-            return listScreening;
-        }
-
-        public List<ScreeningInfor> GetScreeningInforsFilterIdMovie(DateTime dateTime, int id_movie)
-        {
-            List<ScreeningInfor> listScreening = new List<ScreeningInfor>();
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                var list = db.screenings.
-                    Where(p => p.show_day.Year == dateTime.Year && p.show_day.Month == dateTime.Month && p.show_day.Day == dateTime.Day && p.movie_id == id_movie).
-                    Join(db.movies,
-                    m => m.movie_id,
-                    n => n.id,
-                    (m, n) => new { m, n.title }).
-                    Join(db.auditoriums,
-                    m => m.m.auditorium_id,
-                    n => n.id,
-                    (m, n) => new { m, id_audi = n.id, n.name_auditorium, n.seat_no_row, n.seat_no_column }).
-                    GroupJoin(db.seat_reserved.GroupBy(p => p.screening_id).Select(p => new { screen_id = p.Key, count = p.Count() }),
-                    m => m.m.m.id,
-                    n => n.screen_id,
-                    (m, n) => new { m, n })
-                    .SelectMany(
-                    x => x.n.DefaultIfEmpty(),
-                    (m, n) => new { m.m.m.m.id, m.m.m.title, m.m.name_auditorium, m.m.m.m.show_day, m.m.m.m.show_time, sumseat = m.m.seat_no_row * m.m.seat_no_column, m.m.m.m.price, count = n == null ? 0 : n.count }
-                    );
-                foreach (var l in list)
-                {
-                    if (l.show_day + l.show_time >= DateTime.Now.AddMinutes(30))
-                    {
-                        listScreening.Add(new ScreeningInfor
-                        {
-                            id = l.id,
-                            nameAuditorium = l.name_auditorium,
-                            nameMovie = l.title,
-                            ShowDay = l.show_day,
-                            ShowTime = l.show_time,
-                            SumSeat = l.sumseat,
-                            SumSeatReserved = l.count,
-                            price = l.price,
-                        });
-                    }
-                }
-            }
-            return listScreening;
-        }
-
-        public List<ScreeningInfor> GetAllScreeningInfor()
-        {
-            List<ScreeningInfor> list = new List<ScreeningInfor> ();
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                var l = db.screenings.
-                    Join(db.movies,
-                    m => m.movie_id,
-                    n => n.id,
-                    (m, n) => new { m, n.title }).
-                    Join(db.auditoriums,
-                    m => m.m.auditorium_id,
-                    n => n.id,
-                    (m, n) => new { m, id_audi = n.id, n.name_auditorium, n.seat_no_row, n.seat_no_column }).
-                    GroupJoin(db.seat_reserved.GroupBy(p => p.screening_id).Select(p => new { screen_id = p.Key, count = p.Count() }),
-                    m => m.m.m.id,
-                    n => n.screen_id,
-                    (m, n) => new { m, n })
-                    .SelectMany(
-                    x => x.n.DefaultIfEmpty(),
-                    (m, n) => new { m.m.m.m.id, m.m.m.title, m.m.name_auditorium, m.m.m.m.show_day, m.m.m.m.show_time, sumseat = m.m.seat_no_row * m.m.seat_no_column, m.m.m.m.price, count = n == null ? 0 : n.count }
-                    );
-                foreach (var item in l)
-                {
-                    list.Add(new ScreeningInfor
-                    {
-                        id = item.id,
-                        nameAuditorium = item.name_auditorium,
-                        nameMovie = item.title,
-                        ShowDay = item.show_day,
-                        ShowTime = item.show_time,
-                        SumSeat = item.sumseat,
-                        SumSeatReserved = item.count,
-                        price = item.price,
-                    });
-                }
-            }
-            return list;
-        }
-
-        public DateTime GetDateTimeScreeningInfor(int screen_id)
-        {
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                var o = db.screenings.Where(p=>p.id == screen_id).Select(p => new {p.id, p.show_day, p.show_time}).FirstOrDefault();
-                return o.show_day + o.show_time;
-            }
-        }
-
-        public int GetSeatReserved(int screen_id)
-        {
-            using (CinemaEntities db= new CinemaEntities())
-            {
-                var o = db.seat_reserved.Where(p => p.screening_id == screen_id).GroupBy(p => p.screening_id).Select(p => new { p.Key, count = p.Count() }).FirstOrDefault();
-                return (o==null)? 0 : o.count;
-            }
-        }
-
-        public ScreeningInfor GetScreeningInforById(int id_screening)
-        {
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                var s = db.screenings.Where(p => p.id == id_screening).Select(p => p).FirstOrDefault();
-                return new ScreeningInfor
-                {
-                    id = s.id,
-                    ShowDay = s.show_day,
-                    ShowTime = s.show_time,
-                    nameAuditorium = s.auditorium.name_auditorium,
-                    nameMovie = s.movie.title,
-                    price = s.price,
-                };
-            }
-        }
-
-        public screening GetScreeningById(int id_screening)
-        {
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                var screen = db.screenings.Where(p => p.id == id_screening).Select(p => p).FirstOrDefault();
-                return screen;
-            }
-        }
-        public auditorium GetAuditoriumByIdScreening(int id_screening)
-        {
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                var audi = db.screenings.Where(p => p.id == id_screening).Select(p => new { p.id, p.auditorium_id }).
-                    Join(db.auditoriums,
-                    s => s.auditorium_id,
-                    a => a.id,
-                    (s, a) => new { a }).FirstOrDefault();
-                if (audi == null)
-                {
-                    return null;
-                }
-                return new auditorium
-                {
-                    id = audi.a.id,
-                    seat_no_column = audi.a.seat_no_column,
-                    seat_no_row = audi.a.seat_no_row,
-                    seats = audi.a.seats,
-                    active = audi.a.active
-                };
-            }
-        }
-
-        public List<seat_reserved> GetAllSeat_ReservedsById(int id_screening)
-        {
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                var l = db.seat_reserved.Where(p => p.screening_id == id_screening);
-                return l.ToList();
-            }
-        }
-
-        public List<seat> GetAllReservedSeatLocation(List<seat_reserved> seat_Reserveds)
-        {
-            List<seat> listSeat = new List<seat>();
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                foreach (var s in seat_Reserveds)
-                {
-                    var l = db.seats.Where(p => p.id == s.seat_id).FirstOrDefault();
-                    listSeat.Add(l);
-                }
-            }
-            return listSeat;
-        }
-
-        public int DeleteScreeningById(int screen_id)
-        {
-            using (CinemaEntities db = new CinemaEntities())
-            {
-                try
-                {
-                    screening s = new screening()
-                    {
-                        id = screen_id,
-                    };
-                    db.screenings.Attach(s);
-                    db.screenings.Remove(s);
-                    db.SaveChanges();
-                }
-                catch
-                {
-                    return 0;
-                }
-            }
-            return 1;
-        }
-
-        internal int AddCategory(category c)
-        {
-            using(CinemaEntities db = new CinemaEntities())
-            {
-                db.categories.Add(c);
-                db.SaveChanges();
-                return 1;
-            }
-        }
     }
 }
