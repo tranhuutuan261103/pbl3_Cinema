@@ -54,7 +54,7 @@
             // 
             // richTextBox
             // 
-            this.richTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.richTextBox.Location = new System.Drawing.Point(40, 40);
             this.richTextBox.Name = "richTextBox";
             this.richTextBox.ReadOnly = true;

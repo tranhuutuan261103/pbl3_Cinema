@@ -1,4 +1,5 @@
 ﻿using pbl3_Cinema.BLL;
+using pbl3_Cinema.DAL;
 using pbl3_Cinema.DTO;
 using pbl3_Cinema.MyUserControler;
 using pbl3_Cinema.View.CustomerView.ManageBooking;
@@ -11,6 +12,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.WebSockets;
 using System.Windows.Forms;
 
 namespace pbl3_Cinema.View.AdminView.ManageBooking
@@ -39,41 +41,22 @@ namespace pbl3_Cinema.View.AdminView.ManageBooking
             form.TopLevel = false;
             panel1.Controls.Add(form);
             form.Show();
-            //LoadAllReservation();
-        }
-        /*
-        private void LoadAllReservation()
-        {
-            Reservation_BLL bll = new Reservation_BLL();
-            foreach (var item in bll.GetListBookingByIdScreening(id_screening))
-            {
-                MyUserControlHistoryInforTicket uc = new MyUserControlHistoryInforTicket()
-                {
-                    id_reservation = item.id,
-                    title_movie = item.title,
-                    name_auditorium = item.name_auditorium,
-                    image = item.image,
-                    showDay = item.showDay,
-                    showTime = item.showTime,
-                    booking_date = item.bookingDay,
-                };
-                uc.clickEvent += new EventHandler(clicked_UC);
-                flowLayoutPanel.Controls.Add(uc);
-                uc.Show();
-            }
+
+            LoadInfor();
+            LoadRevenue();
         }
 
-        private void clicked_UC(object sender, EventArgs e)
+        private void LoadInfor()
         {
-            MyUserControlHistoryInforTicket uc = (MyUserControlHistoryInforTicket)sender;
+            Screening_BLL bll = new Screening_BLL();
+            ScreeningInfor s = bll.GetScreeningInforById(id_screening);
+            label_SeatReserved.Text = s.SumSeatReserved + "/" + s.SumSeat;
+        }
+
+        private void LoadRevenue()
+        {
             Reservation_BLL bll = new Reservation_BLL();
-            HistoryInforTicket h = bll.GetBookingByIdReservation(uc.id_reservation);
-            Form_InforBooking_Admin form = new Form_InforBooking_Admin()
-            {
-                id_screening = h.id_screening,
-                id_reservation = h.id
-            };
-            form.ShowDialog();
-        }*/
+            label_Revenue.Text = bll.GetRevenue(id_screening).ToString();
+        }
     }
 }

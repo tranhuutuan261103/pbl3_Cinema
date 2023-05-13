@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.panel_Poster = new System.Windows.Forms.Panel();
+            this.pictureBox_Poster = new System.Windows.Forms.PictureBox();
             this.panel_Infor = new System.Windows.Forms.Panel();
+            this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.label_Release_date = new System.Windows.Forms.Label();
             this.label_Cast = new System.Windows.Forms.Label();
             this.label_Director = new System.Windows.Forms.Label();
@@ -44,18 +46,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label_Title = new System.Windows.Forms.Label();
             this.panel_Comment = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_Reservation = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label_content = new System.Windows.Forms.Label();
             this.richTextBox_Description = new System.Windows.Forms.RichTextBox();
-            this.pictureBox_Poster = new System.Windows.Forms.PictureBox();
             this.panel_Body = new System.Windows.Forms.Panel();
-            this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel_Poster.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Poster)).BeginInit();
             this.panel_Infor.SuspendLayout();
             this.panel_Comment.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Poster)).BeginInit();
             this.panel_Body.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,6 +66,16 @@
             this.panel_Poster.Name = "panel_Poster";
             this.panel_Poster.Size = new System.Drawing.Size(360, 240);
             this.panel_Poster.TabIndex = 0;
+            // 
+            // pictureBox_Poster
+            // 
+            this.pictureBox_Poster.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_Poster.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox_Poster.Name = "pictureBox_Poster";
+            this.pictureBox_Poster.Size = new System.Drawing.Size(360, 240);
+            this.pictureBox_Poster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_Poster.TabIndex = 0;
+            this.pictureBox_Poster.TabStop = false;
             // 
             // panel_Infor
             // 
@@ -87,8 +97,16 @@
             this.panel_Infor.Controls.Add(this.label_Title);
             this.panel_Infor.Location = new System.Drawing.Point(381, 15);
             this.panel_Infor.Name = "panel_Infor";
-            this.panel_Infor.Size = new System.Drawing.Size(670, 240);
+            this.panel_Infor.Size = new System.Drawing.Size(649, 240);
             this.panel_Infor.TabIndex = 1;
+            // 
+            // guna2Separator1
+            // 
+            this.guna2Separator1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Separator1.Location = new System.Drawing.Point(3, 38);
+            this.guna2Separator1.Name = "guna2Separator1";
+            this.guna2Separator1.Size = new System.Drawing.Size(646, 21);
+            this.guna2Separator1.TabIndex = 14;
             // 
             // label_Release_date
             // 
@@ -227,8 +245,17 @@
             this.panel_Comment.Controls.Add(this.flowLayoutPanel1);
             this.panel_Comment.Location = new System.Drawing.Point(50, 607);
             this.panel_Comment.Name = "panel_Comment";
-            this.panel_Comment.Size = new System.Drawing.Size(900, 420);
+            this.panel_Comment.Size = new System.Drawing.Size(879, 420);
             this.panel_Comment.TabIndex = 2;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 130);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(879, 290);
+            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // btn_Reservation
             // 
@@ -269,6 +296,7 @@
             // 
             // richTextBox_Description
             // 
+            this.richTextBox_Description.BackColor = System.Drawing.Color.White;
             this.richTextBox_Description.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox_Description.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox_Description.Location = new System.Drawing.Point(40, 390);
@@ -279,19 +307,10 @@
             this.richTextBox_Description.TabIndex = 0;
             this.richTextBox_Description.Text = "";
             // 
-            // pictureBox_Poster
-            // 
-            this.pictureBox_Poster.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_Poster.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox_Poster.Name = "pictureBox_Poster";
-            this.pictureBox_Poster.Size = new System.Drawing.Size(360, 240);
-            this.pictureBox_Poster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_Poster.TabIndex = 0;
-            this.pictureBox_Poster.TabStop = false;
-            // 
             // panel_Body
             // 
             this.panel_Body.AutoScroll = true;
+            this.panel_Body.BackColor = System.Drawing.Color.White;
             this.panel_Body.Controls.Add(this.richTextBox_Description);
             this.panel_Body.Controls.Add(this.panel_Comment);
             this.panel_Body.Controls.Add(this.panel_Poster);
@@ -305,23 +324,6 @@
             this.panel_Body.Size = new System.Drawing.Size(1021, 600);
             this.panel_Body.TabIndex = 7;
             // 
-            // guna2Separator1
-            // 
-            this.guna2Separator1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Separator1.Location = new System.Drawing.Point(3, 38);
-            this.guna2Separator1.Name = "guna2Separator1";
-            this.guna2Separator1.Size = new System.Drawing.Size(667, 21);
-            this.guna2Separator1.TabIndex = 14;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 130);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(900, 290);
-            this.flowLayoutPanel1.TabIndex = 0;
-            // 
             // Form_DetailInforFilm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -332,10 +334,10 @@
             this.Text = "Form_DetailInforFilm";
             this.Load += new System.EventHandler(this.Form_DetailInforFilm_Load);
             this.panel_Poster.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Poster)).EndInit();
             this.panel_Infor.ResumeLayout(false);
             this.panel_Infor.PerformLayout();
             this.panel_Comment.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Poster)).EndInit();
             this.panel_Body.ResumeLayout(false);
             this.panel_Body.PerformLayout();
             this.ResumeLayout(false);

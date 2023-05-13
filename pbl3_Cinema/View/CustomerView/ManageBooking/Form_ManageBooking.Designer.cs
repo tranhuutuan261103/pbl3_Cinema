@@ -46,6 +46,7 @@
             // flowLayoutPanel
             // 
             this.flowLayoutPanel.AutoScroll = true;
+            this.flowLayoutPanel.BackColor = System.Drawing.Color.White;
             this.flowLayoutPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel.Location = new System.Drawing.Point(100, 90);
             this.flowLayoutPanel.Name = "flowLayoutPanel";
@@ -56,6 +57,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightYellow;
             this.ClientSize = new System.Drawing.Size(1000, 600);
             this.Controls.Add(this.flowLayoutPanel);
             this.Controls.Add(this.label1);

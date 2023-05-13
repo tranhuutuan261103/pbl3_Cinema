@@ -37,6 +37,7 @@
             // 
             // panel
             // 
+            this.panel.BackColor = System.Drawing.Color.LightYellow;
             this.panel.Controls.Add(this.btn_Reservation);
             this.panel.Controls.Add(this.cbb_Category);
             this.panel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -81,6 +82,7 @@
             // flowLayoutPanel
             // 
             this.flowLayoutPanel.AutoScroll = true;
+            this.flowLayoutPanel.BackColor = System.Drawing.Color.White;
             this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel.Location = new System.Drawing.Point(0, 94);
             this.flowLayoutPanel.Name = "flowLayoutPanel";

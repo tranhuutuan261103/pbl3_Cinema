@@ -72,10 +72,35 @@ namespace pbl3_Cinema.View.AdminView.ManageBooking
                     btn[i, j].Location = new Point(pading_left + 50 * j + space, pading_top + 50 * i);
                     btn[i, j].Size = new Size(40, 40);
                     btn[i, j].Cursor = Cursors.Hand;
-                    //btn[i, j].Click += new EventHandler(clicked_Seat);
+                    btn[i, j].Click += new EventHandler(clicked_Seat);
                     panel_MapSeat.Controls.Add(btn[i, j]);
                 }
             }
+        }
+
+        private void clicked_Seat(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (btn.BackColor == DefaultBackColor)
+            {
+                MessageBox.Show("Chưa đặt");
+                return;
+            }
+            int seat_id = Convert.ToInt32(btn.Name);
+            Seat_BLL bll = new Seat_BLL();
+            seat_reserved s = bll.GetSeat_Reserved(id_screening, seat_id);
+            if (s == null)
+            {
+                return;
+            }
+
+            Form_InforBooking_Admin form = new Form_InforBooking_Admin()
+            {
+                id_screening = id_screening,
+                id_reservation = s.reservation_id
+            };
+
+            form.ShowDialog();
         }
 
         private void SetIdToButtons(auditorium audi)

@@ -45,6 +45,7 @@ namespace pbl3_Cinema.View.AdminView
 
             dataGridView_ListFilm.DataSource = bll.GetAllMovieInfor().ToArray();
             dataGridView_ListFilm.Columns["id"].Visible = false;
+            dataGridView_ListFilm.Columns["Title"].Width = 250;
         }
 
         private void AddFilm(object o)
@@ -85,6 +86,11 @@ namespace pbl3_Cinema.View.AdminView
 
         private void btn_AddCategory_Click(object sender, EventArgs e)
         {
+            if (textBox1.Text == "")
+            {
+                MessageBox.Show("Không được để trống");
+                return;
+            }
             Cinema_BLL bll = new Cinema_BLL();
             category c = new category();
             c.name_category = textBox1.Text;

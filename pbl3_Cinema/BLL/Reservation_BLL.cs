@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using pbl3_Cinema.DAL;
 using pbl3_Cinema.DTO;
 
@@ -71,6 +72,20 @@ namespace pbl3_Cinema.BLL
         {
             Reservation_DAL dal = new Reservation_DAL();
             return dal.GetListBookingByIdScreening(id_screening);
+        }
+
+        public int GetRevenue(int id_screen)
+        {
+            int sum = 0;
+            Reservation_DAL dal = new Reservation_DAL();
+            foreach (reservation item in dal.GetAllReservation(id_screen))
+            {
+                if (item.paid == true)
+                {
+                    sum += item.sum_pay;
+                }
+            }
+            return sum;
         }
 
         public HistoryInforTicket GetBookingByIdReservation(int id_reservation)

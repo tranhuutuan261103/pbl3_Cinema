@@ -71,7 +71,7 @@
             this.dataGridView_Auditorium.RowHeadersVisible = false;
             this.dataGridView_Auditorium.RowHeadersWidth = 51;
             this.dataGridView_Auditorium.RowTemplate.Height = 24;
-            this.dataGridView_Auditorium.Size = new System.Drawing.Size(717, 375);
+            this.dataGridView_Auditorium.Size = new System.Drawing.Size(861, 375);
             this.dataGridView_Auditorium.TabIndex = 0;
             this.dataGridView_Auditorium.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dataGridView_Auditorium.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -97,13 +97,14 @@
             // 
             // labelTitle
             // 
-            this.labelTitle.AutoSize = true;
+            this.labelTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitle.Location = new System.Drawing.Point(274, 26);
+            this.labelTitle.Location = new System.Drawing.Point(0, 0);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(360, 38);
+            this.labelTitle.Size = new System.Drawing.Size(1000, 70);
             this.labelTitle.TabIndex = 1;
             this.labelTitle.Text = "Danh sách phòng chiếu";
+            this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_AddAuditorium
             // 
@@ -114,7 +115,7 @@
             this.btn_AddAuditorium.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_AddAuditorium.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_AddAuditorium.ForeColor = System.Drawing.Color.White;
-            this.btn_AddAuditorium.Location = new System.Drawing.Point(199, 496);
+            this.btn_AddAuditorium.Location = new System.Drawing.Point(148, 513);
             this.btn_AddAuditorium.Name = "btn_AddAuditorium";
             this.btn_AddAuditorium.Size = new System.Drawing.Size(180, 45);
             this.btn_AddAuditorium.TabIndex = 2;
@@ -130,28 +131,28 @@
             this.btn_DelAuditorium.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_DelAuditorium.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_DelAuditorium.ForeColor = System.Drawing.Color.White;
-            this.btn_DelAuditorium.Location = new System.Drawing.Point(502, 496);
+            this.btn_DelAuditorium.Location = new System.Drawing.Point(589, 513);
             this.btn_DelAuditorium.Name = "btn_DelAuditorium";
             this.btn_DelAuditorium.Size = new System.Drawing.Size(180, 45);
             this.btn_DelAuditorium.TabIndex = 4;
             this.btn_DelAuditorium.Text = "Xóa phòng chiếu";
             this.btn_DelAuditorium.Click += new System.EventHandler(this.btn_DelAuditorium_Click);
             // 
-            // Form_ManageScreening
+            // Form_ManageAuditorium
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(856, 576);
+            this.BackColor = System.Drawing.Color.LightYellow;
+            this.ClientSize = new System.Drawing.Size(1000, 600);
             this.Controls.Add(this.btn_DelAuditorium);
             this.Controls.Add(this.btn_AddAuditorium);
             this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.dataGridView_Auditorium);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form_ManageScreening";
+            this.Name = "Form_ManageAuditorium";
             this.Text = "Form_ManageScreening";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Auditorium)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

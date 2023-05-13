@@ -80,9 +80,29 @@ namespace pbl3_Cinema.View.AdminView.ManageFilm
             movie.description_movie = richTextBox_Description.Text;
             movie.director = textBox_Director.Text;
             movie.list_cast = textBox_List_cast.Text;
-            movie.duration_min = Convert.ToInt32(textBox_Duration_Min.Text);
+            try
+            {
+                movie.duration_min = Convert.ToInt32(textBox_Duration_Min.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Thời lượng phim là một số nguyên dương");
+                return;
+            }
+            if (movie.duration_min <=0)
+            {
+                MessageBox.Show("Thời lượng phim là một số nguyên dương");
+                return;
+            }
             movie.release_date = dateTimePicker_StartDay.Value;
             movie.expiration_date = dateTimePicker_EndDay.Value;
+
+            if (movie.release_date > movie.expiration_date)
+            {
+                MessageBox.Show("Ngày release phim không thể trễ hơn ngày hết hạn");
+                return;
+            }
+
             if (img!=null)
             {
                 movie.poster = MyFuncStatic.MyConvert.ConvertImageToBinary(img);

@@ -25,5 +25,11 @@ namespace pbl3_Cinema.BLL
             Seat_DAL dal = new Seat_DAL();
             return dal.GetAllReservedSeatLocation(seat_Reserveds);
         }
+
+        public seat_reserved GetSeat_Reserved(int screen_id, int seat_id)
+        {
+            Seat_DAL dal = new Seat_DAL();
+            return dal.GetSeat_Reserved(screen_id, seat_id);
+        }
     }
 }

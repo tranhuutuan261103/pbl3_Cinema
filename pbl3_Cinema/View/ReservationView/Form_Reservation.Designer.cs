@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btn_Continute = new System.Windows.Forms.Button();
             this.panelBtn = new Guna.UI2.WinForms.Guna2Panel();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.panel_Head = new System.Windows.Forms.Panel();
             this.label_Title = new System.Windows.Forms.Label();
             this.panel_Body = new System.Windows.Forms.Panel();
+            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.panelBtn.SuspendLayout();
             this.panel_Head.SuspendLayout();
             this.SuspendLayout();
@@ -98,6 +100,15 @@
             this.panel_Body.Size = new System.Drawing.Size(700, 420);
             this.panel_Body.TabIndex = 3;
             // 
+            // guna2BorderlessForm1
+            // 
+            this.guna2BorderlessForm1.BorderRadius = 10;
+            this.guna2BorderlessForm1.ContainerControl = this;
+            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.DragStartTransparencyValue = 1D;
+            this.guna2BorderlessForm1.ResizeForm = false;
+            this.guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
             // Form_Reservation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -124,5 +135,6 @@
         private System.Windows.Forms.Panel panel_Head;
         private System.Windows.Forms.Label label_Title;
         private System.Windows.Forms.Panel panel_Body;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }

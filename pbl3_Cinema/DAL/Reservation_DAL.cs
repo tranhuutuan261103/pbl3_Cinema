@@ -119,6 +119,13 @@ namespace pbl3_Cinema.DAL
             }
         }
 
+        public List<reservation> GetAllReservation(int id_screen)
+        {
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                return db.reservations.Where(p => p.screening_id == id_screen).ToList();
+            }
+        }
         public void CancelReservation(int id_reservation)
         {
             using(CinemaEntities db = new CinemaEntities())

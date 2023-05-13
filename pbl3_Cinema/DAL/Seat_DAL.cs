@@ -39,5 +39,14 @@ namespace pbl3_Cinema.DAL
                 return (o == null) ? 0 : o.count;
             }
         }
+
+        public seat_reserved GetSeat_Reserved(int screen_id, int seat_id)
+        {
+            using(CinemaEntities db = new CinemaEntities())
+            {
+                var s = db.seat_reserved.Where(p => p.screening_id == screen_id && p.seat_id == seat_id).FirstOrDefault();
+                return s;
+            }
+        }
     }
 }

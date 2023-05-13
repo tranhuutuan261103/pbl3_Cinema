@@ -33,6 +33,7 @@
             // 
             // panel_MapSeat
             // 
+            this.panel_MapSeat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_MapSeat.Location = new System.Drawing.Point(0, 0);
             this.panel_MapSeat.Name = "panel_MapSeat";
             this.panel_MapSeat.Size = new System.Drawing.Size(700, 420);

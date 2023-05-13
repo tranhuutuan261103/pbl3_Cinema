@@ -17,6 +17,7 @@ namespace pbl3_Cinema.View.AdminView.ManageStaff
         public Form_Manage_Staff()
         {
             InitializeComponent();
+            LoadData();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -74,6 +75,11 @@ namespace pbl3_Cinema.View.AdminView.ManageStaff
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void LoadData()
         {
             Account_BLL bll = new Account_BLL();
             List<Staff_Infor> list_staff = bll.GetInforStaffByFullName(txtHoTen.Text);
