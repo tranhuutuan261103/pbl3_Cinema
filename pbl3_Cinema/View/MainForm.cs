@@ -21,6 +21,7 @@ using pbl3_Cinema.View.StaffView;
 using pbl3_Cinema.View.CustomerView.ManageInfor;
 using pbl3_Cinema.View.CustomerView.ManageBooking;
 using pbl3_Cinema.View.AdminView.ManageAccount;
+using pbl3_Cinema.View.AdminView.Statistic;
 
 namespace pbl3_Cinema.View
 {
@@ -150,6 +151,12 @@ namespace pbl3_Cinema.View
                 {
                     OpenChildForm(new Form_ManageReservation(), sender);
                 }
+
+                if (btn.Text == "Doanh thu")
+                {
+                    OpenChildForm(new Form_Revenue(), sender);
+                }
+
                 if(btn.Text == "Thông tin tài khoản")
                 {
                     Form_Infor_Admin form = new Form_Infor_Admin()

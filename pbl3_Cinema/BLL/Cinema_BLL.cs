@@ -31,6 +31,20 @@ namespace pbl3_Cinema.BLL
             return dal.GetAllMovieInfor();
         }
 
+        public List<MyMovieInfor> GetAllMovieInfor(int id_category)
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            List<MyMovieInfor> list = new List<MyMovieInfor>();
+            foreach (MyMovieInfor item in dal.GetAllMovieInfor())
+            {
+                if (item.Category.id == id_category)
+                {
+                    list.Add(item);
+                }
+            }
+            return list;
+        }
+
         public void AddFilm(movie Movie)
         {
             Cinema_DAL dal = new Cinema_DAL();

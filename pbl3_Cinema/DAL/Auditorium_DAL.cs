@@ -131,6 +131,7 @@ namespace pbl3_Cinema.DAL
                 return new auditorium
                 {
                     id = audi.a.id,
+                    name_auditorium = audi.a.name_auditorium,
                     seat_no_column = audi.a.seat_no_column,
                     seat_no_row = audi.a.seat_no_row,
                     seats = audi.a.seats,

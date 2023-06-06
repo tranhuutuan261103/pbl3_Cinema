@@ -19,31 +19,38 @@ namespace pbl3_Cinema.View.AdminView
         public Form_ManageFilm()
         {
             InitializeComponent();
-            LoadMovie();
+            LoadCBBCategory();
+        }
+
+        private void LoadCBBCategory()
+        {
+            Cinema_BLL bll = new Cinema_BLL();
+            List<CBB_Category> list = bll.GetAllCBBCategory();
+            CBB_Category c = new CBB_Category()
+            {
+                id = 0,
+                name_Category = "All",
+            };
+            cbb_Category.Items.Add(c);
+            cbb_Category.Items.AddRange(list.ToArray());
+            cbb_Category.SelectedIndex = 0;
         }
         public void LoadMovie()
         {
+            if (cbb_Category.SelectedIndex == -1)
+            {
+                return;
+            }
+            int id = ((CBB_Category)cbb_Category.SelectedItem).id;
             Cinema_BLL bll = new Cinema_BLL();
-            //DataTable dt = new DataTable();
-            //dt.Columns.AddRange(new DataColumn[]
-            //{
-            //    new DataColumn() {ColumnName = "id", DataType = typeof(int)},
-            //    new DataColumn() {ColumnName = "title", DataType = typeof(string)},
-            //    new DataColumn() {ColumnName = "category", DataType = typeof(string)},
-            //    new DataColumn() {ColumnName = "duration_min", DataType = typeof(int)},
-            //    new DataColumn() {ColumnName = "release_date", DataType=typeof(DateTime)},
-            //    new DataColumn() {ColumnName = "expiration_date", DataType= typeof(DateTime)},
-            //});
-                
-            //foreach (movie Movie in bll.GetAllMovie())
-            //{
-            //    dt.Rows.Add(Movie.id, Movie.title, Movie.category.name_category, Movie.duration_min, Movie.release_date, Movie.expiration_date);
-            //}
-            //dataGridView_ListFilm.DataSource = dt;
-            //dataGridView_ListFilm.Columns["id"].Visible = false;
-            //dataGridView_ListFilm.Columns["title"].HeaderText = "Tên phim";
-
-            dataGridView_ListFilm.DataSource = bll.GetAllMovieInfor().ToArray();
+            if (id == 0)
+            {
+                dataGridView_ListFilm.DataSource = bll.GetAllMovieInfor().ToArray();
+            }
+            else
+            {
+                dataGridView_ListFilm.DataSource = bll.GetAllMovieInfor(id).ToArray();
+            }
             dataGridView_ListFilm.Columns["id"].Visible = false;
             dataGridView_ListFilm.Columns["Title"].Width = 250;
         }
@@ -102,6 +109,11 @@ namespace pbl3_Cinema.View.AdminView
             {
 
             }
+        }
+
+        private void cbb_Category_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadMovie();
         }
     }
 }

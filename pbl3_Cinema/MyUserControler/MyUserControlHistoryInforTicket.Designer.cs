@@ -52,10 +52,10 @@
             // label_Title
             // 
             this.label_Title.AutoSize = true;
-            this.label_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Title.Location = new System.Drawing.Point(163, 4);
             this.label_Title.Name = "label_Title";
-            this.label_Title.Size = new System.Drawing.Size(60, 32);
+            this.label_Title.Size = new System.Drawing.Size(51, 29);
             this.label_Title.TabIndex = 1;
             this.label_Title.Text = "title";
             // 
