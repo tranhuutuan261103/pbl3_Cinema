@@ -36,6 +36,7 @@
             this.btn_6 = new Guna.UI2.WinForms.Guna2Button();
             this.btn_7 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // btn_1
@@ -83,7 +84,7 @@
             this.bnt_5.Name = "bnt_5";
             this.bnt_5.Size = new System.Drawing.Size(165, 62);
             this.bnt_5.TabIndex = 4;
-            this.bnt_5.Text = "Quản lý nhân viên";
+            this.bnt_5.Text = "Doanh thu";
             this.bnt_5.Click += new System.EventHandler(this.btn_Click);
             // 
             // btn_3
@@ -147,7 +148,7 @@
             this.btn_7.Name = "btn_7";
             this.btn_7.Size = new System.Drawing.Size(165, 62);
             this.btn_7.TabIndex = 6;
-            this.btn_7.Text = "Thông tin tài khoản";
+            this.btn_7.Text = "Quản lý nhân viên";
             this.btn_7.Click += new System.EventHandler(this.btn_Click);
             // 
             // guna2Button1
@@ -166,11 +167,28 @@
             this.guna2Button1.Text = "Quản lý khách hàng";
             this.guna2Button1.Click += new System.EventHandler(this.btn_Click);
             // 
+            // guna2Button2
+            // 
+            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button2.ForeColor = System.Drawing.Color.White;
+            this.guna2Button2.Location = new System.Drawing.Point(0, 492);
+            this.guna2Button2.Name = "guna2Button2";
+            this.guna2Button2.Size = new System.Drawing.Size(165, 62);
+            this.guna2Button2.TabIndex = 8;
+            this.guna2Button2.Text = "Thông tin tài khoản";
+            this.guna2Button2.Click += new System.EventHandler(this.btn_Click);
+            // 
             // Form_Admin_ListSelect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(165, 516);
+            this.ClientSize = new System.Drawing.Size(165, 557);
+            this.Controls.Add(this.guna2Button2);
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.btn_7);
             this.Controls.Add(this.btn_6);
@@ -197,5 +215,6 @@
         private Guna.UI2.WinForms.Guna2Button btn_6;
         private Guna.UI2.WinForms.Guna2Button btn_7;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
     }
 }
