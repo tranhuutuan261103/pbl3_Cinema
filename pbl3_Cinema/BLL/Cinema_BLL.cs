@@ -57,6 +57,12 @@ namespace pbl3_Cinema.BLL
             dal.UpdateFilm(Movie);
         }
 
+        public void DeleteFilm(int id)
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            dal.DeleteFilm(id);
+        }
+
         public MyMovieInfor GetMovieById(int id)
         {
             Cinema_DAL dal = new Cinema_DAL();
@@ -87,6 +93,12 @@ namespace pbl3_Cinema.BLL
         {
             Cinema_DAL dal = new Cinema_DAL();
             return dal.GetCBBMoviesNow();
+        }
+
+        public List<CBBMovie> GetCBBMovies()
+        {
+            Cinema_DAL dal = new Cinema_DAL();
+            return dal.GetCBBMovies();
         }
 
         public int GetDurationOfMovie(int id_movie)

@@ -92,6 +92,7 @@
     <Compile Include="BLL\Product_BLL.cs" />
     <Compile Include="BLL\Rating_BLL.cs" />
     <Compile Include="BLL\Reservation_BLL.cs" />
+    <Compile Include="BLL\Revenue_BLL.cs" />
     <Compile Include="BLL\Screening_BLL.cs" />
     <Compile Include="BLL\Seat_BLL.cs" />
     <Compile Include="category.cs">
@@ -106,6 +107,7 @@
     <Compile Include="DAL\Product_DAL.cs" />
     <Compile Include="DAL\Rating_DAL.cs" />
     <Compile Include="DAL\Reservation_DAL.cs" />
+    <Compile Include="DAL\Revenue_DAL.cs" />
     <Compile Include="DAL\Screening_DAL.cs" />
     <Compile Include="DAL\Seat_DAL.cs" />
     <Compile Include="detail_bill.cs">
@@ -116,6 +118,7 @@
     <Compile Include="DTO\CBBMovie.cs" />
     <Compile Include="DTO\CBB_Category.cs" />
     <Compile Include="DTO\HistoryInforTicket.cs" />
+    <Compile Include="DTO\Revenue.cs" />
     <Compile Include="DTO\Staff_Infor.cs" />
     <Compile Include="DTO\Customer_Infor.cs" />
     <Compile Include="DTO\ScreeningInfor.cs" />
