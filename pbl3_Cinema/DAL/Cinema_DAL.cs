@@ -96,6 +96,40 @@ namespace pbl3_Cinema.DAL
             }
         }
 
+        public bool CheckCanDeleteMovie(int id_movie)
+        {
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                var n = db.screenings.Where(p => p.movie_id == id_movie).Count();
+                if (n > 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+
+        public void DeleteFilm(int id)
+        {
+            if (CheckCanDeleteMovie(id) == false)
+            {
+                MessageBox.Show("Không thể xóa phim này vì đã có lịch chiếu");
+                return;
+            }
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                var listRating = db.ratings.Where(p => p.movie_id == id).ToList();
+                listRating.RemoveAll(p => p.movie_id == id);
+                db.SaveChanges();
+                var s = db.movies.Where(p => p.id == id).FirstOrDefault();
+                db.movies.Remove(s);
+                db.SaveChanges();
+            }
+        }
+
         public MyMovieInfor GetMovieById(int id)
         {
             using (CinemaEntities db = new CinemaEntities())
@@ -224,6 +258,24 @@ namespace pbl3_Cinema.DAL
             using(CinemaEntities db = new CinemaEntities())
             {
                 var l = db.movies.Where(p => p.expiration_date >= DateTime.Now).Select(p => new { p.id, p.title });
+                foreach (var item in l)
+                {
+                    list.Add(new CBBMovie
+                    {
+                        id_movie = item.id,
+                        title = item.title,
+                    });
+                }
+            }
+            return list;
+        }
+
+        public List<CBBMovie> GetCBBMovies()
+        {
+            List<CBBMovie> list = new List<CBBMovie>();
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                var l = db.movies.Select(p => new { p.id, p.title });
                 foreach (var item in l)
                 {
                     list.Add(new CBBMovie

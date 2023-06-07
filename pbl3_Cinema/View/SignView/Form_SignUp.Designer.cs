@@ -90,6 +90,7 @@
             // cbb_Gender
             // 
             this.cbb_Gender.BackColor = System.Drawing.Color.Transparent;
+            this.cbb_Gender.BorderRadius = 10;
             this.cbb_Gender.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbb_Gender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbb_Gender.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));

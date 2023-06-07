@@ -115,5 +115,20 @@ namespace pbl3_Cinema.View.AdminView
         {
             LoadMovie();
         }
+
+        private void btn_Del_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_ListFilm.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            int id = Convert.ToInt32(dataGridView_ListFilm.SelectedRows[0].Cells["id"].Value);
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa phim này?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Cinema_BLL bll = new Cinema_BLL();
+                bll.DeleteFilm(id);
+                LoadMovie();
+            }
+        }
     }
 }
