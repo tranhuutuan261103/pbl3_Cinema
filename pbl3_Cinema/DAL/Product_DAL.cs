@@ -51,5 +51,17 @@ namespace pbl3_Cinema.DAL
             }
         }
 
+        public void SetNumberOfProducts(int pHash, int value)
+        {
+            using(CinemaEntities db = new CinemaEntities())
+            {
+                var p = db.products.Find(pHash);
+                if (p != null)
+                {
+                    p.the_number_of_products = value;
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }

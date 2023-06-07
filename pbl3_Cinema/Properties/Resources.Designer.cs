@@ -73,6 +73,16 @@ namespace pbl3_Cinema.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap admin_icon {
+            get {
+                object obj = ResourceManager.GetObject("admin_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cinema_logo {
             get {
                 object obj = ResourceManager.GetObject("cinema_logo", resourceCulture);
@@ -116,6 +126,16 @@ namespace pbl3_Cinema.Properties {
         internal static System.Drawing.Bitmap images {
             get {
                 object obj = ResourceManager.GetObject("images", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap naml3206_2000x1xxx_1614762674721 {
+            get {
+                object obj = ResourceManager.GetObject("naml3206_2000x1xxx_1614762674721", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

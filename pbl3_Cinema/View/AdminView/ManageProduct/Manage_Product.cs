@@ -33,6 +33,7 @@ namespace pbl3_Cinema.View.AdminView.ManageProduct
                 aProductItem.Width = flowLayoutPanel1.Width - 10;
                 aProductItem.NameProduct = p.name_product;
                 aProductItem.Price = p.price.ToString();
+                aProductItem.Unit = p.unit;
                 aProductItem.Icon = MyConvert.ConvertBinaryToImage(p.image_product);
                 aProductItem.SoLuong = p.the_number_of_products.ToString();
                 aProductItem.ID = p.id;
@@ -85,11 +86,9 @@ namespace pbl3_Cinema.View.AdminView.ManageProduct
         {
             if(MessageBox.Show("Xác nhận muốn xóa?","Warning",MessageBoxButtons.YesNoCancel,MessageBoxIcon.Warning) == DialogResult.Yes) ;
             {
-                CinemaEntities db = new CinemaEntities();
+                Product_BLL bll = new Product_BLL();
                 int hash = Convert.ToInt32(lblID.Text);
-                var product = db.products.Find(hash);
-                db.products.Remove(product);
-                db.SaveChanges();
+                bll.SetNumberOfProducts(hash, 0);
                 MessageBox.Show("Xóa thành công sản phẩm");
             }   
             

@@ -55,6 +55,12 @@ namespace pbl3_Cinema.BLL
             }    
         }
 
+        public void SetNumberOfProducts(int pHash, int value)
+        {
+            Product_DAL dal = new Product_DAL();
+            dal.SetNumberOfProducts(pHash, value);
+        }
+
         public string GetProductName(int pHash)
         {
             foreach(product product in GetListProduct())

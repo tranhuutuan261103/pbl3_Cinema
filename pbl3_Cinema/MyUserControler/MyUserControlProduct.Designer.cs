@@ -33,6 +33,7 @@
             this.lblName = new System.Windows.Forms.Label();
             this.lblPrice = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label_Unit = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -89,11 +90,22 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Giá:";
             // 
+            // label_Unit
+            // 
+            this.label_Unit.AutoSize = true;
+            this.label_Unit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Unit.Location = new System.Drawing.Point(192, 59);
+            this.label_Unit.Name = "label_Unit";
+            this.label_Unit.Size = new System.Drawing.Size(46, 25);
+            this.label_Unit.TabIndex = 4;
+            this.label_Unit.Text = "Unit";
+            // 
             // MyUserControlProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(221)))), ((int)(((byte)(130)))));
+            this.Controls.Add(this.label_Unit);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblPrice);
             this.Controls.Add(this.lblName);
@@ -117,5 +129,6 @@
         public System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_Unit;
     }
 }
