@@ -32,6 +32,7 @@ namespace pbl3_Cinema.View.ReservationView
                 MyUserControlSelectProduct myUCProduct = new MyUserControlSelectProduct();
                 myUCProduct.NameProduct = product.name_product;
                 myUCProduct.Price = Convert.ToString(product.price);
+                myUCProduct.Unit = product.unit;
                 myUCProduct.ID = product.id;
                 myUCProduct.Icon = MyFuncStatic.MyConvert.ConvertBinaryToImage(product.image_product);
                 myUCProduct.SoLuong = product.the_number_of_products.ToString();

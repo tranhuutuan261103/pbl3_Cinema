@@ -709,6 +709,8 @@
       <DependentUpon>ModelCinema.edmx</DependentUpon>
       <LastGenOutput>ModelCinema.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\naml3206-2000x1xxx_1614762674721.jpg" />
+    <None Include="Resources\admin_icon.png" />
     <None Include="Resources\77053035_154732679239330_8345556334451621888_n_637128613599966613.jpg" />
     <None Include="Resources\images.jpg" />
     <None Include="Resources\cinema_poster_product1.jpg" />

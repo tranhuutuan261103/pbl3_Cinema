@@ -40,7 +40,7 @@ namespace pbl3_Cinema.MyFuncStatic
             smtpClient.Port = 25;
             smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtpClient.UseDefaultCredentials = false;
-            smtpClient.Credentials = new NetworkCredential("tranhuutuan26112003@gmail.com", "pjajvfdqktjxayzd");
+            smtpClient.Credentials = new NetworkCredential("tranhuutuan26112003@gmail.com", "wuwentxxrzwpgsmk");
             try
             {
                 smtpClient.Send(mailMessage);
@@ -72,7 +72,7 @@ namespace pbl3_Cinema.MyFuncStatic
             smtpClient.Port = 25;
             smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtpClient.UseDefaultCredentials = false;
-            smtpClient.Credentials = new NetworkCredential("tranhuutuan26112003@gmail.com", "pjajvfdqktjxayzd");
+            smtpClient.Credentials = new NetworkCredential("tranhuutuan26112003@gmail.com", "wuwentxxrzwpgsmk");
             try
             {
                 smtpClient.Send(mailMessage);

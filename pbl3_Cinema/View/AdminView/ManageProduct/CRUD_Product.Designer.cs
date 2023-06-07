@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.BtnUploadImage = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,16 +41,19 @@
             this.txtGia = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtSoLuong = new Guna.UI2.WinForms.Guna2TextBox();
             this.pic_product = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pic_product)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnUploadImage
             // 
+            this.BtnUploadImage.BorderRadius = 10;
             this.BtnUploadImage.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.BtnUploadImage.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.BtnUploadImage.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.BtnUploadImage.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.BtnUploadImage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnUploadImage.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.BtnUploadImage.ForeColor = System.Drawing.Color.White;
             this.BtnUploadImage.Location = new System.Drawing.Point(213, 218);
             this.BtnUploadImage.Name = "BtnUploadImage";
@@ -100,13 +104,14 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.BorderRadius = 10;
             this.btnCancel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCancel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnCancel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnCancel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(92, 544);
+            this.btnCancel.Location = new System.Drawing.Point(132, 544);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(145, 45);
             this.btnCancel.TabIndex = 0;
@@ -115,13 +120,14 @@
             // 
             // btnSave
             // 
+            this.btnSave.BorderRadius = 10;
             this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(283, 544);
+            this.btnSave.Location = new System.Drawing.Point(355, 544);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(159, 45);
             this.btnSave.TabIndex = 0;
@@ -221,6 +227,18 @@
             this.pic_product.TabIndex = 2;
             this.pic_product.TabStop = false;
             // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.UseTransparentDrag = true;
+            // 
+            // guna2BorderlessForm1
+            // 
+            this.guna2BorderlessForm1.BorderRadius = 10;
+            this.guna2BorderlessForm1.ContainerControl = this;
+            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
             // CRUD_Product
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -262,5 +280,7 @@
         private Guna.UI2.WinForms.Guna2TextBox txtDonViTinh;
         private Guna.UI2.WinForms.Guna2TextBox txtGia;
         private Guna.UI2.WinForms.Guna2TextBox txtSoLuong;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }

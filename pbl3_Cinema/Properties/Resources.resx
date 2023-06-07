@@ -145,4 +145,10 @@
   <data name="77053035_154732679239330_8345556334451621888_n_637128613599966613" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\77053035_154732679239330_8345556334451621888_n_637128613599966613.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="admin_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\admin_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="naml3206_2000x1xxx_1614762674721" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\naml3206-2000x1xxx_1614762674721.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

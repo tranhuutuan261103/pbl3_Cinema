@@ -20,6 +20,7 @@ namespace pbl3_Cinema.MyUserControler
         private string _soluong;
         private Image _icon;
         private string _price;
+        private string _unit;
         private int _id;
 
         [Category("Custom props")]
@@ -41,6 +42,13 @@ namespace pbl3_Cinema.MyUserControler
         {
             get { return _soluong; }
             set { _soluong = value; }
+        }
+
+        [Category("Custom props")]
+        public string Unit
+        {
+            get { return _unit; }
+            set { _nameProduct = value; label_Unit.Text = value; }
         }
 
         [Category("Custom props")]
