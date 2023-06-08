@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace pbl3_Cinema.DAL
 {
@@ -14,7 +15,7 @@ namespace pbl3_Cinema.DAL
         {
             using (CinemaEntities entities = new CinemaEntities())
             {
-                var find = entities.accounts.Where(p => p.email == email && p.pass_word == password).FirstOrDefault();
+                var find = entities.accounts.Where(p => p.email == email).ToList().Where(p => p.pass_word == password).FirstOrDefault();
                 if (find == null)
                 {
                     return -1;

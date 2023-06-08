@@ -65,8 +65,13 @@ namespace pbl3_Cinema.View.AdminView.Statistic
             }
             if (e.RowIndex > -1)
             {
-                string name = Convert.ToString(dataGridView_Revenue.Rows[e.RowIndex].Cells["Id"].Value);
-                MessageBox.Show(name);
+                int id = Convert.ToInt32(dataGridView_Revenue.Rows[e.RowIndex].Cells["Id"].Value);
+                DateTime date = Convert.ToDateTime(dataGridView_Revenue.Rows[e.RowIndex].Cells["Date"].Value);
+                TimeSpan time = TimeSpan.Parse(dataGridView_Revenue.Rows[e.RowIndex].Cells["Time"].Value.ToString());
+                string title = dataGridView_Revenue.Rows[e.RowIndex].Cells["Title"].Value.ToString();
+                string auditorium = dataGridView_Revenue.Rows[e.RowIndex].Cells["Name_Auditorium"].Value.ToString();
+                Revenue_BLL bll = new Revenue_BLL();
+                bll.CreateExcel(id, date,time, title, auditorium);
             }
         }
 
