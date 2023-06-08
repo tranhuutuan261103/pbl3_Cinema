@@ -94,7 +94,7 @@
             // 
             this.label_SeatReserved.BackColor = System.Drawing.Color.Transparent;
             this.label_SeatReserved.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label_SeatReserved.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_SeatReserved.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_SeatReserved.Location = new System.Drawing.Point(0, 55);
             this.label_SeatReserved.Name = "label_SeatReserved";
             this.label_SeatReserved.Size = new System.Drawing.Size(165, 125);

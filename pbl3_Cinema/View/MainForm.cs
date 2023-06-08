@@ -36,11 +36,6 @@ namespace pbl3_Cinema.View
             InitializeComponent();
         }
 
-        private void ControlBox_Exit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         public void SignOut()
         {
             this.Close();
@@ -266,6 +261,14 @@ namespace pbl3_Cinema.View
                     form.signOut = new FormAccountCustomerManage.SignOut(SignOut);
                     OpenChildForm(form, sender);
                 }
+            }
+        }
+
+        private void guna2ControlBox1_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có muốn đăng suất không?", "Log out", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                this.Close();
             }
         }
     }
