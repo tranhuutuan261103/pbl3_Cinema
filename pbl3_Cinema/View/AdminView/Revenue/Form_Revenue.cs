@@ -71,7 +71,7 @@ namespace pbl3_Cinema.View.AdminView.Statistic
                 string title = dataGridView_Revenue.Rows[e.RowIndex].Cells["Title"].Value.ToString();
                 string auditorium = dataGridView_Revenue.Rows[e.RowIndex].Cells["Name_Auditorium"].Value.ToString();
                 Revenue_BLL bll = new Revenue_BLL();
-                bll.CreateExcel(id, date,time, title, auditorium);
+                bll.CreateExcel(id);
             }
         }
 
@@ -139,6 +139,17 @@ namespace pbl3_Cinema.View.AdminView.Statistic
         private void cbb_Movie_SelectedIndexChanged(object sender, EventArgs e)
         {
             GetRevenue();
+        }
+
+        private void btn_Print_Click(object sender, EventArgs e)
+        {
+            if (cbb_Movie.SelectedIndex == -1)
+            {
+                return;
+            }
+            CBBMovie cbb = (CBBMovie)cbb_Movie.SelectedItem;
+            Revenue_BLL bll = new Revenue_BLL();
+            bll.CreateExcel(cbb.id_movie, dateTimePicker_StartDay.Value, dateTimePicker_EndDay.Value);
         }
     }
 }
