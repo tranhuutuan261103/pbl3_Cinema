@@ -713,6 +713,18 @@
       <DependentUpon>ModelCinema.edmx</DependentUpon>
       <LastGenOutput>ModelCinema.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\cinema background copy.jpg" />
+    <None Include="Resources\transaction-history.png" />
+    <None Include="Resources\movie.png" />
+    <None Include="Resources\coming-soon.png" />
+    <None Include="Resources\user.png" />
+    <None Include="Resources\people.png" />
+    <None Include="Resources\staff.png" />
+    <None Include="Resources\revenue.png" />
+    <None Include="Resources\ticket.png" />
+    <None Include="Resources\movie-projector.png" />
+    <None Include="Resources\theater.png" />
+    <None Include="Resources\watching-a-movie.png" />
     <None Include="Resources\naml3206-2000x1xxx_1614762674721.jpg" />
     <None Include="Resources\admin_icon.png" />
     <None Include="Resources\77053035_154732679239330_8345556334451621888_n_637128613599966613.jpg" />
