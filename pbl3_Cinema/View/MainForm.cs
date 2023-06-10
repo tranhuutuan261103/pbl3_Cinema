@@ -122,27 +122,27 @@ namespace pbl3_Cinema.View
             Guna2Button btn = (Guna2Button)sender;
             if (btn != null)
             {
-                if (btn.Text == "Quản lý phim")
+                if (btn.Text == "Phim")
                 {
                     OpenChildForm(new Form_ManageFilm(), sender);
                 }
 
-                if (btn.Text == "Quản lý phòng chiếu")
+                if (btn.Text == "Phòng chiếu")
                 {
                     OpenChildForm(new Form_ManageAuditorium(), sender);
                 }
 
-                if (btn.Text == "Quản lý đồ ăn")
+                if (btn.Text == "Đồ ăn")
                 {
                     OpenChildForm(new Manage_Product(), sender);
                 }
 
-                if (btn.Text == "Quản lý suất chiếu")
+                if (btn.Text == "Suất chiếu")
                 {
                     OpenChildForm(new Form_ManageScreening(), sender);
                 }
 
-                if (btn.Text == "Quản lý vé")
+                if (btn.Text == "Vé")
                 {
                     OpenChildForm(new Form_ManageReservation(), sender);
                 }
@@ -152,7 +152,7 @@ namespace pbl3_Cinema.View
                     OpenChildForm(new Form_Revenue(), sender);
                 }
 
-                if(btn.Text == "Thông tin tài khoản")
+                if(btn.Text == "Tài khoản")
                 {
                     Form_Infor_Admin form = new Form_Infor_Admin()
                     {
@@ -161,12 +161,12 @@ namespace pbl3_Cinema.View
                     OpenChildForm(form, sender);
                 }   
                 
-                if(btn.Text == "Quản lý nhân viên")
+                if(btn.Text == "Nhân viên")
                 {
                     OpenChildForm(new Form_Manage_Staff(), sender);
                 }
 
-                if (btn.Text == "Quản lý khách hàng")
+                if (btn.Text == "Khách hàng")
                 {
                     OpenChildForm(new Form_ManageAccount(), sender);
                 }
@@ -178,7 +178,7 @@ namespace pbl3_Cinema.View
             Guna2Button btn = (Guna2Button)sender;
             if (btn != null)
             {
-                if (btn.Text == "Phim đang chiếu")
+                if (btn.Text == "Đang chiếu")
                 {
                     Form_Film_NowShow form = new Form_Film_NowShow()
                     {
@@ -187,13 +187,13 @@ namespace pbl3_Cinema.View
                     OpenChildForm(form, sender);
                 }
 
-                if (btn.Text == "Phim sắp chiếu")
+                if (btn.Text == "Sắp chiếu")
                 {
                     Form_Film_WillShow form = new Form_Film_WillShow();
                     OpenChildForm(form, sender);
                 }
 
-                if (btn.Text == "Lịch sử đặt vé")
+                if (btn.Text == "Lịch sử đặt")
                 {
                     Form_ManageBooking form = new Form_ManageBooking()
                     {
@@ -202,7 +202,7 @@ namespace pbl3_Cinema.View
                     OpenChildForm(form, sender);
                 }
 
-                if (btn.Text == "Quản lý tài khoản")
+                if (btn.Text == "Tài khoản")
                 {
                     Form_Staff_Infor form = new Form_Staff_Infor()
                     {
@@ -211,12 +211,12 @@ namespace pbl3_Cinema.View
                     OpenChildForm(form, sender);
                 }
 
-                if (btn.Text == "Quản lý khách hàng")
+                if (btn.Text == "Khách hàng")
                 {
                     OpenChildForm(new Form_ManageAccount(), sender);
                 }
 
-                if (btn.Text == "Quản lý vé")
+                if (btn.Text == "Vé")
                 {
                     OpenChildForm(new Form_ManageReservation(), sender);
                 }
@@ -228,7 +228,7 @@ namespace pbl3_Cinema.View
             Guna2Button btn = (Guna2Button)sender;
             if (btn != null)
             {
-                if (btn.Text == "Phim đang chiếu")
+                if (btn.Text == "Đang chiếu")
                 {
                     Form_Film_NowShow form = new Form_Film_NowShow()
                     {
@@ -237,13 +237,13 @@ namespace pbl3_Cinema.View
                     OpenChildForm(form, sender);
                 }
 
-                if (btn.Text == "Phim sắp chiếu")
+                if (btn.Text == "Sắp chiếu")
                 {
                     Form_Film_WillShow form = new Form_Film_WillShow();
                     OpenChildForm(form, sender);
                 }
 
-                if (btn.Text == "Lịch sử đặt vé")
+                if (btn.Text == "Lịch sử đặt")
                 {
                     Form_ManageBooking form = new Form_ManageBooking()
                     {
@@ -252,7 +252,7 @@ namespace pbl3_Cinema.View
                     OpenChildForm(form, sender);
                 }
 
-                if (btn.Text == "Quản lý tài khoản")
+                if (btn.Text == "Tài khoản")
                 {
                     FormAccountCustomerManage form = new FormAccountCustomerManage()
                     {
