@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView_ListFilm = new Guna.UI2.WinForms.Guna2DataGridView();
             this.btn_AddFilm = new Guna.UI2.WinForms.Guna2Button();
             this.btn_UpdateFilm = new Guna.UI2.WinForms.Guna2Button();
@@ -40,6 +40,7 @@
             this.cbb_Category = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_Del = new Guna.UI2.WinForms.Guna2Button();
+            this.text_Search = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ListFilm)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,27 +48,27 @@
             // 
             this.dataGridView_ListFilm.AllowUserToAddRows = false;
             this.dataGridView_ListFilm.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dataGridView_ListFilm.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dataGridView_ListFilm.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView_ListFilm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_ListFilm.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_ListFilm.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView_ListFilm.ColumnHeadersHeight = 30;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView_ListFilm.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView_ListFilm.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView_ListFilm.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataGridView_ListFilm.Location = new System.Drawing.Point(29, 84);
             this.dataGridView_ListFilm.Name = "dataGridView_ListFilm";
@@ -110,7 +111,7 @@
             this.btn_AddFilm.ForeColor = System.Drawing.Color.White;
             this.btn_AddFilm.Location = new System.Drawing.Point(29, 521);
             this.btn_AddFilm.Name = "btn_AddFilm";
-            this.btn_AddFilm.Size = new System.Drawing.Size(154, 45);
+            this.btn_AddFilm.Size = new System.Drawing.Size(150, 45);
             this.btn_AddFilm.TabIndex = 1;
             this.btn_AddFilm.Text = "Thêm phim";
             this.btn_AddFilm.Click += new System.EventHandler(this.btn_AddFilm_Click);
@@ -124,24 +125,25 @@
             this.btn_UpdateFilm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_UpdateFilm.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_UpdateFilm.ForeColor = System.Drawing.Color.White;
-            this.btn_UpdateFilm.Location = new System.Drawing.Point(214, 521);
+            this.btn_UpdateFilm.Location = new System.Drawing.Point(185, 521);
             this.btn_UpdateFilm.Name = "btn_UpdateFilm";
-            this.btn_UpdateFilm.Size = new System.Drawing.Size(148, 45);
+            this.btn_UpdateFilm.Size = new System.Drawing.Size(150, 45);
             this.btn_UpdateFilm.TabIndex = 1;
             this.btn_UpdateFilm.Text = "Chỉnh sửa";
             this.btn_UpdateFilm.Click += new System.EventHandler(this.btn_UpdateFilm_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(686, 527);
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(733, 540);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(129, 22);
+            this.textBox1.Size = new System.Drawing.Size(129, 24);
             this.textBox1.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(576, 527);
+            this.label1.Location = new System.Drawing.Point(730, 521);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 16);
             this.label1.TabIndex = 3;
@@ -156,7 +158,7 @@
             this.btn_AddCategory.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_AddCategory.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_AddCategory.ForeColor = System.Drawing.Color.White;
-            this.btn_AddCategory.Location = new System.Drawing.Point(841, 521);
+            this.btn_AddCategory.Location = new System.Drawing.Point(868, 521);
             this.btn_AddCategory.Name = "btn_AddCategory";
             this.btn_AddCategory.Size = new System.Drawing.Size(94, 45);
             this.btn_AddCategory.TabIndex = 4;
@@ -198,12 +200,33 @@
             this.btn_Del.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_Del.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_Del.ForeColor = System.Drawing.Color.White;
-            this.btn_Del.Location = new System.Drawing.Point(390, 521);
+            this.btn_Del.Location = new System.Drawing.Point(341, 521);
             this.btn_Del.Name = "btn_Del";
-            this.btn_Del.Size = new System.Drawing.Size(151, 45);
+            this.btn_Del.Size = new System.Drawing.Size(150, 45);
             this.btn_Del.TabIndex = 7;
             this.btn_Del.Text = "Xóa";
             this.btn_Del.Click += new System.EventHandler(this.btn_Del_Click);
+            // 
+            // text_Search
+            // 
+            this.text_Search.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.text_Search.DefaultText = "";
+            this.text_Search.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.text_Search.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.text_Search.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.text_Search.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.text_Search.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.text_Search.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.text_Search.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.text_Search.Location = new System.Drawing.Point(513, 533);
+            this.text_Search.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.text_Search.Name = "text_Search";
+            this.text_Search.PasswordChar = '\0';
+            this.text_Search.PlaceholderText = "Tìm kiếm";
+            this.text_Search.SelectedText = "";
+            this.text_Search.Size = new System.Drawing.Size(184, 33);
+            this.text_Search.TabIndex = 8;
+            this.text_Search.TextChanged += new System.EventHandler(this.text_Search_TextChanged);
             // 
             // Form_ManageFilm
             // 
@@ -211,6 +234,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightYellow;
             this.ClientSize = new System.Drawing.Size(1000, 600);
+            this.Controls.Add(this.text_Search);
             this.Controls.Add(this.btn_Del);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbb_Category);
@@ -240,5 +264,6 @@
         private Guna.UI2.WinForms.Guna2ComboBox cbb_Category;
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2Button btn_Del;
+        private Guna.UI2.WinForms.Guna2TextBox text_Search;
     }
 }

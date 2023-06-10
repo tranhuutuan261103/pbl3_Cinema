@@ -58,13 +58,36 @@ namespace pbl3_Cinema.View.AdminView.ManageStaff
         {
             Account_BLL acc = new Account_BLL();
             string email = txtEmail.Text;
+            if (email == "")
+            {
+                MessageBox.Show("Email không được để trống");
+                return;
+            }
+            if (MyFuncStatic.MyEmailFunc.checkValidEmail(email) == false)
+            {
+                MessageBox.Show("Email không hợp lệ");
+                return;
+            }
             string position = txtChucVu.Text;
             string name = txtHoTen.Text;
             string gender = ccbGioiTinh.SelectedItem.ToString();
 
-            int wage = GetWage();
             string phone = txtDienThoai.Text;
+            if (checkValidPhoneNumber(phone) == false)
+            {
+                MessageBox.Show("Số điện thoại không hợp lệ");
+                return;
+            }
+
             string password = txtPassword.Text;
+            if (checkValidPassword(password) == false)
+            {
+                MessageBox.Show("Mật khẩu phải có độ dài từ 6 đến 24 ký tự!");
+                return;
+            }
+
+            int wage = GetWage();
+            bool active = ccbTrangThai.SelectedItem.ToString() == "Active" ? true : false;
             DateTime dtp = (DateTime)dtpNgaySinh.Value;
             if (this.email_id == "")
             {
@@ -77,7 +100,7 @@ namespace pbl3_Cinema.View.AdminView.ManageStaff
             }
             else
             {
-                if (acc.UpdateInforStaff(email, name, gender, phone, dtp, position, wage) == 1)
+                if (acc.UpdateInforStaff(email, name, gender, phone, dtp, position, wage, active) == 1)
                 {
                     MessageBox.Show("Update thông tin nhân viên thành công");
                     hiden();
@@ -112,6 +135,41 @@ namespace pbl3_Cinema.View.AdminView.ManageStaff
                 }
                 txtEmail.ReadOnly = true;
             }
+        }
+
+        private bool checkValidPassword(string password)
+        {
+            if (password == null)
+            {
+                return false;
+            }
+            int length = password.Length;
+            if (length < 6 || length > 24)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private bool checkValidPhoneNumber(string phoneNumber)
+        {
+            if (phoneNumber == null)
+            {
+                return false;
+            }
+            int length = phoneNumber.Length;
+            if (length != 10)
+            {
+                return false;
+            }
+            for (int i = 0; i < length; i++)
+            {
+                if (phoneNumber[i] < 48 || phoneNumber[i] > 57)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

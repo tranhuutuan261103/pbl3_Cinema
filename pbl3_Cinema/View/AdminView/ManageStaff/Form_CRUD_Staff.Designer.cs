@@ -268,6 +268,7 @@
             // ccbTrangThai
             // 
             this.ccbTrangThai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ccbTrangThai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ccbTrangThai.FormattingEnabled = true;
             this.ccbTrangThai.Items.AddRange(new object[] {
             "Active",

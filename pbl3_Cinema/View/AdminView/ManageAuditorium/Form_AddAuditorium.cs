@@ -39,6 +39,12 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
                 return;
             }
 
+            if (row >= 20 || col >= 20)
+            {
+                MessageBox.Show("Số ghế quá lớn");
+                return;
+            }
+
             auditorium a = new auditorium()
             {
                 name_auditorium = nameAu,

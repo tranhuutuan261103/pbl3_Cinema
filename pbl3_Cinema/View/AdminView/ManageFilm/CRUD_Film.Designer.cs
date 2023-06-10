@@ -231,6 +231,7 @@
             this.dateTimePicker_StartDay.Size = new System.Drawing.Size(159, 30);
             this.dateTimePicker_StartDay.TabIndex = 13;
             this.dateTimePicker_StartDay.Value = new System.DateTime(2023, 4, 2, 15, 46, 15, 351);
+            this.dateTimePicker_StartDay.ValueChanged += new System.EventHandler(this.dateTimePicker_StartDay_ValueChanged);
             // 
             // dateTimePicker_EndDay
             // 
@@ -244,6 +245,7 @@
             this.dateTimePicker_EndDay.Size = new System.Drawing.Size(144, 30);
             this.dateTimePicker_EndDay.TabIndex = 14;
             this.dateTimePicker_EndDay.Value = new System.DateTime(2023, 4, 2, 15, 46, 29, 70);
+            this.dateTimePicker_EndDay.ValueChanged += new System.EventHandler(this.dateTimePicker_EndDay_ValueChanged);
             // 
             // label7
             // 

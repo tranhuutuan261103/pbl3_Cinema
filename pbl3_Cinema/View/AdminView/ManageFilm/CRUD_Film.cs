@@ -39,7 +39,7 @@ namespace pbl3_Cinema.View.AdminView.ManageFilm
         private void btn_Attach_Poster_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "JPEG|*.jpg;*.png";
+            ofd.Filter = "JPEG|*.jpg;*.png;*.jpeg";
             ofd.ValidateNames = true;
             ofd.Multiselect = false;
             using (ofd)
@@ -139,6 +139,22 @@ namespace pbl3_Cinema.View.AdminView.ManageFilm
                 }
                 dateTimePicker_StartDay.Value = Movie.Release_date;
                 dateTimePicker_EndDay.Value = Movie.Expiration_date;
+            }
+        }
+
+        private void dateTimePicker_StartDay_ValueChanged(object sender, EventArgs e)
+        {
+            if(dateTimePicker_EndDay.Value < dateTimePicker_StartDay.Value)
+            {
+                dateTimePicker_EndDay.Value = dateTimePicker_StartDay.Value;
+            }
+        }
+
+        private void dateTimePicker_EndDay_ValueChanged(object sender, EventArgs e)
+        {
+            if (dateTimePicker_EndDay.Value < dateTimePicker_StartDay.Value)
+            {
+                dateTimePicker_StartDay.Value = dateTimePicker_EndDay.Value;
             }
         }
     }

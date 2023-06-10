@@ -43,14 +43,17 @@ namespace pbl3_Cinema.View.AdminView
             }
             int id = ((CBB_Category)cbb_Category.SelectedItem).id;
             Cinema_BLL bll = new Cinema_BLL();
+            List<MyMovieInfor> list = new List<MyMovieInfor>();
             if (id == 0)
             {
-                dataGridView_ListFilm.DataSource = bll.GetAllMovieInfor().ToArray();
+                list = bll.GetAllMovieInfor();
             }
             else
             {
-                dataGridView_ListFilm.DataSource = bll.GetAllMovieInfor(id).ToArray();
+                list = bll.GetAllMovieInfor(id);
             }
+            list = list.Where(m => m.Title.ToLower().Contains(text_Search.Text.ToLower())).OrderByDescending(x => x.Release_date).ToList();
+            dataGridView_ListFilm.DataSource = list;
             dataGridView_ListFilm.Columns["id"].Visible = false;
             dataGridView_ListFilm.Columns["Title"].Width = 250;
             dataGridView_ListFilm.Columns["Title"].HeaderText = "Tên phim";
@@ -116,7 +119,7 @@ namespace pbl3_Cinema.View.AdminView
             }
             else
             {
-
+                MessageBox.Show("Thêm thất bại");
             }
         }
 
@@ -138,6 +141,11 @@ namespace pbl3_Cinema.View.AdminView
                 bll.DeleteFilm(id);
                 LoadMovie();
             }
+        }
+
+        private void text_Search_TextChanged(object sender, EventArgs e)
+        {
+            LoadMovie();
         }
     }
 }
