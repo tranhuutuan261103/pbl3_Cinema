@@ -276,7 +276,7 @@ namespace pbl3_Cinema.DAL
             return 1;
         }
 
-        public int UpdateInforStaff(string email, string userName, string gender, string phoneNum, DateTime DoB, string position, int wage)
+        public int UpdateInforStaff(string email, string userName, string gender, string phoneNum, DateTime DoB, string position, int wage, bool active)
         {
             using (CinemaEntities db = new CinemaEntities())
             {
@@ -287,6 +287,7 @@ namespace pbl3_Cinema.DAL
                 userinfor.day_of_birth = DoB;
                 userinfor.staff.position = position;
                 userinfor.staff.wage = wage;
+                userinfor.staff.account.active = active;
                 db.SaveChanges();
             }
             return 1;

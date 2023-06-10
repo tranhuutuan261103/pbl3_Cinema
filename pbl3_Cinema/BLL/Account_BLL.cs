@@ -86,10 +86,10 @@ namespace pbl3_Cinema.BLL
             return dal.createAccountStaff(email, password, fullName, Gender, phoneNum, DayOfBirth, position, wage);
         }
 
-        public int UpdateInforStaff(string email, string userName, string gender, string phoneNum, DateTime DoB, string position, int wage)
+        public int UpdateInforStaff(string email, string userName, string gender, string phoneNum, DateTime DoB, string position, int wage, bool active)
         {
             Account_DAL dal = new Account_DAL();
-            return dal.UpdateInforStaff(email, userName, gender, phoneNum, DoB, position, wage);
+            return dal.UpdateInforStaff(email, userName, gender, phoneNum, DoB, position, wage, active);
         }
 
         internal int deleteAccountStaff(List<string> email_list)
