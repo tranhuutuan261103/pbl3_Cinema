@@ -24,7 +24,7 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
             SetShowDayPicker();
 
             Screening_BLL bll = new Screening_BLL();
-            dataGridView_Screening.DataSource = bll.GetAllScreeningInfor();
+            dataGridView_Screening.DataSource = bll.GetAllScreeningInfor().OrderByDescending(x => x.ShowDay).ThenByDescending(x => x.ShowTime).ToList();
         }
 
         private void SetCBB()
@@ -51,16 +51,34 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
             CBBAuditorium cbb = cbb_Auditorium.SelectedItem as CBBAuditorium;
 
             Screening_BLL bll = new Screening_BLL();
+            List<ScreeningInfor> list = new List<ScreeningInfor>();
             if (cbb.id == 0)
             {
-                dataGridView_Screening.DataSource = bll.GetScreeningInforsFilter(dayFilter);
+                list = bll.GetScreeningInforsFilter(dayFilter);
             }
             else
             {
-                dataGridView_Screening.DataSource = bll.GetScreeningInforsFilter(dayFilter, cbb.id);
+                list = bll.GetScreeningInforsFilter(dayFilter, cbb.id);
             }
-            dataGridView_Screening.Columns["id"].Visible = false;
+
+            list = list.OrderByDescending(x => x.ShowDay).ThenByDescending(x => x.ShowTime).ToList();
+
+            dataGridView_Screening.DataSource = list;
+            dataGridView_Screening.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView_Screening.Columns["id"].Visible = true;
+            dataGridView_Screening.Columns["id"].Width = 40;
+            dataGridView_Screening.Columns["id"].HeaderText = "Mã SC";
             dataGridView_Screening.Columns["nameMovie"].Width = 250;
+            dataGridView_Screening.Columns["nameMovie"].HeaderText = "Tên phim";
+            dataGridView_Screening.Columns["nameAuditorium"].HeaderText = "Tên phòng";
+            dataGridView_Screening.Columns["ShowDay"].HeaderText = "Ngày chiếu";
+            dataGridView_Screening.Columns["ShowTime"].HeaderText = "Giờ chiếu";
+            dataGridView_Screening.Columns["SumSeatReserved"].HeaderText = "Số ghế đã đặt";
+            dataGridView_Screening.Columns["SumSeatReserved"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView_Screening.Columns["SumSeat"].HeaderText = "Tổng số ghế";
+            dataGridView_Screening.Columns["SumSeat"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView_Screening.Columns["price"].HeaderText = "Đơn giá";
+            dataGridView_Screening.Columns["price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         private void btn_Add_Click(object sender, EventArgs e)
@@ -70,7 +88,7 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
             form._CRUDScreening += new Form_AddScreening.CRUDScreening(AddScreening);
             form.ShowDialog();
             Screening_BLL bll = new Screening_BLL();
-            dataGridView_Screening.DataSource = bll.GetAllScreeningInfor();
+            dataGridView_Screening.DataSource = bll.GetAllScreeningInfor().OrderByDescending(x => x.ShowDay).ThenByDescending(x => x.ShowTime).ToList();
         }
 
         private void AddScreening(screening s)
@@ -131,7 +149,7 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
         private void btn_AllScreening_Click(object sender, EventArgs e)
         {
             Screening_BLL bll = new Screening_BLL();
-            dataGridView_Screening.DataSource = bll.GetAllScreeningInfor();
+            dataGridView_Screening.DataSource = bll.GetAllScreeningInfor().OrderByDescending(x => x.ShowDay).ThenByDescending(x => x.ShowTime).ToList();
         }
 
         private void btn_Del_Click(object sender, EventArgs e)
@@ -150,7 +168,7 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
                 if (bll.DeleteScreeningById(screen_id) == 1) 
                 {
                     MessageBox.Show("Xóa thành công");
-                    dataGridView_Screening.DataSource = bll.GetAllScreeningInfor();
+                    dataGridView_Screening.DataSource = bll.GetAllScreeningInfor().OrderByDescending(x => x.ShowDay).ThenByDescending(x => x.ShowTime).ToList();
                 }
                 else
                 {

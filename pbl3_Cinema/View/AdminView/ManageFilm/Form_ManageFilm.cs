@@ -29,7 +29,7 @@ namespace pbl3_Cinema.View.AdminView
             CBB_Category c = new CBB_Category()
             {
                 id = 0,
-                name_Category = "All",
+                name_Category = "Tất cả",
             };
             cbb_Category.Items.Add(c);
             cbb_Category.Items.AddRange(list.ToArray());
@@ -53,6 +53,15 @@ namespace pbl3_Cinema.View.AdminView
             }
             dataGridView_ListFilm.Columns["id"].Visible = false;
             dataGridView_ListFilm.Columns["Title"].Width = 250;
+            dataGridView_ListFilm.Columns["Title"].HeaderText = "Tên phim";
+            dataGridView_ListFilm.Columns["Category"].HeaderText = "Thể loại";
+            dataGridView_ListFilm.Columns["Director"].HeaderText = "Đạo diễn";
+            dataGridView_ListFilm.Columns["ListCast"].HeaderText = "Diễn viên";
+            dataGridView_ListFilm.Columns["Duration_min"].HeaderText = "Thời lượng";
+            dataGridView_ListFilm.Columns["Duration_min"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView_ListFilm.Columns["Description"].Visible = false;
+            dataGridView_ListFilm.Columns["Release_date"].HeaderText = "Phát hành";
+            dataGridView_ListFilm.Columns["Expiration_date"].HeaderText = "Kết thúc";
         }
 
         private void AddFilm(object o)

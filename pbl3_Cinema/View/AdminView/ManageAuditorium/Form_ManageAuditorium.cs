@@ -25,6 +25,11 @@ namespace pbl3_Cinema.View.AdminView.ManageScreen
             Auditorium_BLL bll = new Auditorium_BLL();
             dataGridView_Auditorium.DataSource = bll.GetAllAuditorium_Infor();
             dataGridView_Auditorium.Columns["id"].Visible = false;
+            dataGridView_Auditorium.Columns["seat_no_row"].HeaderText = "Số chỗ ngồi mỗi cột";
+            dataGridView_Auditorium.Columns["seat_no_column"].HeaderText = "Số chỗ ngồi mỗi hàng";
+            dataGridView_Auditorium.Columns["name_auditorium"].HeaderText = "Tên phòng";
+            dataGridView_Auditorium.Columns["screening_curent_count"].HeaderText = "Số lượng suất chiếu sắp tới";
+            dataGridView_Auditorium.Columns["screening_curent_count"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private void btn_AddAuditorium_Click(object sender, EventArgs e)

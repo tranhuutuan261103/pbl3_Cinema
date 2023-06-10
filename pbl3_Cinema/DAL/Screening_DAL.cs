@@ -82,7 +82,10 @@ namespace pbl3_Cinema.DAL
         {
             using (CinemaEntities db = new CinemaEntities())
             {
-                var count = db.screenings.Where(p => p.show_day >= DateTime.Now && p.auditorium_id == id).Count();
+                DateTime now = DateTime.Now;
+                DateTime nowDay = new DateTime(now.Year, now.Month, now.Day);
+                TimeSpan nowTime = new TimeSpan(now.Hour, now.Minute, now.Second);
+                var count = db.screenings.Where(p => (p.show_day == nowDay && p.show_time >= nowTime || p.show_day > nowDay) && p.auditorium_id == id).Count();
                 return count;
             }
         }

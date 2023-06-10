@@ -115,7 +115,7 @@
             this.btn_AddAuditorium.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_AddAuditorium.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_AddAuditorium.ForeColor = System.Drawing.Color.White;
-            this.btn_AddAuditorium.Location = new System.Drawing.Point(148, 513);
+            this.btn_AddAuditorium.Location = new System.Drawing.Point(172, 513);
             this.btn_AddAuditorium.Name = "btn_AddAuditorium";
             this.btn_AddAuditorium.Size = new System.Drawing.Size(180, 45);
             this.btn_AddAuditorium.TabIndex = 2;

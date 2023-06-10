@@ -79,7 +79,7 @@ namespace pbl3_Cinema.View.SignView
             Account_BLL bll = new Account_BLL();
             if(bll.UpdateInforCustomer(email, nameUser,gender, phone, dob) == 1)
             {
-                MessageBox.Show("Cập hật thông tin thành công");
+                MessageBox.Show("Cập nhật thông tin thành công");
                 Dispose();
             }
         }

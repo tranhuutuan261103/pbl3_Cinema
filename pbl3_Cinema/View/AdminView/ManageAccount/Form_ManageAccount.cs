@@ -27,7 +27,18 @@ namespace pbl3_Cinema.View.AdminView.ManageAccount
         {
             Account_BLL bll = new Account_BLL();
             dataGridView.DataSource = bll.GetInforAllCustomer();
-            dataGridView.Columns["PointUser"].DisplayIndex = 5;
+            dataGridView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView.Columns["email"].HeaderText = "Email";
+            dataGridView.Columns["email"].DisplayIndex = 0;
+            dataGridView.Columns["email"].Width = 200;
+            dataGridView.Columns["NameUser"].HeaderText = "Tên người dùng";
+            dataGridView.Columns["NameUser"].DisplayIndex = 1;
+            dataGridView.Columns["NameUser"].Width = 100;
+            dataGridView.Columns["PointUser"].HeaderText = "Điểm tích lũy";
+            dataGridView.Columns["PointUser"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView.Columns["PhoneNumber"].HeaderText = "Số điện thoại";
+            dataGridView.Columns["PhoneNumber"].Width = 70;
+            dataGridView.Columns["PhoneNumber"].DisplayIndex = 5;
         }
 
         private void btn_DeleteAccount_Click(object sender, EventArgs e)
