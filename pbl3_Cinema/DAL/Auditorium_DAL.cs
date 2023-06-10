@@ -73,9 +73,12 @@ namespace pbl3_Cinema.DAL
             List<Auditorium_Infor> list = new List<Auditorium_Infor>();
             using (CinemaEntities db = new CinemaEntities())
             {
+                DateTime dateTime = DateTime.Now;
+                DateTime nowDay = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day);
+                TimeSpan nowTime = new TimeSpan(dateTime.Hour, dateTime.Minute, dateTime.Second);
                 var l = db.auditoriums.
                     Where(p => p.active == true).
-                    GroupJoin(db.screenings.Where(p => p.show_day >= DateTime.Now).GroupBy(infor => infor.auditorium_id).Select(p => new { audi_id = p.Key, count = p.Count() }),
+                    GroupJoin(db.screenings.Where(p => (p.show_day == nowDay && p.show_time >= nowTime) || p.show_day > nowDay).GroupBy(infor => infor.auditorium_id).Select(p => new { audi_id = p.Key, count = p.Count() }),
                     k1 => k1.id,
                     k2 => k2.audi_id,
                     (k1, k2) => new { k1, k2 })

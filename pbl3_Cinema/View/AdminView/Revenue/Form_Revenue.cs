@@ -33,7 +33,7 @@ namespace pbl3_Cinema.View.AdminView.Statistic
         {
             Cinema_BLL bll = new Cinema_BLL();
             List<CBBMovie> list = bll.GetCBBMovies();
-            list.Insert(0, new CBBMovie() { id_movie = 0, title = "All" });
+            list.Insert(0, new CBBMovie() { id_movie = 0, title = "Tất cả" });
             cbb_Movie.DataSource = list;
             cbb_Movie.SelectedIndex = 0;
         }
@@ -41,7 +41,7 @@ namespace pbl3_Cinema.View.AdminView.Statistic
         private void InitDateTime()
         {
             dateTimePicker_EndDay.Value = DateTime.Now;
-            dateTimePicker_StartDay.Value = DateTime.Now.AddDays(-60);
+            dateTimePicker_StartDay.Value = DateTime.Now.AddDays(-7);
         }
 
         private void InitButton()
@@ -66,12 +66,11 @@ namespace pbl3_Cinema.View.AdminView.Statistic
             if (e.RowIndex > -1)
             {
                 int id = Convert.ToInt32(dataGridView_Revenue.Rows[e.RowIndex].Cells["Id"].Value);
-                DateTime date = Convert.ToDateTime(dataGridView_Revenue.Rows[e.RowIndex].Cells["Date"].Value);
-                TimeSpan time = TimeSpan.Parse(dataGridView_Revenue.Rows[e.RowIndex].Cells["Time"].Value.ToString());
-                string title = dataGridView_Revenue.Rows[e.RowIndex].Cells["Title"].Value.ToString();
-                string auditorium = dataGridView_Revenue.Rows[e.RowIndex].Cells["Name_Auditorium"].Value.ToString();
                 Revenue_BLL bll = new Revenue_BLL();
-                bll.CreateExcel(id);
+                if (bll.CreateExcel(id) == true)
+                {
+                    MessageBox.Show("Tạo hóa đơn doanh thu thành công");
+                }
             }
         }
 
@@ -92,20 +91,22 @@ namespace pbl3_Cinema.View.AdminView.Statistic
             {
                 list = bll.GetRevenueByMovie(cbb.id_movie, dateTimePicker_StartDay.Value, dateTimePicker_EndDay.Value);
             }
-            
+
+            list = list.OrderBy(x => x.Date).ToList();
             dataGridView_Revenue.DataSource = list;
+            dataGridView_Revenue.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView_Revenue.Columns["Id"].Visible = false;
-            dataGridView_Revenue.Columns["Title"].HeaderText = "Title";
+            dataGridView_Revenue.Columns["Title"].HeaderText = "Tên phim";
             dataGridView_Revenue.Columns["Title"].Width = 250;
-            dataGridView_Revenue.Columns["Name_Auditorium"].HeaderText = "Auditorium";
-            dataGridView_Revenue.Columns["Date"].HeaderText = "Date";
+            dataGridView_Revenue.Columns["Name_Auditorium"].HeaderText = "Tên phòng chiếu";
+            dataGridView_Revenue.Columns["Date"].HeaderText = "Ngày chiếu";
             dataGridView_Revenue.Columns["Date"].Width = 60;
-            dataGridView_Revenue.Columns["Time"].HeaderText = "Time";
+            dataGridView_Revenue.Columns["Time"].HeaderText = "Giờ chiếu";
             dataGridView_Revenue.Columns["Time"].Width = 60;
-            dataGridView_Revenue.Columns["Sum"].HeaderText = "Sum";
+            dataGridView_Revenue.Columns["Sum"].HeaderText = "Doanh thu";
             dataGridView_Revenue.Columns["Sum"].Width = 100;
             dataGridView_Revenue.Columns["Sum"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView_Revenue.Columns["Seat_Sum"].HeaderText = "Seat Sum";
+            dataGridView_Revenue.Columns["Seat_Sum"].HeaderText = "Đã đặt";
             dataGridView_Revenue.Columns["Seat_Sum"].Width = 100;
             dataGridView_Revenue.Columns["Seat_Sum"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
@@ -149,7 +150,10 @@ namespace pbl3_Cinema.View.AdminView.Statistic
             }
             CBBMovie cbb = (CBBMovie)cbb_Movie.SelectedItem;
             Revenue_BLL bll = new Revenue_BLL();
-            bll.CreateExcel(cbb.id_movie, dateTimePicker_StartDay.Value, dateTimePicker_EndDay.Value);
+            if (bll.CreateExcel(cbb.id_movie, dateTimePicker_StartDay.Value, dateTimePicker_EndDay.Value) == true)
+            {
+                MessageBox.Show("In hóa đơn doanh thu thành công.");
+            }
         }
     }
 }

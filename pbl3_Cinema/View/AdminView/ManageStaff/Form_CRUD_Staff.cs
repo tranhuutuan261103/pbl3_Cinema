@@ -13,15 +13,45 @@ namespace pbl3_Cinema.View.AdminView.ManageStaff
 {
     public partial class Form_CRUD_Staff : Form
     {
+        public delegate void Hiden();
+        public Hiden hiden { set; get; }
         public string email_id { set; get; }
         public Form_CRUD_Staff()
         {
             InitializeComponent();
         }
 
+        private void Init()
+        {
+            dtpNgaySinh.MaxDate = DateTime.Now;
+        }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            hiden();
             this.Dispose();
+        }
+
+        private int GetWage()
+        {
+            int wage = 0;
+            try
+            {
+                wage = Convert.ToInt32(txtLuong.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lương sai định dạng");
+                txtLuong.Text = "0";
+                return 0;
+            }
+            if (wage < 0)
+            {
+                MessageBox.Show("Lương không được âm");
+                txtLuong.Text = "0";
+                return 0;
+            }
+            return wage;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -31,7 +61,8 @@ namespace pbl3_Cinema.View.AdminView.ManageStaff
             string position = txtChucVu.Text;
             string name = txtHoTen.Text;
             string gender = ccbGioiTinh.SelectedItem.ToString();
-            int wage = Convert.ToInt32(txtLuong.Text);
+
+            int wage = GetWage();
             string phone = txtDienThoai.Text;
             string password = txtPassword.Text;
             DateTime dtp = (DateTime)dtpNgaySinh.Value;
@@ -40,6 +71,7 @@ namespace pbl3_Cinema.View.AdminView.ManageStaff
                 if (acc.createAccountStaff(email, password, name, gender, phone, dtp, position, wage) == 1)
                 {
                     MessageBox.Show("Thêm nhân viên thành công");
+                    hiden();
                     this.Close();
                 }
             }
@@ -48,6 +80,7 @@ namespace pbl3_Cinema.View.AdminView.ManageStaff
                 if (acc.UpdateInforStaff(email, name, gender, phone, dtp, position, wage) == 1)
                 {
                     MessageBox.Show("Update thông tin nhân viên thành công");
+                    hiden();
                     this.Close();
                 }
             }
@@ -56,11 +89,13 @@ namespace pbl3_Cinema.View.AdminView.ManageStaff
 
         private void Form_CRUD_Staff_Load(object sender, EventArgs e)
         {
+            Init();
             CinemaEntities db = new CinemaEntities();
             if (email_id != "")
             {
                 var find = db.staffs.Where(p => p.email == email_id).Select(p => new { p.position, p.wage, p.email, p.account.active, p.user_infor.full_name, p.user_infor.day_of_birth, p.user_infor.gender, p.user_infor.phone_number, p.account.pass_word }).FirstOrDefault();
                 txtHoTen.Text = find.full_name;
+                dtpNgaySinh.Value = (DateTime)find.day_of_birth;
                 txtChucVu.Text = find.position;
                 txtEmail.Text = find.email;
                 txtDienThoai.Text = find.phone_number;
@@ -75,6 +110,7 @@ namespace pbl3_Cinema.View.AdminView.ManageStaff
                 {
                     ccbTrangThai.Text = "Inactive";
                 }
+                txtEmail.ReadOnly = true;
             }
         }
     }

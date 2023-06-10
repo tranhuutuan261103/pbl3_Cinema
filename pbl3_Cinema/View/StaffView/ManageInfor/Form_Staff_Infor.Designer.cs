@@ -178,15 +178,17 @@
             // 
             // btnDoiMatKhau
             // 
+            this.btnDoiMatKhau.BorderColor = System.Drawing.Color.Blue;
+            this.btnDoiMatKhau.BorderThickness = 2;
             this.btnDoiMatKhau.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnDoiMatKhau.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnDoiMatKhau.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnDoiMatKhau.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnDoiMatKhau.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnDoiMatKhau.ForeColor = System.Drawing.Color.White;
-            this.btnDoiMatKhau.Location = new System.Drawing.Point(299, 516);
+            this.btnDoiMatKhau.Location = new System.Drawing.Point(317, 510);
             this.btnDoiMatKhau.Name = "btnDoiMatKhau";
-            this.btnDoiMatKhau.Size = new System.Drawing.Size(221, 52);
+            this.btnDoiMatKhau.Size = new System.Drawing.Size(190, 50);
             this.btnDoiMatKhau.TabIndex = 0;
             this.btnDoiMatKhau.Text = "Đổi mật khẩu";
             this.btnDoiMatKhau.Click += new System.EventHandler(this.btnDoiMatKhau_Click);

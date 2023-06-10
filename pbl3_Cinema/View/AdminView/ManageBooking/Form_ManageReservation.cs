@@ -57,8 +57,21 @@ namespace pbl3_Cinema.View.AdminView.ManageFilm
             {
                 dataGridView.DataSource = bll.GetAllScreeningInforsFilter(dayFilter, cbb.id);
             }
-            //dataGridView.Columns["id"].Visible = false;
-
+            dataGridView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView.Columns["id"].Visible = true;
+            dataGridView.Columns["id"].Width = 40;
+            dataGridView.Columns["id"].HeaderText = "Mã SC";
+            dataGridView.Columns["nameMovie"].Width = 250;
+            dataGridView.Columns["nameMovie"].HeaderText = "Tên phim";
+            dataGridView.Columns["nameAuditorium"].HeaderText = "Tên phòng";
+            dataGridView.Columns["ShowDay"].HeaderText = "Ngày chiếu";
+            dataGridView.Columns["ShowTime"].HeaderText = "Giờ chiếu";
+            dataGridView.Columns["SumSeatReserved"].HeaderText = "Số ghế đã đặt";
+            dataGridView.Columns["SumSeatReserved"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView.Columns["SumSeat"].HeaderText = "Tổng số ghế";
+            dataGridView.Columns["SumSeat"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView.Columns["price"].HeaderText = "Đơn giá";
+            dataGridView.Columns["price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         private void btn_Detail_Click(object sender, EventArgs e)
