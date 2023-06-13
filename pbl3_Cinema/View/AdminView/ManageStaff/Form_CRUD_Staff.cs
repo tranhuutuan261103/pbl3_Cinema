@@ -24,6 +24,8 @@ namespace pbl3_Cinema.View.AdminView.ManageStaff
         private void Init()
         {
             dtpNgaySinh.MaxDate = DateTime.Now;
+            ccbGioiTinh.SelectedIndex = 0;
+            ccbTrangThai.SelectedIndex = 0;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -57,7 +59,7 @@ namespace pbl3_Cinema.View.AdminView.ManageStaff
         private void btnSave_Click(object sender, EventArgs e)
         {
             Account_BLL acc = new Account_BLL();
-            string email = txtEmail.Text;
+            string email = txtEmail.Text.Trim();
             if (email == "")
             {
                 MessageBox.Show("Email không được để trống");
@@ -100,7 +102,7 @@ namespace pbl3_Cinema.View.AdminView.ManageStaff
             }
             else
             {
-                if (acc.UpdateInforStaff(email, name, gender, phone, dtp, position, wage, active) == 1)
+                if (acc.UpdateInforStaff(email, password, name, gender, phone, dtp, position, wage, active) == 1)
                 {
                     MessageBox.Show("Update thông tin nhân viên thành công");
                     hiden();

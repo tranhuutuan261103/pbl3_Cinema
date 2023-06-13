@@ -31,7 +31,7 @@ namespace pbl3_Cinema
         public System.DateTime release_date { get; set; }
         public System.DateTime expiration_date { get; set; }
         public byte[] poster { get; set; }
-        public byte[] video_trailer { get; set; }
+        public string video_trailer { get; set; }
     
         public virtual category category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

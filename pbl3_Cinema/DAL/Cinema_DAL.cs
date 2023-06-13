@@ -40,7 +40,7 @@ namespace pbl3_Cinema.DAL
         {
             CinemaEntities entities = new CinemaEntities();
             List<MyMovieInfor> listMovie = new List<MyMovieInfor>();
-            var list = entities.movies.Select(p => new { p.id, p.title, p.description_movie, p.director, p.list_cast, p.duration_min, p.release_date, p.expiration_date, p.category });
+            var list = entities.movies.Select(p => new { p.id, p.title, p.description_movie, p.director, p.list_cast, p.duration_min, p.release_date, p.expiration_date, p.category, p.video_trailer });
             foreach (var movie in list)
             {
                 listMovie.Add(new MyMovieInfor
@@ -53,7 +53,8 @@ namespace pbl3_Cinema.DAL
                     Duration_min = movie.duration_min,
                     Release_date = movie.release_date,
                     Expiration_date = movie.expiration_date,
-                    Category = new CBB_Category(movie.category.id, movie.category.name_category)
+                    Category = new CBB_Category(movie.category.id, movie.category.name_category),
+                    Video_trailer = movie.video_trailer
                 });
             }
             return listMovie;
@@ -63,37 +64,49 @@ namespace pbl3_Cinema.DAL
         {
             using (CinemaEntities db = new CinemaEntities())
             {
-                db.movies.Add(Movie);
-                db.SaveChanges();
+                try
+                {
+                    db.movies.Add(Movie);
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Dữ liệu không hợp lệ");
+                }
             }
         }
 
         public void UpdateFilm(movie Movie)
         {
-            using (CinemaEntities db = new CinemaEntities())
+            try
             {
-                var s = db.movies.Where(p => p.id == Movie.id).FirstOrDefault();
-
-                s.title = Movie.title;
-                s.description_movie = Movie.description_movie;
-                s.director = Movie.director;
-                s.list_cast = Movie.list_cast;
-                s.duration_min = Movie.duration_min;
-                s.category_id = Movie.category_id;
-                s.release_date = Movie.release_date;
-                s.expiration_date = Movie.expiration_date;
-                if (Movie.poster != null)
+                using (CinemaEntities db = new CinemaEntities())
                 {
-                    s.poster = Movie.poster;
-                }
+                    var s = db.movies.Where(p => p.id == Movie.id).FirstOrDefault();
 
-                if (Movie.video_trailer != null)
-                {
+                    s.title = Movie.title;
+                    s.description_movie = Movie.description_movie;
+                    s.director = Movie.director;
+                    s.list_cast = Movie.list_cast;
+                    s.duration_min = Movie.duration_min;
+                    s.category_id = Movie.category_id;
+                    s.release_date = Movie.release_date;
+                    s.expiration_date = Movie.expiration_date;
+                    if (Movie.poster != null)
+                    {
+                        s.poster = Movie.poster;
+                    }
+
                     s.video_trailer = Movie.video_trailer;
-                }
 
-                db.SaveChanges();
+                    db.SaveChanges();
+                }
             }
+            catch(Exception)
+            {
+                MessageBox.Show("Dữ liệu không hợp lệ");
+            }
+            
         }
 
         public bool CheckCanDeleteMovie(int id_movie)
@@ -134,7 +147,7 @@ namespace pbl3_Cinema.DAL
         {
             using (CinemaEntities db = new CinemaEntities())
             {
-                var movie = db.movies.Where(p => p.id == id).Select(p => new { p.id, p.title, p.description_movie, p.director, p.list_cast, p.duration_min, p.release_date, p.expiration_date, p.category }).FirstOrDefault();
+                var movie = db.movies.Where(p => p.id == id).Select(p => new { p.id, p.title, p.description_movie, p.director, p.list_cast, p.duration_min, p.release_date, p.expiration_date, p.category, p.video_trailer }).FirstOrDefault();
                 {
                     return new MyMovieInfor
                     {
@@ -146,7 +159,8 @@ namespace pbl3_Cinema.DAL
                         Duration_min = movie.duration_min,
                         Release_date = movie.release_date,
                         Expiration_date = movie.expiration_date,
-                        Category = new CBB_Category(movie.category.id, movie.category.name_category)
+                        Category = new CBB_Category(movie.category.id, movie.category.name_category),
+                        Video_trailer = movie.video_trailer
                     };
                 }
             }
@@ -157,7 +171,7 @@ namespace pbl3_Cinema.DAL
             List<MyMovieInfor> list = new List<MyMovieInfor>();
             using (CinemaEntities db =  new CinemaEntities())
             {
-                var listMovie = db.movies.Where(p=>p.release_date <=  DateTime.Now && p.expiration_date >= DateTime.Now).Select(p=>new { p.id, p.title, p.description_movie, p.director, p.list_cast, p.duration_min, p.release_date, p.expiration_date, p.category });
+                var listMovie = db.movies.Where(p=>p.release_date <=  DateTime.Now && p.expiration_date >= DateTime.Now).Select(p=>new { p.id, p.title, p.description_movie, p.director, p.list_cast, p.duration_min, p.release_date, p.expiration_date, p.category, p.video_trailer });
                 foreach (var item in listMovie)
                 {
                     list.Add(new MyMovieInfor
@@ -170,7 +184,8 @@ namespace pbl3_Cinema.DAL
                         Duration_min = item.duration_min,
                         Release_date = item.release_date,
                         Expiration_date = item.expiration_date,
-                        Category = new CBB_Category(item.category.id, item.category.name_category)
+                        Category = new CBB_Category(item.category.id, item.category.name_category),
+                        Video_trailer = item.video_trailer
                     });
                 }
                 return list;
@@ -182,7 +197,7 @@ namespace pbl3_Cinema.DAL
             List<MyMovieInfor> list = new List<MyMovieInfor>();
             using (CinemaEntities db = new CinemaEntities())
             {
-                var listMovie = db.movies.Where(p => p.release_date <= DateTime.Now && p.expiration_date >= DateTime.Now && p.category_id == id_Category).Select(p => new { p.id, p.title, p.description_movie, p.director, p.list_cast, p.duration_min, p.release_date, p.expiration_date, p.category });
+                var listMovie = db.movies.Where(p => p.release_date <= DateTime.Now && p.expiration_date >= DateTime.Now && p.category_id == id_Category).Select(p => new { p.id, p.title, p.description_movie, p.director, p.list_cast, p.duration_min, p.release_date, p.expiration_date, p.category, p.video_trailer });
                 foreach (var item in listMovie)
                 {
                     list.Add(new MyMovieInfor
@@ -195,7 +210,8 @@ namespace pbl3_Cinema.DAL
                         Duration_min = item.duration_min,
                         Release_date = item.release_date,
                         Expiration_date = item.expiration_date,
-                        Category = new CBB_Category(item.category.id, item.category.name_category)
+                        Category = new CBB_Category(item.category.id, item.category.name_category),
+                        Video_trailer = item.video_trailer
                     });
                 }
                 return list;
@@ -207,7 +223,7 @@ namespace pbl3_Cinema.DAL
             List<MyMovieInfor> list = new List<MyMovieInfor>();
             using (CinemaEntities db = new CinemaEntities())
             {
-                var listMovie = db.movies.Where(p => p.release_date >= DateTime.Now ).Select(p => new { p.id, p.title, p.description_movie, p.director, p.list_cast, p.duration_min, p.release_date, p.expiration_date, p.category });
+                var listMovie = db.movies.Where(p => p.release_date >= DateTime.Now ).Select(p => new { p.id, p.title, p.description_movie, p.director, p.list_cast, p.duration_min, p.release_date, p.expiration_date, p.category, p.video_trailer });
                 foreach (var item in listMovie)
                 {
                     list.Add(new MyMovieInfor
@@ -220,7 +236,8 @@ namespace pbl3_Cinema.DAL
                         Duration_min = item.duration_min,
                         Release_date = item.release_date,
                         Expiration_date = item.expiration_date,
-                        Category = new CBB_Category(item.category.id, item.category.name_category)
+                        Category = new CBB_Category(item.category.id, item.category.name_category),
+                        Video_trailer = item.video_trailer
                     });
                 }
                 return list;
@@ -232,7 +249,7 @@ namespace pbl3_Cinema.DAL
             List<MyMovieInfor> list = new List<MyMovieInfor>();
             using (CinemaEntities db = new CinemaEntities())
             {
-                var listMovie = db.movies.Where(p => p.release_date >= DateTime.Now && p.category_id == id_Category).Select(p => new { p.id, p.title, p.description_movie, p.director, p.list_cast, p.duration_min, p.release_date, p.expiration_date, p.category });
+                var listMovie = db.movies.Where(p => p.release_date >= DateTime.Now && p.category_id == id_Category).Select(p => new { p.id, p.title, p.description_movie, p.director, p.list_cast, p.duration_min, p.release_date, p.expiration_date, p.category, p.video_trailer });
                 foreach (var item in listMovie)
                 {
                     list.Add(new MyMovieInfor
@@ -245,7 +262,8 @@ namespace pbl3_Cinema.DAL
                         Duration_min = item.duration_min,
                         Release_date = item.release_date,
                         Expiration_date = item.expiration_date,
-                        Category = new CBB_Category(item.category.id, item.category.name_category)
+                        Category = new CBB_Category(item.category.id, item.category.name_category),
+                        Video_trailer = item.video_trailer
                     });
                 }
                 return list;

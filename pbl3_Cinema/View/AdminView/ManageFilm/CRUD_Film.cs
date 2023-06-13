@@ -21,7 +21,6 @@ namespace pbl3_Cinema.View.AdminView.ManageFilm
         int id;
         private Image img;
         private string videoPath;
-        //private byte[] dataVideo;
         public delegate void MyDel(object o);
         public MyDel d { set; get; }
         public CRUD_Film()
@@ -49,21 +48,6 @@ namespace pbl3_Cinema.View.AdminView.ManageFilm
                     img = Image.FromFile(ofd.FileName);
                 }
             }
-        }
-
-        private void btn_Attach_Video_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog() { Multiselect = false, Filter = "MP4 File|*.mp4|All File|*.*" };
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                videoPath = ofd.FileName;
-                //dataVideo = new byte[200000000];
-                //using (Stream video = File.OpenRead(videoPath))
-                //{
-                //    video.Read(dataVideo, 0, dataVideo.Length);
-                //}
-            }
-
         }
 
         private void btn_Exit_Click(object sender, EventArgs e)
@@ -107,11 +91,11 @@ namespace pbl3_Cinema.View.AdminView.ManageFilm
             {
                 movie.poster = MyFuncStatic.MyConvert.ConvertImageToBinary(img);
             }
-            
+
+            videoPath = textVideoLink.Text;
             if (videoPath!=null)
             {
-                movie.video_trailer = new byte[100000000];
-                movie.video_trailer = MyFuncStatic.MyConvert.ConvertVideoToBytes(videoPath);
+                movie.video_trailer = videoPath;
             }
             d(movie);
             Dispose();
@@ -139,6 +123,7 @@ namespace pbl3_Cinema.View.AdminView.ManageFilm
                 }
                 dateTimePicker_StartDay.Value = Movie.Release_date;
                 dateTimePicker_EndDay.Value = Movie.Expiration_date;
+                textVideoLink.Text = Movie.Video_trailer;
             }
         }
 

@@ -52,6 +52,7 @@
             this.label_content = new System.Windows.Forms.Label();
             this.richTextBox_Description = new System.Windows.Forms.RichTextBox();
             this.panel_Body = new System.Windows.Forms.Panel();
+            this.btn_VideoTrailer = new Guna.UI2.WinForms.Guna2Button();
             this.panel_Poster.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Poster)).BeginInit();
             this.panel_Infor.SuspendLayout();
@@ -97,7 +98,7 @@
             this.panel_Infor.Controls.Add(this.label_Title);
             this.panel_Infor.Location = new System.Drawing.Point(381, 15);
             this.panel_Infor.Name = "panel_Infor";
-            this.panel_Infor.Size = new System.Drawing.Size(649, 240);
+            this.panel_Infor.Size = new System.Drawing.Size(628, 240);
             this.panel_Infor.TabIndex = 1;
             // 
             // guna2Separator1
@@ -105,7 +106,7 @@
             this.guna2Separator1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Separator1.Location = new System.Drawing.Point(3, 38);
             this.guna2Separator1.Name = "guna2Separator1";
-            this.guna2Separator1.Size = new System.Drawing.Size(646, 21);
+            this.guna2Separator1.Size = new System.Drawing.Size(625, 21);
             this.guna2Separator1.TabIndex = 14;
             // 
             // label_Release_date
@@ -245,7 +246,7 @@
             this.panel_Comment.Controls.Add(this.flowLayoutPanel1);
             this.panel_Comment.Location = new System.Drawing.Point(50, 607);
             this.panel_Comment.Name = "panel_Comment";
-            this.panel_Comment.Size = new System.Drawing.Size(879, 420);
+            this.panel_Comment.Size = new System.Drawing.Size(858, 420);
             this.panel_Comment.TabIndex = 2;
             // 
             // flowLayoutPanel1
@@ -254,7 +255,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 130);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(879, 290);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(858, 290);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // btn_Reservation
@@ -267,7 +268,7 @@
             this.btn_Reservation.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_Reservation.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_Reservation.ForeColor = System.Drawing.Color.White;
-            this.btn_Reservation.Location = new System.Drawing.Point(112, 272);
+            this.btn_Reservation.Location = new System.Drawing.Point(205, 273);
             this.btn_Reservation.Name = "btn_Reservation";
             this.btn_Reservation.Size = new System.Drawing.Size(146, 33);
             this.btn_Reservation.TabIndex = 4;
@@ -311,6 +312,7 @@
             // 
             this.panel_Body.AutoScroll = true;
             this.panel_Body.BackColor = System.Drawing.Color.White;
+            this.panel_Body.Controls.Add(this.btn_VideoTrailer);
             this.panel_Body.Controls.Add(this.richTextBox_Description);
             this.panel_Body.Controls.Add(this.panel_Comment);
             this.panel_Body.Controls.Add(this.panel_Poster);
@@ -323,6 +325,22 @@
             this.panel_Body.Name = "panel_Body";
             this.panel_Body.Size = new System.Drawing.Size(1021, 600);
             this.panel_Body.TabIndex = 7;
+            // 
+            // btn_VideoTrailer
+            // 
+            this.btn_VideoTrailer.BorderRadius = 10;
+            this.btn_VideoTrailer.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_VideoTrailer.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_VideoTrailer.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_VideoTrailer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_VideoTrailer.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_VideoTrailer.ForeColor = System.Drawing.Color.White;
+            this.btn_VideoTrailer.Location = new System.Drawing.Point(50, 273);
+            this.btn_VideoTrailer.Name = "btn_VideoTrailer";
+            this.btn_VideoTrailer.Size = new System.Drawing.Size(130, 33);
+            this.btn_VideoTrailer.TabIndex = 7;
+            this.btn_VideoTrailer.Text = "Xem trailer";
+            this.btn_VideoTrailer.Click += new System.EventHandler(this.btn_VideoTrailer_Click);
             // 
             // Form_DetailInforFilm
             // 
@@ -370,5 +388,6 @@
         private System.Windows.Forms.Panel panel_Body;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private Guna.UI2.WinForms.Guna2Button btn_VideoTrailer;
     }
 }

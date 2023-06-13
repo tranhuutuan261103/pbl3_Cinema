@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CinemaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CinemaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="account">
           <Key>
             <PropertyRef Name="email" />
@@ -71,7 +71,7 @@
           <Property Name="release_date" Type="date" Nullable="false" />
           <Property Name="expiration_date" Type="date" Nullable="false" />
           <Property Name="poster" Type="image" />
-          <Property Name="video_trailer" Type="varbinary(max)" />
+          <Property Name="video_trailer" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="product">
           <Key>
@@ -488,7 +488,8 @@
             <End Role="staff" EntitySet="staff" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CinemaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -571,7 +572,7 @@
           <Property Name="release_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="expiration_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="poster" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="video_trailer" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="video_trailer" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="category" Relationship="Self.FK__movie__category___31EC6D26" FromRole="movie" ToRole="category" />
           <NavigationProperty Name="ratings" Relationship="Self.FK__rating__movie_id__34C8D9D1" FromRole="movie" ToRole="rating" />
           <NavigationProperty Name="screenings" Relationship="Self.FK__screening__movie__3A81B327" FromRole="movie" ToRole="screening" />
@@ -585,8 +586,8 @@
           <Property Name="unit" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="price" Type="Int32" Nullable="false" />
           <Property Name="the_number_of_products" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="detail_bill" Relationship="Self.FK__detail_bi__produ__5070F446" FromRole="product" ToRole="detail_bill" />
           <Property Name="image_product" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="detail_bill" Relationship="Self.FK__detail_bi__produ__5070F446" FromRole="product" ToRole="detail_bill" />
         </EntityType>
         <EntityType Name="rating">
           <Key>
@@ -1096,12 +1097,12 @@
           <EntitySetMapping Name="products">
             <EntityTypeMapping TypeName="CinemaModel.product">
               <MappingFragment StoreEntitySet="product">
-                <ScalarProperty Name="image_product" ColumnName="image_product" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name_product" ColumnName="name_product" />
                 <ScalarProperty Name="unit" ColumnName="unit" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="the_number_of_products" ColumnName="the_number_of_products" />
+                <ScalarProperty Name="image_product" ColumnName="image_product" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -65,6 +65,7 @@ namespace pbl3_Cinema.View.AdminView
             dataGridView_ListFilm.Columns["Description"].Visible = false;
             dataGridView_ListFilm.Columns["Release_date"].HeaderText = "Phát hành";
             dataGridView_ListFilm.Columns["Expiration_date"].HeaderText = "Kết thúc";
+            dataGridView_ListFilm.Columns["Video_trailer"].HeaderText = "Video Trailer";
         }
 
         private void AddFilm(object o)

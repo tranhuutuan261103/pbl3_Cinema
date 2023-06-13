@@ -276,7 +276,7 @@ namespace pbl3_Cinema.DAL
             return 1;
         }
 
-        public int UpdateInforStaff(string email, string userName, string gender, string phoneNum, DateTime DoB, string position, int wage, bool active)
+        public int UpdateInforStaff(string email,string password, string userName, string gender, string phoneNum, DateTime DoB, string position, int wage, bool active)
         {
             using (CinemaEntities db = new CinemaEntities())
             {
@@ -288,6 +288,10 @@ namespace pbl3_Cinema.DAL
                 userinfor.staff.position = position;
                 userinfor.staff.wage = wage;
                 userinfor.staff.account.active = active;
+                if (password != "")
+                {
+                    userinfor.staff.account.pass_word = password;
+                }
                 db.SaveChanges();
             }
             return 1;

@@ -1,6 +1,7 @@
 ﻿using pbl3_Cinema.BLL;
 using pbl3_Cinema.DTO;
 using pbl3_Cinema.MyUserControler;
+using pbl3_Cinema.View.CustomerView.FilmShowView;
 using pbl3_Cinema.View.ReservationView;
 using System;
 using System.Collections.Generic;
@@ -122,6 +123,20 @@ namespace pbl3_Cinema.View.CustomerView.DetailInforFilm
             btn_Reservation.Visible = v;
             label_content.Visible = v;
             panel_Comment.Visible = v;
+        }
+
+        private void btn_VideoTrailer_Click(object sender, EventArgs e)
+        {
+            Cinema_BLL bll = new Cinema_BLL();
+            string videoPath = bll.GetVideoTrailerById(id_movie);
+            if (videoPath == null)
+            {
+                MessageBox.Show("Video trailer không tồn tại");
+                return;
+            }
+            Form_VideoTrailer form = new Form_VideoTrailer();
+            form.videoPath = videoPath;
+            form.ShowDialog();
         }
     }
 }
