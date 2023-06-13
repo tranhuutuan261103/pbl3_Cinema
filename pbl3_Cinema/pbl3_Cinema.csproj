@@ -379,6 +379,12 @@
     <Compile Include="View\CustomerView\FilmShowView\Form_Film_WillShow.Designer.cs">
       <DependentUpon>Form_Film_WillShow.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\CustomerView\FilmShowView\Form_VideoTrailer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CustomerView\FilmShowView\Form_VideoTrailer.Designer.cs">
+      <DependentUpon>Form_VideoTrailer.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\CustomerView\Form_Customer_ListSelect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -585,6 +591,9 @@
     <EmbeddedResource Include="View\CustomerView\FilmShowView\Form_Film_WillShow.resx">
       <DependentUpon>Form_Film_WillShow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\CustomerView\FilmShowView\Form_VideoTrailer.resx">
+      <DependentUpon>Form_VideoTrailer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\CustomerView\Form_Customer_ListSelect.resx">
       <DependentUpon>Form_Customer_ListSelect.cs</DependentUpon>
     </EmbeddedResource>
@@ -703,16 +712,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ModelCinema.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelCinema.edmx</DependentUpon>
-      <LastGenOutput>ModelCinema.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="ModelCinema.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelCinema.edmx</DependentUpon>
-      <LastGenOutput>ModelCinema.cs</LastGenOutput>
-    </Content>
     <None Include="Resources\cinema background copy.jpg" />
     <None Include="Resources\transaction-history.png" />
     <None Include="Resources\movie.png" />
@@ -734,6 +733,17 @@
     <None Include="Resources\cinema_poster_product.jpg" />
     <None Include="Resources\no-pictures.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="ModelCinema.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelCinema.edmx</DependentUpon>
+      <LastGenOutput>ModelCinema.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModelCinema.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelCinema.edmx</DependentUpon>
+      <LastGenOutput>ModelCinema.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

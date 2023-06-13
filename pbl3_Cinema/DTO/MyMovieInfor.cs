@@ -31,6 +31,7 @@ namespace pbl3_Cinema.DTO
         public string ListCast { get; set; }
         public DateTime Release_date { set; get; }
         public DateTime Expiration_date { set; get; }
+        public string Video_trailer { get; set; }
         public MyMovieInfor() 
         {
         }

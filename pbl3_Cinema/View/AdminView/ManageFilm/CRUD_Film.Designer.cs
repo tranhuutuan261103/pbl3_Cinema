@@ -46,11 +46,12 @@
             this.dateTimePicker_EndDay = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.btn_Attach_Poster = new Guna.UI2.WinForms.Guna2Button();
-            this.btn_Attach_Video = new Guna.UI2.WinForms.Guna2Button();
             this.btn_Oke = new Guna.UI2.WinForms.Guna2Button();
             this.btn_Exit = new Guna.UI2.WinForms.Guna2Button();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
+            this.textVideoLink = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox_Title
@@ -213,7 +214,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(74, 414);
+            this.label6.Location = new System.Drawing.Point(74, 417);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(101, 16);
             this.label6.TabIndex = 12;
@@ -224,7 +225,7 @@
             this.dateTimePicker_StartDay.Checked = true;
             this.dateTimePicker_StartDay.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dateTimePicker_StartDay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker_StartDay.Location = new System.Drawing.Point(209, 404);
+            this.dateTimePicker_StartDay.Location = new System.Drawing.Point(209, 407);
             this.dateTimePicker_StartDay.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dateTimePicker_StartDay.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker_StartDay.Name = "dateTimePicker_StartDay";
@@ -238,7 +239,7 @@
             this.dateTimePicker_EndDay.Checked = true;
             this.dateTimePicker_EndDay.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dateTimePicker_EndDay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker_EndDay.Location = new System.Drawing.Point(507, 404);
+            this.dateTimePicker_EndDay.Location = new System.Drawing.Point(507, 407);
             this.dateTimePicker_EndDay.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dateTimePicker_EndDay.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker_EndDay.Name = "dateTimePicker_EndDay";
@@ -250,7 +251,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(400, 414);
+            this.label7.Location = new System.Drawing.Point(400, 417);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(88, 16);
             this.label7.TabIndex = 15;
@@ -264,27 +265,12 @@
             this.btn_Attach_Poster.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_Attach_Poster.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_Attach_Poster.ForeColor = System.Drawing.Color.White;
-            this.btn_Attach_Poster.Location = new System.Drawing.Point(209, 452);
+            this.btn_Attach_Poster.Location = new System.Drawing.Point(209, 497);
             this.btn_Attach_Poster.Name = "btn_Attach_Poster";
             this.btn_Attach_Poster.Size = new System.Drawing.Size(159, 29);
             this.btn_Attach_Poster.TabIndex = 18;
             this.btn_Attach_Poster.Text = "Attach Poster";
             this.btn_Attach_Poster.Click += new System.EventHandler(this.btn_Attach_Poster_Click);
-            // 
-            // btn_Attach_Video
-            // 
-            this.btn_Attach_Video.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_Attach_Video.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_Attach_Video.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_Attach_Video.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_Attach_Video.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_Attach_Video.ForeColor = System.Drawing.Color.White;
-            this.btn_Attach_Video.Location = new System.Drawing.Point(490, 452);
-            this.btn_Attach_Video.Name = "btn_Attach_Video";
-            this.btn_Attach_Video.Size = new System.Drawing.Size(161, 29);
-            this.btn_Attach_Video.TabIndex = 19;
-            this.btn_Attach_Video.Text = "Attach Video";
-            this.btn_Attach_Video.Click += new System.EventHandler(this.btn_Attach_Video_Click);
             // 
             // btn_Oke
             // 
@@ -295,7 +281,7 @@
             this.btn_Oke.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_Oke.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_Oke.ForeColor = System.Drawing.Color.White;
-            this.btn_Oke.Location = new System.Drawing.Point(209, 507);
+            this.btn_Oke.Location = new System.Drawing.Point(209, 549);
             this.btn_Oke.Name = "btn_Oke";
             this.btn_Oke.Size = new System.Drawing.Size(167, 51);
             this.btn_Oke.TabIndex = 22;
@@ -311,7 +297,7 @@
             this.btn_Exit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_Exit.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_Exit.ForeColor = System.Drawing.Color.White;
-            this.btn_Exit.Location = new System.Drawing.Point(484, 507);
+            this.btn_Exit.Location = new System.Drawing.Point(484, 549);
             this.btn_Exit.Name = "btn_Exit";
             this.btn_Exit.Size = new System.Drawing.Size(167, 51);
             this.btn_Exit.TabIndex = 23;
@@ -333,14 +319,44 @@
             this.guna2BorderlessForm1.ResizeForm = false;
             this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
+            // textVideoLink
+            // 
+            this.textVideoLink.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textVideoLink.DefaultText = "";
+            this.textVideoLink.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.textVideoLink.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.textVideoLink.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.textVideoLink.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.textVideoLink.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.textVideoLink.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.textVideoLink.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.textVideoLink.Location = new System.Drawing.Point(209, 448);
+            this.textVideoLink.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textVideoLink.Name = "textVideoLink";
+            this.textVideoLink.PasswordChar = '\0';
+            this.textVideoLink.PlaceholderText = "";
+            this.textVideoLink.SelectedText = "";
+            this.textVideoLink.Size = new System.Drawing.Size(442, 30);
+            this.textVideoLink.TabIndex = 24;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(77, 458);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(68, 16);
+            this.label8.TabIndex = 25;
+            this.label8.Text = "Link video";
+            // 
             // CRUD_Film
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(786, 585);
+            this.ClientSize = new System.Drawing.Size(786, 631);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.textVideoLink);
             this.Controls.Add(this.btn_Exit);
             this.Controls.Add(this.btn_Oke);
-            this.Controls.Add(this.btn_Attach_Video);
             this.Controls.Add(this.btn_Attach_Poster);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dateTimePicker_EndDay);
@@ -386,10 +402,11 @@
         private Guna.UI2.WinForms.Guna2DateTimePicker dateTimePicker_EndDay;
         private System.Windows.Forms.Label label7;
         private Guna.UI2.WinForms.Guna2Button btn_Attach_Poster;
-        private Guna.UI2.WinForms.Guna2Button btn_Attach_Video;
         private Guna.UI2.WinForms.Guna2Button btn_Oke;
         private Guna.UI2.WinForms.Guna2Button btn_Exit;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
+        private System.Windows.Forms.Label label8;
+        private Guna.UI2.WinForms.Guna2TextBox textVideoLink;
     }
 }

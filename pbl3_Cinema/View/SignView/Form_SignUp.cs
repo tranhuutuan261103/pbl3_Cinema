@@ -106,8 +106,11 @@ namespace pbl3_Cinema.View
 
             
             Account_BLL bll = new Account_BLL();
-            bll.createAccount(email, password, name, gender, phoneNum, dateTimePicker_DoB.Value);
-            MessageBox.Show("Bạn đã đăng ký thành công");
+            if (bll.createAccount(email, password, name, gender, phoneNum, dateTimePicker_DoB.Value) == 1)
+            {
+                MessageBox.Show("Bạn đã đăng ký thành công");
+                haveEvent(sender, e);
+            }
         }
 
         private bool checkValidPassword(string password)

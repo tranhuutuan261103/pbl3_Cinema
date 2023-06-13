@@ -69,6 +69,12 @@ namespace pbl3_Cinema.BLL
             return dal.GetMovieById(id);
         }
 
+        public string GetVideoTrailerById(int id_movie)
+        {
+            MyMovieInfor myMovieInfor = GetMovieById(id_movie);
+            return myMovieInfor.Video_trailer;
+        }
+
         public List<MyMovieInfor> GetAllMovieInforValidDay(int id_Category)
         {
             Cinema_DAL dal = new Cinema_DAL();
